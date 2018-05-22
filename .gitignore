@@ -33,3 +33,6 @@
 /proj/*.user
 /proj/*.filters
 /proj/.vs/ArmyAntServer/v15/*.suo
+*.log
+*.tlog
+*.idb
