@@ -36,3 +36,4 @@
 *.log
 *.tlog
 *.idb
+/external/mysql/mysql-8.0.11-winx64/data
