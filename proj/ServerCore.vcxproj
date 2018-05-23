@@ -105,13 +105,13 @@
       <PreprocessorDefinitions>_cplusplus;OS_WINDOWS;AA_DONOT_AUTO_LINK_;_MSVC;DEBUG;_32BIT;_x86;WIN32;_DEBUG;ARMYANTSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\build-tools\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>---------编译前脚本---------------------</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>$(ProjectDir)..\build-tools\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>---------生成后脚本---------------------</Message>
@@ -126,13 +126,13 @@
       <PreprocessorDefinitions>_cplusplus;OS_WINDOWS;AA_DONOT_AUTO_LINK_;_MSVC;DEBUG;_64BIT;_x86;_DEBUG;ARMYANTSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\build-tools\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>---------编译前脚本---------------------</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>$(ProjectDir)..\build-tools\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>---------生成后脚本---------------------</Message>
@@ -153,13 +153,13 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\build-tools\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>---------编译前脚本---------------------</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>$(ProjectDir)..\build-tools\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>---------生成后脚本---------------------</Message>
@@ -180,13 +180,13 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\build-tools\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>---------编译前脚本---------------------</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>$(ProjectDir)..\build-tools\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>---------生成后脚本---------------------</Message>
