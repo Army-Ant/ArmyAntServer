@@ -1,10 +1,9 @@
 #include <ArmyAnt.h>
 #include <ServerMain.h>
 
-namespace ArmyAntServer {
+#define AA_HANDLE_MANAGER ArmyAnt::ClassPrivateHandleManager<ServerMain, ServerMain_Private>::getInstance()
 
-	class ServerMain_Private;
-	static ArmyAnt::ClassPrivateHandleManager<ServerMain, ServerMain_Private> s_handleManager;
+namespace ArmyAntServer {
 
 	class ServerMain_Private {
 	public:
@@ -36,26 +35,41 @@ namespace ArmyAntServer {
 	void ServerMain_Private::onReceived(const ArmyAnt::IPAddr&addr, uint16 port, uint8*data, mac_uint datalen, void*pThis) {
 		auto pSelf = static_cast<ServerMain_Private*>(pThis);
 		pSelf->logger.pushLog((ArmyAnt::String("Received client data, ip: ") + addr.GetStr() + " , port: " + int64(port)).c_str(), Logger::AlertLevel::Info, "ServerMain");
-		pSelf->logger.pushLog((ArmyAnt::String("Data content: ") + reinterpret_cast<char*>(data)).c_str(), Logger::AlertLevel::Info, "ServerMain");
+		pSelf->logger.pushLog((ArmyAnt::String("Data content: ") + reinterpret_cast<const char*>(data)).c_str(), Logger::AlertLevel::Info, "ServerMain");
 	}
 
 	ServerMain::ServerMain() {
-		s_handleManager.GetHandle(this);
+		AA_HANDLE_MANAGER.GetHandle(this);
 	}
 
 	ServerMain::~ServerMain() {
-		s_handleManager.ReleaseHandle(this);
+		delete AA_HANDLE_MANAGER.ReleaseHandle(this);
 	}
 
 	int32 ServerMain::start() {
-		auto data = s_handleManager.GetDataByHandle(this);
+		auto data = AA_HANDLE_MANAGER.GetDataByHandle(this);
 		data->coreServer.SetConnectCallBack(data->onConnected, data);
 		data->coreServer.SetDisconnectCallBack(data->onDisonnected, data);
 		data->coreServer.SetGettingCallBack(data->onReceived, data);
 
-		data->coreServer.StartServer(4744);
-
+		try {
+			auto ret = data->coreServer.StartServer(4744);
+			std::cout << "Server created " << (ret ? "successful" : "failure");
+		}
+		catch (ArmyAnt::SocketException e) {
+			auto msg = e.what();
+			std::cout << "Server created failure, error code: " << msg;
+		}
+		int exitcode = 0;
+		std::cin >> exitcode;
+		while (exitcode != 200) {
+			std::cin >> exitcode;
+		}
+		data->coreServer.StopServer(10000);
 		return 0;
 	}
 
 }
+
+
+#undef AA_HANDLE_MANAGER
