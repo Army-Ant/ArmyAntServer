@@ -159,9 +159,11 @@
   <ItemGroup>
     <ClInclude Include="..\inc\common_base.h" />
     <ClInclude Include="..\inc\Logger.h" />
+    <ClInclude Include="..\inc\SocketApplication.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
+    <ClCompile Include="..\src\Utilities\SocketApplication.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

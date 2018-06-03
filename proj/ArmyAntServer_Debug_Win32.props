@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(ProjectDir)..\inc\;$(ProjectDir)..\external\ArmyAntLib\inc\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\inc\;$(ProjectDir)..\external\ArmyAntLib\inc\;$(ProjectDir)..\external\Protobuf\inc\;$(IncludePath)</IncludePath>
     <_PropertySheetDisplayName>ArmyAntServer_DirSet_Common</_PropertySheetDisplayName>
     <LibraryPath>$(ProjectDir)..\external\ArmyAntLib;$(LibraryPath)</LibraryPath>
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
