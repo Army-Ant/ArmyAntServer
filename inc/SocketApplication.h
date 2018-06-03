@@ -56,11 +56,10 @@ public:
 	AA_FORBID_COPY_CTOR(SocketApplication);
 
 private:
+	ArmyAnt::TCPServer tcpSocket;
 	Logger & logger;
 	EventCallback eventCallback;
 	ReceiveCallback receiveCallback;
-
-	ArmyAnt::TCPServer tcpSocket;
 };
 
 } // namespace ArmyAntServer
