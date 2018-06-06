@@ -6,9 +6,8 @@
 #include <mutex>
 
 #include <AASocket.h>
-#include "Logger.h"
 
-#include <ArmyAntServer.System.SocketHead.pb.h>
+#include <ArmyAntMessage.System.SocketHead.pb.h>
 
 namespace ArmyAntServer{
 
@@ -36,17 +35,29 @@ struct MessageBaseHead{
 #pragma pack()
 
 struct ClientInformation{
-	int64 index;
+	uint32 index;
 	ClientStatus status;
 
-	ClientInformation(const int64&index, ClientStatus status);
+	ClientInformation(const int32 index, ClientStatus status);
+	ClientInformation(ClientInformation&&moved);
 	~ClientInformation();
 
 private:
-	std::map<int64, void*>waitingResponseSended;
+	int32 counter;
+	std::map<int32, uint8*>waitingResponseSended;
 	uint8*receivingBuffer;
+	uint32 receivingBufferEnd;
 
+	std::mutex rwMutex;
+
+	void setMaxBufferLength(uint32 bufferLength);
+
+	AA_FORBID_ASSGN_OPR(ClientInformation);
+	AA_FORBID_COPY_CTOR(ClientInformation);
 	friend class SocketApplication;
+	friend static bool onConnected(uint32 index, void*pThis);
+	friend static void onReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
+	friend static bool onSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
 };
 
 class SocketApplication{
@@ -59,46 +70,42 @@ public:
 		ErrorReport,
 	};
 
-	typedef std::function<void(EventType type, const int64&clientIndex, ArmyAnt::String content)> EventCallback;
-	typedef std::function<void(const int64&clientIndex, 
-							   const MessageBaseHead&head, 
-							   System::SocketExtendNormal_V0_0_0_1&extend, 
-							   google::protobuf::Message&body)> 
-		ReceiveCallback;
+	typedef std::function<void(EventType type, const uint32 clientIndex, ArmyAnt::String content)> EventCallback;
+	typedef std::function<void(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 contentCode,
+							   void*body)> 		ReceiveCallback;
 
 public:
-	SocketApplication(Logger&log);
+	SocketApplication();
 	~SocketApplication();
 
 public:
 	bool setEventCallback(EventCallback cb);
 	bool setReceiveCallback(ReceiveCallback cb);
-	Logger&getLogger();
 	ArmyAnt::TCPServer&getSocket();
-	const std::map<int64, ClientInformation>&getClientList()const;
+	const std::map<uint32, ClientInformation>&getClientList()const;
 
-	bool start(uint16 port, bool isIpv6 = false);
+	bool start(uint16 port, uint32 maxBufferLength, bool isIpv6 = false);
 	bool stop();
-	uint64 send(uint64 clientId, int32 serials, MessageType type, int32 extendVersion, void*extend, void*content);
-
-public:
-	AA_FORBID_ASSGN_OPR(SocketApplication);
-	AA_FORBID_COPY_CTOR(SocketApplication);
+	int32 send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, google::protobuf::Message&extend, void*content);
 
 private:
 	ArmyAnt::TCPServer tcpSocket;
-	Logger & logger;
 	EventCallback eventCallback;
 	ReceiveCallback receiveCallback;
-	std::map<int64, ClientInformation> clients;
+	std::map<uint32, ClientInformation> clients;
 
 	std::mutex connectMutex;
+	uint32 bufferLength;
 
 	friend static bool onConnected(uint32 index, void*pThis);
 	friend static void onDisonnected(uint32 index, void*pThis);
 	friend static void onReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
-	friend static bool onSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32 index, void*sendedData, uint64 len, void* pThis);
+	friend static bool onSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
 	friend static void onErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
+
+private:
+	AA_FORBID_ASSGN_OPR(SocketApplication);
+	AA_FORBID_COPY_CTOR(SocketApplication);
 };
 
 } // namespace ArmyAntServer

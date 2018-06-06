@@ -16,6 +16,6 @@ if not exist %PROTOBINARY_PATH% (
 	cd ..\tools
 )
 
-%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% %PROTOFILE_PATH%\ArmyAntServer.System.SocketHead.proto
+%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% %PROTOFILE_PATH%\ArmyAntMessage.System.SocketHead.proto
 
 pause

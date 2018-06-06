@@ -16,6 +16,7 @@ static bool onConnected(uint32 index, void*pThis){
 	} else{
 		self->connectMutex.lock();
 		self->clients.insert(std::make_pair(index, ClientInformation(index, ClientStatus::Conversation)));
+		self->clients.find(index)->second.setMaxBufferLength(self->bufferLength);
 		self->connectMutex.unlock();
 		self->eventCallback(SocketApplication::EventType::Connected, index, "New client connected");
 		return true;
@@ -40,11 +41,89 @@ static void onDisonnected(uint32 index, void*pThis){
 static void onReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 	auto client = self->tcpSocket.getClientByIndex(index);
-	self->getLogger().pushLog((ArmyAnt::String("Received client data, ip: ") + client.clientAddr->getStr() + " , port: " + int64(client.clientPort)).c_str(), Logger::AlertLevel::Info, "ServerMain");
-	self->getLogger().pushLog((ArmyAnt::String("Data content: ") + reinterpret_cast<const char*>(data)).c_str(), Logger::AlertLevel::Info, "ServerMain");
+	auto&clientBuffer = self->clients.find(index)->second;
+	if(self->receiveCallback != nullptr){
+		clientBuffer.rwMutex.lock();
+		while(datalen > 0){
+			mac_uint currCopyLen = datalen;
+			// 若超出buffer长度, 则先写入一部分
+			if(clientBuffer.receivingBufferEnd + datalen > self->bufferLength){
+				currCopyLen = self->bufferLength - clientBuffer.receivingBufferEnd - 1;
+			}
+			// 写入到buffer
+			datalen -= currCopyLen;
+			memcpy(clientBuffer.receivingBuffer + clientBuffer.receivingBufferEnd, data, currCopyLen);
+			clientBuffer.receivingBufferEnd += currCopyLen;
+			// 解析应用头
+			if(clientBuffer.receivingBufferEnd > sizeof(MessageBaseHead)){
+				MessageBaseHead tmpHead;
+				memcpy(&tmpHead, clientBuffer.receivingBuffer, sizeof(MessageBaseHead));
+				// 解析扩展头
+				if(clientBuffer.receivingBufferEnd >= sizeof(MessageBaseHead) + tmpHead.extendLength){
+					int64 appId = 0;
+					int32 contentLength = 0;
+					int32 contentCode = 0;
+					switch(tmpHead.extendVersion){
+						case 1:
+						{
+							ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1 extend;
+							extend.ParseFromArray(clientBuffer.receivingBuffer + sizeof(MessageBaseHead), tmpHead.extendLength);
+							appId = extend.app_id();
+							contentLength = extend.content_length();
+							contentCode = extend.message_code();
+							break;
+						}
+					}
+					// 获取内容, 发送回调
+					uint32 usedLength = sizeof(MessageBaseHead) + tmpHead.extendLength + contentLength;
+					if(clientBuffer.receivingBufferEnd >= usedLength){
+						self->receiveCallback(index, tmpHead, appId, contentLength, contentCode, 
+											  clientBuffer.receivingBuffer + sizeof(MessageBaseHead) + tmpHead.extendLength);
+						// 若之后仍有内容, 则转移到起点处, 已处理过的信息从buffer移除
+						if(clientBuffer.receivingBufferEnd > usedLength){
+							memcpy(clientBuffer.receivingBuffer, clientBuffer.receivingBuffer + usedLength, clientBuffer.receivingBufferEnd - usedLength);
+						}
+						clientBuffer.receivingBufferEnd -= usedLength;
+						data = data + currCopyLen;
+						continue; // 循环应在这里正确继续和退出
+					}
+				}
+			}
+			// buffer填满了, 却未解析出一个完整的协议包, 这是有问题的
+			if(datalen > 0){
+				self->eventCallback(SocketApplication::EventType::ErrorReport,
+									index,
+									ArmyAnt::String("Receiving buffer full !"));
+				break;
+			}
+		}
+		clientBuffer.rwMutex.unlock();
+	}
 }
 
-static bool onSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32 index, void*sendedData, uint64 len, void* pThis){
+static bool onSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis){
+	auto self = static_cast<SocketApplication*>(pThis);
+	if(self->eventCallback != nullptr){
+		if(sendedSize > 0){
+			int32 sendingIndex = 0;
+			auto sendedList = self->clients.find(index)->second.waitingResponseSended;
+			for(auto i = sendedList.begin(); i != sendedList.end(); ++i){
+				if(!memcmp(sendedData, i->second, sendedSize))
+					sendingIndex = i->first;
+			}
+			self->eventCallback(SocketApplication::EventType::SendingResponse,
+								index,
+								ArmyAnt::String("Sending responsed, sending index: ") + int64(sendingIndex));
+			if(sendingIndex > 0){
+				auto i = sendedList.find(sendingIndex);
+				ArmyAnt::Fragment::AA_SAFE_DELALL(i->second);
+				sendedList.erase(i);
+			}
+		}else
+			self->eventCallback(SocketApplication::EventType::ErrorReport,
+								index,
+								ArmyAnt::String("Sending failed") );
+	}
 	return false;
 }
 
@@ -60,16 +139,30 @@ static void onErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&ad
 
 /***********************************************************/
 
-ClientInformation::ClientInformation(const int64&index, ClientStatus status)
-:index(index), status(status){
-}
+ClientInformation::ClientInformation(const int32 index, ClientStatus status)
+	:index(index), status(status),
+	counter(1), waitingResponseSended(), receivingBuffer(nullptr), receivingBufferEnd(0), rwMutex(){}
+
+ClientInformation::ClientInformation(ClientInformation&&moved)
+	: index(moved.index), status(moved.status),
+	counter(moved.counter), waitingResponseSended(), receivingBuffer(nullptr), receivingBufferEnd(0), rwMutex(){}
 
 ClientInformation::~ClientInformation(){
+	ArmyAnt::Fragment::AA_SAFE_DELALL(receivingBuffer);
+	for(auto i = waitingResponseSended.begin(); i != waitingResponseSended.end(); i = waitingResponseSended.begin()){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(i->second);
+		waitingResponseSended.erase(i);
+	}
+}
+
+void ClientInformation::setMaxBufferLength(uint32 bufferLength){
+	ArmyAnt::Fragment::AA_SAFE_DELALL(receivingBuffer);
+	receivingBuffer = new uint8[bufferLength];
 }
 
 
-SocketApplication::SocketApplication(Logger&logger)
-	:logger(logger), tcpSocket(AA_INT32_MAX), eventCallback(nullptr), receiveCallback(nullptr), clients(), connectMutex(){
+SocketApplication::SocketApplication()
+	:tcpSocket(AA_INT32_MAX), eventCallback(nullptr), receiveCallback(nullptr), clients(), connectMutex(){
 }
 
 SocketApplication::~SocketApplication(){
@@ -86,19 +179,15 @@ bool SocketApplication::setReceiveCallback(SocketApplication::ReceiveCallback cb
 	return true;
 }
 
-Logger& SocketApplication::getLogger(){
-	return logger;
-}
-
 ArmyAnt::TCPServer&SocketApplication::getSocket(){
 	return tcpSocket;
 }
 
-const std::map<int64, ClientInformation>&SocketApplication::getClientList()const{
+const std::map<uint32, ClientInformation>&SocketApplication::getClientList()const{
 	return clients;
 }
 
-bool SocketApplication::start(uint16 port, bool isIpv6){
+bool SocketApplication::start(uint16 port, uint32 maxBufferLength, bool isIpv6){
 	if(tcpSocket.isStarting())
 		return false;
 	if(receiveCallback == nullptr || eventCallback == nullptr)
@@ -110,6 +199,7 @@ bool SocketApplication::start(uint16 port, bool isIpv6){
 	tcpSocket.setSendingResponseCallBack(onSendResponse, this);
 	tcpSocket.setErrorReportCallBack(onErrorReport, this);
 
+	bufferLength = maxBufferLength;
 	return tcpSocket.start(port, isIpv6);
 }
 
@@ -119,7 +209,7 @@ bool SocketApplication::stop(){
 	return tcpSocket.stop(20000);
 }
 
-uint64 SocketApplication::send(uint64 clientId, int32 serials, MessageType type, int32 extendVersion, void*extend, void*content){
+int32 SocketApplication::send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, google::protobuf::Message&extend, void*content){
 	if(!tcpSocket.isStarting())
 		return false;
 
@@ -129,11 +219,13 @@ uint64 SocketApplication::send(uint64 clientId, int32 serials, MessageType type,
 		return false;
 
 	int32 extendLength = 0;
+	int64 contentLength = 0;
 	switch(extendVersion){
 		case 1:
 		{
-			System::SocketExtendNormal_V0_0_0_1*head = static_cast<System::SocketExtendNormal_V0_0_0_1*>(extend);
-			extendLength = head->ByteSize();
+			ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1*headExtend = static_cast<ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1*>(&extend);
+			extendLength = headExtend->ByteSize();
+			contentLength = headExtend->content_length();
 			break;
 		}
 		default:
@@ -146,11 +238,17 @@ uint64 SocketApplication::send(uint64 clientId, int32 serials, MessageType type,
 		extendVersion,
 		extendLength,
 	};
-
-
-	//tcpSocket.send()
-
-	return 0;
+	int64 totalLength = sizeof(head) + head.extendLength + contentLength;
+	uint8* sendingBuffer = new uint8[totalLength];
+	memcpy(sendingBuffer, &head, sizeof(head));
+	extend.SerializePartialToArray(sendingBuffer + sizeof(head), extend.ByteSize());
+	memcpy(sendingBuffer + sizeof(head) + extendLength, content, contentLength);
+	if(client->second.counter == AA_INT64_MAX - 1)
+		client->second.counter = 0;
+	client->second.rwMutex.lock();
+	client->second.waitingResponseSended.insert(std::make_pair(++client->second.counter, sendingBuffer));
+	client->second.rwMutex.unlock();
+	return tcpSocket.send(clientId, sendingBuffer, totalLength) == 0 ? 0 : client->second.counter;
 }
 
 } // namespace ArmyAntServer

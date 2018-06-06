@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package ArmyAntServer.System;
-
-message SocketExtendNormal_V0_0_0_1{
-	int64 appid = 1;
-}

@@ -158,12 +158,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\common_base.h" />
+    <ClInclude Include="..\inc\EventManager.h" />
     <ClInclude Include="..\inc\Logger.h" />
     <ClInclude Include="..\inc\SocketApplication.h" />
-    <ClInclude Include="..\res\ProtobufSource\ArmyAntServer.System.SocketHead.pb.h" />
+    <ClInclude Include="..\res\ProtobufSource\ArmyAntMessage.System.SocketHead.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\res\ProtobufSource\ArmyAntServer.System.SocketHead.pb.cc" />
+    <ClCompile Include="..\res\ProtobufSource\ArmyAntMessage.System.SocketHead.pb.cc" />
+    <ClCompile Include="..\src\Utilities\EventManager.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
     <ClCompile Include="..\src\Utilities\SocketApplication.cpp" />
   </ItemGroup>
