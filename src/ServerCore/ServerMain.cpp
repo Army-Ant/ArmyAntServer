@@ -1,61 +1,128 @@
 #include <ArmyAnt.h>
 #include <ServerMain.h>
 
-#define AA_HANDLE_MANAGER ArmyAnt::ClassPrivateHandleManager<ServerMain, ServerMain_Private>::getInstance()
+#include <functional>
 
-namespace ArmyAntServer {
+#include <ServerCoreConstants.h>
 
-	class ServerMain_Private {
-	public:
-		ServerMain_Private();
-		static bool onConnected(const ArmyAnt::IPAddr&clientAddr, uint16 clientPort, void*pThis);
-		static void onDisonnected(const ArmyAnt::IPAddr& clientAddr, uint16 clientPort, void*pThis);
-		static void onReceived(const ArmyAnt::IPAddr&addr, uint16 port, uint8*data, mac_uint datalen, void*pThis);
+namespace ArmyAntServer{
 
-		ArmyAnt::TCPServer coreServer;
-		Logger logger;
-	};
 
-	ServerMain_Private::ServerMain_Private() : coreServer(0){
+ServerMain::ServerMain()
+	:sessionMgr(*this){}
 
+ServerMain::~ServerMain(){}
+
+int32 ServerMain::main(){
+	// 1. 读取配置
+	auto parseRes = parseConfig();
+	if(parseRes < 0){
+		return parseRes;
 	}
 
-	bool ServerMain_Private::onConnected(const ArmyAnt::IPAddr&clientAddr, uint16 clientPort, void*pThis) {
-		auto pSelf = static_cast<ServerMain_Private*>(pThis);
-		pSelf->logger.pushLog((ArmyAnt::String("Client connected, ip: ") + clientAddr.getStr() + " , port: " + int64(clientPort)).c_str(), Logger::AlertLevel::Info, "ServerMain");
-		return true;
+	// 2. 初始化各个模块, 注意顺序
+	auto initRes = modulesInitialization();
+	if(parseRes < 0){
+		return initRes;
 	}
 
-	void ServerMain_Private::onDisonnected(const ArmyAnt::IPAddr& clientAddr, uint16 clientPort, void*pThis) {
-		auto pSelf = static_cast<ServerMain_Private*>(pThis);
-		pSelf->logger.pushLog((ArmyAnt::String("Client disconnected, ip: ") + clientAddr.getStr() + " , port: " + int64(clientPort)).c_str(), Logger::AlertLevel::Info, "ServerMain");
+	// 3. 初始化并开启 socket TCP server
+	socket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+	socket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
+	socket.start(port, 16384, false);
 
-	}
+	// 4. 开始监听主线程消息队列
 
-	void ServerMain_Private::onReceived(const ArmyAnt::IPAddr&addr, uint16 port, uint8*data, mac_uint datalen, void*pThis) {
-		auto pSelf = static_cast<ServerMain_Private*>(pThis);
-		pSelf->logger.pushLog((ArmyAnt::String("Received client data, ip: ") + addr.getStr() + " , port: " + int64(port)).c_str(), Logger::AlertLevel::Info, "ServerMain");
-		pSelf->logger.pushLog((ArmyAnt::String("Data content: ") + reinterpret_cast<const char*>(data)).c_str(), Logger::AlertLevel::Info, "ServerMain");
-	}
-
-	ServerMain::ServerMain() {
-		AA_HANDLE_MANAGER.GetHandle(this);
-	}
-
-	ServerMain::~ServerMain() {
-		delete AA_HANDLE_MANAGER.ReleaseHandle(this);
-	}
-
-	int32 ServerMain::start() {
-		int exitcode = 0;
-		std::cin >> exitcode;
-		while (exitcode != 200) {
-			std::cin >> exitcode;
-		}
-		return 0;
-	}
-
+	return 0;
 }
 
+UserSessionManager&ServerMain::getUserSessionManager(){
+	return sessionMgr;
+}
 
-#undef AA_HANDLE_MANAGER
+MessageQueueManager&ServerMain::getMessageQueueManager(){
+	return msgQueueMgr;
+}
+
+int32 ServerMain::parseConfig(){
+	ArmyAnt::File configJson;
+	// 打开设置文件
+	bool openRes = configJson.Open(Constants::SERVER_CONFIG_FILE_PATH);
+	if(!openRes){
+		return -1;
+	}
+	// 读取设置内容
+	char* buf = new char[configJson.GetLength() + 20];
+	bool readRes = configJson.Read(buf);
+	configJson.Close();
+	if(!readRes){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		return -2;
+	}
+	// 序列化设置项
+	auto json = ArmyAnt::JsonUnit::create(buf);
+	auto pJo = dynamic_cast<ArmyAnt::JsonObject*>(json);
+	if(pJo == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return -3;
+	}
+	// 保存设置项到内存
+	auto&jo = *pJo;
+	debug = dynamic_cast<ArmyAnt::JsonBoolean*>(jo.getChild("debug"))->getBoolean();
+	port = dynamic_cast<ArmyAnt::JsonNumeric*>(jo.getChild("port"))->getInteger();
+	auto logFilePath = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logPath"));
+	logger.setLogFile(logFilePath->getString());
+	// 文件日志筛选级别
+	auto logFileLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logFileLevel"));
+	if(logFileLevel->getString() == ArmyAnt::String("verbose")){
+		logger.setFileLevel(Logger::AlertLevel::Verbose);
+	} else	if(logFileLevel->getString() == ArmyAnt::String("debug")){
+		logger.setFileLevel(Logger::AlertLevel::Debug);
+	} else	if(logFileLevel->getString() == ArmyAnt::String("info")){
+		logger.setFileLevel(Logger::AlertLevel::Info);
+	} else	if(logFileLevel->getString() == ArmyAnt::String("import")){
+		logger.setFileLevel(Logger::AlertLevel::Import);
+	} else	if(logFileLevel->getString() == ArmyAnt::String("warning")){
+		logger.setFileLevel(Logger::AlertLevel::Warning);
+	} else	if(logFileLevel->getString() == ArmyAnt::String("error")){
+		logger.setFileLevel(Logger::AlertLevel::Error);
+	} else	if(logFileLevel->getString() == ArmyAnt::String("fatal")){
+		logger.setFileLevel(Logger::AlertLevel::Fatal);
+	} else{
+		logger.setFileLevel(Logger::AlertLevel::Verbose);
+	}
+
+	// 控制台日志筛选级别
+	auto logConsoleLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logConsoleLevel"));
+	if(logConsoleLevel->getString() == ArmyAnt::String("verbose")){
+		logger.setConsoleLevel(Logger::AlertLevel::Verbose);
+	} else	if(logConsoleLevel->getString() == ArmyAnt::String("debug")){
+		logger.setConsoleLevel(Logger::AlertLevel::Debug);
+	} else	if(logConsoleLevel->getString() == ArmyAnt::String("info")){
+		logger.setConsoleLevel(Logger::AlertLevel::Info);
+	} else	if(logConsoleLevel->getString() == ArmyAnt::String("import")){
+		logger.setConsoleLevel(Logger::AlertLevel::Import);
+	} else	if(logConsoleLevel->getString() == ArmyAnt::String("warning")){
+		logger.setConsoleLevel(Logger::AlertLevel::Warning);
+	} else	if(logConsoleLevel->getString() == ArmyAnt::String("error")){
+		logger.setConsoleLevel(Logger::AlertLevel::Error);
+	} else	if(logConsoleLevel->getString() == ArmyAnt::String("fatal")){
+		logger.setConsoleLevel(Logger::AlertLevel::Fatal);
+	} else{
+		logger.setConsoleLevel(Logger::AlertLevel::Import);
+	}
+
+
+	ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+	ArmyAnt::JsonUnit::release(json);
+	return 0;
+}
+
+int32 ServerMain::modulesInitialization(){
+
+
+	return 0;
+}
+
+}

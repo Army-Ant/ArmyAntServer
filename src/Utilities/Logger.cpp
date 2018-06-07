@@ -58,9 +58,10 @@ namespace ArmyAntServer {
 			return "Warning";
 		case AlertLevel::Error:
 			return "Error";
-		case AlertLevel::Exception:
-			return "Exception";
+		case AlertLevel::Fatal:
+			return "Fatal";
 		}
+		return "Unknown";
 	}
 
 	Logger::Logger(const char* logFilePath) {

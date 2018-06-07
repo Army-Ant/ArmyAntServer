@@ -15,7 +15,7 @@ namespace ArmyAntServer {
 			Import = 3,
 			Warning = 4,
 			Error = 5,
-			Exception = 6
+			Fatal = 6
 		};
 		static const char*convertLevelToString(AlertLevel level);
 
