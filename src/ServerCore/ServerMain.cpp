@@ -32,6 +32,14 @@ int32 ServerMain::main(){
 	socket.start(port, 16384, false);
 
 	// 4. 开始监听主线程消息队列
+	msgQueue = msgQueueMgr.createQueue(SpecialUserIndex::SERVER_MAIN_THREAD);
+	while(true){
+		std::this_thread::sleep_for(std::chrono::microseconds(1));
+		if(msgQueue->hasMessage()){
+			auto msg = msgQueue->popMessage();
+			// TODO : Resolve msg
+		}
+	}
 
 	return 0;
 }
@@ -123,6 +131,14 @@ int32 ServerMain::modulesInitialization(){
 
 
 	return 0;
+}
+
+
+void ServerMain::onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content){
+	// TODO
+}
+void ServerMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 contentCode, void*body){
+	// TODO
 }
 
 }
