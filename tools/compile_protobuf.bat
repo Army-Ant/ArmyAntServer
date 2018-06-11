@@ -2,20 +2,12 @@
 
 set PROTOC_PATH=..\external\Protobuf\bin
 set PROTOFILE_PATH=..\proto
-set PROTOBINARY_PATH=..\bin\pb
-set PROTOCPP_PATH=..\res\ProtobufSource
+set PROTOCPP_PATH=..\res\ProtobufSource\cpp
+set PROTOCSHARP_PATH=..\res\ProtobufSource\csharp
+set PROTOBINARY_PATH=..\res\ProtobufSource\pb
 
-if not exist ..\bin ( 
-    cd ..
-    mkdir bin
-    cd tools
-)
-if not exist %PROTOBINARY_PATH% ( 
-    cd ..\bin
-    mkdir pb
-	cd ..\tools
-)
 
-%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% %PROTOFILE_PATH%\ArmyAntMessage.System.SocketHead.proto
+%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% %PROTOFILE_PATH%\ArmyAntMessage\System\SocketHead.proto
+%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% %PROTOFILE_PATH%\ArmyAntMessage\System\SessionStart.proto
 
 pause
