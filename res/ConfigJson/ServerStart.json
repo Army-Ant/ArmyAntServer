@@ -2,6 +2,6 @@
     "debug":false,
     "port":4774,
     "logPath":"./ServerLog.log",
-    "logFileLevel":"info"
+    "logFileLevel":"info",
     "logConsoleLevel":"info"
 }
