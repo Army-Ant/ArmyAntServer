@@ -15,7 +15,7 @@ public:
 		Default
 	};
 	enum class Control{
-		Window_Default
+		Window_Self
 	};
 	enum class EventType{
 		Create
