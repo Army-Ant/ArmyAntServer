@@ -60,7 +60,9 @@ int32 ServerMain::parseConfig(){
 		return -1;
 	}
 	// 读取设置内容
-	char* buf = new char[configJson.GetLength() + 20];
+	auto jsonFileLen = configJson.GetLength();
+	char* buf = new char[jsonFileLen + 20];
+	memset(buf, 0, jsonFileLen + 20);
 	bool readRes = configJson.Read(buf);
 	configJson.Close();
 	if(!readRes){
@@ -75,12 +77,36 @@ int32 ServerMain::parseConfig(){
 		ArmyAnt::JsonUnit::release(json);
 		return -3;
 	}
+
 	// 保存设置项到内存
 	auto&jo = *pJo;
-	debug = dynamic_cast<ArmyAnt::JsonBoolean*>(jo.getChild("debug"))->getBoolean();
-	port = dynamic_cast<ArmyAnt::JsonNumeric*>(jo.getChild("port"))->getInteger();
-	auto logFilePath = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logPath"));
+	auto jdebug = jo.getChild("debug");
+	auto pjdebug = dynamic_cast<ArmyAnt::JsonBoolean*>(jdebug);
+	if(pjdebug == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return -3;
+	}
+	debug = pjdebug->getBoolean();
+
+	auto jport = jo.getChild("port");
+	auto pjport = dynamic_cast<ArmyAnt::JsonNumeric*>(jport);
+	if(pjport == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return -3;
+	}
+	port = pjport->getInteger();
+
+	auto jlogPath = jo.getChild("logPath");
+	auto logFilePath = dynamic_cast<ArmyAnt::JsonString*>(jlogPath);
+	if(logFilePath == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return -3;
+	}
 	logger.setLogFile(logFilePath->getString());
+
 	// 文件日志筛选级别
 	auto logFileLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logFileLevel"));
 	if(logFileLevel->getString() == ArmyAnt::String("verbose")){
