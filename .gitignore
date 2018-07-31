@@ -35,6 +35,7 @@
 *.log
 *.tlog
 *.idb
+*.aps
 
 # MySql data directory
 /external/mysql/mysql-8.0.11-winx64/data
