@@ -5,6 +5,8 @@
 
 #include <ServerCoreConstants.h>
 
+static const char* const LOGGER_TAG = "ServerMain";
+
 namespace ArmyAntServer{
 
 
@@ -16,13 +18,13 @@ ServerMain::~ServerMain(){}
 int32 ServerMain::main(){
 	// 1. 读取配置
 	auto parseRes = parseConfig();
-	if(parseRes < 0){
+	if(parseRes != Constants::ServerMainReturnValues::normalExit){
 		return parseRes;
 	}
 
 	// 2. 初始化各个模块, 注意顺序
 	auto initRes = modulesInitialization();
-	if(parseRes < 0){
+	if(initRes != Constants::ServerMainReturnValues::normalExit){
 		return initRes;
 	}
 
@@ -33,15 +35,24 @@ int32 ServerMain::main(){
 
 	// 4. 开始监听主线程消息队列
 	msgQueue = msgQueueMgr.createQueue(SpecialUserIndex::SERVER_MAIN_THREAD);
-	while(true){
+	int32 retVal = Constants::ServerMainReturnValues::normalExit;
+	bool exitCommand = false;
+	while(!exitCommand){
 		std::this_thread::sleep_for(std::chrono::microseconds(1));
 		if(msgQueue->hasMessage()){
 			auto msg = msgQueue->popMessage();
-			// TODO : Resolve msg
+			switch(msg.id){
+				case Constants::ServerMainMsg::exitMainThread:
+					retVal = msg.data;
+					exitCommand = true;
+					break;
+				default:
+					logger.pushLog("ServerMain received an unknown message, code:" + ArmyAnt::String(msg.id) + ", data:" + int64(msg.data), Logger::AlertLevel::Warning, LOGGER_TAG);
+			}
 		}
 	}
 
-	return 0;
+	return retVal;
 }
 
 UserSessionManager&ServerMain::getUserSessionManager(){
@@ -57,7 +68,7 @@ int32 ServerMain::parseConfig(){
 	// 打开设置文件
 	bool openRes = configJson.Open(Constants::SERVER_CONFIG_FILE_PATH);
 	if(!openRes){
-		return -1;
+		return Constants::ServerMainReturnValues::openConfigFileFailed;
 	}
 	// 读取设置内容
 	auto jsonFileLen = configJson.GetLength();
@@ -67,7 +78,7 @@ int32 ServerMain::parseConfig(){
 	configJson.Close();
 	if(!readRes){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
-		return -2;
+		return Constants::ServerMainReturnValues::parseConfigJsonFailed;
 	}
 	// 序列化设置项
 	auto json = ArmyAnt::JsonUnit::create(buf);
@@ -75,7 +86,7 @@ int32 ServerMain::parseConfig(){
 	if(pJo == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		ArmyAnt::JsonUnit::release(json);
-		return -3;
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 
 	// 保存设置项到内存
@@ -85,7 +96,7 @@ int32 ServerMain::parseConfig(){
 	if(pjdebug == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		ArmyAnt::JsonUnit::release(json);
-		return -3;
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 	debug = pjdebug->getBoolean();
 
@@ -94,7 +105,7 @@ int32 ServerMain::parseConfig(){
 	if(pjport == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		ArmyAnt::JsonUnit::release(json);
-		return -3;
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 	port = pjport->getInteger();
 
@@ -103,7 +114,7 @@ int32 ServerMain::parseConfig(){
 	if(logFilePath == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		ArmyAnt::JsonUnit::release(json);
-		return -3;
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 	logger.setLogFile(logFilePath->getString());
 
@@ -150,21 +161,43 @@ int32 ServerMain::parseConfig(){
 
 	ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 	ArmyAnt::JsonUnit::release(json);
-	return 0;
+	return Constants::ServerMainReturnValues::normalExit;
 }
 
 int32 ServerMain::modulesInitialization(){
 
 
-	return 0;
+	return Constants::ServerMainReturnValues::normalExit;
 }
 
 
 void ServerMain::onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content){
-	// TODO
+	switch(type){
+		case SocketApplication::EventType::Connected:
+			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
+			sessionMgr.createUserSession(clientIndex);
+			break;
+		case SocketApplication::EventType::Disconnected:
+			logger.pushLog("Client disconnected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
+			sessionMgr.removeUserSession(clientIndex);
+			break;
+		case SocketApplication::EventType::SendingResponse:
+			logger.pushLog("Sending to client responsed, client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Verbose, LOGGER_TAG);
+			break;
+		case SocketApplication::EventType::ErrorReport:
+			logger.pushLog("Get socket error-report, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			break;
+		case SocketApplication::EventType::Unknown:
+			logger.pushLog("Get an unknown socket event, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
+			break;
+		default:
+			logger.pushLog("Get an unknown nomber of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientIndex) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+	}
 }
+
 void ServerMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 contentCode, void*body){
-	// TODO
+	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
+
 
 }

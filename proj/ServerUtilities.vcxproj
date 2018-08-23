@@ -169,10 +169,12 @@
     <ClInclude Include="..\inc\NetworkMessageCode.h" />
     <ClInclude Include="..\inc\SocketApplication.h" />
     <ClInclude Include="..\inc\SpecialUserIndexDefined.h" />
-    <ClInclude Include="..\res\ProtobufSource\ArmyAntMessage.System.SocketHead.pb.h" />
+    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h" />
+    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\res\ProtobufSource\ArmyAntMessage.System.SocketHead.pb.cc" />
+    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc" />
+    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc" />
     <ClCompile Include="..\src\Utilities\base.cpp" />
     <ClCompile Include="..\src\Utilities\EventManager.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
