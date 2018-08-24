@@ -31,17 +31,13 @@ namespace ArmyAnt
 // 数据库字段类型, 不同的数据库, 类型不同
 enum class SqlFieldType : uint8
 {
+	Unknown,
     Null,
+	UpdateResult,
 
+	MySql_BIT,
     MySql_CHAR,
     MySql_VARCHAR,
-    MySql_TINYTEXT,
-    MySql_TEXT,
-    MySql_BLOB,
-    MySql_MEDIUMTEXT,
-    MySql_MEDIUMBLOB,
-    MySql_LONGTEXT,
-    MySql_LONGBLOB,
     MySql_ENUM,
     MySql_SET,
     MySql_TINYINT,
@@ -51,12 +47,19 @@ enum class SqlFieldType : uint8
     MySql_BIGINT,
     MySql_FLOAT,
     MySql_DOUBLE,
-    MySql_DEMICAL,
+	MySql_DEMICAL,
+	MySql_NUMERIC,
     MySql_DATE,
-    MySql_DATETIME,
+	MySql_DATETIME,
     MySql_TIMESTAMP,
     MySql_TIME,
-    MySql_YEAR,
+	MySql_YEAR,
+	MySql_GEOMETRY,
+	MySql_BINARY,
+	MySql_VARBINARY,
+	MySql_LONGVARCHAR,
+	MySql_LONGVARBINARY,
+	MySql_JSON,
 
     MsAccess_Currency,
     MsAccess_AutoNumber,
@@ -145,11 +148,9 @@ public:
 struct ARMYANTLIB_API SqlFieldHead
 {
     uint32 length;
-    String name;
-    String defalutValue;
-    String comment;
+    String catalogName;
+    String columnName;
     SqlFieldType type;
-    uint16 primaryKeyIndex;
     bool allowNull;
     bool autoIncrease;
 };
@@ -168,6 +169,8 @@ public:
     const SqlFieldHead*getHead()const;
 
 private:
+	friend class SqlTable;
+	friend class ISqlClient;
     const SqlFieldHead* head;
     String value;
 };
@@ -182,10 +185,11 @@ public:
 
 public:
     uint32 size()const;
-    const SqlField&operator[](int32 index)const;
+	const SqlField&operator[](int32 index)const;
+	SqlField&operator[](int32 index);
 
 private:
-    friend class SqlClient;
+    friend class ISqlClient;
     friend class SqlTable;
     SqlField* fields;
     uint32 length;
@@ -203,9 +207,10 @@ public:
     uint32 size()const;
     const SqlFieldHead*getHead(uint32 index)const;
     const SqlField&operator[](int32 index)const;
+	SqlField&operator[](int32 index);
 
 private:
-    friend class SqlClient;
+    friend class ISqlClient;
     friend class SqlTable;
     SqlField* fields;
     uint32* indexes;
@@ -236,6 +241,8 @@ class ARMYANTLIB_API SqlTable : protected SqlTableInfo
 public:
     SqlTable(const SqlTable&copied);
     SqlTable(SqlTable&&moved);
+	SqlTable& operator=(const SqlTable&copied);
+	SqlTable& operator=(SqlTable&&moved);
     ~SqlTable();
 
 public:
@@ -243,14 +250,15 @@ public:
     uint32 width()const;
     uint32 height()const;
     const SqlFieldHead*getHead(int32 index)const;
-    SqlRow operator[](int32 index);
-    const SqlRow  operator[](int32 index)const;
-    const SqlField&operator()(int32 rowIndex, int32 colIndex)const;
+	SqlRow operator[](int32 index);
+	const SqlField&operator()(int32 rowIndex, int32 colIndex)const;
+	SqlField&operator()(int32 rowIndex, int32 colIndex);
     SqlColumn operator()(std::nullptr_t, int32 colIndex);
     const SqlColumn operator()(std::nullptr_t, int32 colIndex)const;
 
 private:
-    friend class SqlClient;
+    friend class ISqlClient;
+	SqlTable(const SqlFieldHead* heads, uint32 width, uint32 height);
     uint32 _width;
     SqlFieldHead* heads;
     uint32 _height;

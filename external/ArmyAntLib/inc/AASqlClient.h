@@ -57,29 +57,35 @@ public:
     // select [columnNames] from [tableName]
     virtual SqlTable select(const String&dbName, const String&tableName, const String*columnNames, int columnNum, const SqlClause*clauses = nullptr, int clausesNum = 0);
     // update [tableName] set [updatedData ( k=value , k=value ... )]
-    virtual bool update(const String&dbName, const String&tableName, const SqlRow&updatedData, const SqlClause*clauses = nullptr, int clausesNum = 0);
+    virtual int64 update(const String&dbName, const String&tableName, const SqlRow&updatedData, const SqlClause*clauses = nullptr, int clausesNum = 0);
     // insert into [tableName] [insertedData (k , k , k ... ) values ( value , value , value ... )]
-    virtual bool insertRow(const String&dbName, const String&tableName, const SqlRow&insertedData);
+    virtual int64 insertRow(const String&dbName, const String&tableName, const SqlRow&insertedData);
     // alter table [tableName] add [columnHead name dataType (others)...]
-    virtual bool insertColumn(const String&dbName, const String&tableName, const SqlFieldHead&columnHead);
-    virtual bool insertColumn(const String&dbName, const String&tableName, const SqlColumn&column);
+    virtual int64 insertColumn(const String&dbName, const String&tableName, const SqlFieldHead&columnHead);
+    virtual int64 insertColumn(const String&dbName, const String&tableName, const SqlColumn&column);
     // delete from [tableName]
-    virtual bool deleteRow(const String&dbName, const String&tableName, const SqlClause*where = nullptr);
+    virtual int64 deleteRow(const String&dbName, const String&tableName, const SqlClause*where = nullptr);
     // alter table [tableName] drop column [columnName]
-    virtual bool deleteColumn(const String&dbName, const String&tableName, const String&columnName);
+    virtual int64 deleteColumn(const String&dbName, const String&tableName, const String&columnName);
 
 public:
-    virtual bool createDatabase(const String&dbName);
-    virtual bool deleteDatabase(const String&dbName);
-    virtual bool createTable(const String&dbName, const String&tableName, const SqlColumn&column, const SqlTableInfo*tableInfo = nullptr);
-    virtual bool deleteTable(const String&dbName, const String&tableName);
+    virtual int64 createDatabase(const String&dbName);
+    virtual int64 deleteDatabase(const String&dbName);
+    virtual int64 createTable(const String&dbName, const String&tableName, const SqlColumn&column, const SqlTableInfo*tableInfo = nullptr);
+    virtual int64 deleteTable(const String&dbName, const String&tableName);
 
 public:
     virtual String organizeColumnInfo(const SqlFieldHead&column);
     virtual String organizeSqlClause(const SqlClause*clauses = nullptr, int clausesNum = 0);
-    virtual SqlTable select(const String&sql) = 0;
-    virtual bool execute(const String&sql) = 0;
-    virtual bool execute(const String&sql, String&result) = 0;
+    virtual SqlTable query(const String&sql) = 0;
+    virtual int64 update(const String&sql) = 0;
+	// Call 'excute' to execute multi-result sql, if the result param was run, the sql will still be executed
+	// 调用驱动的execute执行可以返回多个结果集的SQL语句, 如果传入的result参数不可用, sql语句仍将被执行, 且结果仍将返回结果集个数. 
+	// 只有sql语句执行失败才会返回负数. 如果执行update语句, 则不会返回任何结果, 但返回值会返回影响的行数 (同update)
+    virtual int execute(const String&sql, SqlTable*result, int32 maxResultCount) = 0;
+
+protected:
+	static SqlTable createSqlTable(const SqlFieldHead* heads, uint32 width, uint32 height);
 
     AA_FORBID_ASSGN_OPR(ISqlClient);
     AA_FORBID_COPY_CTOR(ISqlClient);

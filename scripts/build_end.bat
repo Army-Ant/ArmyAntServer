@@ -35,6 +35,12 @@ set TargetPlatform=%4
 
 :CopyStaticLibFile or resolve the static library dependencies
 echo "Copy the external dynamic libraries for run"
+
+copy "%ProjectPath%external\mysql\mysql-connector-c++-8.0.11\lib64-win\libeay32.dll" %ProjectPath%bin\
+copy "%ProjectPath%external\mysql\mysql-connector-c++-8.0.11\lib64-win\mysqlcppconn-7-vs14.dll" %ProjectPath%bin\
+copy "%ProjectPath%external\mysql\mysql-connector-c++-8.0.11\lib64-win\mysqlcppconn8-1-vs14.dll" %ProjectPath%bin\
+copy "%ProjectPath%external\mysql\mysql-connector-c++-8.0.11\lib64-win\ssleay32.dll" %ProjectPath%bin\
+		
 if "%ConfigType%"=="Debug" (
     if "%TargetPlatform%"=="x64" (
         copy %ProjectPath%external\ArmyAntLib\bin\ArmyAntLib_d_64.dll %ProjectPath%bin\
