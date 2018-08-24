@@ -11,7 +11,7 @@
 
 namespace ArmyAntServer{
 
-enum class MessageType : int8{
+enum class MessageType : int32{
 	Unknown,
 	Normal,
 	File,
@@ -25,14 +25,14 @@ enum class ClientStatus : int8{
 	Waiting,
 };
 
-#pragma pack(1)
+
 struct MessageBaseHead{
 	int32 serials;
 	MessageType type;
 	int32 extendVersion;
 	int32 extendLength;
 };
-#pragma pack()
+
 
 struct ClientInformation{
 	uint32 index;

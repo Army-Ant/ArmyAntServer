@@ -30,7 +30,9 @@ namespace ArmyAntServer {
 #if defined OS_WINDOWS
 		char ret[64] = "";
 		_ctime64_s(ret,&time);
-		return ret;
+		auto retStr = ArmyAnt::String(ret);
+		retStr.replace('\n', "");
+		return retStr;
 #else
 		return _ctime64(&time);
 #endif

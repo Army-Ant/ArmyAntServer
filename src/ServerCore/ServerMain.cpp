@@ -32,6 +32,7 @@ int32 ServerMain::main(){
 	socket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	socket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
 	socket.start(port, 16384, false);
+	logger.pushLog("Server started", Logger::AlertLevel::Info, LOGGER_TAG);
 
 	// 4. 开始监听主线程消息队列
 	msgQueue = msgQueueMgr.createQueue(SpecialUserIndex::SERVER_MAIN_THREAD);
@@ -43,7 +44,9 @@ int32 ServerMain::main(){
 			auto msg = msgQueue->popMessage();
 			switch(msg.id){
 				case Constants::ServerMainMsg::exitMainThread:
+					socket.stop();
 					retVal = msg.data;
+					logger.pushLog("Server stopped", Logger::AlertLevel::Info, LOGGER_TAG);
 					exitCommand = true;
 					break;
 				default:
@@ -52,6 +55,7 @@ int32 ServerMain::main(){
 		}
 	}
 
+	logger.pushLog("Program over", Logger::AlertLevel::Info, LOGGER_TAG);
 	return retVal;
 }
 
@@ -161,12 +165,14 @@ int32 ServerMain::parseConfig(){
 
 	ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 	ArmyAnt::JsonUnit::release(json);
+	logger.pushLog("Config loading successful", Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;
 }
 
 int32 ServerMain::modulesInitialization(){
 
 
+	logger.pushLog("All modules initialized successful", Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;
 }
 
