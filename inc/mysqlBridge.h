@@ -27,15 +27,15 @@ public:
 	virtual bool connect(const ArmyAnt::String&serverAddress, const ArmyAnt::String&port) override;
 	virtual void disconnect() override;
 	virtual bool isConnection() override;
-	virtual int64 getDatabaseCount() override;
-	virtual bool getDatabaseList(ArmyAnt::SqlDatabaseInfo*&dbs, uint32 maxCount = 0) override;
+	virtual uint32 getDatabaseCount() override;
+	virtual uint32 getDatabaseList(ArmyAnt::String*&dbs, uint32 maxCount = 0) override;
 
 public:
-	virtual bool getTablesCount(const ArmyAnt::String&dbName) override;
-	virtual bool getViewsCount(const ArmyAnt::String&dbName) override;
-	virtual bool getTableNameList(const ArmyAnt::String&dbName, ArmyAnt::SqlTableInfo*&tables, uint32 maxCount = 0) override;
-	virtual bool getViewNameList(const ArmyAnt::String&dbName, ArmyAnt::SqlTableInfo*&tables, uint32 maxCount = 0) override;
-	virtual ArmyAnt::SqlTable getTableAllFields(const ArmyAnt::String&dbName, ArmyAnt::SqlTableInfo*&tables) override;
+	virtual bool getTablesCount() override;
+	virtual bool getViewsCount() override;
+	virtual bool getTableNameList(ArmyAnt::SqlTableInfo*&tables, uint32 maxCount = 0) override;
+	virtual bool getViewNameList(ArmyAnt::SqlTableInfo*&tables, uint32 maxCount = 0) override;
+	virtual ArmyAnt::SqlTable getTableAllFields(ArmyAnt::SqlTableInfo*&tables) override;
 
 public:
 	virtual ArmyAnt::SqlTable query(const ArmyAnt::String&sql) override;
@@ -44,7 +44,7 @@ public:
 
 private:
 	static ArmyAnt::SqlTable parseResultSetToAATable(void* set);
-	static ArmyAnt::SqlTable parseResultSetToAATable(int res);
+	static ArmyAnt::SqlTable parseResultSetToAATable(uint64 res);
 
 private:
 	sql::Connection* connection;

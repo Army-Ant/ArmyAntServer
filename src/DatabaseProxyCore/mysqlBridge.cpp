@@ -2,6 +2,7 @@
 #include <jdbc/mysql_connection.h>
 #include <jdbc/mysql_driver.h>
 #include <jdbc/cppconn/statement.h>
+#include <jdbc/cppconn/metadata.h>
 
 namespace ArmyAntDBProxy{
 
@@ -41,14 +42,21 @@ bool MySqlBridge::isConnection(){
 	return connection != nullptr && !connection->isClosed();
 }
 
-int64 MySqlBridge::getDatabaseCount(){
-	return query("show databases").height;
+uint32 MySqlBridge::getDatabaseCount(){
+	return query("show databases").height();
 }
 
-bool MySqlBridge::getDatabaseList(ArmyAnt::SqlDatabaseInfo *& dbs, uint32 maxCount){
+uint32 MySqlBridge::getDatabaseList(ArmyAnt::String *& dbs, uint32 maxCount){
+	if(dbs == nullptr)
+		return -1;
 	auto ret = query("show databases");
-
-	return false;
+	auto metadata = connection->getMetaData();
+	for(uint32 i = 0; i < maxCount; ++i){
+		dbs[i] = ret(i, 0).getValue();
+		if(i >= ret.height())
+			break;
+	}
+	return ret.height();
 }
 
 ArmyAnt::SqlTable MySqlBridge::query(const ArmyAnt::String & sql){
@@ -97,7 +105,7 @@ ArmyAnt::SqlTable MySqlBridge::parseResultSetToAATable(void* set){
 	auto width = metadata->getColumnCount();
 	auto height = jdbcSet->rowsCount();
 	auto head = new ArmyAnt::SqlFieldHead[width];
-	for(mac_uint i = 0; i < width; ++i){
+	for(unsigned int i = 0; i < width; ++i){
 		head[i].allowNull = metadata->isNullable(i);
 		head[i].autoIncrease = metadata->isAutoIncrement(i);
 		head[i].catalogName = metadata->getCatalogName(i).c_str();
@@ -197,7 +205,7 @@ ArmyAnt::SqlTable MySqlBridge::parseResultSetToAATable(void* set){
 	return ret;
 }
 
-ArmyAnt::SqlTable MySqlBridge::parseResultSetToAATable(int res){
+ArmyAnt::SqlTable MySqlBridge::parseResultSetToAATable(uint64 res){
 	ArmyAnt::SqlFieldHead head;
 	head.allowNull = false;
 	head.autoIncrease = false;

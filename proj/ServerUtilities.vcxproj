@@ -168,6 +168,8 @@
     <ClInclude Include="..\inc\MessageQueueManager.h" />
     <ClInclude Include="..\inc\NetworkMessageCode.h" />
     <ClInclude Include="..\inc\SocketApplication.h" />
+    <ClInclude Include="..\inc\SocketClientApplication.h" />
+    <ClInclude Include="..\inc\SocketStructs.h" />
     <ClInclude Include="..\inc\SpecialUserIndexDefined.h" />
     <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h" />
     <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h" />
@@ -181,6 +183,7 @@
     <ClCompile Include="..\src\Utilities\MessageQueue.cpp" />
     <ClCompile Include="..\src\Utilities\MessageQueueManager.cpp" />
     <ClCompile Include="..\src\Utilities\SocketApplication.cpp" />
+    <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
