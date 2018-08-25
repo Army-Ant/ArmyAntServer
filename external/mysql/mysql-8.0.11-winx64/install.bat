@@ -17,8 +17,10 @@ echo WScript.Quit >>"%temp%\getadmin.vbs"
 
 :Admin
 echo Start install MySql 9.0.11 Win64
-if not exist %CD%data (mkdir data)
-cd bin
+cd %CD%\bin
+if not exist data (mkdir data)
+mysqladmin
+mysqld --initialize-insecure
 mysqld -install
 if %retVal%==0 exit
 

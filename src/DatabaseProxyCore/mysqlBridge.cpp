@@ -32,12 +32,23 @@ bool MySqlBridge::connect(const ArmyAnt::String & serverAddress, const ArmyAnt::
 }
 
 void MySqlBridge::disconnect(){
-	connection->close();
+	if(connection)
+		connection->close();
 	ArmyAnt::Fragment::AA_SAFE_DEL(connection);
 }
 
 bool MySqlBridge::isConnection(){
 	return connection != nullptr && !connection->isClosed();
+}
+
+int64 MySqlBridge::getDatabaseCount(){
+	return query("show databases").height;
+}
+
+bool MySqlBridge::getDatabaseList(ArmyAnt::SqlDatabaseInfo *& dbs, uint32 maxCount){
+	auto ret = query("show databases");
+
+	return false;
 }
 
 ArmyAnt::SqlTable MySqlBridge::query(const ArmyAnt::String & sql){
