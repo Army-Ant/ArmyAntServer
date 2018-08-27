@@ -12,5 +12,9 @@ int main()
 	ArmyAntDBProxy::DBProxyMain dbProxy;
 	auto returnValue = dbProxy.main();
 
+
+#ifdef OS_WINDOWS
+	exit(returnValue);
+#endif
 	return returnValue;
 }

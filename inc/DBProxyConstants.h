@@ -5,7 +5,7 @@ namespace ArmyAntDBProxy{
 
 namespace Constants{
 
-const char* SERVER_CONFIG_FILE_PATH = "../res/ConfigJson/DBProxyConfig.json";
+const char* DB_PROXY_CONFIG_FILE_PATH = "../res/ConfigJson/DBProxyConfig.json";
 
 struct DBProxyMainMsg{
 	static const int32 exitMainThread = 1001;

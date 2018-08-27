@@ -211,7 +211,7 @@ int32 ServerMain::modulesInitialization(){
 }
 
 int32 ServerMain::modulesUninitialization(){
-
+	dbConnector.disconnect();
 
 	logger.pushLog("All modules uninitialized OK", Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;

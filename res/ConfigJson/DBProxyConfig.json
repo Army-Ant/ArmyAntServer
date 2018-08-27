@@ -5,6 +5,6 @@
     "logFileLevel":"info",
     "logConsoleLevel":"verbose",
 	"mysqlServerHost":"127.0.0.1:3306/ArmyAntDB",
-	"mysqlUsername":"root",
-	"mysqlPassword":""
+	"mysqlUsername":"aa_server_dbproxy",
+	"mysqlPassword":"L05rg05rgP8K"
 }

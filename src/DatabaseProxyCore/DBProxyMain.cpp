@@ -67,7 +67,7 @@ ArmyAntServer::MessageQueueManager&DBProxyMain::getMessageQueueManager(){
 int32 DBProxyMain::parseConfig(){
 	ArmyAnt::File configJson;
 	// 打开设置文件
-	bool openRes = configJson.Open(Constants::SERVER_CONFIG_FILE_PATH);
+	bool openRes = configJson.Open(Constants::DB_PROXY_CONFIG_FILE_PATH);
 	if(!openRes){
 		return Constants::DBProxyMainReturnValues::openConfigFileFailed;
 	}
@@ -159,6 +159,30 @@ int32 DBProxyMain::parseConfig(){
 		logger.setConsoleLevel(Logger::AlertLevel::Import);
 	}
 
+	// MySql 登录参数
+	auto jMysqlServerHost = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlServerHost"));
+	if(jMysqlServerHost == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return Constants::DBProxyMainReturnValues::parseConfigJElementFailed;
+	}
+	mysqlServerHost = jMysqlServerHost->getString();
+	auto jMysqlUsername = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlUsername"));
+	if(jMysqlUsername == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return Constants::DBProxyMainReturnValues::parseConfigJElementFailed;
+	}
+	mysqlUsername = jMysqlUsername->getString();
+	auto jMysqlPassword = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlPassword"));
+	if(jMysqlPassword == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return Constants::DBProxyMainReturnValues::parseConfigJElementFailed;
+	}
+	mysqlPassword = jMysqlPassword->getString();
+	mysqlBridge.setConnectionUserInfo(mysqlUsername, mysqlPassword);
+
 
 	ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 	ArmyAnt::JsonUnit::release(json);
@@ -167,7 +191,7 @@ int32 DBProxyMain::parseConfig(){
 }
 
 int32 DBProxyMain::modulesInitialization(){
-	auto connRes = mysqlBridge.connect(mysqlUsername, mysqlPassword);
+	auto connRes = mysqlBridge.connect(mysqlServerHost);
 	if(!connRes){
 		logger.pushLog("Connect to Mysql failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::DBProxyMainReturnValues::moduleInitFailed;

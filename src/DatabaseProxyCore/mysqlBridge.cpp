@@ -23,6 +23,9 @@ bool MySqlBridge::connect(const ArmyAnt::String&serverHost){
 		driver = sql::mysql::get_mysql_driver_instance();
 		connection = driver->connect(serverHost.c_str(), username.c_str(), password.c_str());
 	} catch(sql::SQLException& e){
+		auto errInfo = e.what();
+		auto errCode = e.getErrorCode();
+		auto stateInfo = e.getSQLStateCStr();
 		return false;
 	}
 	return !connection->isClosed();

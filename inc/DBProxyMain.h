@@ -22,7 +22,7 @@ public:
 	~DBProxyMain();
 
 public:
-	// Run the server, start parameter is set in setting file : Constants::DB_PROXY_CONFIG_FILE_PATH
+	// Run the DBProxy, start parameter is set in setting file : Constants::DB_PROXY_CONFIG_FILE_PATH
 	// 启动服务器, 根据日志里的配置
 	int32 main();
 	bool send();
