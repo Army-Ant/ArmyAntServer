@@ -31,11 +31,11 @@ public:
 	virtual uint32 getDatabaseList(ArmyAnt::String*&dbs, uint32 maxCount = 0) override;
 
 public:
-	virtual bool getTablesCount() override;
-	virtual bool getViewsCount() override;
-	virtual bool getTableNameList(ArmyAnt::SqlTableInfo*&tables, uint32 maxCount = 0) override;
-	virtual bool getViewNameList(ArmyAnt::SqlTableInfo*&tables, uint32 maxCount = 0) override;
-	virtual ArmyAnt::SqlTable getTableAllFields(ArmyAnt::SqlTableInfo*&tables) override;
+	virtual int64 getTablesCount() override;
+	virtual int64 getViewsCount() override;
+	virtual int64 getTableNameList(ArmyAnt::String*&tables, uint32 maxCount = 0) override;
+	virtual int64 getViewNameList(ArmyAnt::String*&views, uint32 maxCount = 0) override;
+	virtual int64 getTableAllFields(const ArmyAnt::String&table, ArmyAnt::String*&fields, uint32 maxCount = 0) override;
 
 public:
 	virtual ArmyAnt::SqlTable query(const ArmyAnt::String&sql) override;

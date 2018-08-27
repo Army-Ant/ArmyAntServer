@@ -9,10 +9,13 @@
     <ClInclude Include="..\inc\mysqlBridge.h">
       <Filter>mysql</Filter>
     </ClInclude>
+    <ClInclude Include="..\inc\DBProxyMain.h" />
+    <ClInclude Include="..\inc\DBProxyConstants.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\DatabaseProxyCore\mysqlBridge.cpp">
       <Filter>mysql</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\DatabaseProxyCore\DBProxyMain.cpp" />
   </ItemGroup>
 </Project>

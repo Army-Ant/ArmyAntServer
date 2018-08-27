@@ -59,6 +59,53 @@ uint32 MySqlBridge::getDatabaseList(ArmyAnt::String *& dbs, uint32 maxCount){
 	return ret.height();
 }
 
+int64 MySqlBridge::getTablesCount(){
+	return query("show tables").height();
+}
+
+int64 MySqlBridge::getViewsCount(){
+	return query("show tables where comment='view'").height();
+}
+
+int64 MySqlBridge::getTableNameList(ArmyAnt::String *& tables, uint32 maxCount){
+	if(tables == nullptr)
+		return -1;
+	auto ret = query("show tables");
+	auto metadata = connection->getMetaData();
+	for(uint32 i = 0; i < maxCount; ++i){
+		tables[i] = ret(i, 0).getValue();
+		if(i >= ret.height())
+			break;
+	}
+	return ret.height();
+}
+
+int64 MySqlBridge::getViewNameList(ArmyAnt::String *& views, uint32 maxCount){
+	if(views == nullptr)
+		return -1;
+	auto ret = query("show tables where comment='view'");
+	auto metadata = connection->getMetaData();
+	for(uint32 i = 0; i < maxCount; ++i){
+		views[i] = ret(i, 0).getValue();
+		if(i >= ret.height())
+			break;
+	}
+	return ret.height();
+}
+
+int64 MySqlBridge::getTableAllFields(const ArmyAnt::String & table, ArmyAnt::String *& fields, uint32 maxCount){
+	if(fields == nullptr)
+		return -1;
+	auto ret = query("show columns from " + table);
+	auto metadata = connection->getMetaData();
+	for(uint32 i = 0; i < maxCount; ++i){
+		fields[i] = ret(i, 0).getValue();
+		if(i >= ret.height())
+			break;
+	}
+	return ret.height();
+}
+
 ArmyAnt::SqlTable MySqlBridge::query(const ArmyAnt::String & sql){
 	auto st = connection->createStatement();
 	auto res = st->executeQuery(sql.c_str());

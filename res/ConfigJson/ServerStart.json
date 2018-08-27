@@ -1,7 +1,0 @@
-{
-    "debug":true,
-    "port":4774,
-    "logPath":"./ServerLog.log",
-    "logFileLevel":"info",
-    "logConsoleLevel":"verbose"
-}

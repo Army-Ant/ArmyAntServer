@@ -43,13 +43,13 @@ public:
     virtual uint32 getDatabaseList(String*&dbs, uint32 maxCount = 0) = 0;
 
 public:
-    virtual bool getTablesCount() = 0;
-    virtual bool getViewsCount() = 0;
-    virtual bool getTableNameList(SqlTableInfo*&tables, uint32 maxCount = 0) = 0;
-    virtual bool getViewNameList(SqlTableInfo*&tables, uint32 maxCount = 0) = 0;
+	virtual int64 getTablesCount()=0;
+	virtual int64 getViewsCount()=0;
+	virtual int64 getTableNameList(ArmyAnt::String*&tables, uint32 maxCount = 0)=0;
+	virtual int64 getViewNameList(ArmyAnt::String*&views, uint32 maxCount = 0)=0;
     virtual SqlTable getWholeTable(const String&tableName);
     virtual SqlTable getWholeView(const String&tableName);
-    virtual SqlTable getTableAllFields(SqlTableInfo*&tables) = 0;
+	virtual int64 getTableAllFields(const ArmyAnt::String&table, ArmyAnt::String*&fields, uint32 maxCount = 0) = 0;
 
 public:
     // select * from [tableName]

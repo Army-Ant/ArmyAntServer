@@ -1,0 +1,10 @@
+{
+    "debug":true,
+    "port":0510,
+    "logPath":"./DBProxyLog.log",
+    "logFileLevel":"info",
+    "logConsoleLevel":"verbose",
+	"mysqlServerHost":"127.0.0.1:3306/ArmyAntDB",
+	"mysqlUsername":"root",
+	"mysqlPassword":""
+}

@@ -5,14 +5,13 @@
 
 namespace ArmyAntServer{
 
-namespace SpecialUserIndex{
+struct SpecialUserIndex{
 
-const int32 SERVER_MAIN_THREAD = -2;
-const int32 SOCKET_APP_SEND = -3;
-const int32 LOGGER = -4;
-const int32 EVENT_MANAGER = -5;
+static const int32 SUPER_PROCESS_MANAGER = -2;
+static const int32 SERVER_MAIN_THREAD = -3;
+static const int32 DBPROXY_MAIN = -4;
 
-}
+};
 
 }
 

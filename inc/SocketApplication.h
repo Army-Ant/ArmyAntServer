@@ -1,9 +1,7 @@
 #ifndef SOCKET_APPLICATION_H_20180604
 #define SOCKET_APPLICATION_H_20180604
 
-#include <functional>
 #include <map>
-#include <mutex>
 
 #include "SocketStructs.h"
 
@@ -30,9 +28,9 @@ private:
 	AA_FORBID_ASSGN_OPR(ClientInformation);
 	AA_FORBID_COPY_CTOR(ClientInformation);
 	friend class SocketApplication;
-	friend static bool onConnected(uint32 index, void*pThis);
-	friend static void onReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
-	friend static bool onSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
+	friend static bool onServerConnected(uint32 index, void*pThis);
+	friend static void onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
+	friend static bool onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
 };
 
 class SocketApplication{
@@ -72,11 +70,11 @@ private:
 	std::mutex connectMutex;
 	uint32 bufferLength;
 
-	friend static bool onConnected(uint32 index, void*pThis);
-	friend static void onDisonnected(uint32 index, void*pThis);
-	friend static void onReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
-	friend static bool onSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
-	friend static void onErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
+	friend static bool onServerConnected(uint32 index, void*pThis);
+	friend static void onServerDisonnected(uint32 index, void*pThis);
+	friend static void onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
+	friend static bool onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
+	friend static void onServerErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
 
 private:
 	AA_FORBID_ASSGN_OPR(SocketApplication);

@@ -19,9 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\inc\DBProxyConstants.h" />
+    <ClInclude Include="..\inc\DBProxyMain.h" />
     <ClInclude Include="..\inc\mysqlBridge.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\DatabaseProxyCore\DBProxyMain.cpp" />
     <ClCompile Include="..\src\DatabaseProxyCore\mysqlBridge.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +132,9 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>libeay32.lib;ssleay32.lib;mysqlcppconn.lib;mysqlcppconn8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

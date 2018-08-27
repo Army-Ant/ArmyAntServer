@@ -5,7 +5,12 @@
 
 #include <iostream>
 
+#include <DBProxyMain.h>
+
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	ArmyAntDBProxy::DBProxyMain dbProxy;
+	auto returnValue = dbProxy.main();
+
+	return returnValue;
 }
