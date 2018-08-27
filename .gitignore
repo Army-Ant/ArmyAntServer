@@ -30,7 +30,6 @@
 *.ipch
 /bin
 /proj/*.user
-/proj/*.filters
 .vs
 *.log
 *.tlog
