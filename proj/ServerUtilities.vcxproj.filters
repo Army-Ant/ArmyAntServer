@@ -57,6 +57,9 @@
     <ClInclude Include="..\inc\SocketStructs.h">
       <Filter>socketApp</Filter>
     </ClInclude>
+    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
@@ -85,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp">
       <Filter>socketApp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc">
+      <Filter>protobuf</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

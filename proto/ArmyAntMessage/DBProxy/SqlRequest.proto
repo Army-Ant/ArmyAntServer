@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package ArmyAntMessage.DBProxy;
+
+////////// Message Inner Structures /////////////////////
+
+message SqlHeadOne {
+	int32 length = 1;
+	string catalogName = 2;
+	string columnName = 3;
+	int32 type = 4;
+	bool allowNumm = 5;
+	bool autoIncrease = 6;
+}
+
+message SqlRow {
+	repeated string fields = 1;
+}
+
+message SqlDatabaseInfo{
+	string name = 1;
+	string server = 2;
+	string charset = 3;
+	string sortRule = 4;
+}
+
+message SqlTableInfo{
+	string tableName = 5;
+	string engine = 6;
+	string comment = 7;
+	SqlDatabaseInfo database = 8;
+}
+
+message SqlResult{
+	SqlTableInfo table = 1;
+	repeated SqlHeadOne heads = 2;
+	repeated SqlRow	rows = 3;
+}
+
+
+////////// Socket IO Messages /////////////////////////////
+
+message Any2Dbp_SqlRequest{
+	int32 type = 1;		// 1: select, 2: update, 3: alter, 4: execute
+	
+}
