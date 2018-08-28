@@ -5,24 +5,27 @@
 
 #include <ServerCoreConstants.h>
 
+static const char* const LOGGER_TAG = "ServerMain";
+
 namespace ArmyAntServer{
 
 
 ServerMain::ServerMain()
-	:sessionMgr(*this){}
+	:debug(false), port(0), msgQueue(nullptr), socket(), logger(), eventMgr(), msgQueueMgr(), sessionMgr(*this), dbConnector(), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
+{}
 
 ServerMain::~ServerMain(){}
 
 int32 ServerMain::main(){
 	// 1. 读取配置
 	auto parseRes = parseConfig();
-	if(parseRes < 0){
+	if(parseRes != Constants::ServerMainReturnValues::normalExit){
 		return parseRes;
 	}
 
 	// 2. 初始化各个模块, 注意顺序
 	auto initRes = modulesInitialization();
-	if(parseRes < 0){
+	if(initRes != Constants::ServerMainReturnValues::normalExit){
 		return initRes;
 	}
 
@@ -30,18 +33,33 @@ int32 ServerMain::main(){
 	socket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	socket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
 	socket.start(port, 16384, false);
+	logger.pushLog("Server started", Logger::AlertLevel::Info, LOGGER_TAG);
 
 	// 4. 开始监听主线程消息队列
 	msgQueue = msgQueueMgr.createQueue(SpecialUserIndex::SERVER_MAIN_THREAD);
-	while(true){
+	int32 retVal = Constants::ServerMainReturnValues::normalExit;
+	bool exitCommand = false;
+	while(!exitCommand){
 		std::this_thread::sleep_for(std::chrono::microseconds(1));
 		if(msgQueue->hasMessage()){
 			auto msg = msgQueue->popMessage();
-			// TODO : Resolve msg
+			switch(msg.id){
+				case Constants::ServerMainMsg::exitMainThread:
+					socket.stop();
+					retVal = msg.data;
+					logger.pushLog("Server stopped", Logger::AlertLevel::Info, LOGGER_TAG);
+					exitCommand = true;
+					break;
+				default:
+					logger.pushLog("ServerMain received an unknown message, code:" + ArmyAnt::String(msg.id) + ", data:" + int64(msg.data), Logger::AlertLevel::Warning, LOGGER_TAG);
+			}
 		}
 	}
 
-	return 0;
+	// 5. 退出时销毁资源
+	auto uninitRes = modulesUninitialization();
+	logger.pushLog("Program over", Logger::AlertLevel::Info, LOGGER_TAG);
+	return retVal;
 }
 
 UserSessionManager&ServerMain::getUserSessionManager(){
@@ -57,7 +75,7 @@ int32 ServerMain::parseConfig(){
 	// 打开设置文件
 	bool openRes = configJson.Open(Constants::SERVER_CONFIG_FILE_PATH);
 	if(!openRes){
-		return -1;
+		return Constants::ServerMainReturnValues::openConfigFileFailed;
 	}
 	// 读取设置内容
 	auto jsonFileLen = configJson.GetLength();
@@ -67,7 +85,7 @@ int32 ServerMain::parseConfig(){
 	configJson.Close();
 	if(!readRes){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
-		return -2;
+		return Constants::ServerMainReturnValues::parseConfigJsonFailed;
 	}
 	// 序列化设置项
 	auto json = ArmyAnt::JsonUnit::create(buf);
@@ -75,7 +93,7 @@ int32 ServerMain::parseConfig(){
 	if(pJo == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		ArmyAnt::JsonUnit::release(json);
-		return -3;
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 
 	// 保存设置项到内存
@@ -85,7 +103,7 @@ int32 ServerMain::parseConfig(){
 	if(pjdebug == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		ArmyAnt::JsonUnit::release(json);
-		return -3;
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 	debug = pjdebug->getBoolean();
 
@@ -94,7 +112,7 @@ int32 ServerMain::parseConfig(){
 	if(pjport == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		ArmyAnt::JsonUnit::release(json);
-		return -3;
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 	port = pjport->getInteger();
 
@@ -103,7 +121,7 @@ int32 ServerMain::parseConfig(){
 	if(logFilePath == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		ArmyAnt::JsonUnit::release(json);
-		return -3;
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 	logger.setLogFile(logFilePath->getString());
 
@@ -147,24 +165,112 @@ int32 ServerMain::parseConfig(){
 		logger.setConsoleLevel(Logger::AlertLevel::Import);
 	}
 
+	// DBProxy 地址
+	auto jDBProxyAddr = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("dbProxyAddr"));
+	if(jDBProxyAddr == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
+	}
+	dbAddr = ArmyAnt::IPAddr::create(jDBProxyAddr->getString());
+	auto jDBProxyPort = dynamic_cast<ArmyAnt::JsonNumeric*>(jo.getChild("dbProxyPort"));
+	if(jDBProxyPort == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
+	}
+	dbPort = uint16(jDBProxyPort->getLong());
+	auto jDBProxyLocalPort = dynamic_cast<ArmyAnt::JsonNumeric*>(jo.getChild("dbProxyLocalPort"));
+	if(jDBProxyPort == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
+	}
+	dbLocalPort = uint16(jDBProxyLocalPort->getLong());
+
 
 	ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 	ArmyAnt::JsonUnit::release(json);
-	return 0;
+	logger.pushLog("Config loading successful", Logger::AlertLevel::Info, LOGGER_TAG);
+	return Constants::ServerMainReturnValues::normalExit;
 }
 
 int32 ServerMain::modulesInitialization(){
+	// 连接数据库代理进程
+	dbConnector.setEventCallback(std::bind(&ServerMain::onDBConnectorEvent, this, std::placeholders::_1, std::placeholders::_2));
+	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
+	dbConnector.setWillReconnectWhenLost(true);
+	auto ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
+	while(!ret){
+		logger.pushLog("DBproxy connected failed", Logger::AlertLevel::Error, LOGGER_TAG);
+		ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
+	}
+	ArmyAnt::Fragment::AA_SAFE_DEL(dbAddr);
 
-
-	return 0;
+	logger.pushLog("All modules initialized successful", Logger::AlertLevel::Info, LOGGER_TAG);
+	return Constants::ServerMainReturnValues::normalExit;
 }
 
+int32 ServerMain::modulesUninitialization(){
+	dbConnector.disconnect();
+
+	logger.pushLog("All modules uninitialized OK", Logger::AlertLevel::Info, LOGGER_TAG);
+	return Constants::ServerMainReturnValues::normalExit;
+}
 
 void ServerMain::onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content){
-	// TODO
+	switch(type){
+		case SocketApplication::EventType::Connected:
+			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
+			sessionMgr.createUserSession(clientIndex);
+			break;
+		case SocketApplication::EventType::Disconnected:
+			logger.pushLog("Client disconnected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
+			sessionMgr.removeUserSession(clientIndex);
+			break;
+		case SocketApplication::EventType::SendingResponse:
+			logger.pushLog("Sending to client responsed, client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Verbose, LOGGER_TAG);
+			break;
+		case SocketApplication::EventType::ErrorReport:
+			logger.pushLog("Get socket error-report, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			break;
+		case SocketApplication::EventType::Unknown:
+			logger.pushLog("Get an unknown socket event, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
+			break;
+		default:
+			logger.pushLog("Get an unknown nomber of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientIndex) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+	}
 }
+
 void ServerMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 contentCode, void*body){
-	// TODO
+	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
+
+void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content){
+	switch(type){
+		case SocketClientApplication::EventType::Connected:
+			logger.pushLog("DBProxy connected!", Logger::AlertLevel::Info, LOGGER_TAG);
+			break;
+		case SocketClientApplication::EventType::LostServer:
+			logger.pushLog("DBProxy server lost!", Logger::AlertLevel::Info, LOGGER_TAG);
+			break;
+		case SocketClientApplication::EventType::SendingResponse:
+			logger.pushLog("Sending to DBProxy responsed", Logger::AlertLevel::Verbose, LOGGER_TAG);
+			break;
+		case SocketClientApplication::EventType::ErrorReport:
+			logger.pushLog("Get DBProxy socket error-report, content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			break;
+		case SocketClientApplication::EventType::Unknown:
+			logger.pushLog("Get an unknown socket event from DBProxy socket, content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
+			break;
+		default:
+			logger.pushLog("Get an unknown nomber of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+	}
+}
+
+void ServerMain::onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 contentCode, void * body){
+	logger.pushLog("Received from DBProxy, appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
+}
+
 
 }

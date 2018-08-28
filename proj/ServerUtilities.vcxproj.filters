@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="logger">
+      <UniqueIdentifier>{98a1e745-0f56-447d-96a0-f2b572e49423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="socketApp">
+      <UniqueIdentifier>{151b0fcf-955d-437d-908f-3fc1d49a8ced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuf">
+      <UniqueIdentifier>{01b03fca-fdd1-4a20-83a0-d92ad45c92e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="eventManager">
+      <UniqueIdentifier>{e515f6be-a7f1-4599-ba77-93ed1d97f5a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MessageQueue">
+      <UniqueIdentifier>{b9224b33-57f1-4fa1-8519-4462d38a3c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{02c85b3d-418f-48d5-ab3f-e07906d0cf0a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\Logger.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\SocketApplication.h">
+      <Filter>socketApp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\EventManager.h">
+      <Filter>eventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\LocalEventCode.h">
+      <Filter>eventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\NetworkMessageCode.h">
+      <Filter>eventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\MessageQueue.h">
+      <Filter>MessageQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\MessageQueueManager.h">
+      <Filter>MessageQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\SpecialUserIndexDefined.h">
+      <Filter>eventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\SocketClientApplication.h">
+      <Filter>socketApp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\SocketStructs.h">
+      <Filter>socketApp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Utilities\Logger.cpp">
+      <Filter>logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\SocketApplication.cpp">
+      <Filter>socketApp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\EventManager.cpp">
+      <Filter>eventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\base.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\MessageQueueManager.cpp">
+      <Filter>MessageQueue</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\MessageQueue.cpp">
+      <Filter>MessageQueue</Filter>
+    </ClCompile>
+    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp">
+      <Filter>socketApp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

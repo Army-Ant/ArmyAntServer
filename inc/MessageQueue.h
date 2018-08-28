@@ -10,7 +10,9 @@ namespace ArmyAntServer{
 class MessageQueueManager;
 
 struct Message{
-
+	int32 id;
+	int32 data;
+	void* pdata;
 };
 
 class MessageQueue{

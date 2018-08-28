@@ -2,8 +2,7 @@
 
 namespace ArmyAntServer{
 
-
-static bool onConnected(uint32 index, void*pThis){
+static bool onServerConnected(uint32 index, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 
 	if(self->eventCallback == nullptr){
@@ -23,7 +22,7 @@ static bool onConnected(uint32 index, void*pThis){
 	}
 }
 
-static void onDisonnected(uint32 index, void*pThis){
+static void onServerDisonnected(uint32 index, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 	if(self->eventCallback == nullptr){
 		return;
@@ -38,7 +37,7 @@ static void onDisonnected(uint32 index, void*pThis){
 	self->clients.erase(findedClient);
 }
 
-static void onReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis){
+static void onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 	auto client = self->tcpSocket.getClientByIndex(index);
 	auto&clientBuffer = self->clients.find(index)->second;
@@ -101,7 +100,7 @@ static void onReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis){
 	}
 }
 
-static bool onSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis){
+static bool onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 	if(self->eventCallback != nullptr){
 		if(sendedSize > 0){
@@ -127,7 +126,7 @@ static bool onSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 inde
 	return false;
 }
 
-static void onErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis){
+static void onServerErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 	uint32 index = self->tcpSocket.getIndexByAddrPort(addr, port);
 	if(self->eventCallback != nullptr){
@@ -162,7 +161,7 @@ void ClientInformation::setMaxBufferLength(uint32 bufferLength){
 
 
 SocketApplication::SocketApplication()
-	:tcpSocket(AA_INT32_MAX), eventCallback(nullptr), receiveCallback(nullptr), clients(), connectMutex(){
+	:tcpSocket(AA_INT32_MAX-100), eventCallback(nullptr), receiveCallback(nullptr), clients(), connectMutex(), bufferLength(0){
 }
 
 SocketApplication::~SocketApplication(){
@@ -193,11 +192,11 @@ bool SocketApplication::start(uint16 port, uint32 maxBufferLength, bool isIpv6){
 	if(receiveCallback == nullptr || eventCallback == nullptr)
 		return false;
 
-	tcpSocket.setConnectCallBack(onConnected, this);
-	tcpSocket.setDisconnectCallBack(onDisonnected, this);
-	tcpSocket.setGettingCallBack(onReceived, this);
-	tcpSocket.setSendingResponseCallBack(onSendResponse, this);
-	tcpSocket.setErrorReportCallBack(onErrorReport, this);
+	tcpSocket.setConnectCallBack(onServerConnected, this);
+	tcpSocket.setDisconnectCallBack(onServerDisonnected, this);
+	tcpSocket.setGettingCallBack(onServerReceived, this);
+	tcpSocket.setSendingResponseCallBack(onServerSendResponse, this);
+	tcpSocket.setErrorReportCallBack(onServerErrorReport, this);
 
 	bufferLength = maxBufferLength;
 	return tcpSocket.start(port, isIpv6);

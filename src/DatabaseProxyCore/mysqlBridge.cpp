@@ -1,0 +1,271 @@
+#include <mysqlBridge.h>
+#include <jdbc/mysql_connection.h>
+#include <jdbc/mysql_driver.h>
+#include <jdbc/cppconn/statement.h>
+#include <jdbc/cppconn/metadata.h>
+
+namespace ArmyAntDBProxy{
+
+MySqlBridge::MySqlBridge() :connection(nullptr), driver(nullptr){}
+
+MySqlBridge::~MySqlBridge(){
+	disconnect();
+}
+
+bool MySqlBridge::setConnectionUserInfo(const ArmyAnt::String& username, const ArmyAnt::String& password){
+	this->username = username;
+	this->password = password;
+	return true;
+}
+
+bool MySqlBridge::connect(const ArmyAnt::String&serverHost){
+	try{
+		driver = sql::mysql::get_mysql_driver_instance();
+		connection = driver->connect(serverHost.c_str(), username.c_str(), password.c_str());
+	} catch(sql::SQLException& e){
+		auto errInfo = e.what();
+		auto errCode = e.getErrorCode();
+		auto stateInfo = e.getSQLStateCStr();
+		return false;
+	}
+	return !connection->isClosed();
+}
+
+bool MySqlBridge::connect(const ArmyAnt::String & serverAddress, const ArmyAnt::String & port){
+	return connect(serverAddress + ":" + port);
+}
+
+void MySqlBridge::disconnect(){
+	if(connection)
+		connection->close();
+	ArmyAnt::Fragment::AA_SAFE_DEL(connection);
+}
+
+bool MySqlBridge::isConnection(){
+	return connection != nullptr && !connection->isClosed();
+}
+
+uint32 MySqlBridge::getDatabaseCount(){
+	return query("show databases").height();
+}
+
+uint32 MySqlBridge::getDatabaseList(ArmyAnt::String *& dbs, uint32 maxCount){
+	if(dbs == nullptr)
+		return -1;
+	auto ret = query("show databases");
+	auto metadata = connection->getMetaData();
+	for(uint32 i = 0; i < maxCount; ++i){
+		dbs[i] = ret(i, 0).getValue();
+		if(i >= ret.height())
+			break;
+	}
+	return ret.height();
+}
+
+int64 MySqlBridge::getTablesCount(){
+	return query("show tables").height();
+}
+
+int64 MySqlBridge::getViewsCount(){
+	return query("show tables where comment='view'").height();
+}
+
+int64 MySqlBridge::getTableNameList(ArmyAnt::String *& tables, uint32 maxCount){
+	if(tables == nullptr)
+		return -1;
+	auto ret = query("show tables");
+	auto metadata = connection->getMetaData();
+	for(uint32 i = 0; i < maxCount; ++i){
+		tables[i] = ret(i, 0).getValue();
+		if(i >= ret.height())
+			break;
+	}
+	return ret.height();
+}
+
+int64 MySqlBridge::getViewNameList(ArmyAnt::String *& views, uint32 maxCount){
+	if(views == nullptr)
+		return -1;
+	auto ret = query("show tables where comment='view'");
+	auto metadata = connection->getMetaData();
+	for(uint32 i = 0; i < maxCount; ++i){
+		views[i] = ret(i, 0).getValue();
+		if(i >= ret.height())
+			break;
+	}
+	return ret.height();
+}
+
+int64 MySqlBridge::getTableAllFields(const ArmyAnt::String & table, ArmyAnt::String *& fields, uint32 maxCount){
+	if(fields == nullptr)
+		return -1;
+	auto ret = query("show columns from " + table);
+	auto metadata = connection->getMetaData();
+	for(uint32 i = 0; i < maxCount; ++i){
+		fields[i] = ret(i, 0).getValue();
+		if(i >= ret.height())
+			break;
+	}
+	return ret.height();
+}
+
+ArmyAnt::SqlTable MySqlBridge::query(const ArmyAnt::String & sql){
+	auto st = connection->createStatement();
+	auto res = st->executeQuery(sql.c_str());
+	return parseResultSetToAATable(res);
+}
+
+int64 MySqlBridge::update(const ArmyAnt::String & sql){
+	auto st = connection->createStatement();
+	return st->executeUpdate(sql.c_str());
+}
+
+int MySqlBridge::execute(const ArmyAnt::String & sql, ArmyAnt::SqlTable*result, int32 maxResultCount){
+	auto st = connection->createStatement();
+	try{
+		auto ret = st->execute(sql.c_str());
+	} catch(sql::SQLException& e){
+		return -1;
+	}
+	int32 index = 0;
+	auto res = st->getResultSet();
+	do{
+		if(res == nullptr){
+			auto updateRes = st->getUpdateCount();
+			if(updateRes < 0){
+				return 0;
+			}
+			if(result != nullptr && maxResultCount > index){
+				result[index++] = parseResultSetToAATable(updateRes);
+			}
+		} else{
+			if(result != nullptr && maxResultCount > index){
+				result[index++] = parseResultSetToAATable(res);
+			}
+		}
+		++index;
+	} while(st->getMoreResults());
+
+	return index;
+}
+
+ArmyAnt::SqlTable MySqlBridge::parseResultSetToAATable(void* set){
+	auto jdbcSet = static_cast<sql::ResultSet*>(set);
+	auto metadata = jdbcSet->getMetaData();
+	auto width = metadata->getColumnCount();
+	auto height = jdbcSet->rowsCount();
+	auto head = new ArmyAnt::SqlFieldHead[width];
+	for(unsigned int i = 0; i < width; ++i){
+		head[i].allowNull = metadata->isNullable(i);
+		head[i].autoIncrease = metadata->isAutoIncrement(i);
+		head[i].catalogName = metadata->getCatalogName(i).c_str();
+		head[i].columnName = metadata->getColumnName(i).c_str();
+		head[i].length = metadata->getColumnDisplaySize(i);
+		switch(metadata->getColumnType(i)){
+			case sql::DataType::UNKNOWN:
+				head[i].type = ArmyAnt::SqlFieldType::Unknown;
+				break;
+			case sql::DataType::BIT:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_BIT;
+				break;
+			case sql::DataType::TINYINT:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_TINYINT;
+				break;
+			case sql::DataType::SMALLINT:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_SMALLINT;
+				break;
+			case sql::DataType::MEDIUMINT:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_MEDIUMINT;
+				break;
+			case sql::DataType::INTEGER:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_INT;
+				break;
+			case sql::DataType::BIGINT:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_BIGINT;
+				break;
+			case sql::DataType::REAL:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_FLOAT;
+				break;
+			case sql::DataType::DOUBLE:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_DOUBLE;
+				break;
+			case sql::DataType::DECIMAL:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_DEMICAL;
+				break;
+			case sql::DataType::NUMERIC:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_NUMERIC;
+				break;
+			case sql::DataType::CHAR:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_CHAR;
+				break;
+			case sql::DataType::BINARY:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_BINARY;
+				break;
+			case sql::DataType::VARCHAR:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_VARCHAR;
+				break;
+			case sql::DataType::VARBINARY:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_VARBINARY;
+				break;
+			case sql::DataType::LONGVARCHAR:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_LONGVARCHAR;
+				break;
+			case sql::DataType::LONGVARBINARY:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_LONGVARBINARY;
+				break;
+			case sql::DataType::TIMESTAMP:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_TIMESTAMP;
+				break;
+			case sql::DataType::DATE:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_DATE;
+				break;
+			case sql::DataType::TIME:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_TIME;
+				break;
+			case sql::DataType::YEAR:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_YEAR;
+				break;
+			case sql::DataType::GEOMETRY:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_GEOMETRY;
+				break;
+			case sql::DataType::ENUM:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_ENUM;
+				break;
+			case sql::DataType::SET:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_SET;
+				break;
+			case sql::DataType::SQLNULL:
+				head[i].type = ArmyAnt::SqlFieldType::Null;
+				break;
+			case sql::DataType::JSON:
+				head[i].type = ArmyAnt::SqlFieldType::MySql_JSON;
+				break;
+			default:
+				head[i].type = ArmyAnt::SqlFieldType::Unknown;
+		}
+	}
+	auto ret = createSqlTable(head, width, height);
+	for(uint32 j = 0; j < width; ++j){
+		for(uint32 i = 0; i < height; ++i){
+			ret(i, j).setValue(jdbcSet->getString(j).c_str());
+		}
+		jdbcSet->next();
+	}
+	ArmyAnt::Fragment::AA_SAFE_DELALL(head);
+	return ret;
+}
+
+ArmyAnt::SqlTable MySqlBridge::parseResultSetToAATable(uint64 res){
+	ArmyAnt::SqlFieldHead head;
+	head.allowNull = false;
+	head.autoIncrease = false;
+	head.catalogName = "sqlResults";
+	head.columnName = "sqlResults";
+	head.length = sizeof(int64);
+	head.type = ArmyAnt::SqlFieldType::UpdateResult;
+	auto ret = createSqlTable(&head, 1, 1);
+	ret(0, 0).setValue(ArmyAnt::String(0));
+	return ret;
+}
+
+}

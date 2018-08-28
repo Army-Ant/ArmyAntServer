@@ -58,7 +58,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ArmyAntServer_Debug_Win32.props" />
+    <Import Project="ArmyAntServer_DirSet_Common.props" />
     <Import Project="ArmyAntServer_DirSet_Win32.props" />
     <Import Project="ArmyAntServer_Defination_Common.props" />
     <Import Project="ArmyAntServer_Defination_Win32.props" />
@@ -67,7 +67,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ArmyAntServer_Debug_Win32.props" />
+    <Import Project="ArmyAntServer_DirSet_Common.props" />
     <Import Project="ArmyAntServer_DirSet_Win32.props" />
     <Import Project="ArmyAntServer_Defination_Common.props" />
     <Import Project="ArmyAntServer_Defination_Win32.props" />
@@ -75,7 +75,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ArmyAntServer_Debug_Win32.props" />
+    <Import Project="ArmyAntServer_DirSet_Common.props" />
     <Import Project="ArmyAntServer_DirSet_x64.props" />
     <Import Project="ArmyAntServer_Defination_Common.props" />
     <Import Project="ArmyAntServer_Defination_x64.props" />
@@ -84,7 +84,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ArmyAntServer_Debug_Win32.props" />
+    <Import Project="ArmyAntServer_DirSet_Common.props" />
     <Import Project="ArmyAntServer_DirSet_x64.props" />
     <Import Project="ArmyAntServer_Defination_Common.props" />
     <Import Project="ArmyAntServer_Defination_x64.props" />
@@ -120,6 +120,9 @@
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Lib>
+      <AdditionalDependencies>libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -168,17 +171,24 @@
     <ClInclude Include="..\inc\MessageQueueManager.h" />
     <ClInclude Include="..\inc\NetworkMessageCode.h" />
     <ClInclude Include="..\inc\SocketApplication.h" />
+    <ClInclude Include="..\inc\SocketClientApplication.h" />
+    <ClInclude Include="..\inc\SocketStructs.h" />
     <ClInclude Include="..\inc\SpecialUserIndexDefined.h" />
-    <ClInclude Include="..\res\ProtobufSource\ArmyAntMessage.System.SocketHead.pb.h" />
+    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h" />
+    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h" />
+    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\res\ProtobufSource\ArmyAntMessage.System.SocketHead.pb.cc" />
+    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc" />
+    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc" />
+    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc" />
     <ClCompile Include="..\src\Utilities\base.cpp" />
     <ClCompile Include="..\src\Utilities\EventManager.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
     <ClCompile Include="..\src\Utilities\MessageQueue.cpp" />
     <ClCompile Include="..\src\Utilities\MessageQueueManager.cpp" />
     <ClCompile Include="..\src\Utilities\SocketApplication.cpp" />
+    <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

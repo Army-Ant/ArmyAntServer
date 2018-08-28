@@ -58,7 +58,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ArmyAntServer_Debug_Win32.props" />
+    <Import Project="ArmyAntServer_DirSet_Common.props" />
     <Import Project="ArmyAntServer_DirSet_Win32.props" />
     <Import Project="ArmyAntServer_Defination_Common.props" />
     <Import Project="ArmyAntServer_Defination_Win32.props" />
@@ -67,7 +67,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ArmyAntServer_Debug_Win32.props" />
+    <Import Project="ArmyAntServer_DirSet_Common.props" />
     <Import Project="ArmyAntServer_DirSet_Win32.props" />
     <Import Project="ArmyAntServer_Defination_Common.props" />
     <Import Project="ArmyAntServer_Defination_Win32.props" />
@@ -75,7 +75,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ArmyAntServer_Debug_Win32.props" />
+    <Import Project="ArmyAntServer_DirSet_Common.props" />
     <Import Project="ArmyAntServer_DirSet_x64.props" />
     <Import Project="ArmyAntServer_Defination_Common.props" />
     <Import Project="ArmyAntServer_Defination_x64.props" />
@@ -84,7 +84,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ArmyAntServer_Debug_Win32.props" />
+    <Import Project="ArmyAntServer_DirSet_Common.props" />
     <Import Project="ArmyAntServer_DirSet_x64.props" />
     <Import Project="ArmyAntServer_Defination_Common.props" />
     <Import Project="ArmyAntServer_Defination_x64.props" />
