@@ -42,5 +42,6 @@ message SqlResult{
 
 message Any2Dbp_SqlRequest{
 	int32 type = 1;		// 1: select, 2: update, 3: alter, 4: execute
+	string tableName;
 	
 }

@@ -199,12 +199,13 @@ int32 ServerMain::modulesInitialization(){
 	// 连接数据库代理进程
 	dbConnector.setEventCallback(std::bind(&ServerMain::onDBConnectorEvent, this, std::placeholders::_1, std::placeholders::_2));
 	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
+	dbConnector.setWillReconnectWhenLost(true);
 	auto ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
-	ArmyAnt::Fragment::AA_SAFE_DEL(dbAddr);
-	if(!ret){
-		logger.pushLog("DBproxy connected failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
-		return Constants::ServerMainReturnValues::moduleInitFailed;
+	while(!ret){
+		logger.pushLog("DBproxy connected failed", Logger::AlertLevel::Error, LOGGER_TAG);
+		ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
 	}
+	ArmyAnt::Fragment::AA_SAFE_DEL(dbAddr);
 
 	logger.pushLog("All modules initialized successful", Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;

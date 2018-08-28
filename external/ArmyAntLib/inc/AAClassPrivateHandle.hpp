@@ -25,6 +25,7 @@
 
 #include <map>
 #include <exception>
+#include "AADefine.h"
 
 namespace ArmyAnt {
 
@@ -51,20 +52,20 @@ public:
 	~ClassPrivateHandleManager() {}
 
 	//创建一个内部类实例，这通常是在建立外部实例时进行调用的
-	void GetHandle(T_Out* src, T_In* newObject = new T_In());
+	void GetHandle(const T_Out* src, T_In* newObject = new T_In());
 	//销毁内部实例，这通常是与外部实例的析构一起进行的
-    T_In* ReleaseHandle(T_Out* src);
+    T_In* ReleaseHandle(const T_Out* src);
 
 	//根据句柄获取外部实例，这通常是用于对C接口时的调用，C语言使用句柄
-	T_Out* GetSourceByHandle(const T_In* in);
+	const T_Out* GetSourceByHandle(const T_In* in);
 	//根据句柄获取内部实例，所有外部对象的公有函数，都需要调用此函数才能访问内部数据
-	T_In* GetDataByHandle(const T_Out* out);
+	T_In* GetDataByHandle(const T_Out* out, bool noWonderNull = false);
 
 	//根据句柄获取内部实例，是GetDataByHandle的快捷调用法
 	T_In* operator[](const T_Out* out);
 
 	//内外实例以及句柄的表图
-	std::map<T_Out*, T_In*> handleMap;
+	std::map<const T_Out*, T_In*> handleMap;
 
 	static ClassPrivateHandleManager<T_Out, T_In>& getInstance();
 
@@ -85,7 +86,7 @@ ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>& ArmyAnt::ClassPrivateHandleMana
 }
 
 template <class T_Out, class T_In>
-void ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetHandle(T_Out* src, T_In* newObject)
+void ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetHandle(const T_Out* src, T_In* newObject)
 {
     //设置句柄，创建内部实例，并关联到外部实例
     if (handleMap.empty() || handleMap.find(src) == handleMap.end())
@@ -97,7 +98,7 @@ void ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetHandle(T_Out* src, T_In
 }
 
 template <class T_Out, class T_In>
-T_In* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::ReleaseHandle(T_Out* src)
+T_In* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::ReleaseHandle(const T_Out* src)
 {
 	auto ret = handleMap.find(src);
 	//销毁内部实例，解除关联
@@ -111,7 +112,7 @@ T_In* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::ReleaseHandle(T_Out* src)
 }
 
 template <class T_Out, class T_In>
-T_Out* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetSourceByHandle(const T_In* in)
+const T_Out* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetSourceByHandle(const T_In* in)
 {
     for (auto i = handleMap.begin(); i != handleMap.end(); ++i)
     {
@@ -122,10 +123,15 @@ T_Out* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetSourceByHandle(const 
 }
 
 template <class T_Out, class T_In>
-T_In* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetDataByHandle(const T_Out* out)
+T_In* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetDataByHandle(const T_Out* out, bool noWonderNull)
 {
-	auto ret = handleMap.find(const_cast<T_Out*>(out));
-	return ret == handleMap.end() ? nullptr : ret->second;
+	auto ret = handleMap.find(out);
+	if(ret == handleMap.end()){
+		if(!noWonderNull)
+			AAAssert(false, nullptr);
+		return nullptr;
+	}
+	return ret->second;
 }
 
 template <class T_Out, class T_In>

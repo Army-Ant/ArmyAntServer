@@ -6,22 +6,22 @@ static bool onClientConnected(bool isSucceed, void*pThis){
 	auto self = static_cast<SocketClientApplication*>(pThis);
 
 	if(self->eventCallback == nullptr){
-		return false;
+		return !self->reconnectLost;
 	}
 	if(isSucceed)
 		self->eventCallback(SocketClientApplication::EventType::Connected, "Server connected successful");
 	else
 		self->eventCallback(SocketClientApplication::EventType::ErrorReport, "Server connected failed");
-	return false;
+	return !self->reconnectLost;
 }
 
 static bool onClientLostServer(void*pThis){
 	auto self = static_cast<SocketClientApplication*>(pThis);
 	if(self->eventCallback == nullptr){
-		return true;
+		return self->reconnectLost;
 	}
 	self->eventCallback(SocketClientApplication::EventType::LostServer, "Server disconnected");
-	return true;
+	return self->reconnectLost;
 }
 
 static void onClientReceived(uint8*data, mac_uint datalen, void*pThis){
@@ -115,7 +115,7 @@ static void onClientErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPA
 /***********************************************************/
 
 SocketClientApplication::SocketClientApplication()
-	:tcpSocket(), eventCallback(nullptr), receiveCallback(nullptr), rwMutex(), bufferLength(0)
+	:tcpSocket(), eventCallback(nullptr), receiveCallback(nullptr), rwMutex(), bufferLength(0), reconnectLost(false)
 {}
 SocketClientApplication::~SocketClientApplication(){}
 
@@ -127,6 +127,10 @@ bool SocketClientApplication::setEventCallback(SocketClientApplication::EventCal
 bool SocketClientApplication::setReceiveCallback(SocketClientApplication::ReceiveCallback cb){
 	receiveCallback = cb;
 	return true;
+}
+
+void SocketClientApplication::setWillReconnectWhenLost(bool reconnect){
+	reconnectLost = reconnect;
 }
 
 ArmyAnt::TCPClient&SocketClientApplication::getSocket(){
