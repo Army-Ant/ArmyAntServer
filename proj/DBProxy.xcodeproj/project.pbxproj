@@ -6,6 +6,10 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		966A084C21354D3100EDAE08 /* ArmyAntDBProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A084B21354D3100EDAE08 /* ArmyAntDBProxy.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		966A08022135435900EDAE08 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		966A08042135435900EDAE08 /* DBProxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DBProxy; sourceTree = BUILT_PRODUCTS_DIR; };
+		966A084B21354D3100EDAE08 /* ArmyAntDBProxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArmyAntDBProxy.cpp; path = ../src/DBProxyEntry/ArmyAntDBProxy.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +57,7 @@
 		966A08462135489000EDAE08 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				966A084B21354D3100EDAE08 /* ArmyAntDBProxy.cpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -112,6 +118,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966A084C21354D3100EDAE08 /* ArmyAntDBProxy.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

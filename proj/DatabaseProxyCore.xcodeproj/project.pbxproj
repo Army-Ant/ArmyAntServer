@@ -6,8 +6,15 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		966A085021354D6E00EDAE08 /* mysqlBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A084F21354D6D00EDAE08 /* mysqlBridge.cpp */; };
+		966A085221354D7900EDAE08 /* DBProxyMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A085121354D7900EDAE08 /* DBProxyMain.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		966A07E72135431D00EDAE08 /* libDatabaseProxyCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDatabaseProxyCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		966A084F21354D6D00EDAE08 /* mysqlBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mysqlBridge.cpp; path = ../src/DatabaseProxyCore/mysqlBridge.cpp; sourceTree = "<group>"; };
+		966A085121354D7900EDAE08 /* DBProxyMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DBProxyMain.cpp; path = ../src/DatabaseProxyCore/DBProxyMain.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +31,7 @@
 		966A07DE2135431D00EDAE08 = {
 			isa = PBXGroup;
 			children = (
+				966A084E21354D4C00EDAE08 /* src */,
 				966A07E82135431D00EDAE08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -34,6 +42,23 @@
 				966A07E72135431D00EDAE08 /* libDatabaseProxyCore.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		966A084D21354D3F00EDAE08 /* mysql */ = {
+			isa = PBXGroup;
+			children = (
+				966A084F21354D6D00EDAE08 /* mysqlBridge.cpp */,
+			);
+			name = mysql;
+			sourceTree = "<group>";
+		};
+		966A084E21354D4C00EDAE08 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				966A084D21354D3F00EDAE08 /* mysql */,
+				966A085121354D7900EDAE08 /* DBProxyMain.cpp */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +127,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966A085021354D6E00EDAE08 /* mysqlBridge.cpp in Sources */,
+				966A085221354D7900EDAE08 /* DBProxyMain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

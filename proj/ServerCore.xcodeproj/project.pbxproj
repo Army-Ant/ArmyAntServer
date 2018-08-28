@@ -6,8 +6,17 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		966A085921354E3600EDAE08 /* UserSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A085621354E3600EDAE08 /* UserSessionManager.cpp */; };
+		966A085A21354E3600EDAE08 /* UserSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A085721354E3600EDAE08 /* UserSession.cpp */; };
+		966A085B21354E3600EDAE08 /* ServerMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A085821354E3600EDAE08 /* ServerMain.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		966A07CA213542FE00EDAE08 /* libServerCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libServerCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		966A085621354E3600EDAE08 /* UserSessionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UserSessionManager.cpp; path = ../src/ServerCore/UserSessionManager.cpp; sourceTree = "<group>"; };
+		966A085721354E3600EDAE08 /* UserSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UserSession.cpp; path = ../src/ServerCore/UserSession.cpp; sourceTree = "<group>"; };
+		966A085821354E3600EDAE08 /* ServerMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerMain.cpp; path = ../src/ServerCore/ServerMain.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +33,7 @@
 		966A07C1213542FE00EDAE08 = {
 			isa = PBXGroup;
 			children = (
+				966A085321354DC400EDAE08 /* src */,
 				966A07CB213542FE00EDAE08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -34,6 +44,16 @@
 				966A07CA213542FE00EDAE08 /* libServerCore.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		966A085321354DC400EDAE08 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				966A085821354E3600EDAE08 /* ServerMain.cpp */,
+				966A085721354E3600EDAE08 /* UserSession.cpp */,
+				966A085621354E3600EDAE08 /* UserSessionManager.cpp */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +122,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966A085921354E3600EDAE08 /* UserSessionManager.cpp in Sources */,
+				966A085A21354E3600EDAE08 /* UserSession.cpp in Sources */,
+				966A085B21354E3600EDAE08 /* ServerMain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
