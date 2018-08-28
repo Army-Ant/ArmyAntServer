@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="Utilities" displayName="Utilities" projectFiles="true">
+      <itemPath>../../src/Utilities/EventManager.cpp</itemPath>
+      <itemPath>../../src/Utilities/Logger.cpp</itemPath>
+      <itemPath>../../src/Utilities/MessageQueue.cpp</itemPath>
+      <itemPath>../../src/Utilities/MessageQueueManager.cpp</itemPath>
+      <itemPath>../../src/Utilities/SocketApplication.cpp</itemPath>
+      <itemPath>../../src/Utilities/SocketClientApplication.cpp</itemPath>
+      <itemPath>../../src/Utilities/base.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="重要文件"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../../src/Utilities</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>../../inc</pElem>
+            <pElem>../../external/ArmyAntLib/inc</pElem>
+            <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
+            <pElem>../../external/Protobuf/inc</pElem>
+          </incDir>
+        </ccTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="../../src/Utilities/EventManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/Logger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/Utilities/MessageQueue.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/MessageQueueManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/SocketApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/SocketClientApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/base.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../inc</pElem>
+            <pElem>../../external/ArmyAntLib/inc</pElem>
+            <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
+            <pElem>../../external/Protobuf/inc</pElem>
+          </incDir>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="../../src/Utilities/EventManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/Logger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/Utilities/MessageQueue.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/MessageQueueManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/SocketApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/SocketClientApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/base.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
