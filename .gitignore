@@ -30,7 +30,8 @@
 *.ilk
 *.ipch
 /bin
-/proj/*.user
+/proj/Win32
+/proj/x64
 .vs
 *.log
 *.tlog
