@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:"
+      name = "mac_server">
+      <FileRef
+         location = "group:ArmyAntServer.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:DBProxy.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:"
+      name = "libraries">
+      <FileRef
+         location = "group:DatabaseProxyCore.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ServerCore.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ServerUtilities.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>
