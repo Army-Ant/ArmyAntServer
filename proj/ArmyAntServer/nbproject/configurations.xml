@@ -15,17 +15,44 @@
       <toolsSet>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
-        <rebuildPropChanged>false</rebuildPropChanged>
+        <rebuildPropChanged>true</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <standard>3</standard>
+          <warningLevel>2</warningLevel>
+        </cTool>
         <ccTool>
+          <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
           </incDir>
+          <warningLevel>2</warningLevel>
         </ccTool>
+        <fortranCompilerTool>
+          <warningLevel>2</warningLevel>
+        </fortranCompilerTool>
+        <asmTool>
+          <warningLevel>2</warningLevel>
+        </asmTool>
+        <linkerTool>
+          <output>../bin/armyantserverd</output>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../ServerCore"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../ServerCore"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../bin/libservercore_d.a">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
       <item path="../../src/ServerEntry/ArmyAntServer.cpp"
             ex="false"
@@ -37,27 +64,48 @@
       <toolsSet>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
-        <rebuildPropChanged>false</rebuildPropChanged>
+        <rebuildPropChanged>true</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <standard>3</standard>
+          <warningLevel>2</warningLevel>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
           </incDir>
+          <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
+          <warningLevel>2</warningLevel>
         </fortranCompilerTool>
         <asmTool>
           <developmentMode>5</developmentMode>
+          <warningLevel>2</warningLevel>
         </asmTool>
+        <linkerTool>
+          <output>../bin/armyantserver</output>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../ServerCore"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="true"
+                        WD="../ServerCore"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="../bin/libservercore.a">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
       <item path="../../src/ServerEntry/ArmyAntServer.cpp"
             ex="false"

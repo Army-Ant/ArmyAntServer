@@ -22,19 +22,38 @@
       <toolsSet>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
-        <rebuildPropChanged>false</rebuildPropChanged>
+        <rebuildPropChanged>true</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <standard>3</standard>
+          <warningLevel>2</warningLevel>
+        </cTool>
         <ccTool>
+          <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
           </incDir>
+          <warningLevel>2</warningLevel>
         </ccTool>
         <archiverTool>
+          <output>../bin/libservercore_d.a</output>
         </archiverTool>
+        <requiredProjects>
+          <makeArtifact PL="../ServerUtilities"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../ServerUtilities"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="../bin/libserverutilities_d.a">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
       <item path="../../src/ServerCore/ServerMain.cpp"
             ex="false"
@@ -56,20 +75,24 @@
       <toolsSet>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
-        <rebuildPropChanged>false</rebuildPropChanged>
+        <rebuildPropChanged>true</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <standard>3</standard>
+          <warningLevel>2</warningLevel>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
           </incDir>
+          <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -78,7 +101,20 @@
           <developmentMode>5</developmentMode>
         </asmTool>
         <archiverTool>
+          <output>../bin/libservercore.a</output>
         </archiverTool>
+        <requiredProjects>
+          <makeArtifact PL="../ServerUtilities"
+                        CT="3"
+                        CN="Release"
+                        AC="false"
+                        BL="true"
+                        WD="../ServerUtilities"
+                        BC="${MAKE}  -f Makefile CONF=Release"
+                        CC="${MAKE}  -f Makefile CONF=Release clean"
+                        OP="../bin/libserverutilities.a">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
       <item path="../../src/ServerCore/ServerMain.cpp"
             ex="false"

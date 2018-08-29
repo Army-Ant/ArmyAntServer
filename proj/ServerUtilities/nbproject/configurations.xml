@@ -26,18 +26,25 @@
       <toolsSet>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
-        <rebuildPropChanged>false</rebuildPropChanged>
+        <rebuildPropChanged>true</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <standard>3</standard>
+          <warningLevel>2</warningLevel>
+        </cTool>
         <ccTool>
+          <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
           </incDir>
+          <warningLevel>2</warningLevel>
         </ccTool>
         <archiverTool>
+          <output>../bin/libserverutilities_d.a</output>
         </archiverTool>
       </compileType>
       <item path="../../src/Utilities/EventManager.cpp"
@@ -70,24 +77,29 @@
       <item path="../../src/Utilities/base.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
-    <conf name="Release" type="3">
+    <conf name="Release" type="3" platformSpecific="true">
       <toolsSet>
         <compilerSet>default</compilerSet>
+        <platform>2</platform>
         <dependencyChecking>true</dependencyChecking>
-        <rebuildPropChanged>false</rebuildPropChanged>
+        <rebuildPropChanged>true</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <standard>3</standard>
+          <warningLevel>2</warningLevel>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
           </incDir>
+          <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -96,6 +108,7 @@
           <developmentMode>5</developmentMode>
         </asmTool>
         <archiverTool>
+          <output>../bin/libserverutilities.a</output>
         </archiverTool>
       </compileType>
       <item path="../../src/Utilities/EventManager.cpp"

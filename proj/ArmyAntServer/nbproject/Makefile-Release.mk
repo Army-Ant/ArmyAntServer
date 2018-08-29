@@ -56,27 +56,29 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/armyantserver
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/armyantserver
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/armyantserver: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/armyantserver ${OBJECTFILES} ${LDLIBSOPTIONS}
+../bin/armyantserver: ${OBJECTFILES}
+	${MKDIR} -p ../bin
+	${LINK.cc} -o ../bin/armyantserver ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: ../../src/ServerEntry/ArmyAntServer.cpp 
+${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerEntry/ArmyAntServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/acbbdd84
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o ../../src/ServerEntry/ArmyAntServer.cpp
+	$(COMPILE.cc) -O2 -Wall -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o ../../src/ServerEntry/ArmyAntServer.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/armyantserver
+	${RM} ../bin/armyantserver
 
 # Subprojects
 .clean-subprojects:
+	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

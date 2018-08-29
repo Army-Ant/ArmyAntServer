@@ -57,34 +57,36 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatabaseproxycore.a
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/libdatabaseproxycore_d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatabaseproxycore.a: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatabaseproxycore.a
-	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatabaseproxycore.a ${OBJECTFILES} 
-	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatabaseproxycore.a
+../bin/libdatabaseproxycore_d.a: ${OBJECTFILES}
+	${MKDIR} -p ../bin
+	${RM} ../bin/libdatabaseproxycore_d.a
+	${AR} -rv ../bin/libdatabaseproxycore_d.a ${OBJECTFILES} 
+	$(RANLIB) ../bin/libdatabaseproxycore_d.a
 
-${OBJECTDIR}/_ext/adc16ec7/DBProxyMain.o: ../../src/DatabaseProxyCore/DBProxyMain.cpp 
+${OBJECTDIR}/_ext/adc16ec7/DBProxyMain.o: nbproject/Makefile-${CND_CONF}.mk ../../src/DatabaseProxyCore/DBProxyMain.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/adc16ec7
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/adc16ec7/DBProxyMain.o ../../src/DatabaseProxyCore/DBProxyMain.cpp
+	$(COMPILE.cc) -g -Wall -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/adc16ec7/DBProxyMain.o ../../src/DatabaseProxyCore/DBProxyMain.cpp
 
-${OBJECTDIR}/_ext/adc16ec7/mysqlBridge.o: ../../src/DatabaseProxyCore/mysqlBridge.cpp 
+${OBJECTDIR}/_ext/adc16ec7/mysqlBridge.o: nbproject/Makefile-${CND_CONF}.mk ../../src/DatabaseProxyCore/mysqlBridge.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/adc16ec7
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/adc16ec7/mysqlBridge.o ../../src/DatabaseProxyCore/mysqlBridge.cpp
+	$(COMPILE.cc) -g -Wall -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/adc16ec7/mysqlBridge.o ../../src/DatabaseProxyCore/mysqlBridge.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatabaseproxycore.a
+	${RM} ../bin/libdatabaseproxycore_d.a
 
 # Subprojects
 .clean-subprojects:
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

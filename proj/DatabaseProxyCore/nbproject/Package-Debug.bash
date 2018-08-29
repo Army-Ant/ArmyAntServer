@@ -13,8 +13,8 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=so
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdatabaseproxycore.a
-OUTPUT_BASENAME=libdatabaseproxycore.a
+OUTPUT_PATH=../bin/libdatabaseproxycore_d.a
+OUTPUT_BASENAME=libdatabaseproxycore_d.a
 PACKAGE_TOP_DIR=DatabaseProxyCore/
 
 # Functions

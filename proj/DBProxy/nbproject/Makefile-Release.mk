@@ -56,27 +56,29 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dbproxy
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/dbproxy
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dbproxy: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dbproxy ${OBJECTFILES} ${LDLIBSOPTIONS}
+../bin/dbproxy: ${OBJECTFILES}
+	${MKDIR} -p ../bin
+	${LINK.cc} -o ../bin/dbproxy ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: ../../src/DBProxyEntry/ArmyAntDBProxy.cpp 
+${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk ../../src/DBProxyEntry/ArmyAntDBProxy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/fbe89dad
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o ../../src/DBProxyEntry/ArmyAntDBProxy.cpp
+	$(COMPILE.cc) -O2 -Wall -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o ../../src/DBProxyEntry/ArmyAntDBProxy.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dbproxy
+	${RM} ../bin/dbproxy
 
 # Subprojects
 .clean-subprojects:
+	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
