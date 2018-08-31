@@ -39,24 +39,28 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-m64
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-m64
+CXXFLAGS=-m64
 
 # Fortran Compiler Flags
-FFLAGS=
+FFLAGS=-m64
 
 # Assembler Flags
-ASFLAGS=
+ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L../../external/ArmyAntLib/bin -lArmyAnt_d_64 ../ServerUtilities/../bin/libserverutilities_d.a ../ServerCore/../bin/libservercore_d.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/armyantserverd
+
+../bin/armyantserverd: ../ServerUtilities/../bin/libserverutilities_d.a
+
+../bin/armyantserverd: ../ServerCore/../bin/libservercore_d.a
 
 ../bin/armyantserverd: ${OBJECTFILES}
 	${MKDIR} -p ../bin
@@ -69,6 +73,8 @@ ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ..
 
 # Subprojects
 .build-subprojects:
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug
+	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Debug
 	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
@@ -78,6 +84,8 @@ ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ..
 
 # Subprojects
 .clean-subprojects:
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking

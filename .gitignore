@@ -46,3 +46,5 @@
 /external/boost
 /proj/ServerCore/build/
 /proj/ArmyAntServer/build/
+/proj/DatabaseProxyCore/build/
+/proj/DBProxy/build/

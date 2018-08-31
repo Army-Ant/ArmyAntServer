@@ -6,7 +6,9 @@
 
 // 头文件
 #include <ServerMain.h>
+#ifdef OS_WINDOWS
 #include <WindowsResourcesManager.h>
+#endif
 
 int main()
 {

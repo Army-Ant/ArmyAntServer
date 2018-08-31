@@ -2,6 +2,7 @@
 #include <DBProxyMain.h>
 
 #include <functional>
+#include <thread>
 
 #include <DBProxyConstants.h>
 
@@ -17,25 +18,25 @@ DBProxyMain::DBProxyMain() :debug(false), port(0), msgQueue(nullptr), socket(), 
 DBProxyMain::~DBProxyMain(){}
 
 int32 DBProxyMain::main(){
-	// 1. ¶ÁÈ¡ÅäÖÃ
+	// 1. ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 	auto parseRes = parseConfig();
 	if(parseRes != Constants::DBProxyMainReturnValues::normalExit){
 		return parseRes;
 	}
 
-	// 2. ³õÊ¼»¯¸÷¸öÄ£¿é, ×¢ÒâË³Ðò
+	// 2. ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½, ×¢ï¿½ï¿½Ë³ï¿½ï¿½
 	auto initRes = modulesInitialization();
 	if(initRes != Constants::DBProxyMainReturnValues::normalExit){
 		return initRes;
 	}
 
-	// 3. ³õÊ¼»¯²¢¿ªÆô socket TCP server
+	// 3. ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ socket TCP server
 	socket.setEventCallback(std::bind(&DBProxyMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	socket.setReceiveCallback(std::bind(&DBProxyMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
 	socket.start(port, 16384, false);
 	logger.pushLog("DBProxy started", Logger::AlertLevel::Info, LOGGER_TAG);
 
-	// 4. ¿ªÊ¼¼àÌýÖ÷Ïß³ÌÏûÏ¢¶ÓÁÐ
+	// 4. ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	msgQueue = msgQueueMgr.createQueue(ArmyAntServer::SpecialUserIndex::DBPROXY_MAIN);
 	int32 retVal = Constants::DBProxyMainReturnValues::normalExit;
 	bool exitCommand = false;
@@ -66,12 +67,12 @@ ArmyAntServer::MessageQueueManager&DBProxyMain::getMessageQueueManager(){
 
 int32 DBProxyMain::parseConfig(){
 	ArmyAnt::File configJson;
-	// ´ò¿ªÉèÖÃÎÄ¼þ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 	bool openRes = configJson.Open(Constants::DB_PROXY_CONFIG_FILE_PATH);
 	if(!openRes){
 		return Constants::DBProxyMainReturnValues::openConfigFileFailed;
 	}
-	// ¶ÁÈ¡ÉèÖÃÄÚÈÝ
+	// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	auto jsonFileLen = configJson.GetLength();
 	char* buf = new char[jsonFileLen + 20];
 	memset(buf, 0, jsonFileLen + 20);
@@ -81,7 +82,7 @@ int32 DBProxyMain::parseConfig(){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		return Constants::DBProxyMainReturnValues::parseConfigJsonFailed;
 	}
-	// ÐòÁÐ»¯ÉèÖÃÏî
+	// ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	auto json = ArmyAnt::JsonUnit::create(buf);
 	auto pJo = dynamic_cast<ArmyAnt::JsonObject*>(json);
 	if(pJo == nullptr){
@@ -90,7 +91,7 @@ int32 DBProxyMain::parseConfig(){
 		return Constants::DBProxyMainReturnValues::parseConfigJElementFailed;
 	}
 
-	// ±£´æÉèÖÃÏîµ½ÄÚ´æ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½îµ½ï¿½Ú´ï¿½
 	auto&jo = *pJo;
 	auto jdebug = jo.getChild("debug");
 	auto pjdebug = dynamic_cast<ArmyAnt::JsonBoolean*>(jdebug);
@@ -119,7 +120,7 @@ int32 DBProxyMain::parseConfig(){
 	}
 	logger.setLogFile(logFilePath->getString());
 
-	// ÎÄ¼þÈÕÖ¾É¸Ñ¡¼¶±ð
+	// ï¿½Ä¼ï¿½ï¿½ï¿½Ö¾É¸Ñ¡ï¿½ï¿½ï¿½ï¿½
 	auto logFileLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logFileLevel"));
 	if(logFileLevel->getString() == ArmyAnt::String("verbose")){
 		logger.setFileLevel(Logger::AlertLevel::Verbose);
@@ -139,7 +140,7 @@ int32 DBProxyMain::parseConfig(){
 		logger.setFileLevel(Logger::AlertLevel::Verbose);
 	}
 
-	// ¿ØÖÆÌ¨ÈÕÖ¾É¸Ñ¡¼¶±ð
+	// ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½Ö¾É¸Ñ¡ï¿½ï¿½ï¿½ï¿½
 	auto logConsoleLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logConsoleLevel"));
 	if(logConsoleLevel->getString() == ArmyAnt::String("verbose")){
 		logger.setConsoleLevel(Logger::AlertLevel::Verbose);
@@ -159,7 +160,7 @@ int32 DBProxyMain::parseConfig(){
 		logger.setConsoleLevel(Logger::AlertLevel::Import);
 	}
 
-	// MySql µÇÂ¼²ÎÊý
+	// MySql ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
 	auto jMysqlServerHost = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlServerHost"));
 	if(jMysqlServerHost == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);

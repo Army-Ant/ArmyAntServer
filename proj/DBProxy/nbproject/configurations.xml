@@ -19,10 +19,12 @@
       </toolsSet>
       <compileType>
         <cTool>
+          <architecture>2</architecture>
           <standard>3</standard>
           <warningLevel>2</warningLevel>
         </cTool>
         <ccTool>
+          <architecture>2</architecture>
           <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
@@ -43,13 +45,50 @@
           <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
+          <architecture>2</architecture>
           <warningLevel>2</warningLevel>
         </fortranCompilerTool>
         <asmTool>
+          <architecture>2</architecture>
           <warningLevel>2</warningLevel>
         </asmTool>
         <linkerTool>
           <output>../bin/dbproxyd</output>
+          <linkerAddLib>
+            <pElem>../../external/ArmyAntLib/bin</pElem>
+            <pElem>../../external/mysql/mysql-connector-c++-8.0.11/lib64</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>ArmyAnt_d_64</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../ServerUtilities"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../ServerUtilities"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="../bin/libserverutilities_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../DatabaseProxyCore"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../DatabaseProxyCore"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="../bin/libdatabaseproxycore_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so</linkerLibFileItem>
+          </linkerLibItems>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../DatabaseProxyCore"
@@ -79,11 +118,13 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
           <standard>3</standard>
           <warningLevel>2</warningLevel>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
           <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
@@ -104,14 +145,50 @@
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
           <warningLevel>2</warningLevel>
         </fortranCompilerTool>
         <asmTool>
           <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
           <warningLevel>2</warningLevel>
         </asmTool>
         <linkerTool>
           <output>../bin/dbproxy</output>
+          <linkerAddLib>
+            <pElem>../../external/ArmyAntLib/bin</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>ArmyAnt_64</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../ServerUtilities"
+                            CT="3"
+                            CN="Release"
+                            AC="false"
+                            BL="true"
+                            WD="../ServerUtilities"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="../bin/libserverutilities.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../DatabaseProxyCore"
+                            CT="3"
+                            CN="Release"
+                            AC="false"
+                            BL="true"
+                            WD="../DatabaseProxyCore"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="../bin/libdatabaseproxycore.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so</linkerLibFileItem>
+          </linkerLibItems>
         </linkerTool>
         <requiredProjects>
           <makeArtifact PL="../DatabaseProxyCore"

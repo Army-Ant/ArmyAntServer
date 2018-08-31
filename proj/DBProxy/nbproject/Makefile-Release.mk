@@ -39,24 +39,36 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-m64
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-m64
+CXXFLAGS=-m64
 
 # Fortran Compiler Flags
-FFLAGS=
+FFLAGS=-m64
 
 # Assembler Flags
-ASFLAGS=
+ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L../../external/ArmyAntLib/bin -lArmyAnt_64 ../ServerUtilities/../bin/libserverutilities.a ../DatabaseProxyCore/../bin/libdatabaseproxycore.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/dbproxy
+
+../bin/dbproxy: ../ServerUtilities/../bin/libserverutilities.a
+
+../bin/dbproxy: ../DatabaseProxyCore/../bin/libdatabaseproxycore.a
+
+../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so
+
+../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a
+
+../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a
+
+../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so
 
 ../bin/dbproxy: ${OBJECTFILES}
 	${MKDIR} -p ../bin
@@ -69,6 +81,8 @@ ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk .
 
 # Subprojects
 .build-subprojects:
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release
+	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release
 	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release
 
 # Clean Targets
@@ -78,6 +92,8 @@ ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk .
 
 # Subprojects
 .clean-subprojects:
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release clean
+	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release clean
 	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release clean
 
 # Enable dependency checking

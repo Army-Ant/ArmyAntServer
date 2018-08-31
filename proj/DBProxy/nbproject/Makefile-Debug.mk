@@ -39,24 +39,36 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-m64
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-m64
+CXXFLAGS=-m64
 
 # Fortran Compiler Flags
-FFLAGS=
+FFLAGS=-m64
 
 # Assembler Flags
-ASFLAGS=
+ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L../../external/ArmyAntLib/bin -L../../external/mysql/mysql-connector-c++-8.0.11/lib64 -lArmyAnt_d_64 ../ServerUtilities/../bin/libserverutilities_d.a ../DatabaseProxyCore/../bin/libdatabaseproxycore_d.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/dbproxyd
+
+../bin/dbproxyd: ../ServerUtilities/../bin/libserverutilities_d.a
+
+../bin/dbproxyd: ../DatabaseProxyCore/../bin/libdatabaseproxycore_d.a
+
+../bin/dbproxyd: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so
+
+../bin/dbproxyd: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a
+
+../bin/dbproxyd: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a
+
+../bin/dbproxyd: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so
 
 ../bin/dbproxyd: ${OBJECTFILES}
 	${MKDIR} -p ../bin
@@ -69,6 +81,8 @@ ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk .
 
 # Subprojects
 .build-subprojects:
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug
+	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Debug
 	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
@@ -78,6 +92,8 @@ ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk .
 
 # Subprojects
 .clean-subprojects:
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking

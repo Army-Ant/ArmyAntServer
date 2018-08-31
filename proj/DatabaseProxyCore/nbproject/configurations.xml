@@ -27,10 +27,12 @@
       </toolsSet>
       <compileType>
         <cTool>
+          <architecture>2</architecture>
           <standard>3</standard>
           <warningLevel>2</warningLevel>
         </cTool>
         <ccTool>
+          <architecture>2</architecture>
           <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
@@ -50,9 +52,11 @@
           <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
+          <architecture>2</architecture>
           <warningLevel>2</warningLevel>
         </fortranCompilerTool>
         <asmTool>
+          <architecture>2</architecture>
           <warningLevel>2</warningLevel>
         </asmTool>
         <archiverTool>
@@ -91,11 +95,13 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
           <standard>3</standard>
           <warningLevel>2</warningLevel>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
           <standard>11</standard>
           <incDir>
             <pElem>../../inc</pElem>
@@ -115,10 +121,12 @@
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
           <warningLevel>2</warningLevel>
         </fortranCompilerTool>
         <asmTool>
           <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
           <warningLevel>2</warningLevel>
         </asmTool>
         <archiverTool>
