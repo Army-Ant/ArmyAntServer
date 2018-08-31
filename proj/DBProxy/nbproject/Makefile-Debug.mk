@@ -65,7 +65,7 @@ LDLIBSOPTIONS=
 ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk ../../src/DBProxyEntry/ArmyAntDBProxy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/fbe89dad
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o ../../src/DBProxyEntry/ArmyAntDBProxy.cpp
+	$(COMPILE.cc) -g -Wall -D_cplusplus -DOS_Linux -D_x86 -D_64BIT -DDEBUG -D_DEBUG -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o ../../src/DBProxyEntry/ArmyAntDBProxy.cpp
 
 # Subprojects
 .build-subprojects:

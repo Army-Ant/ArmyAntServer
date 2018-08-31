@@ -38,6 +38,14 @@
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
           </incDir>
+          <preprocessorList>
+            <Elem>DEBUG</Elem>
+            <Elem>OS_Linux</Elem>
+            <Elem>_64BIT</Elem>
+            <Elem>_DEBUG</Elem>
+            <Elem>_cplusplus</Elem>
+            <Elem>_x86</Elem>
+          </preprocessorList>
           <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -94,6 +102,13 @@
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
           </incDir>
+          <preprocessorList>
+            <Elem>NDEBUG</Elem>
+            <Elem>OS_Linux</Elem>
+            <Elem>_64BIT</Elem>
+            <Elem>_cplusplus</Elem>
+            <Elem>_x86</Elem>
+          </preprocessorList>
           <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>

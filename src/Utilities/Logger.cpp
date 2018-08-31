@@ -1,6 +1,9 @@
 #include <Logger.h>
 
 #include <ctime>
+#ifdef OS_LINUX
+#include <sys/time.h>
+#endif
 
 #include <AAClassPrivateHandle.hpp>
 #include <AAString.h>
@@ -16,7 +19,7 @@ namespace ArmyAntServer {
 		Logger_Private() {}
 		~Logger_Private() {}
 
-		static ArmyAnt::String getTimeStamp(__time64_t time);
+		static ArmyAnt::String getTimeStamp();
 		static ArmyAnt::String getWholeContent(const char * content, Logger::AlertLevel level, const char * tag);
 
 		Logger::AlertLevel consoleLevel = Logger::AlertLevel::Import;
@@ -26,20 +29,22 @@ namespace ArmyAntServer {
 		Logger::AlertLevel userStreamLevel = Logger::AlertLevel::Debug;
 	};
 
-	ArmyAnt::String Logger_Private::getTimeStamp(__time64_t time) {
+	ArmyAnt::String Logger_Private::getTimeStamp() {
 #if defined OS_WINDOWS
+                auto tm = _time64(0);
 		char ret[64] = "";
-		_ctime64_s(ret,&time);
+		_ctime64_s(ret,&tm);
 		auto retStr = ArmyAnt::String(ret);
 		retStr.replace('\n', "");
-		return retStr;
 #else
-		return _ctime64(&time);
+                auto tm = time(0);
+		auto retStr =  ArmyAnt::String(ctime(&tm));
 #endif
+		return retStr;
 	}
 
 	ArmyAnt::String Logger_Private::getWholeContent(const char * content, Logger::AlertLevel level, const char * tag) {
-		ArmyAnt::String timeString = "[ " + Logger_Private::getTimeStamp(_time64(0)) + " ] ";
+		ArmyAnt::String timeString = "[ " + Logger_Private::getTimeStamp() + " ] ";
 		ArmyAnt::String tagString = "[ " + ArmyAnt::String(tag) + " ] ";
 		ArmyAnt::String wholeContent = timeString + tagString + "[ " + Logger::convertLevelToString(level) + " ] " + content;
 		return wholeContent;
