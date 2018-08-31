@@ -14,8 +14,8 @@ bool SocketApplication::onServerConnected(uint32 index, void*pThis){
 		return false;
 	} else{
 		self->connectMutex.lock();
-		self->clients.insert(std::make_pair(index, ClientInformation(index, ClientStatus::Conversation)));
-		self->clients.find(index)->second.setMaxBufferLength(self->bufferLength);
+		self->clients.insert(std::make_pair(index, new ClientInformation(index, ClientStatus::Conversation)));
+		self->clients.find(index)->second->setMaxBufferLength(self->bufferLength);
 		self->connectMutex.unlock();
 		self->eventCallback(SocketApplication::EventType::Connected, index, "New client connected");
 		return true;
@@ -34,13 +34,14 @@ void SocketApplication::onServerDisonnected(uint32 index, void*pThis){
 	} else{
 		self->eventCallback(SocketApplication::EventType::Disconnected, index, "Client disconnected");
 	}
+	delete findedClient->second;
 	self->clients.erase(findedClient);
 }
 
 void SocketApplication::onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 	auto client = self->tcpSocket.getClientByIndex(index);
-	auto&clientBuffer = self->clients.find(index)->second;
+	auto&clientBuffer = *self->clients.find(index)->second;
 	if(self->receiveCallback != nullptr){
 		clientBuffer.rwMutex.lock();
 		while(datalen > 0){
@@ -105,7 +106,7 @@ bool SocketApplication::onServerSendResponse(mac_uint sendedSize, uint32 retried
 	if(self->eventCallback != nullptr){
 		if(sendedSize > 0){
 			int32 sendingIndex = 0;
-			auto sendedList = self->clients.find(index)->second.waitingResponseSended;
+			auto sendedList = self->clients.find(index)->second->waitingResponseSended;
 			for(auto i = sendedList.begin(); i != sendedList.end(); ++i){
 				if(!memcmp(sendedData, i->second, sendedSize))
 					sendingIndex = i->first;
@@ -182,7 +183,7 @@ ArmyAnt::TCPServer&SocketApplication::getSocket(){
 	return tcpSocket;
 }
 
-const std::map<uint32, ClientInformation>&SocketApplication::getClientList()const{
+const std::map<uint32, ClientInformation*>&SocketApplication::getClientList()const{
 	return clients;
 }
 
@@ -242,12 +243,12 @@ int32 SocketApplication::send(uint32 clientId, int32 serials, MessageType type, 
 	memcpy(sendingBuffer, &head, sizeof(head));
 	extend.SerializePartialToArray(sendingBuffer + sizeof(head), extend.ByteSize());
 	memcpy(sendingBuffer + sizeof(head) + extendLength, content, contentLength);
-	if(client->second.counter == AA_INT64_MAX - 1)
-		client->second.counter = 0;
-	client->second.rwMutex.lock();
-	client->second.waitingResponseSended.insert(std::make_pair(++client->second.counter, sendingBuffer));
-	client->second.rwMutex.unlock();
-	return tcpSocket.send(clientId, sendingBuffer, totalLength) == 0 ? 0 : client->second.counter;
+	if(client->second->counter == AA_INT64_MAX - 1)
+		client->second->counter = 0;
+	client->second->rwMutex.lock();
+	client->second->waitingResponseSended.insert(std::make_pair(++client->second->counter, sendingBuffer));
+	client->second->rwMutex.unlock();
+	return tcpSocket.send(clientId, sendingBuffer, totalLength) == 0 ? 0 : client->second->counter;
 }
 
 } // namespace ArmyAntServer

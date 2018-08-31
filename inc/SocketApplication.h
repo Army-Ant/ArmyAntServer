@@ -53,7 +53,7 @@ public:
 	bool setEventCallback(EventCallback cb);
 	bool setReceiveCallback(ReceiveCallback cb);
 	ArmyAnt::TCPServer&getSocket();
-	const std::map<uint32, ClientInformation>&getClientList()const;
+	const std::map<uint32, ClientInformation*>&getClientList()const;
 
 	bool start(uint16 port, uint32 maxBufferLength, bool isIpv6 = false);
 	bool stop();
@@ -63,7 +63,7 @@ private:
 	ArmyAnt::TCPServer tcpSocket;
 	EventCallback eventCallback;
 	ReceiveCallback receiveCallback;
-	std::map<uint32, ClientInformation> clients;
+	std::map<uint32, ClientInformation*> clients;
 
 	std::mutex connectMutex;
 	uint32 bufferLength;
