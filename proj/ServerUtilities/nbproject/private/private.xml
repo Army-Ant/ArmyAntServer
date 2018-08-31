@@ -9,6 +9,8 @@
         <group>
             <file>file:/home/jason/github/Army-Ant/ArmyAntServer/src/Utilities/Logger.cpp</file>
             <file>file:/home/jason/github/Army-Ant/ArmyAntServer/src/Utilities/MessageQueueManager.cpp</file>
+            <file>file:/home/jason/github/Army-Ant/ArmyAntServer/src/Utilities/SocketApplication.cpp</file>
+            <file>file:/home/jason/github/Army-Ant/ArmyAntServer/src/Utilities/SocketClientApplication.cpp</file>
         </group>
     </open-files>
 </project-private>

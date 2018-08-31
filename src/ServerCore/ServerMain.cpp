@@ -2,6 +2,7 @@
 #include <ServerMain.h>
 
 #include <functional>
+#include <thread>
 
 #include <ServerCoreConstants.h>
 
@@ -17,25 +18,25 @@ ServerMain::ServerMain()
 ServerMain::~ServerMain(){}
 
 int32 ServerMain::main(){
-	// 1. ¶ÁÈ¡ÅäÖÃ
+	// 1. ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 	auto parseRes = parseConfig();
 	if(parseRes != Constants::ServerMainReturnValues::normalExit){
 		return parseRes;
 	}
 
-	// 2. ³õÊ¼»¯¸÷¸öÄ£¿é, ×¢ÒâË³Ðò
+	// 2. ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½, ×¢ï¿½ï¿½Ë³ï¿½ï¿½
 	auto initRes = modulesInitialization();
 	if(initRes != Constants::ServerMainReturnValues::normalExit){
 		return initRes;
 	}
 
-	// 3. ³õÊ¼»¯²¢¿ªÆô socket TCP server
+	// 3. ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ socket TCP server
 	socket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	socket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
 	socket.start(port, 16384, false);
 	logger.pushLog("Server started", Logger::AlertLevel::Info, LOGGER_TAG);
 
-	// 4. ¿ªÊ¼¼àÌýÖ÷Ïß³ÌÏûÏ¢¶ÓÁÐ
+	// 4. ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	msgQueue = msgQueueMgr.createQueue(SpecialUserIndex::SERVER_MAIN_THREAD);
 	int32 retVal = Constants::ServerMainReturnValues::normalExit;
 	bool exitCommand = false;
@@ -56,7 +57,7 @@ int32 ServerMain::main(){
 		}
 	}
 
-	// 5. ÍË³öÊ±Ïú»Ù×ÊÔ´
+	// 5. ï¿½Ë³ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
 	auto uninitRes = modulesUninitialization();
 	logger.pushLog("Program over", Logger::AlertLevel::Info, LOGGER_TAG);
 	return retVal;
@@ -72,12 +73,12 @@ MessageQueueManager&ServerMain::getMessageQueueManager(){
 
 int32 ServerMain::parseConfig(){
 	ArmyAnt::File configJson;
-	// ´ò¿ªÉèÖÃÎÄ¼þ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 	bool openRes = configJson.Open(Constants::SERVER_CONFIG_FILE_PATH);
 	if(!openRes){
 		return Constants::ServerMainReturnValues::openConfigFileFailed;
 	}
-	// ¶ÁÈ¡ÉèÖÃÄÚÈÝ
+	// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	auto jsonFileLen = configJson.GetLength();
 	char* buf = new char[jsonFileLen + 20];
 	memset(buf, 0, jsonFileLen + 20);
@@ -87,7 +88,7 @@ int32 ServerMain::parseConfig(){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		return Constants::ServerMainReturnValues::parseConfigJsonFailed;
 	}
-	// ÐòÁÐ»¯ÉèÖÃÏî
+	// ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	auto json = ArmyAnt::JsonUnit::create(buf);
 	auto pJo = dynamic_cast<ArmyAnt::JsonObject*>(json);
 	if(pJo == nullptr){
@@ -96,7 +97,7 @@ int32 ServerMain::parseConfig(){
 		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 
-	// ±£´æÉèÖÃÏîµ½ÄÚ´æ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½îµ½ï¿½Ú´ï¿½
 	auto&jo = *pJo;
 	auto jdebug = jo.getChild("debug");
 	auto pjdebug = dynamic_cast<ArmyAnt::JsonBoolean*>(jdebug);
@@ -125,7 +126,7 @@ int32 ServerMain::parseConfig(){
 	}
 	logger.setLogFile(logFilePath->getString());
 
-	// ÎÄ¼þÈÕÖ¾É¸Ñ¡¼¶±ð
+	// ï¿½Ä¼ï¿½ï¿½ï¿½Ö¾É¸Ñ¡ï¿½ï¿½ï¿½ï¿½
 	auto logFileLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logFileLevel"));
 	if(logFileLevel->getString() == ArmyAnt::String("verbose")){
 		logger.setFileLevel(Logger::AlertLevel::Verbose);
@@ -145,7 +146,7 @@ int32 ServerMain::parseConfig(){
 		logger.setFileLevel(Logger::AlertLevel::Verbose);
 	}
 
-	// ¿ØÖÆÌ¨ÈÕÖ¾É¸Ñ¡¼¶±ð
+	// ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½Ö¾É¸Ñ¡ï¿½ï¿½ï¿½ï¿½
 	auto logConsoleLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logConsoleLevel"));
 	if(logConsoleLevel->getString() == ArmyAnt::String("verbose")){
 		logger.setConsoleLevel(Logger::AlertLevel::Verbose);
@@ -165,7 +166,7 @@ int32 ServerMain::parseConfig(){
 		logger.setConsoleLevel(Logger::AlertLevel::Import);
 	}
 
-	// DBProxy µØÖ·
+	// DBProxy ï¿½ï¿½Ö·
 	auto jDBProxyAddr = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("dbProxyAddr"));
 	if(jDBProxyAddr == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
@@ -196,7 +197,7 @@ int32 ServerMain::parseConfig(){
 }
 
 int32 ServerMain::modulesInitialization(){
-	// Á¬½ÓÊý¾Ý¿â´úÀí½ø³Ì
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	dbConnector.setEventCallback(std::bind(&ServerMain::onDBConnectorEvent, this, std::placeholders::_1, std::placeholders::_2));
 	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
 	dbConnector.setWillReconnectWhenLost(true);

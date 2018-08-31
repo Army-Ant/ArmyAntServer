@@ -9,6 +9,8 @@
         <group name="libraries">
             <file>file:/home/jason/github/Army-Ant/ArmyAntServer/src/ServerEntry/ArmyAntServer.cpp</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/home/jason/github/Army-Ant/ArmyAntServer/src/ServerEntry/ArmyAntServer.cpp</file>
+        </group>
     </open-files>
 </project-private>

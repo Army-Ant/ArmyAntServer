@@ -40,25 +40,24 @@ void SocketApplication::onServerDisonnected(uint32 index, void*pThis){
 
 void SocketApplication::onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
-	auto client = self->tcpSocket.getClientByIndex(index);
 	auto&clientBuffer = *self->clients.find(index)->second;
 	if(self->receiveCallback != nullptr){
 		clientBuffer.rwMutex.lock();
 		while(datalen > 0){
 			mac_uint currCopyLen = datalen;
-			// Èô³¬³öbuffer³¤¶È, ÔòÏÈÐ´ÈëÒ»²¿·Ö
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bufferï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 			if(clientBuffer.receivingBufferEnd + datalen > self->bufferLength){
 				currCopyLen = self->bufferLength - clientBuffer.receivingBufferEnd - 1;
 			}
-			// Ð´Èëµ½buffer
+			// Ð´ï¿½ëµ½buffer
 			datalen -= currCopyLen;
 			memcpy(clientBuffer.receivingBuffer + clientBuffer.receivingBufferEnd, data, currCopyLen);
 			clientBuffer.receivingBufferEnd += currCopyLen;
-			// ½âÎöÓ¦ÓÃÍ·
+			// ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Í·
 			if(clientBuffer.receivingBufferEnd > sizeof(MessageBaseHead)){
 				MessageBaseHead tmpHead;
 				memcpy(&tmpHead, clientBuffer.receivingBuffer, sizeof(MessageBaseHead));
-				// ½âÎöÀ©Õ¹Í·
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹Í·
 				if(clientBuffer.receivingBufferEnd >= sizeof(MessageBaseHead) + tmpHead.extendLength){
 					int64 appId = 0;
 					int32 contentLength = 0;
@@ -74,22 +73,22 @@ void SocketApplication::onServerReceived(uint32 index, uint8*data, mac_uint data
 							break;
 						}
 					}
-					// »ñÈ¡ÄÚÈÝ, ·¢ËÍ»Øµ÷
+					// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Í»Øµï¿½
 					uint32 usedLength = sizeof(MessageBaseHead) + tmpHead.extendLength + contentLength;
 					if(clientBuffer.receivingBufferEnd >= usedLength){
 						self->receiveCallback(index, tmpHead, appId, contentLength, contentCode, 
 											  clientBuffer.receivingBuffer + sizeof(MessageBaseHead) + tmpHead.extendLength);
-						// ÈôÖ®ºóÈÔÓÐÄÚÈÝ, Ôò×ªÒÆµ½Æðµã´¦, ÒÑ´¦Àí¹ýµÄÐÅÏ¢´ÓbufferÒÆ³ý
+						// ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½×ªï¿½Æµï¿½ï¿½ï¿½ã´¦, ï¿½Ñ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½bufferï¿½Æ³ï¿½
 						if(clientBuffer.receivingBufferEnd > usedLength){
 							memcpy(clientBuffer.receivingBuffer, clientBuffer.receivingBuffer + usedLength, clientBuffer.receivingBufferEnd - usedLength);
 						}
 						clientBuffer.receivingBufferEnd -= usedLength;
 						data = data + currCopyLen;
-						continue; // Ñ­»·Ó¦ÔÚÕâÀïÕýÈ·¼ÌÐøºÍÍË³ö
+						continue; // Ñ­ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½
 					}
 				}
 			}
-			// bufferÌîÂúÁË, È´Î´½âÎö³öÒ»¸öÍêÕûµÄÐ­Òé°ü, ÕâÊÇÓÐÎÊÌâµÄ
+			// bufferï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, È´Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if(datalen > 0){
 				self->eventCallback(SocketApplication::EventType::ErrorReport,
 									index,
@@ -213,7 +212,6 @@ int32 SocketApplication::send(uint32 clientId, int32 serials, MessageType type, 
 	if(!tcpSocket.isStarting())
 		return false;
 
-	int64 index = 0;
 	auto client = clients.find(clientId);
 	if(client == clients.end())
 		return false;

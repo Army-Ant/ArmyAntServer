@@ -65,7 +65,7 @@ LDLIBSOPTIONS=
 ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerEntry/ArmyAntServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/acbbdd84
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DDEBUG -DOS_Linux -D_64BIT -D_DEBUG -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o ../../src/ServerEntry/ArmyAntServer.cpp
+	$(COMPILE.cc) -g -Wall -DDEBUG -DOS_Linux -D_64BIT -D_DEBUG -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -I.. -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o ../../src/ServerEntry/ArmyAntServer.cpp
 
 # Subprojects
 .build-subprojects:

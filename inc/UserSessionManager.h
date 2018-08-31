@@ -22,7 +22,7 @@ public:
 
 private:
 	ServerMain & server;
-	std::map<int32, UserSession> sessionList;
+	std::map<int32, UserSession*> sessionList;
 
 	AA_FORBID_ASSGN_OPR(UserSessionManager);
 	AA_FORBID_COPY_CTOR(UserSessionManager);

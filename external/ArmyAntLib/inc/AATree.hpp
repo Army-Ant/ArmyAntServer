@@ -386,11 +386,12 @@ TreeNode<T_Val, T_Tag> * TreeNode<T_Val, T_Tag>::GetNextChild(T_Tag tag)
 		return nullptr;
 	for(auto i = children.begin(); i != children.end(); i++)
 	{
-		if(i->tag == tag)
+		if(i->tag == tag){
 			if(++i == children.end())
 				return GetFirstChild();
 			else
 				return *i;
+                }
 	}
 	return nullptr;
 }
@@ -408,11 +409,12 @@ TreeNode<T_Val, T_Tag> * TreeNode<T_Val, T_Tag>::GetBackChild(T_Tag tag)
 		return nullptr;
 	for(auto i = children.begin(); i != children.end(); i++)
 	{
-		if(i->tag == tag)
+		if(i->tag == tag){
 			if(i == children.begin())
 				return children.back();
 			else
 				return --i;
+                }
 	}
 	return nullptr;
 }
