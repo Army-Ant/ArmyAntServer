@@ -18,25 +18,25 @@ ServerMain::ServerMain()
 ServerMain::~ServerMain(){}
 
 int32 ServerMain::main(){
-	// 1. ��ȡ����
+	// 1. 读取配置
 	auto parseRes = parseConfig();
 	if(parseRes != Constants::ServerMainReturnValues::normalExit){
 		return parseRes;
 	}
 
-	// 2. ��ʼ������ģ��, ע��˳��
+	// 2. 初始化各个模块, 注意顺序
 	auto initRes = modulesInitialization();
 	if(initRes != Constants::ServerMainReturnValues::normalExit){
 		return initRes;
 	}
 
-	// 3. ��ʼ�������� socket TCP server
+	// 3. 初始化并开启 socket TCP server
 	socket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	socket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
 	socket.start(port, 16384, false);
 	logger.pushLog("Server started", Logger::AlertLevel::Info, LOGGER_TAG);
 
-	// 4. ��ʼ�������߳���Ϣ����
+	// 4. 开始监听主线程消息队列
 	msgQueue = msgQueueMgr.createQueue(SpecialUserIndex::SERVER_MAIN_THREAD);
 	int32 retVal = Constants::ServerMainReturnValues::normalExit;
 	bool exitCommand = false;
@@ -57,7 +57,7 @@ int32 ServerMain::main(){
 		}
 	}
 
-	// 5. �˳�ʱ������Դ
+	// 5. 退出时销毁资源
 	auto uninitRes = modulesUninitialization();
 	logger.pushLog("Program over", Logger::AlertLevel::Info, LOGGER_TAG);
 	return retVal;
@@ -73,12 +73,12 @@ MessageQueueManager&ServerMain::getMessageQueueManager(){
 
 int32 ServerMain::parseConfig(){
 	ArmyAnt::File configJson;
-	// �������ļ�
+	// 打开设置文件
 	bool openRes = configJson.Open(Constants::SERVER_CONFIG_FILE_PATH);
 	if(!openRes){
 		return Constants::ServerMainReturnValues::openConfigFileFailed;
 	}
-	// ��ȡ��������
+	// 读取设置内容
 	auto jsonFileLen = configJson.GetLength();
 	char* buf = new char[jsonFileLen + 20];
 	memset(buf, 0, jsonFileLen + 20);
@@ -88,7 +88,7 @@ int32 ServerMain::parseConfig(){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		return Constants::ServerMainReturnValues::parseConfigJsonFailed;
 	}
-	// ���л�������
+	// 序列化设置项
 	auto json = ArmyAnt::JsonUnit::create(buf);
 	auto pJo = dynamic_cast<ArmyAnt::JsonObject*>(json);
 	if(pJo == nullptr){
@@ -97,7 +97,7 @@ int32 ServerMain::parseConfig(){
 		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 
-	// ����������ڴ�
+	// 保存设置项到内存
 	auto&jo = *pJo;
 	auto jdebug = jo.getChild("debug");
 	auto pjdebug = dynamic_cast<ArmyAnt::JsonBoolean*>(jdebug);
@@ -126,7 +126,7 @@ int32 ServerMain::parseConfig(){
 	}
 	logger.setLogFile(logFilePath->getString());
 
-	// �ļ���־ɸѡ����
+	// 文件日志筛选级别
 	auto logFileLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logFileLevel"));
 	if(logFileLevel->getString() == ArmyAnt::String("verbose")){
 		logger.setFileLevel(Logger::AlertLevel::Verbose);
@@ -146,7 +146,7 @@ int32 ServerMain::parseConfig(){
 		logger.setFileLevel(Logger::AlertLevel::Verbose);
 	}
 
-	// ����̨��־ɸѡ����
+	// 控制台日志筛选级别
 	auto logConsoleLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logConsoleLevel"));
 	if(logConsoleLevel->getString() == ArmyAnt::String("verbose")){
 		logger.setConsoleLevel(Logger::AlertLevel::Verbose);
@@ -166,7 +166,7 @@ int32 ServerMain::parseConfig(){
 		logger.setConsoleLevel(Logger::AlertLevel::Import);
 	}
 
-	// DBProxy ��ַ
+	// DBProxy 地址
 	auto jDBProxyAddr = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("dbProxyAddr"));
 	if(jDBProxyAddr == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
@@ -197,7 +197,7 @@ int32 ServerMain::parseConfig(){
 }
 
 int32 ServerMain::modulesInitialization(){
-	// �������ݿ�������
+	// 连接数据库代理进程
 	dbConnector.setEventCallback(std::bind(&ServerMain::onDBConnectorEvent, this, std::placeholders::_1, std::placeholders::_2));
 	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
 	dbConnector.setWillReconnectWhenLost(true);

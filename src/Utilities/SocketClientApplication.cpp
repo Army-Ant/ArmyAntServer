@@ -30,19 +30,19 @@ void SocketClientApplication::onClientReceived(uint8*data, mac_uint datalen, voi
 		self->rwMutex.lock();
 		while(datalen > 0){
 			mac_uint currCopyLen = datalen;
-			// ������buffer����, ����д��һ����
+			// 若超出buffer长度, 则先写入一部分
 			if(self->receivingBufferEnd + datalen > self->bufferLength){
 				currCopyLen = self->bufferLength - self->receivingBufferEnd - 1;
 			}
-			// д�뵽buffer
+			// 写入到buffer
 			datalen -= currCopyLen;
 			memcpy(self->receivingBuffer + self->receivingBufferEnd, data, currCopyLen);
 			self->receivingBufferEnd += currCopyLen;
-			// ����Ӧ��ͷ
+			// 解析应用头
 			if(self->receivingBufferEnd > sizeof(MessageBaseHead)){
 				MessageBaseHead tmpHead;
 				memcpy(&tmpHead, self->receivingBuffer, sizeof(MessageBaseHead));
-				// ������չͷ
+				// 解析扩展头
 				if(self->receivingBufferEnd >= sizeof(MessageBaseHead) + tmpHead.extendLength){
 					int64 appId = 0;
 					int32 contentLength = 0;
@@ -58,22 +58,22 @@ void SocketClientApplication::onClientReceived(uint8*data, mac_uint datalen, voi
 							break;
 						}
 					}
-					// ��ȡ����, ���ͻص�
+					// 获取内容, 发送回调
 					uint32 usedLength = sizeof(MessageBaseHead) + tmpHead.extendLength + contentLength;
 					if(self->receivingBufferEnd >= usedLength){
 						self->receiveCallback(tmpHead, appId, contentLength, contentCode,
 											  self->receivingBuffer + sizeof(MessageBaseHead) + tmpHead.extendLength);
-						// ��֮����������, ��ת�Ƶ���㴦, �Ѵ��������Ϣ��buffer�Ƴ�
+						// 若之后仍有内容, 则转移到起点处, 已处理过的信息从buffer移除
 						if(self->receivingBufferEnd > usedLength){
 							memcpy(self->receivingBuffer, self->receivingBuffer + usedLength, self->receivingBufferEnd - usedLength);
 						}
 						self->receivingBufferEnd -= usedLength;
 						data = data + currCopyLen;
-						continue; // ѭ��Ӧ��������ȷ�������˳�
+						continue; // 循环应在这里正确继续和退出
 					}
 				}
 			}
-			// buffer������, ȴδ������һ��������Э���, �����������
+			// buffer填满了, 却未解析出一个完整的协议包, 这是有问题的
 			if(datalen > 0){
 				self->eventCallback(SocketClientApplication::EventType::ErrorReport, ArmyAnt::String("Receiving buffer full !"));
 				break;
