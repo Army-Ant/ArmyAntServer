@@ -17,10 +17,6 @@
 *.mod
 *.smod
 
-# Compiled Static libraries
-*.lai
-*.la
-
 # Executables
 *.out
 *.app
