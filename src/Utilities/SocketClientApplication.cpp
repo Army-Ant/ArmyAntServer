@@ -2,7 +2,7 @@
 
 namespace ArmyAntServer{
 
-static bool onClientConnected(bool isSucceed, void*pThis){
+bool SocketClientApplication::onClientConnected(bool isSucceed, void*pThis){
 	auto self = static_cast<SocketClientApplication*>(pThis);
 
 	if(self->eventCallback == nullptr){
@@ -15,7 +15,7 @@ static bool onClientConnected(bool isSucceed, void*pThis){
 	return !self->reconnectLost;
 }
 
-static bool onClientLostServer(void*pThis){
+bool SocketClientApplication::onClientLostServer(void*pThis){
 	auto self = static_cast<SocketClientApplication*>(pThis);
 	if(self->eventCallback == nullptr){
 		return self->reconnectLost;
@@ -24,7 +24,7 @@ static bool onClientLostServer(void*pThis){
 	return self->reconnectLost;
 }
 
-static void onClientReceived(uint8*data, mac_uint datalen, void*pThis){
+void SocketClientApplication::onClientReceived(uint8*data, mac_uint datalen, void*pThis){
 	auto self = static_cast<SocketClientApplication*>(pThis);
 	if(self->receiveCallback != nullptr){
 		self->rwMutex.lock();
@@ -83,7 +83,7 @@ static void onClientReceived(uint8*data, mac_uint datalen, void*pThis){
 	}
 }
 
-static bool onClientSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32, void*sendedData, uint64 len, void* pThis){
+bool SocketClientApplication::onClientSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32, void*sendedData, uint64 len, void* pThis){
 	auto self = static_cast<SocketClientApplication*>(pThis);
 	if(self->eventCallback != nullptr){
 		if(sendedSize > 0){
@@ -105,7 +105,7 @@ static bool onClientSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32
 	return false;
 }
 
-static void onClientErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis){
+void SocketClientApplication::onClientErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis){
 	auto self = static_cast<SocketClientApplication*>(pThis);
 	if(self->eventCallback != nullptr){
 		self->eventCallback(SocketClientApplication::EventType::ErrorReport, ArmyAnt::String("Found error, code:") + int64(err.code) + ", message: " + err.message);

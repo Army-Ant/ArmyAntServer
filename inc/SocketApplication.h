@@ -25,12 +25,10 @@ private:
 
 	void setMaxBufferLength(uint32 bufferLength);
 
+	friend class SocketApplication;
+
 	AA_FORBID_ASSGN_OPR(ClientInformation);
 	AA_FORBID_COPY_CTOR(ClientInformation);
-	friend class SocketApplication;
-	friend static bool onServerConnected(uint32 index, void*pThis);
-	friend static void onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
-	friend static bool onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
 };
 
 class SocketApplication{
@@ -70,11 +68,13 @@ private:
 	std::mutex connectMutex;
 	uint32 bufferLength;
 
-	friend static bool onServerConnected(uint32 index, void*pThis);
-	friend static void onServerDisonnected(uint32 index, void*pThis);
-	friend static void onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
-	friend static bool onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
-	friend static void onServerErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
+	friend class ClientInformation;
+
+	static bool onServerConnected(uint32 index, void*pThis);
+	static void onServerDisonnected(uint32 index, void*pThis);
+	static void onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
+	static bool onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
+	static void onServerErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
 
 private:
 	AA_FORBID_ASSGN_OPR(SocketApplication);

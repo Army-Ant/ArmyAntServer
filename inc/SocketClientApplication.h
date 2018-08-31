@@ -47,11 +47,11 @@ private:
 	uint32 receivingBufferEnd;
 	bool reconnectLost;
 
-	friend static bool onClientConnected(bool isSucceed, void*pThis);
-	friend static bool onClientLostServer(void*pThis);
-	friend static void onClientReceived(uint8*data, mac_uint datalen, void*pThis);
-	friend static bool onClientSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32, void*sendedData, uint64 len, void* pThis);
-	friend static void onClientErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
+	static bool onClientConnected(bool isSucceed, void*pThis);
+	static bool onClientLostServer(void*pThis);
+	static void onClientReceived(uint8*data, mac_uint datalen, void*pThis);
+	static bool onClientSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32, void*sendedData, uint64 len, void* pThis);
+	static void onClientErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
 
 };
 
