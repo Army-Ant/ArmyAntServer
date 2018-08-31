@@ -58,13 +58,13 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/libservercore_d.a
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../bin/libservercore_d.a
 
-../bin/libservercore_d.a: ${OBJECTFILES}
-	${MKDIR} -p ../bin
-	${RM} ../bin/libservercore_d.a
-	${AR} -rv ../bin/libservercore_d.a ${OBJECTFILES} 
-	$(RANLIB) ../bin/libservercore_d.a
+../../bin/libservercore_d.a: ${OBJECTFILES}
+	${MKDIR} -p ../../bin
+	${RM} ../../bin/libservercore_d.a
+	${AR} -rv ../../bin/libservercore_d.a ${OBJECTFILES} 
+	$(RANLIB) ../../bin/libservercore_d.a
 
 ${OBJECTDIR}/_ext/371df04d/ServerMain.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/ServerMain.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/371df04d
@@ -83,16 +83,14 @@ ${OBJECTDIR}/_ext/371df04d/UserSessionManager.o: nbproject/Makefile-${CND_CONF}.
 
 # Subprojects
 .build-subprojects:
-	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ../bin/libservercore_d.a
+	${RM} ../../bin/libservercore_d.a
 
 # Subprojects
 .clean-subprojects:
-	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

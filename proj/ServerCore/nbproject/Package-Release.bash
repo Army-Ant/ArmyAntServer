@@ -13,7 +13,7 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=so
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=../bin/libservercore.a
+OUTPUT_PATH=../../bin/libservercore.a
 OUTPUT_BASENAME=libservercore.a
 PACKAGE_TOP_DIR=ServerCore/
 

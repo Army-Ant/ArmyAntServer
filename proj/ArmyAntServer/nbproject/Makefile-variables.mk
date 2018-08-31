@@ -8,17 +8,17 @@ CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
-CND_ARTIFACT_DIR_Debug=../bin
+CND_ARTIFACT_DIR_Debug=../../bin
 CND_ARTIFACT_NAME_Debug=armyantserverd
-CND_ARTIFACT_PATH_Debug=../bin/armyantserverd
+CND_ARTIFACT_PATH_Debug=../../bin/armyantserverd
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
 CND_PACKAGE_NAME_Debug=armyantserver.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/armyantserver.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
-CND_ARTIFACT_DIR_Release=../bin
+CND_ARTIFACT_DIR_Release=../../bin
 CND_ARTIFACT_NAME_Release=armyantserver
-CND_ARTIFACT_PATH_Release=../bin/armyantserver
+CND_ARTIFACT_PATH_Release=../../bin/armyantserver
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
 CND_PACKAGE_NAME_Release=armyantserver.tar
 CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/armyantserver.tar

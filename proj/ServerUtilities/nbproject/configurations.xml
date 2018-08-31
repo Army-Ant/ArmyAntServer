@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="ArmyAntMessage"
+                   displayName="ArmyAntMessage"
+                   projectFiles="true">
+      <logicalFolder name="DBProxy" displayName="DBProxy" projectFiles="true">
+        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc</itemPath>
+        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="System" displayName="System" projectFiles="true">
+        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc</itemPath>
+        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h</itemPath>
+        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc</itemPath>
+        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
     <logicalFolder name="Utilities" displayName="Utilities" projectFiles="true">
       <itemPath>../../src/Utilities/EventManager.cpp</itemPath>
       <itemPath>../../src/Utilities/Logger.cpp</itemPath>
@@ -19,6 +33,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../../src/Utilities</Elem>
+    <Elem>../../res/ProtobufSource/cpp/ArmyAntMessage</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -61,9 +76,39 @@
           <architecture>2</architecture>
         </asmTool>
         <archiverTool>
-          <output>../bin/libserverutilities_d.a</output>
+          <output>../../bin/libserverutilities_d.a</output>
         </archiverTool>
       </compileType>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../src/Utilities/EventManager.cpp"
             ex="false"
             tool="1"
@@ -137,9 +182,39 @@
           <architecture>2</architecture>
         </asmTool>
         <archiverTool>
-          <output>../bin/libserverutilities.a</output>
+          <output>../../bin/libserverutilities.a</output>
         </archiverTool>
       </compileType>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../src/Utilities/EventManager.cpp"
             ex="false"
             tool="1"
