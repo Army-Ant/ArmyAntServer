@@ -56,6 +56,9 @@
           <output>../../bin/armyantserverd</output>
           <linkerLibItems>
             <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
+            <linkerOptionItem>-lprotobuf</linkerOptionItem>
+            <linkerOptionItem>-lprotobuf-lite</linkerOptionItem>
+            <linkerOptionItem>-lprotoc</linkerOptionItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_d_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../ServerCore"
@@ -137,7 +140,7 @@
         <linkerTool>
           <output>../../bin/armyantserver</output>
           <linkerLibItems>
-            <linkerOptionItem>-lboost_system</linkerOptionItem>
+            <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../ServerCore"
@@ -163,6 +166,9 @@
                             OP="../../bin/libserverutilities.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerOptionItem>-lprotobuf</linkerOptionItem>
+            <linkerOptionItem>-lprotobuf-lite</linkerOptionItem>
+            <linkerOptionItem>-lprotoc</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
