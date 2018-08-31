@@ -22,7 +22,7 @@ public:
 	bool removeQueue(int32 userId);
 
 private:
-	std::map<int32, MessageQueue> queueList;
+	std::map<int32, MessageQueue*> queueList;
 
 	AA_FORBID_ASSGN_OPR(MessageQueueManager);
 	AA_FORBID_COPY_CTOR(MessageQueueManager);
