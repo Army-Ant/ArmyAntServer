@@ -60,20 +60,8 @@
           <warningLevel>2</warningLevel>
         </asmTool>
         <archiverTool>
-          <output>../bin/libdatabaseproxycore_d.a</output>
+          <output>../../bin/libdatabaseproxycore_d.a</output>
         </archiverTool>
-        <requiredProjects>
-          <makeArtifact PL="../ServerUtilities"
-                        CT="3"
-                        CN="Debug"
-                        AC="true"
-                        BL="true"
-                        WD="../ServerUtilities"
-                        BC="${MAKE}  -f Makefile CONF=Debug"
-                        CC="${MAKE}  -f Makefile CONF=Debug clean"
-                        OP="../bin/libserverutilities_d.a">
-          </makeArtifact>
-        </requiredProjects>
       </compileType>
       <item path="../../src/DatabaseProxyCore/DBProxyMain.cpp"
             ex="false"
@@ -130,20 +118,8 @@
           <warningLevel>2</warningLevel>
         </asmTool>
         <archiverTool>
-          <output>../bin/libdatabaseproxycore.a</output>
+          <output>../../bin/libdatabaseproxycore.a</output>
         </archiverTool>
-        <requiredProjects>
-          <makeArtifact PL="../ServerUtilities"
-                        CT="3"
-                        CN="Release"
-                        AC="false"
-                        BL="true"
-                        WD="../ServerUtilities"
-                        BC="${MAKE}  -f Makefile CONF=Release"
-                        CC="${MAKE}  -f Makefile CONF=Release clean"
-                        OP="../bin/libserverutilities.a">
-          </makeArtifact>
-        </requiredProjects>
       </compileType>
       <item path="../../src/DatabaseProxyCore/DBProxyMain.cpp"
             ex="false"

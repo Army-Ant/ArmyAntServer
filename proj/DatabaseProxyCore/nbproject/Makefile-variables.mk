@@ -8,17 +8,17 @@ CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
-CND_ARTIFACT_DIR_Debug=../bin
+CND_ARTIFACT_DIR_Debug=../../bin
 CND_ARTIFACT_NAME_Debug=libdatabaseproxycore_d.a
-CND_ARTIFACT_PATH_Debug=../bin/libdatabaseproxycore_d.a
+CND_ARTIFACT_PATH_Debug=../../bin/libdatabaseproxycore_d.a
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
 CND_PACKAGE_NAME_Debug=DatabaseProxyCore.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/DatabaseProxyCore.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
-CND_ARTIFACT_DIR_Release=../bin
+CND_ARTIFACT_DIR_Release=../../bin
 CND_ARTIFACT_NAME_Release=libdatabaseproxycore.a
-CND_ARTIFACT_PATH_Release=../bin/libdatabaseproxycore.a
+CND_ARTIFACT_PATH_Release=../../bin/libdatabaseproxycore.a
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
 CND_PACKAGE_NAME_Release=DatabaseProxyCore.tar
 CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/DatabaseProxyCore.tar

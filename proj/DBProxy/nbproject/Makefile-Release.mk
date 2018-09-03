@@ -52,27 +52,27 @@ FFLAGS=-m64
 ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../../external/ArmyAntLib/bin -lArmyAnt_64 ../ServerUtilities/../bin/libserverutilities.a ../DatabaseProxyCore/../bin/libdatabaseproxycore.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so
+LDLIBSOPTIONS=-L../../external/ArmyAntLib/bin -L../../external/mysql/mysql-connector-c++-8.0.11/lib64 -lArmyAnt_64 ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so ../DatabaseProxyCore/../../bin/libdatabaseproxycore.a ../ServerUtilities/../../bin/libserverutilities.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/dbproxy
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../bin/dbproxy
 
-../bin/dbproxy: ../ServerUtilities/../bin/libserverutilities.a
+../../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so
 
-../bin/dbproxy: ../DatabaseProxyCore/../bin/libdatabaseproxycore.a
+../../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a
 
-../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so
+../../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a
 
-../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a
+../../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so
 
-../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a
+../../bin/dbproxy: ../DatabaseProxyCore/../../bin/libdatabaseproxycore.a
 
-../bin/dbproxy: ../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so
+../../bin/dbproxy: ../ServerUtilities/../../bin/libserverutilities.a
 
-../bin/dbproxy: ${OBJECTFILES}
-	${MKDIR} -p ../bin
-	${LINK.cc} -o ../bin/dbproxy ${OBJECTFILES} ${LDLIBSOPTIONS}
+../../bin/dbproxy: ${OBJECTFILES}
+	${MKDIR} -p ../../bin
+	${LINK.cc} -o ../../bin/dbproxy ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk ../../src/DBProxyEntry/ArmyAntDBProxy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/fbe89dad
@@ -81,20 +81,18 @@ ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk .
 
 # Subprojects
 .build-subprojects:
+	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release
 	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release
-	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release
-	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ../bin/dbproxy
+	${RM} ../../bin/dbproxy
 
 # Subprojects
 .clean-subprojects:
+	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release clean
 	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../DatabaseProxyCore && ${MAKE}  -f Makefile CONF=Release clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

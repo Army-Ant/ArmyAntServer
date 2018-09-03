@@ -57,13 +57,13 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/libdatabaseproxycore_d.a
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../bin/libdatabaseproxycore_d.a
 
-../bin/libdatabaseproxycore_d.a: ${OBJECTFILES}
-	${MKDIR} -p ../bin
-	${RM} ../bin/libdatabaseproxycore_d.a
-	${AR} -rv ../bin/libdatabaseproxycore_d.a ${OBJECTFILES} 
-	$(RANLIB) ../bin/libdatabaseproxycore_d.a
+../../bin/libdatabaseproxycore_d.a: ${OBJECTFILES}
+	${MKDIR} -p ../../bin
+	${RM} ../../bin/libdatabaseproxycore_d.a
+	${AR} -rv ../../bin/libdatabaseproxycore_d.a ${OBJECTFILES} 
+	$(RANLIB) ../../bin/libdatabaseproxycore_d.a
 
 ${OBJECTDIR}/_ext/adc16ec7/DBProxyMain.o: nbproject/Makefile-${CND_CONF}.mk ../../src/DatabaseProxyCore/DBProxyMain.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/adc16ec7
@@ -77,16 +77,14 @@ ${OBJECTDIR}/_ext/adc16ec7/mysqlBridge.o: nbproject/Makefile-${CND_CONF}.mk ../.
 
 # Subprojects
 .build-subprojects:
-	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ../bin/libdatabaseproxycore_d.a
+	${RM} ../../bin/libdatabaseproxycore_d.a
 
 # Subprojects
 .clean-subprojects:
-	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

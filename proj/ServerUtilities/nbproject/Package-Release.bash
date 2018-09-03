@@ -13,7 +13,7 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=so
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=../bin/libserverutilities.a
+OUTPUT_PATH=../../bin/libserverutilities.a
 OUTPUT_BASENAME=libserverutilities.a
 PACKAGE_TOP_DIR=ServerUtilities/
 

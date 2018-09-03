@@ -13,7 +13,7 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=so
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=../bin/dbproxyd
+OUTPUT_PATH=../../bin/dbproxyd
 OUTPUT_BASENAME=dbproxyd
 PACKAGE_TOP_DIR=dbproxy/
 

@@ -30,8 +30,8 @@
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
-            <pElem>../../external/Protobuf/inc</pElem>
             <pElem>../../res/ProtobufSource/cpp</pElem>
+            <pElem>../../external/Protobuf/inc</pElem>
             <pElem>..</pElem>
           </incDir>
           <preprocessorList>
@@ -53,24 +53,12 @@
           <warningLevel>2</warningLevel>
         </asmTool>
         <linkerTool>
-          <output>../bin/armyantserverd</output>
-          <linkerAddLib>
-            <pElem>../../external/ArmyAntLib/bin</pElem>
-          </linkerAddLib>
+          <output>../../bin/armyantserverd</output>
           <linkerLibItems>
-            <linkerLibLibItem>ArmyAnt_d_64</linkerLibLibItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../ServerUtilities"
-                            CT="3"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../ServerUtilities"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="../bin/libserverutilities_d.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
+            <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
+            <linkerOptionItem>-lprotobuf</linkerOptionItem>
+            <linkerOptionItem>-lprotobuf-lite</linkerOptionItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_d_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../ServerCore"
                             CT="3"
@@ -80,23 +68,23 @@
                             WD="../ServerCore"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="../bin/libservercore_d.a">
+                            OP="../../bin/libservercore_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../ServerUtilities"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../ServerUtilities"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="../../bin/libserverutilities_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
-        <requiredProjects>
-          <makeArtifact PL="../ServerCore"
-                        CT="3"
-                        CN="Debug"
-                        AC="true"
-                        BL="true"
-                        WD="../ServerCore"
-                        BC="${MAKE}  -f Makefile CONF=Debug"
-                        CC="${MAKE}  -f Makefile CONF=Debug clean"
-                        OP="../bin/libservercore_d.a">
-          </makeArtifact>
-        </requiredProjects>
       </compileType>
       <item path="../../src/ServerEntry/ArmyAntServer.cpp"
             ex="false"
@@ -149,24 +137,12 @@
           <warningLevel>2</warningLevel>
         </asmTool>
         <linkerTool>
-          <output>../bin/armyantserver</output>
-          <linkerAddLib>
-            <pElem>../../external/ArmyAntLib/bin</pElem>
-          </linkerAddLib>
+          <output>../../bin/armyantserver</output>
           <linkerLibItems>
-            <linkerLibLibItem>ArmyAnt_64</linkerLibLibItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../ServerUtilities"
-                            CT="3"
-                            CN="Release"
-                            AC="false"
-                            BL="true"
-                            WD="../ServerUtilities"
-                            BC="${MAKE}  -f Makefile CONF=Release"
-                            CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="../bin/libserverutilities.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
+            <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
+            <linkerOptionItem>-lprotobuf</linkerOptionItem>
+            <linkerOptionItem>-lprotobuf-lite</linkerOptionItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../ServerCore"
                             CT="3"
@@ -176,23 +152,23 @@
                             WD="../ServerCore"
                             BC="${MAKE}  -f Makefile CONF=Release"
                             CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="../bin/libservercore.a">
+                            OP="../../bin/libservercore.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../ServerUtilities"
+                            CT="3"
+                            CN="Release"
+                            AC="false"
+                            BL="true"
+                            WD="../ServerUtilities"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="../../bin/libserverutilities.a">
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
-        <requiredProjects>
-          <makeArtifact PL="../ServerCore"
-                        CT="3"
-                        CN="Release"
-                        AC="false"
-                        BL="true"
-                        WD="../ServerCore"
-                        BC="${MAKE}  -f Makefile CONF=Release"
-                        CC="${MAKE}  -f Makefile CONF=Release clean"
-                        OP="../bin/libservercore.a">
-          </makeArtifact>
-        </requiredProjects>
       </compileType>
       <item path="../../src/ServerEntry/ArmyAntServer.cpp"
             ex="false"

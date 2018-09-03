@@ -52,19 +52,23 @@ FFLAGS=-m64
 ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../../external/ArmyAntLib/bin -lArmyAnt_64 ../ServerUtilities/../bin/libserverutilities.a ../ServerCore/../bin/libservercore.a
+LDLIBSOPTIONS=../../external/boost/stage/lib64-shared/libboost_system.so -lprotobuf -lprotobuf-lite ../../external/ArmyAntLib/bin/libArmyAnt_64.so ../ServerCore/../../bin/libservercore.a ../ServerUtilities/../../bin/libserverutilities.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../bin/armyantserver
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../bin/armyantserver
 
-../bin/armyantserver: ../ServerUtilities/../bin/libserverutilities.a
+../../bin/armyantserver: ../../external/boost/stage/lib64-shared/libboost_system.so
 
-../bin/armyantserver: ../ServerCore/../bin/libservercore.a
+../../bin/armyantserver: ../../external/ArmyAntLib/bin/libArmyAnt_64.so
 
-../bin/armyantserver: ${OBJECTFILES}
-	${MKDIR} -p ../bin
-	${LINK.cc} -o ../bin/armyantserver ${OBJECTFILES} ${LDLIBSOPTIONS}
+../../bin/armyantserver: ../ServerCore/../../bin/libservercore.a
+
+../../bin/armyantserver: ../ServerUtilities/../../bin/libserverutilities.a
+
+../../bin/armyantserver: ${OBJECTFILES}
+	${MKDIR} -p ../../bin
+	${LINK.cc} -o ../../bin/armyantserver ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerEntry/ArmyAntServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/acbbdd84
@@ -73,20 +77,18 @@ ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ..
 
 # Subprojects
 .build-subprojects:
+	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release
 	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release
-	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release
-	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ../bin/armyantserver
+	${RM} ../../bin/armyantserver
 
 # Subprojects
 .clean-subprojects:
+	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release clean
 	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
