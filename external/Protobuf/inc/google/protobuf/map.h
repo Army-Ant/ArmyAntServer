@@ -37,6 +37,7 @@
 #ifndef GOOGLE_PROTOBUF_MAP_H__
 #define GOOGLE_PROTOBUF_MAP_H__
 
+#include <initializer_list>
 #include <iterator>
 #include <limits>  // To support Visual Studio 2008
 #include <set>
@@ -47,6 +48,10 @@
 #include <google/protobuf/generated_enum_util.h>
 #include <google/protobuf/map_type_handler.h>
 #include <google/protobuf/stubs/hash.h>
+
+#ifdef SWIG
+#error "You cannot SWIG proto headers"
+#endif
 
 namespace google {
 namespace protobuf {
@@ -77,7 +82,7 @@ class DynamicMapField;
 class GeneratedMessageReflection;
 }  // namespace internal
 
-// This is the class for google::protobuf::Map's internal value_type. Instead of using
+// This is the class for Map's internal value_type. Instead of using
 // std::pair as value_type, we use this class which provides us more control of
 // its process of construction and destruction.
 template <typename Key, typename T>
@@ -104,11 +109,11 @@ class MapPair {
   T second;
 
  private:
-  friend class ::google::protobuf::Arena;
+  friend class Arena;
   friend class Map<Key, T>;
 };
 
-// google::protobuf::Map is an associative container type used to store protobuf map
+// Map is an associative container type used to store protobuf map
 // fields.  Each Map instance may or may not use a different hash function, a
 // different iteration order, and so on.  E.g., please don't examine
 // implementation details to decide if the following would work:
@@ -142,7 +147,6 @@ class Map {
     insert(other.begin(), other.end());
   }
 
-#if LANG_CXX11
   Map(Map&& other) noexcept : Map() {
     if (other.arena_) {
       *this = other;
@@ -160,7 +164,6 @@ class Map {
     }
     return *this;
   }
-#endif
 
   template <class InputIt>
   Map(const InputIt& first, const InputIt& last)
@@ -182,7 +185,7 @@ class Map {
   }
 
   // re-implement std::allocator to use arena allocator for memory allocation.
-  // Used for google::protobuf::Map implementation. Users should not use this class
+  // Used for Map implementation. Users should not use this class
   // directly.
   template <typename U>
   class MapAllocator {
@@ -741,7 +744,7 @@ class Map {
           return true;
         }
       } else if (GOOGLE_PREDICT_FALSE(new_size <= lo_cutoff &&
-                               num_buckets_ > kMinTableSize)) {
+                                    num_buckets_ > kMinTableSize)) {
         size_type lg2_of_size_reduction_factor = 1;
         // It's possible we want to shrink a lot here... size() could even be 0.
         // So, estimate how much to shrink by making sure we don't shrink so
@@ -1048,9 +1051,8 @@ class Map {
     value_type** value =  &(*elements_)[key];
     if (*value == NULL) {
       *value = CreateValueTypeInternal(key);
-      internal::MapValueInitializer<google::protobuf::is_proto_enum<T>::value,
-                                    T>::Initialize((*value)->second,
-                                                   default_enum_value_);
+      internal::MapValueInitializer<is_proto_enum<T>::value, T>::Initialize(
+          (*value)->second, default_enum_value_);
     }
     return (*value)->second;
   }
@@ -1112,6 +1114,9 @@ class Map {
         operator[](it->first) = it->second;
       }
     }
+  }
+  void insert(std::initializer_list<value_type> values) {
+    insert(values.begin(), values.end());
   }
 
   // Erase and clear
@@ -1201,7 +1206,7 @@ class Map {
   int default_enum_value_;
   InnerMap* elements_;
 
-  friend class ::google::protobuf::Arena;
+  friend class Arena;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   template <typename Derived, typename K, typename V,
@@ -1212,6 +1217,6 @@ class Map {
 };
 
 }  // namespace protobuf
-
 }  // namespace google
+
 #endif  // GOOGLE_PROTOBUF_MAP_H__

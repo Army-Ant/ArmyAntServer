@@ -37,8 +37,8 @@ namespace ArmyAntMessage.DBProxy {
             "ZRgBIAEoCzIkLkFybXlBbnRNZXNzYWdlLkRCUHJveHkuU3FsVGFibGVJbmZv",
             "EjEKBWhlYWRzGAIgAygLMiIuQXJteUFudE1lc3NhZ2UuREJQcm94eS5TcWxI",
             "ZWFkT25lEiwKBHJvd3MYAyADKAsyHi5Bcm15QW50TWVzc2FnZS5EQlByb3h5",
-            "LlNxbFJvdyIiChJBbnkyRGJwX1NxbFJlcXVlc3QSDAoEdHlwZRgBIAEoBWIG",
-            "cHJvdG8z"));
+            "LlNxbFJvdyI1ChJBbnkyRGJwX1NxbFJlcXVlc3QSDAoEdHlwZRgBIAEoBRIR",
+            "Cgl0YWJsZU5hbWUYAiABKAliBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -47,7 +47,7 @@ namespace ArmyAntMessage.DBProxy {
             new pbr::GeneratedClrTypeInfo(typeof(global::ArmyAntMessage.DBProxy.SqlDatabaseInfo), global::ArmyAntMessage.DBProxy.SqlDatabaseInfo.Parser, new[]{ "Name", "Server", "Charset", "SortRule" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ArmyAntMessage.DBProxy.SqlTableInfo), global::ArmyAntMessage.DBProxy.SqlTableInfo.Parser, new[]{ "TableName", "Engine", "Comment", "Database" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ArmyAntMessage.DBProxy.SqlResult), global::ArmyAntMessage.DBProxy.SqlResult.Parser, new[]{ "Table", "Heads", "Rows" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest), global::ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.Parser, new[]{ "Type" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest), global::ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.Parser, new[]{ "Type", "TableName" }, null, null, null)
           }));
     }
     #endregion
@@ -685,7 +685,7 @@ namespace ArmyAntMessage.DBProxy {
       tableName_ = other.tableName_;
       engine_ = other.engine_;
       comment_ = other.comment_;
-      Database = other.database_ != null ? other.Database.Clone() : null;
+      database_ = other.database_ != null ? other.database_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -901,7 +901,7 @@ namespace ArmyAntMessage.DBProxy {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public SqlResult(SqlResult other) : this() {
-      Table = other.table_ != null ? other.Table.Clone() : null;
+      table_ = other.table_ != null ? other.table_.Clone() : null;
       heads_ = other.heads_.Clone();
       rows_ = other.rows_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1077,6 +1077,7 @@ namespace ArmyAntMessage.DBProxy {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Any2Dbp_SqlRequest(Any2Dbp_SqlRequest other) : this() {
       type_ = other.type_;
+      tableName_ = other.tableName_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1099,6 +1100,17 @@ namespace ArmyAntMessage.DBProxy {
       }
     }
 
+    /// <summary>Field number for the "tableName" field.</summary>
+    public const int TableNameFieldNumber = 2;
+    private string tableName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string TableName {
+      get { return tableName_; }
+      set {
+        tableName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Any2Dbp_SqlRequest);
@@ -1113,6 +1125,7 @@ namespace ArmyAntMessage.DBProxy {
         return true;
       }
       if (Type != other.Type) return false;
+      if (TableName != other.TableName) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1120,6 +1133,7 @@ namespace ArmyAntMessage.DBProxy {
     public override int GetHashCode() {
       int hash = 1;
       if (Type != 0) hash ^= Type.GetHashCode();
+      if (TableName.Length != 0) hash ^= TableName.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1137,6 +1151,10 @@ namespace ArmyAntMessage.DBProxy {
         output.WriteRawTag(8);
         output.WriteInt32(Type);
       }
+      if (TableName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TableName);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1147,6 +1165,9 @@ namespace ArmyAntMessage.DBProxy {
       int size = 0;
       if (Type != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Type);
+      }
+      if (TableName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TableName);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1162,6 +1183,9 @@ namespace ArmyAntMessage.DBProxy {
       if (other.Type != 0) {
         Type = other.Type;
       }
+      if (other.TableName.Length != 0) {
+        TableName = other.TableName;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1175,6 +1199,10 @@ namespace ArmyAntMessage.DBProxy {
             break;
           case 8: {
             Type = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            TableName = input.ReadString();
             break;
           }
         }

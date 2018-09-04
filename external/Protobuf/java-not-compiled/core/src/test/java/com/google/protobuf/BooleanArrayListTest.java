@@ -32,6 +32,7 @@ package com.google.protobuf;
 
 import static java.util.Arrays.asList;
 
+import com.google.protobuf.Internal.BooleanList;
 import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -297,7 +298,23 @@ public class BooleanArrayListTest extends TestCase {
     }
   }
 
-  private void assertImmutable(BooleanArrayList list) {
+  public void testRemoveEndOfCapacity() {
+    BooleanList toRemove =
+        BooleanArrayList.emptyList().mutableCopyWithCapacity(1);
+    toRemove.addBoolean(true);
+    toRemove.remove(0);
+    assertEquals(0, toRemove.size());
+  }
+
+  public void testSublistRemoveEndOfCapacity() {
+    BooleanList toRemove =
+        BooleanArrayList.emptyList().mutableCopyWithCapacity(1);
+    toRemove.addBoolean(true);
+    toRemove.subList(0, 1).clear();
+    assertEquals(0, toRemove.size());
+  }
+
+  private void assertImmutable(BooleanList list) {
 
     try {
       list.add(true);

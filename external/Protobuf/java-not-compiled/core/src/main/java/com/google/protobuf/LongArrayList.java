@@ -42,7 +42,8 @@ import java.util.RandomAccess;
  *
  * @author dweis@google.com (Daniel Weis)
  */
-final class LongArrayList extends AbstractProtobufList<Long>
+final class LongArrayList
+    extends AbstractProtobufList<Long>
     implements LongList, RandomAccess, PrimitiveNonBoxingCollection {
 
   private static final LongArrayList EMPTY_LIST = new LongArrayList();
@@ -79,6 +80,18 @@ final class LongArrayList extends AbstractProtobufList<Long>
   private LongArrayList(long[] other, int size) {
     array = other;
     this.size = size;
+  }
+
+  @Override
+  protected void removeRange(int fromIndex, int toIndex) {
+    ensureIsMutable();
+    if (toIndex < fromIndex) {
+      throw new IndexOutOfBoundsException("toIndex < fromIndex");
+    }
+
+    System.arraycopy(array, toIndex, array, fromIndex, size - toIndex);
+    size -= (toIndex - fromIndex);
+    modCount++;
   }
 
   @Override
@@ -246,7 +259,9 @@ final class LongArrayList extends AbstractProtobufList<Long>
     ensureIsMutable();
     ensureIndexInRange(index);
     long value = array[index];
-    System.arraycopy(array, index + 1, array, index, size - index);
+    if (index < size - 1) {
+      System.arraycopy(array, index + 1, array, index, size - index);
+    }
     size--;
     modCount++;
     return value;

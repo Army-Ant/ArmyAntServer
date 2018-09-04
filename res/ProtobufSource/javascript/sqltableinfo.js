@@ -247,7 +247,7 @@ proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.clearDatabase = function() {
 
 /**
  * Returns whether this field is set.
- * @return {!boolean}
+ * @return {boolean}
  */
 proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.hasDatabase = function() {
   return jspb.Message.getField(this, 8) != null;

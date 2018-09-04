@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v1.0": {
       "addressbook/1.0.0": {
         "dependencies": {
-          "Google.Protobuf": "3.5.1"
+          "Google.Protobuf": "3.6.1"
         },
         "runtime": {
           "AddressBook.dll": {}
@@ -928,7 +928,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "google.protobuf/3.5.1": {
+      "google.protobuf/3.6.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         },
@@ -1455,7 +1455,7 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "google.protobuf/3.5.1": {
+    "google.protobuf/3.6.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

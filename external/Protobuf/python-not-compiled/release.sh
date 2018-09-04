@@ -19,7 +19,7 @@ function run_install_test() {
   chmod +x test-venv/bin/protoc
 
   source test-venv/bin/activate
-  pip install -i ${PYPI} protobuf==${VERSION}
+  pip install -i ${PYPI} protobuf==${VERSION} --no-cache-dir
   deactivate
   rm -fr test-venv
 }
@@ -88,6 +88,7 @@ run_install_test ${TESTING_VERSION} python3.4 https://test.pypi.org/simple
 
 # Deploy egg/wheel packages to testing PyPI and test again.
 python setup.py bdist_egg bdist_wheel upload -r https://test.pypi.org/legacy/
+
 run_install_test ${TESTING_VERSION} python2.7 https://test.pypi.org/simple
 run_install_test ${TESTING_VERSION} python3.4 https://test.pypi.org/simple
 
@@ -107,7 +108,7 @@ if [ $TESTING_ONLY -eq 0 ]; then
   # include files you may not want in the package. E.g., if you have built
   # and tested with --cpp_implemenation, bdist_xxx will include the _message.so
   # file even when you no longer pass the --cpp_implemenation flag. See:
-  #   https://github.com/google/protobuf/issues/3042
+  #   https://github.com/protocolbuffers/protobuf/issues/3042
   python setup.py clean build bdist_egg bdist_wheel upload
 else
   # Set the version number back (i.e., remove dev suffix).

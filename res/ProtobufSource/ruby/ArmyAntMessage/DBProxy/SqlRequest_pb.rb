@@ -34,6 +34,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
   add_message "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest" do
     optional :type, :int32, 1
+    optional :tableName, :string, 2
   end
 end
 

@@ -6,9 +6,8 @@
 #include <algorithm>
 
 #include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
-#include <google/protobuf/stubs/once.h>
 #include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite_inl.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
@@ -19,24 +18,19 @@
 #include "third_party/protobuf/version.h"
 #endif
 // @@protoc_insertion_point(includes)
+#include <google/protobuf/port_def.inc>
+
 namespace ArmyAntMessage {
 namespace System {
 class SocketExtendNormal_V0_0_0_1DefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SocketExtendNormal_V0_0_0_1>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<SocketExtendNormal_V0_0_0_1> _instance;
 } _SocketExtendNormal_V0_0_0_1_default_instance_;
 }  // namespace System
 }  // namespace ArmyAntMessage
-namespace protobuf_ArmyAntMessage_2fSystem_2fSocketHead_2eproto {
-void InitDefaultsSocketExtendNormal_V0_0_0_1Impl() {
+static void InitDefaultsSocketExtendNormal_V0_0_0_1_ArmyAntMessage_2fSystem_2fSocketHead_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::ArmyAntMessage::System::_SocketExtendNormal_V0_0_0_1_default_instance_;
     new (ptr) ::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1();
@@ -45,14 +39,18 @@ void InitDefaultsSocketExtendNormal_V0_0_0_1Impl() {
   ::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1::InitAsDefaultInstance();
 }
 
-void InitDefaultsSocketExtendNormal_V0_0_0_1() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsSocketExtendNormal_V0_0_0_1Impl);
+::google::protobuf::internal::SCCInfo<0> scc_info_SocketExtendNormal_V0_0_0_1_ArmyAntMessage_2fSystem_2fSocketHead_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSocketExtendNormal_V0_0_0_1_ArmyAntMessage_2fSystem_2fSocketHead_2eproto}, {}};
+
+void InitDefaults_ArmyAntMessage_2fSystem_2fSocketHead_2eproto() {
+  ::google::protobuf::internal::InitSCC(&scc_info_SocketExtendNormal_V0_0_0_1_ArmyAntMessage_2fSystem_2fSocketHead_2eproto.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[1];
+::google::protobuf::Metadata file_level_metadata_ArmyAntMessage_2fSystem_2fSocketHead_2eproto[1];
+constexpr ::google::protobuf::EnumDescriptor const** file_level_enum_descriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto = nullptr;
+constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto = nullptr;
 
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+const ::google::protobuf::uint32 TableStruct_ArmyAntMessage_2fSystem_2fSocketHead_2eproto::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -70,51 +68,32 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::System::_SocketExtendNormal_V0_0_0_1_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  ::google::protobuf::MessageFactory* factory = NULL;
-  AssignDescriptors(
-      "ArmyAntMessage/System/SocketHead.proto", schemas, file_default_instances, TableStruct::offsets, factory,
-      file_level_metadata, NULL, NULL);
-}
+::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_ArmyAntMessage_2fSystem_2fSocketHead_2eproto = {
+  {}, AddDescriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto, "ArmyAntMessage/System/SocketHead.proto", schemas,
+  file_default_instances, TableStruct_ArmyAntMessage_2fSystem_2fSocketHead_2eproto::offsets,
+  file_level_metadata_ArmyAntMessage_2fSystem_2fSocketHead_2eproto, 1, file_level_enum_descriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto, file_level_service_descriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &protobuf_AssignDescriptors);
-}
+::google::protobuf::internal::DescriptorTable descriptor_table_ArmyAntMessage_2fSystem_2fSocketHead_2eproto = {
+  false, InitDefaults_ArmyAntMessage_2fSystem_2fSocketHead_2eproto, 
+  "\n&ArmyAntMessage/System/SocketHead.proto"
+  "\022\025ArmyAntMessage.System\"[\n\033SocketExtendN"
+  "ormal_V0_0_0_1\022\016\n\006app_id\030\001 \001(\003\022\026\n\016conten"
+  "t_length\030\002 \001(\005\022\024\n\014message_code\030\003 \001(\005b\006pr"
+  "oto3"
+,
+  "ArmyAntMessage/System/SocketHead.proto", &assign_descriptors_table_ArmyAntMessage_2fSystem_2fSocketHead_2eproto, 164,
+};
 
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 1);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n&ArmyAntMessage/System/SocketHead.proto"
-      "\022\025ArmyAntMessage.System\"[\n\033SocketExtendN"
-      "ormal_V0_0_0_1\022\016\n\006app_id\030\001 \001(\003\022\026\n\016conten"
-      "t_length\030\002 \001(\005\022\024\n\014message_code\030\003 \001(\005b\006pr"
-      "oto3"
+void AddDescriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto() {
+  static constexpr ::google::protobuf::internal::InitFunc deps[1] =
+  {
   };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 164);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "ArmyAntMessage/System/SocketHead.proto", &protobuf_RegisterTypes);
+ ::google::protobuf::internal::AddDescriptors(&descriptor_table_ArmyAntMessage_2fSystem_2fSocketHead_2eproto, deps, 0);
 }
 
-void AddDescriptors() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_ArmyAntMessage_2fSystem_2fSocketHead_2eproto
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_ArmyAntMessage_2fSystem_2fSocketHead_2eproto = []() { AddDescriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto(); return true; }();
 namespace ArmyAntMessage {
 namespace System {
 
@@ -122,6 +101,10 @@ namespace System {
 
 void SocketExtendNormal_V0_0_0_1::InitAsDefaultInstance() {
 }
+class SocketExtendNormal_V0_0_0_1::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int SocketExtendNormal_V0_0_0_1::kAppIdFieldNumber;
 const int SocketExtendNormal_V0_0_0_1::kContentLengthFieldNumber;
@@ -130,16 +113,12 @@ const int SocketExtendNormal_V0_0_0_1::kMessageCodeFieldNumber;
 
 SocketExtendNormal_V0_0_0_1::SocketExtendNormal_V0_0_0_1()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_ArmyAntMessage_2fSystem_2fSocketHead_2eproto::InitDefaultsSocketExtendNormal_V0_0_0_1();
-  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
 }
 SocketExtendNormal_V0_0_0_1::SocketExtendNormal_V0_0_0_1(const SocketExtendNormal_V0_0_0_1& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _cached_size_(0) {
+      _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&app_id_, &from.app_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&message_code_) -
@@ -151,7 +130,6 @@ void SocketExtendNormal_V0_0_0_1::SharedCtor() {
   ::memset(&app_id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&message_code_) -
       reinterpret_cast<char*>(&app_id_)) + sizeof(message_code_));
-  _cached_size_ = 0;
 }
 
 SocketExtendNormal_V0_0_0_1::~SocketExtendNormal_V0_0_0_1() {
@@ -163,27 +141,13 @@ void SocketExtendNormal_V0_0_0_1::SharedDtor() {
 }
 
 void SocketExtendNormal_V0_0_0_1::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SocketExtendNormal_V0_0_0_1::descriptor() {
-  ::protobuf_ArmyAntMessage_2fSystem_2fSocketHead_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ArmyAntMessage_2fSystem_2fSocketHead_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SocketExtendNormal_V0_0_0_1& SocketExtendNormal_V0_0_0_1::default_instance() {
-  ::protobuf_ArmyAntMessage_2fSystem_2fSocketHead_2eproto::InitDefaultsSocketExtendNormal_V0_0_0_1();
+  ::google::protobuf::internal::InitSCC(&::scc_info_SocketExtendNormal_V0_0_0_1_ArmyAntMessage_2fSystem_2fSocketHead_2eproto.base);
   return *internal_default_instance();
 }
 
-SocketExtendNormal_V0_0_0_1* SocketExtendNormal_V0_0_0_1::New(::google::protobuf::Arena* arena) const {
-  SocketExtendNormal_V0_0_0_1* n = new SocketExtendNormal_V0_0_0_1;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
 
 void SocketExtendNormal_V0_0_0_1::Clear() {
 // @@protoc_insertion_point(message_clear_start:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
@@ -197,20 +161,88 @@ void SocketExtendNormal_V0_0_0_1::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* SocketExtendNormal_V0_0_0_1::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<SocketExtendNormal_V0_0_0_1*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // int64 app_id = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int64 value = val;
+        msg->set_app_id(value);
+        break;
+      }
+      // int32 content_length = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_content_length(value);
+        break;
+      }
+      // int32 message_code = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_message_code(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool SocketExtendNormal_V0_0_0_1::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // int64 app_id = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
@@ -223,8 +255,7 @@ bool SocketExtendNormal_V0_0_0_1::MergePartialFromCodedStream(
 
       // int32 content_length = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -237,8 +268,7 @@ bool SocketExtendNormal_V0_0_0_1::MergePartialFromCodedStream(
 
       // int32 message_code = 3;
       case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -268,6 +298,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void SocketExtendNormal_V0_0_0_1::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -290,9 +321,9 @@ void SocketExtendNormal_V0_0_0_1::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->message_code(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
 }
@@ -319,9 +350,9 @@ void SocketExtendNormal_V0_0_0_1::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->message_code(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
   return target;
@@ -331,11 +362,15 @@ size_t SocketExtendNormal_V0_0_0_1::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // int64 app_id = 1;
   if (this->app_id() != 0) {
     total_size += 1 +
@@ -358,9 +393,7 @@ size_t SocketExtendNormal_V0_0_0_1::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  SetCachedSize(cached_size);
   return total_size;
 }
 
@@ -368,7 +401,7 @@ void SocketExtendNormal_V0_0_0_1::MergeFrom(const ::google::protobuf::Message& f
 // @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
   GOOGLE_DCHECK_NE(&from, this);
   const SocketExtendNormal_V0_0_0_1* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SocketExtendNormal_V0_0_0_1>(
+      ::google::protobuf::DynamicCastToGenerated<SocketExtendNormal_V0_0_0_1>(
           &from);
   if (source == NULL) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
@@ -421,21 +454,27 @@ void SocketExtendNormal_V0_0_0_1::Swap(SocketExtendNormal_V0_0_0_1* other) {
 }
 void SocketExtendNormal_V0_0_0_1::InternalSwap(SocketExtendNormal_V0_0_0_1* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(app_id_, other->app_id_);
   swap(content_length_, other->content_length_);
   swap(message_code_, other->message_code_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata SocketExtendNormal_V0_0_0_1::GetMetadata() const {
-  protobuf_ArmyAntMessage_2fSystem_2fSocketHead_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ArmyAntMessage_2fSystem_2fSocketHead_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fSystem_2fSocketHead_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fSystem_2fSocketHead_2eproto[kIndexInFileMessages];
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace System
 }  // namespace ArmyAntMessage
+namespace google {
+namespace protobuf {
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1* Arena::CreateMaybeMessage< ::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1 >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1 >(arena);
+}
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)

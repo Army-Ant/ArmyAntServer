@@ -166,11 +166,11 @@ typedef GeneratorContext OutputDirectory;
 //   "foo=bar,baz,qux=corge"
 // parses to the pairs:
 //   ("foo", "bar"), ("baz", ""), ("qux", "corge")
-void ParseGeneratorParameter(
+LIBPROTOC_EXPORT void ParseGeneratorParameter(
     const string&, std::vector<std::pair<string, string> >*);
 
 }  // namespace compiler
 }  // namespace protobuf
-
 }  // namespace google
+
 #endif  // GOOGLE_PROTOBUF_COMPILER_CODE_GENERATOR_H__

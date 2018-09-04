@@ -32,6 +32,7 @@ package com.google.protobuf;
 
 import static java.util.Arrays.asList;
 
+import com.google.protobuf.Internal.LongList;
 import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -297,7 +298,23 @@ public class LongArrayListTest extends TestCase {
     }
   }
 
-  private void assertImmutable(LongArrayList list) {
+  public void testRemoveEndOfCapacity() {
+    LongList toRemove =
+        LongArrayList.emptyList().mutableCopyWithCapacity(1);
+    toRemove.addLong(3);
+    toRemove.remove(0);
+    assertEquals(0, toRemove.size());
+  }
+
+  public void testSublistRemoveEndOfCapacity() {
+    LongList toRemove =
+        LongArrayList.emptyList().mutableCopyWithCapacity(1);
+    toRemove.addLong(3);
+    toRemove.subList(0, 1).clear();
+    assertEquals(0, toRemove.size());
+  }
+
+  private void assertImmutable(LongList list) {
     if (list.contains(1L)) {
       throw new RuntimeException("Cannot test the immutability of lists that contain 1.");
     }

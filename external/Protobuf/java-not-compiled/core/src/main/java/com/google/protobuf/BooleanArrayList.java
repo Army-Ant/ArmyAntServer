@@ -42,7 +42,8 @@ import java.util.RandomAccess;
  *
  * @author dweis@google.com (Daniel Weis)
  */
-final class BooleanArrayList extends AbstractProtobufList<Boolean>
+final class BooleanArrayList
+    extends AbstractProtobufList<Boolean>
     implements BooleanList, RandomAccess, PrimitiveNonBoxingCollection {
 
   private static final BooleanArrayList EMPTY_LIST = new BooleanArrayList();
@@ -79,6 +80,18 @@ final class BooleanArrayList extends AbstractProtobufList<Boolean>
   private BooleanArrayList(boolean[] other, int size) {
     array = other;
     this.size = size;
+  }
+
+  @Override
+  protected void removeRange(int fromIndex, int toIndex) {
+    ensureIsMutable();
+    if (toIndex < fromIndex) {
+      throw new IndexOutOfBoundsException("toIndex < fromIndex");
+    }
+
+    System.arraycopy(array, toIndex, array, fromIndex, size - toIndex);
+    size -= (toIndex - fromIndex);
+    modCount++;
   }
 
   @Override
@@ -246,7 +259,9 @@ final class BooleanArrayList extends AbstractProtobufList<Boolean>
     ensureIsMutable();
     ensureIndexInRange(index);
     boolean value = array[index];
-    System.arraycopy(array, index + 1, array, index, size - index);
+    if (index < size - 1) {
+      System.arraycopy(array, index + 1, array, index, size - index);
+    }
     size--;
     modCount++;
     return value;

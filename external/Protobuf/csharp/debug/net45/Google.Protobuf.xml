@@ -371,7 +371,7 @@
             <remarks>
             This limit is applied when reading from the underlying stream, as a sanity check. It is
             not applied when reading from a byte array data source without an underlying stream.
-            The default value is 64MB.
+            The default value is Int32.MaxValue.
             </remarks>
             <value>
             The size limit.
@@ -388,6 +388,11 @@
             <value>
             The recursion limit for this stream.
             </value>
+        </member>
+        <member name="P:Google.Protobuf.CodedInputStream.DiscardUnknownFields">
+            <summary>
+            Internal-only property; when set to true, unknown fields will be discarded while parsing.
+            </summary>
         </member>
         <member name="M:Google.Protobuf.CodedInputStream.Dispose">
             <summary>
@@ -2722,6 +2727,13 @@
             <exception cref="T:Google.Protobuf.InvalidJsonException">The JSON does not comply with RFC 7159</exception>
             <exception cref="T:Google.Protobuf.InvalidProtocolBufferException">The JSON does not represent a Protocol Buffers message correctly</exception>
         </member>
+        <member name="M:Google.Protobuf.MessageParser.WithDiscardUnknownFields(System.Boolean)">
+            <summary>
+            Creates a new message parser which optionally discards unknown fields when parsing.
+            </summary>
+            <param name="discardUnknownFields">Whether or not to discard unknown fields when parsing.</param>
+            <returns>A newly configured message parser.</returns>
+        </member>
         <member name="T:Google.Protobuf.MessageParser`1">
             <summary>
             A parser for a specific message type.
@@ -2812,6 +2824,13 @@
             <returns>The parsed message.</returns>
             <exception cref="T:Google.Protobuf.InvalidJsonException">The JSON does not comply with RFC 7159</exception>
             <exception cref="T:Google.Protobuf.InvalidProtocolBufferException">The JSON does not represent a Protocol Buffers message correctly</exception>
+        </member>
+        <member name="M:Google.Protobuf.MessageParser`1.WithDiscardUnknownFields(System.Boolean)">
+            <summary>
+            Creates a new message parser which optionally discards unknown fields when parsing.
+            </summary>
+            <param name="discardUnknownFields">Whether or not to discard unknown fields when parsing.</param>
+            <returns>A newly configured message parser.</returns>
         </member>
         <member name="T:Google.Protobuf.ProtoPreconditions">
             <summary>
@@ -3650,6 +3669,26 @@
             Use this option to change the namespace of php generated classes. Default
             is empty. When this option is empty, the package name will be used for
             determining the namespace.
+            </summary>
+        </member>
+        <member name="F:Google.Protobuf.Reflection.FileOptions.PhpMetadataNamespaceFieldNumber">
+            <summary>Field number for the "php_metadata_namespace" field.</summary>
+        </member>
+        <member name="P:Google.Protobuf.Reflection.FileOptions.PhpMetadataNamespace">
+            <summary>
+            Use this option to change the namespace of php generated metadata classes.
+            Default is empty. When this option is empty, the proto file name will be used
+            for determining the namespace.
+            </summary>
+        </member>
+        <member name="F:Google.Protobuf.Reflection.FileOptions.RubyPackageFieldNumber">
+            <summary>Field number for the "ruby_package" field.</summary>
+        </member>
+        <member name="P:Google.Protobuf.Reflection.FileOptions.RubyPackage">
+            <summary>
+            Use this option to change the package of ruby generated classes. Default
+            is empty. When this option is not set, the package name will be used for
+            determining the ruby package.
             </summary>
         </member>
         <member name="F:Google.Protobuf.Reflection.FileOptions.UninterpretedOptionFieldNumber">
@@ -4526,12 +4565,17 @@
             that is the responsibility of the accessor.
             </para>
             <para>
-            The value returned by this property will be non-null for all regular fields. However,
-            if a message containing a map field is introspected, the list of nested messages will include
+            In descriptors for generated code, the value returned by this property will be non-null for all
+            regular fields. However, if a message containing a map field is introspected, the list of nested messages will include
             an auto-generated nested key/value pair message for the field. This is not represented in any
             generated type, and the value of the map field itself is represented by a dictionary in the
             reflection API. There are never instances of those "hidden" messages, so no accessor is provided
             and this property will return null.
+            </para>
+            <para>
+            In dynamically loaded descriptors, the value returned by this property will current be null;
+            if and when dynamic messages are supported, it will return a suitable accessor to work with
+            them.
             </para>
             </remarks>
         </member>
@@ -4700,7 +4744,7 @@
             Computes the full name of a descriptor within this file, with an optional parent message.
             </summary>
         </member>
-        <member name="M:Google.Protobuf.Reflection.FileDescriptor.DeterminePublicDependencies(Google.Protobuf.Reflection.FileDescriptor,Google.Protobuf.Reflection.FileDescriptorProto,Google.Protobuf.Reflection.FileDescriptor[],System.Boolean)">
+        <member name="M:Google.Protobuf.Reflection.FileDescriptor.DeterminePublicDependencies(Google.Protobuf.Reflection.FileDescriptor,Google.Protobuf.Reflection.FileDescriptorProto,System.Collections.Generic.IEnumerable{Google.Protobuf.Reflection.FileDescriptor},System.Boolean)">
             <summary>
             Extracts public dependencies from direct dependencies. This is a static method despite its
             first parameter, as the value we're in the middle of constructing is only used for exceptions.
@@ -4802,6 +4846,17 @@
             code is "external", but should not be called directly by end users.
             </remarks>
         </member>
+        <member name="M:Google.Protobuf.Reflection.FileDescriptor.BuildFromByteStrings(System.Collections.Generic.IEnumerable{Google.Protobuf.ByteString})">
+            <summary>
+            Converts the given descriptor binary data into FileDescriptor objects.
+            Note: reflection using the returned FileDescriptors is not currently supported.
+            </summary>
+            <param name="descriptorData">The binary file descriptor proto data. Must not be null, and any
+            dependencies must come before the descriptor which depends on them. (If A depends on B, and B
+            depends on C, then the descriptors must be presented in the order C, B, A.) This is compatible
+            with the order in which protoc provides descriptors to plugins.</param>
+            <returns>The file descriptors corresponding to <paramref name="descriptorData"/>.</returns>
+        </member>
         <member name="M:Google.Protobuf.Reflection.FileDescriptor.ToString">
             <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
@@ -4829,6 +4884,19 @@
             <summary>
             The (possibly empty) set of custom options for this file.
             </summary>
+        </member>
+        <member name="M:Google.Protobuf.Reflection.FileDescriptor.ForceReflectionInitialization``1">
+            <summary>
+            Performs initialization for the given generic type argument.
+            </summary>
+            <remarks>
+            This method is present for the sake of AOT compilers. It allows code (whether handwritten or generated)
+            to make calls into the reflection machinery of this library to express an intention to use that type
+            reflectively (e.g. for JSON parsing and formatting). The call itself does almost nothing, but AOT compilers
+            attempting to determine which generic type arguments need to be handled will spot the code path and act
+            accordingly.
+            </remarks>
+            <typeparam name="T">The type to force initialization for.</typeparam>
         </member>
         <member name="T:Google.Protobuf.Reflection.GeneratedClrTypeInfo">
             <summary>
@@ -5201,6 +5269,16 @@
             Gets an accessor for reflective access to the values associated with the oneof
             in a particular message.
             </summary>
+            <remarks>
+            <para>
+            In descriptors for generated code, the value returned by this property will always be non-null.
+            </para>
+            <para>
+            In dynamically loaded descriptors, the value returned by this property will current be null;
+            if and when dynamic messages are supported, it will return a suitable accessor to work with
+            them.
+            </para>
+            </remarks>
             <value>
             The accessor used for reflective access.
             </value>
@@ -5256,26 +5334,44 @@
         </member>
         <member name="M:Google.Protobuf.Reflection.ReflectionUtil.CreateFuncIMessageObject(System.Reflection.MethodInfo)">
             <summary>
-            Creates a delegate which will cast the argument to the appropriate method target type,
+            Creates a delegate which will cast the argument to the type that declares the method,
             call the method on it, then convert the result to object.
             </summary>
+            <param name="method">The method to create a delegate for, which must be declared in an IMessage
+            implementation.</param>
         </member>
-        <member name="M:Google.Protobuf.Reflection.ReflectionUtil.CreateFuncIMessageT``1(System.Reflection.MethodInfo)">
+        <member name="M:Google.Protobuf.Reflection.ReflectionUtil.CreateFuncIMessageInt32(System.Reflection.MethodInfo)">
             <summary>
-            Creates a delegate which will cast the argument to the appropriate method target type,
-            call the method on it, then convert the result to the specified type.
+            Creates a delegate which will cast the argument to the type that declares the method,
+            call the method on it, then convert the result to the specified type. The method is expected
+            to actually return an enum (because of where we're calling it - for oneof cases). Sometimes that
+            means we need some extra work to perform conversions.
             </summary>
+            <param name="method">The method to create a delegate for, which must be declared in an IMessage
+            implementation.</param>
         </member>
         <member name="M:Google.Protobuf.Reflection.ReflectionUtil.CreateActionIMessageObject(System.Reflection.MethodInfo)">
             <summary>
             Creates a delegate which will execute the given method after casting the first argument to
-            the target type of the method, and the second argument to the first parameter type of the method.
+            the type that declares the method, and the second argument to the first parameter type of the method.
             </summary>
+            <param name="method">The method to create a delegate for, which must be declared in an IMessage
+            implementation.</param>
         </member>
         <member name="M:Google.Protobuf.Reflection.ReflectionUtil.CreateActionIMessage(System.Reflection.MethodInfo)">
             <summary>
             Creates a delegate which will execute the given method after casting the first argument to
-            the target type of the method.
+            type that declares the method.
+            </summary>
+            <param name="method">The method to create a delegate for, which must be declared in an IMessage
+            implementation.</param>
+        </member>
+        <member name="M:Google.Protobuf.Reflection.ReflectionUtil.GetReflectionHelper(System.Type,System.Type)">
+            <summary>
+            Creates a reflection helper for the given type arguments. Currently these are created on demand
+            rather than cached; this will be "busy" when initially loading a message's descriptor, but after that
+            they can be garbage collected. We could cache them by type if that proves to be important, but creating
+            an object is pretty cheap.
             </summary>
         </member>
         <member name="T:Google.Protobuf.Reflection.RepeatedFieldAccessor">
@@ -5531,7 +5627,8 @@
             <summary>
             Create a new UnknownFieldSet if unknownFields is null.
             Parse a single field from <paramref name="input"/> and merge it
-            into unknownFields.
+            into unknownFields. If <paramref name="input"/> is configured to discard unknown fields,
+            <paramref name="unknownFields"/> will be returned as-is and the field will be skipped.
             </summary>
             <param name="unknownFields">The UnknownFieldSet which need to be merged</param>
             <param name="input">The coded input stream containing the field</param>
@@ -5656,17 +5753,18 @@
         </member>
         <member name="P:Google.Protobuf.WellKnownTypes.Any.TypeUrl">
              <summary>
-             A URL/resource name whose content describes the type of the
-             serialized protocol buffer message.
+             A URL/resource name that uniquely identifies the type of the serialized
+             protocol buffer message. The last segment of the URL's path must represent
+             the fully qualified name of the type (as in
+             `path/google.protobuf.Duration`). The name should be in a canonical form
+             (e.g., leading "." is not accepted).
             
-             For URLs which use the scheme `http`, `https`, or no scheme, the
-             following restrictions and interpretations apply:
+             In practice, teams usually precompile into the binary all types that they
+             expect it to use in the context of Any. However, for URLs which use the
+             scheme `http`, `https`, or no scheme, one can optionally set up a type
+             server that maps type URLs to message definitions as follows:
             
              * If no scheme is provided, `https` is assumed.
-             * The last segment of the URL's path must represent the fully
-               qualified name of the type (as in `path/google.protobuf.Duration`).
-               The name should be in a canonical form (e.g., leading "." is
-               not accepted).
              * An HTTP GET on the URL must yield a [google.protobuf.Type][]
                value in binary format, or produce an error.
              * Applications are allowed to cache lookup results based on the
@@ -5674,6 +5772,10 @@
                lookup. Therefore, binary compatibility needs to be preserved
                on changes to types. (Use versioned type names to manage
                breaking changes.)
+            
+             Note: this functionality is not currently available in the official
+             protobuf release, and it is not used for type URLs beginning with
+             type.googleapis.com.
             
              Schemes other than `http`, `https` (or the empty scheme) might be
              used with implementation specific semantics.
@@ -6277,57 +6379,49 @@
              describe the updated values, the API ignores the values of all
              fields not covered by the mask.
             
-             If a repeated field is specified for an update operation, the existing
-             repeated values in the target resource will be overwritten by the new values.
-             Note that a repeated field is only allowed in the last position of a `paths`
-             string.
+             If a repeated field is specified for an update operation, new values will
+             be appended to the existing repeated field in the target resource. Note that
+             a repeated field is only allowed in the last position of a `paths` string.
             
              If a sub-message is specified in the last position of the field mask for an
-             update operation, then the existing sub-message in the target resource is
-             overwritten. Given the target message:
+             update operation, then new value will be merged into the existing sub-message
+             in the target resource.
+            
+             For example, given the target message:
             
                  f {
                    b {
-                     d : 1
-                     x : 2
+                     d: 1
+                     x: 2
                    }
-                   c : 1
+                   c: [1]
                  }
             
              And an update message:
             
                  f {
                    b {
-                     d : 10
+                     d: 10
                    }
+                   c: [2]
                  }
             
              then if the field mask is:
             
-              paths: "f.b"
+              paths: ["f.b", "f.c"]
             
              then the result will be:
             
                  f {
                    b {
-                     d : 10
+                     d: 10
+                     x: 2
                    }
-                   c : 1
+                   c: [1, 2]
                  }
             
-             However, if the update mask was:
-            
-              paths: "f.b.d"
-            
-             then the result would be:
-            
-                 f {
-                   b {
-                     d : 10
-                     x : 2
-                   }
-                   c : 1
-                 }
+             An implementation may provide options to override this default behavior for
+             repeated and message fields.
             
              In order to reset a field's value to the default, the field must
              be in the mask and set to the default value in the provided resource.
@@ -6413,8 +6507,8 @@
             
              ## Field Mask Verification
             
-             The implementation of the all the API methods, which have any FieldMask type
-             field in the request, should verify the included field paths, and return
+             The implementation of any API method which has a FieldMask type field in the
+             request should verify the included field paths, and return an
              `INVALID_ARGUMENT` error if any path is duplicated or unmappable.
              </summary>
         </member>
@@ -6735,7 +6829,9 @@
              {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional
              seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),
              are optional. The "Z" suffix indicates the timezone ("UTC"); the timezone
-             is required, though only UTC (as indicated by "Z") is presently supported.
+             is required. A proto3 JSON serializer should always use UTC (as indicated by
+             "Z") when printing the Timestamp type and a proto3 JSON parser should be
+             able to accept both UTC and other timezones (as indicated by an offset).
             
              For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past
              01:30 UTC on January 15, 2017.
@@ -6746,8 +6842,8 @@
              to this format using [`strftime`](https://docs.python.org/2/library/time.html#time.strftime)
              with the time format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one
              can use the Joda Time's [`ISODateTimeFormat.dateTime()`](
-             http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime--)
-             to obtain a formatter capable of generating timestamps in this format.
+             http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime--
+             ) to obtain a formatter capable of generating timestamps in this format.
              </summary>
         </member>
         <member name="F:Google.Protobuf.WellKnownTypes.Timestamp.SecondsFieldNumber">
@@ -6854,6 +6950,82 @@
             <param name="nanoseconds">Nanoseconds portion of the duration.</param>
             <param name="diagnosticOnly">Determines the handling of non-normalized values</param>
             <exception cref="T:System.InvalidOperationException">The represented duration is invalid, and <paramref name="diagnosticOnly"/> is <c>false</c>.</exception>
+        </member>
+        <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.CompareTo(Google.Protobuf.WellKnownTypes.Timestamp)">
+            <summary>
+            Given another timestamp, returns 0 if the timestamps are equivalent, -1 if this timestamp precedes the other, and 1 otherwise
+            </summary>
+            <remarks>
+            Make sure the timestamps are normalized. Comparing non-normalized timestamps is not specified and may give unexpected results.
+            </remarks>
+            <param name="other">Timestamp to compare</param>
+            <returns>an integer indicating whether this timestamp precedes or follows the other</returns>
+        </member>
+        <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.op_LessThan(Google.Protobuf.WellKnownTypes.Timestamp,Google.Protobuf.WellKnownTypes.Timestamp)">
+            <summary>
+            Compares two timestamps and returns whether the first is less than (chronologically precedes) the second
+            </summary>
+            <remarks>
+            Make sure the timestamps are normalized. Comparing non-normalized timestamps is not specified and may give unexpected results.
+            </remarks>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns>true if a precedes b</returns>
+        </member>
+        <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.op_GreaterThan(Google.Protobuf.WellKnownTypes.Timestamp,Google.Protobuf.WellKnownTypes.Timestamp)">
+            <summary>
+            Compares two timestamps and returns whether the first is greater than (chronologically follows) the second
+            </summary>
+            <remarks>
+            Make sure the timestamps are normalized. Comparing non-normalized timestamps is not specified and may give unexpected results.
+            </remarks>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns>true if a follows b</returns>
+        </member>
+        <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.op_LessThanOrEqual(Google.Protobuf.WellKnownTypes.Timestamp,Google.Protobuf.WellKnownTypes.Timestamp)">
+            <summary>
+            Compares two timestamps and returns whether the first is less than (chronologically precedes) the second
+            </summary>
+            <remarks>
+            Make sure the timestamps are normalized. Comparing non-normalized timestamps is not specified and may give unexpected results.
+            </remarks>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns>true if a precedes b</returns>
+        </member>
+        <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.op_GreaterThanOrEqual(Google.Protobuf.WellKnownTypes.Timestamp,Google.Protobuf.WellKnownTypes.Timestamp)">
+            <summary>
+            Compares two timestamps and returns whether the first is greater than (chronologically follows) the second
+            </summary>
+            <remarks>
+            Make sure the timestamps are normalized. Comparing non-normalized timestamps is not specified and may give unexpected results.
+            </remarks>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns>true if a follows b</returns>
+        </member>
+        <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.op_Equality(Google.Protobuf.WellKnownTypes.Timestamp,Google.Protobuf.WellKnownTypes.Timestamp)">
+            <summary>
+            Returns whether two timestamps are equivalent
+            </summary>
+            <remarks>
+            Make sure the timestamps are normalized. Comparing non-normalized timestamps is not specified and may give unexpected results.
+            </remarks>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns>true if the two timestamps refer to the same nanosecond</returns>
+        </member>
+        <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.op_Inequality(Google.Protobuf.WellKnownTypes.Timestamp,Google.Protobuf.WellKnownTypes.Timestamp)">
+            <summary>
+            Returns whether two timestamps differ
+            </summary>
+            <remarks>
+            Make sure the timestamps are normalized. Comparing non-normalized timestamps is not specified and may give unexpected results.
+            </remarks>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns>true if the two timestamps differ</returns>
         </member>
         <member name="M:Google.Protobuf.WellKnownTypes.Timestamp.ToDiagnosticString">
             <summary>

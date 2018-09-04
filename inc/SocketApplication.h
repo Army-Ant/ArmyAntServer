@@ -68,7 +68,7 @@ private:
 	std::mutex connectMutex;
 	uint32 bufferLength;
 
-	friend class ClientInformation;
+	friend struct ClientInformation;
 
 	static bool onServerConnected(uint32 index, void*pThis);
 	static void onServerDisonnected(uint32 index, void*pThis);

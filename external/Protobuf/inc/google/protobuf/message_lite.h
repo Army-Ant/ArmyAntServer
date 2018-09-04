@@ -40,25 +40,47 @@
 #define GOOGLE_PROTOBUF_MESSAGE_LITE_H__
 
 #include <climits>
+#include <string>
 #include <google/protobuf/stubs/common.h>
 #include <google/protobuf/stubs/logging.h>
+#include <google/protobuf/arena.h>
 #include <google/protobuf/stubs/once.h>
-#include <google/protobuf/stubs/port.h>
+#include <google/protobuf/port.h>
+
+
+#include <google/protobuf/port_def.inc>
+
+#ifdef SWIG
+#error "You cannot SWIG proto headers"
+#endif
 
 namespace google {
 namespace protobuf {
-class Arena;
+
+template <typename T>
+class RepeatedPtrField;
+
 namespace io {
+
 class CodedInputStream;
 class CodedOutputStream;
 class ZeroCopyInputStream;
 class ZeroCopyOutputStream;
-}
+
+}  // namespace io
 namespace internal {
 
-class WireFormatLite;
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+// See parse_context.h for explanation
+class ParseContext;
+typedef const char* (*ParseFunc)(const char* ptr, const char* end, void* object,
+                                 ParseContext* ctx);
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-#ifndef SWIG
+class RepeatedPtrFieldBase;
+class WireFormatLite;
+class WeakFieldMap;
+
 // We compute sizes as size_t but cache them as int.  This function converts a
 // computed size to a cached size.  Since we don't proceed with serialization
 // if the total size was > INT_MAX, it is not important what this function
@@ -110,13 +132,7 @@ class ExplicitlyConstructed {
     get_mutable()->~T();
   }
 
-#if LANG_CXX11
-  constexpr
-#endif
-      const T&
-      get() const {
-    return reinterpret_cast<const T&>(union_);
-  }
+  constexpr const T& get() const { return reinterpret_cast<const T&>(union_); }
   T* get_mutable() { return reinterpret_cast<T*>(&union_); }
 
  private:
@@ -130,22 +146,16 @@ class ExplicitlyConstructed {
 
 // Default empty string object. Don't use this directly. Instead, call
 // GetEmptyString() to get the reference.
-extern ExplicitlyConstructed< ::std::string> fixed_address_empty_string;
-LIBPROTOBUF_EXPORT extern ProtobufOnceType empty_string_once_init_;
-LIBPROTOBUF_EXPORT void InitEmptyString();
+LIBPROTOBUF_EXPORT extern ExplicitlyConstructed<::std::string>
+    fixed_address_empty_string;
 
 
 LIBPROTOBUF_EXPORT inline const ::std::string& GetEmptyStringAlreadyInited() {
   return fixed_address_empty_string.get();
 }
 
-LIBPROTOBUF_EXPORT inline const ::std::string& GetEmptyString() {
-  ::google::protobuf::GoogleOnceInit(&empty_string_once_init_, &InitEmptyString);
-  return GetEmptyStringAlreadyInited();
-}
-
 LIBPROTOBUF_EXPORT size_t StringSpaceUsedExcludingSelfLong(const string& str);
-#endif  // SWIG
+
 }  // namespace internal
 
 // Interface to light weight protocol messages.
@@ -187,14 +197,14 @@ class LIBPROTOBUF_EXPORT MessageLite {
 
   // Construct a new instance on the arena. Ownership is passed to the caller
   // if arena is a NULL. Default implementation for backwards compatibility.
-  virtual MessageLite* New(::google::protobuf::Arena* arena) const;
+  virtual MessageLite* New(Arena* arena) const;
 
   // Get the arena, if any, associated with this message. Virtual method
   // required for generic operations but most arena-related operations should
   // use the GetArenaNoVirtual() generated-code method. Default implementation
   // to reduce code size by avoiding the need for per-type implementations
   // when types do not implement arena support.
-  virtual ::google::protobuf::Arena* GetArena() const { return NULL; }
+  virtual Arena* GetArena() const { return NULL; }
 
   // Get a pointer that may be equal to this message's arena, or may not be.
   // If the value returned by this method is equal to some arena pointer, then
@@ -271,7 +281,7 @@ class LIBPROTOBUF_EXPORT MessageLite {
 
 
   // Reads a protocol buffer from the stream and merges it into this
-  // Message.  Singular fields read from the input overwrite what is
+  // Message.  Singular fields read from the what is
   // already in the Message and repeated fields are appended to those
   // already present.
   //
@@ -288,7 +298,14 @@ class LIBPROTOBUF_EXPORT MessageLite {
   //
   // MergeFromCodedStream() is just implemented as MergePartialFromCodedStream()
   // followed by IsInitialized().
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  virtual bool MergePartialFromCodedStream(io::CodedInputStream* input);
+#else
   virtual bool MergePartialFromCodedStream(io::CodedInputStream* input) = 0;
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+  // Merge a protocol buffer contained in a string.
+  bool MergeFromString(const string& data);
 
 
   // Serialization ---------------------------------------------------
@@ -341,7 +358,7 @@ class LIBPROTOBUF_EXPORT MessageLite {
   virtual size_t ByteSizeLong() const = 0;
 
   // Legacy ByteSize() API.
-  PROTOBUF_RUNTIME_DEPRECATED("Please use ByteSizeLong() instead")
+  GOOGLE_PROTOBUF_DEPRECATED_MSG("Please use ByteSizeLong() instead")
   int ByteSize() const {
     return internal::ToIntSize(ByteSizeLong());
   }
@@ -380,33 +397,47 @@ class LIBPROTOBUF_EXPORT MessageLite {
   virtual uint8* InternalSerializeWithCachedSizesToArray(bool deterministic,
                                                          uint8* target) const;
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  virtual internal::ParseFunc _ParseFunc() const {
+    return nullptr;
+  }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+ protected:
+  // CastToBase allows generated code to cast a RepeatedPtrField<T> to
+  // RepeatedPtrFieldBase. We try to restrict access to RepeatedPtrFieldBase
+  // because it is an implementation detail that user code should not access
+  // directly.
+  template <typename T>
+  static internal::RepeatedPtrFieldBase* CastToBase(
+      RepeatedPtrField<T>* repeated) {
+    return repeated;
+  }
+  template <typename T>
+  static const internal::RepeatedPtrFieldBase& CastToBase(
+      const RepeatedPtrField<T>& repeated) {
+    return repeated;
+  }
+
+  template <typename T>
+  static T* CreateMaybeMessage(Arena* arena) {
+    return Arena::CreateMaybeMessage<T>(arena);
+  }
+
  private:
   // TODO(gerbens) make this a pure abstract function
   virtual const void* InternalGetTable() const { return NULL; }
 
   friend class internal::WireFormatLite;
   friend class Message;
+  friend class internal::WeakFieldMap;
 
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(MessageLite);
 };
 
-namespace internal {
-
-extern bool LIBPROTOBUF_EXPORT proto3_preserve_unknown_;
-
-// DO NOT USE: For migration only. Will be removed when Proto3 defaults to
-// preserve unknowns.
-inline bool GetProto3PreserveUnknownsDefault() {
-  return proto3_preserve_unknown_;
-}
-
-// DO NOT USE: For migration only. Will be removed when Proto3 defaults to
-// preserve unknowns.
-void LIBPROTOBUF_EXPORT SetProto3PreserveUnknownsDefault(bool preserve);
-}  // namespace internal
-
-
 }  // namespace protobuf
-
 }  // namespace google
+
+#include <google/protobuf/port_undef.inc>
+
 #endif  // GOOGLE_PROTOBUF_MESSAGE_LITE_H__

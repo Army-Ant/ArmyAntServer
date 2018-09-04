@@ -149,21 +149,21 @@ proto.ArmyAntMessage.DBProxy.SqlRow.serializeBinaryToWriter = function(message, 
 
 /**
  * repeated string fields = 1;
- * @return {!Array.<string>}
+ * @return {!Array<string>}
  */
 proto.ArmyAntMessage.DBProxy.SqlRow.prototype.getFieldsList = function() {
-  return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 1));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
-/** @param {!Array.<string>} value */
+/** @param {!Array<string>} value */
 proto.ArmyAntMessage.DBProxy.SqlRow.prototype.setFieldsList = function(value) {
   jspb.Message.setField(this, 1, value || []);
 };
 
 
 /**
- * @param {!string} value
+ * @param {string} value
  * @param {number=} opt_index
  */
 proto.ArmyAntMessage.DBProxy.SqlRow.prototype.addFields = function(value, opt_index) {

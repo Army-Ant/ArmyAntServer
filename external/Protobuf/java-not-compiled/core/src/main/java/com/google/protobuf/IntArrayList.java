@@ -42,7 +42,8 @@ import java.util.RandomAccess;
  *
  * @author dweis@google.com (Daniel Weis)
  */
-final class IntArrayList extends AbstractProtobufList<Integer>
+final class IntArrayList
+    extends AbstractProtobufList<Integer>
     implements IntList, RandomAccess, PrimitiveNonBoxingCollection {
 
   private static final IntArrayList EMPTY_LIST = new IntArrayList();
@@ -79,6 +80,18 @@ final class IntArrayList extends AbstractProtobufList<Integer>
   private IntArrayList(int[] other, int size) {
     array = other;
     this.size = size;
+  }
+
+  @Override
+  protected void removeRange(int fromIndex, int toIndex) {
+    ensureIsMutable();
+    if (toIndex < fromIndex) {
+      throw new IndexOutOfBoundsException("toIndex < fromIndex");
+    }
+
+    System.arraycopy(array, toIndex, array, fromIndex, size - toIndex);
+    size -= (toIndex - fromIndex);
+    modCount++;
   }
 
   @Override
@@ -246,7 +259,9 @@ final class IntArrayList extends AbstractProtobufList<Integer>
     ensureIsMutable();
     ensureIndexInRange(index);
     int value = array[index];
-    System.arraycopy(array, index + 1, array, index, size - index);
+    if (index < size - 1) {
+      System.arraycopy(array, index + 1, array, index, size - index);
+    }
     size--;
     modCount++;
     return value;

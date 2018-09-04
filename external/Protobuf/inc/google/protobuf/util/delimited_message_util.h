@@ -1,5 +1,5 @@
 // Adapted from the patch of kenton@google.com (Kenton Varda)
-// See https://github.com/google/protobuf/pull/710 for details.
+// See https://github.com/protocolbuffers/protobuf/pull/710 for details.
 
 #ifndef GOOGLE_PROTOBUF_UTIL_DELIMITED_MESSAGE_UTIL_H__
 #define GOOGLE_PROTOBUF_UTIL_DELIMITED_MESSAGE_UTIL_H__
@@ -32,7 +32,7 @@ namespace util {
 // underlying source, so instead you must keep using the same stream object.
 bool LIBPROTOBUF_EXPORT SerializeDelimitedToFileDescriptor(const MessageLite& message, int file_descriptor);
 
-bool LIBPROTOBUF_EXPORT SerializeDelimitedToOstream(const MessageLite& message, ostream* output);
+bool LIBPROTOBUF_EXPORT SerializeDelimitedToOstream(const MessageLite& message, std::ostream* output);
 
 // Read a single size-delimited message from the given stream. Delimited
 // format allows a single file or stream to contain multiple messages,

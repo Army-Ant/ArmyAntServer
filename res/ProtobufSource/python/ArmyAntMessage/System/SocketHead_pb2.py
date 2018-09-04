@@ -7,7 +7,6 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -19,6 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='ArmyAntMessage/System/SocketHead.proto',
   package='ArmyAntMessage.System',
   syntax='proto3',
+  serialized_options=None,
   serialized_pb=_b('\n&ArmyAntMessage/System/SocketHead.proto\x12\x15\x41rmyAntMessage.System\"[\n\x1bSocketExtendNormal_V0_0_0_1\x12\x0e\n\x06\x61pp_id\x18\x01 \x01(\x03\x12\x16\n\x0e\x63ontent_length\x18\x02 \x01(\x05\x12\x14\n\x0cmessage_code\x18\x03 \x01(\x05\x62\x06proto3')
 )
 
@@ -38,28 +38,28 @@ _SOCKETEXTENDNORMAL_V0_0_0_1 = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='content_length', full_name='ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.content_length', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='message_code', full_name='ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.message_code', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],

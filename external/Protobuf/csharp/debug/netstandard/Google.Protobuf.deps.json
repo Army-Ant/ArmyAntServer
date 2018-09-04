@@ -1,15 +1,16 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v1.0/",
-    "signature": "9a0b6ac8bd918fe11bd7e956e15451b11d5d6174"
+    "signature": "76b049054eb3910fe89bbe8d151db811dbe5f9c2"
   },
   "compilationOptions": {},
   "targets": {
     ".NETStandard,Version=v1.0": {},
     ".NETStandard,Version=v1.0/": {
-      "google.protobuf/3.5.1": {
+      "google.protobuf/3.6.1": {
         "dependencies": {
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "SourceLink.Create.CommandLine": "2.7.6"
         },
         "runtime": {
           "Google.Protobuf.dll": {}
@@ -44,6 +45,7 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
+      "sourcelink.create.commandline/2.7.6": {},
       "system.collections/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -202,7 +204,7 @@
     }
   },
   "libraries": {
-    "google.protobuf/3.5.1": {
+    "google.protobuf/3.6.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -227,6 +229,13 @@
       "sha512": "sha512-WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
       "path": "netstandard.library/1.6.1",
       "hashPath": "netstandard.library.1.6.1.nupkg.sha512"
+    },
+    "sourcelink.create.commandline/2.7.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JO2dA9y2FM3d0Ys2K1jaEusT9G+RdgzoFT0ANCDlEUcpkM2zrDGwOEYhMNVz/EVhubDxp9YJ0sdtCDe6HfJ6nQ==",
+      "path": "sourcelink.create.commandline/2.7.6",
+      "hashPath": "sourcelink.create.commandline.2.7.6.nupkg.sha512"
     },
     "system.collections/4.3.0": {
       "type": "package",

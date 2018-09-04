@@ -452,6 +452,17 @@ class DescriptorTest(unittest.TestCase):
     self.assertEqual('attribute is not writable: has_options',
                      str(e.exception))
 
+  def testDefault(self):
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    field = message_descriptor.fields_by_name['repeated_int32']
+    self.assertEqual(field.default_value, [])
+    field = message_descriptor.fields_by_name['repeated_nested_message']
+    self.assertEqual(field.default_value, [])
+    field = message_descriptor.fields_by_name['optionalgroup']
+    self.assertEqual(field.default_value, None)
+    field = message_descriptor.fields_by_name['optional_nested_message']
+    self.assertEqual(field.default_value, None)
+
 
 class NewDescriptorTest(DescriptorTest):
   """Redo the same tests as above, but with a separate DescriptorPool."""
@@ -742,6 +753,19 @@ class DescriptorCopyToProtoTest(unittest.TestCase):
           deprecated: true
         >
       >
+      field {
+        name: "deprecated_int32_in_oneof"
+        number: 2
+        label: LABEL_OPTIONAL
+        type: TYPE_INT32
+        options {
+          deprecated: true
+        }
+        oneof_index: 0
+      }
+      oneof_decl {
+        name: "oneof_fields"
+      }
       """
 
     self._InternalTestCopyToProto(

@@ -39,6 +39,8 @@
 #include <google/protobuf/field_mask.pb.h>
 #include <google/protobuf/stubs/stringpiece.h>
 
+#include <google/protobuf/port_def.inc>
+
 namespace google {
 namespace protobuf {
 namespace util {
@@ -70,14 +72,14 @@ class LIBPROTOBUF_EXPORT FieldMaskUtil {
   // Checks whether the given path is valid for type T.
   template <typename T>
   static bool IsValidPath(StringPiece path) {
-    return GetFieldDescriptors(T::descriptor(), path, NULL);
+    return GetFieldDescriptors(T::descriptor(), path, nullptr);
   }
 
   // Checks whether the given FieldMask is valid for type T.
   template <typename T>
   static bool IsValidFieldMask(const FieldMask& mask) {
     for (int i = 0; i < mask.paths_size(); ++i) {
-      if (!GetFieldDescriptors(T::descriptor(), mask.paths(i), NULL))
+      if (!GetFieldDescriptors(T::descriptor(), mask.paths(i), nullptr))
         return false;
     }
     return true;
@@ -94,6 +96,14 @@ class LIBPROTOBUF_EXPORT FieldMaskUtil {
   // Creates a FieldMask with all fields of type T. This FieldMask only
   // contains fields of T but not any sub-message fields.
   template <typename T>
+  static FieldMask GetFieldMaskForAllFields() {
+    FieldMask out;
+    InternalGetFieldMaskForAllFields(T::descriptor(), &out);
+    return out;
+  }
+  template <typename T>
+  GOOGLE_PROTOBUF_DEPRECATED_MSG(
+      "Use *out = GetFieldMaskForAllFields() instead")
   static void GetFieldMaskForAllFields(FieldMask* out) {
     InternalGetFieldMaskForAllFields(T::descriptor(), out);
   }
@@ -122,24 +132,26 @@ class LIBPROTOBUF_EXPORT FieldMaskUtil {
 
   // Returns true if path is covered by the given FieldMask. Note that path
   // "foo.bar" covers all paths like "foo.bar.baz", "foo.bar.quz.x", etc.
+  // Also note that parent paths are not covered by explicit child path, i.e.
+  // "foo.bar" does NOT cover "foo", even if "bar" is the only child.
   static bool IsPathInFieldMask(StringPiece path, const FieldMask& mask);
 
   class MergeOptions;
-  // Merges fields specified in a FieldMask into another message. See the
-  // comments in MergeOptions regarding compatibility with
-  // google/protobuf/field_mask.proto
+  // Merges fields specified in a FieldMask into another message.
   static void MergeMessageTo(const Message& source, const FieldMask& mask,
                              const MergeOptions& options, Message* destination);
 
   class TrimOptions;
   // Removes from 'message' any field that is not represented in the given
   // FieldMask. If the FieldMask is empty, does nothing.
-  static void TrimMessage(const FieldMask& mask, Message* message);
+  // Returns true if the message is modified.
+  static bool TrimMessage(const FieldMask& mask, Message* message);
 
   // Removes from 'message' any field that is not represented in the given
   // FieldMask with customized TrimOptions.
   // If the FieldMask is empty, does nothing.
-  static void TrimMessage(const FieldMask& mask, Message* message,
+  // Returns true if the message is modified.
+  static bool TrimMessage(const FieldMask& mask, Message* message,
                           const TrimOptions& options);
 
  private:
@@ -180,10 +192,6 @@ class LIBPROTOBUF_EXPORT FieldMaskUtil {
                                FieldMask* out);
 };
 
-// Note that for compatibility with the defined behaviour for FieldMask in
-// google/protobuf/field_mask.proto, set replace_message_fields and
-// replace_repeated_fields to 'true'. The default options are not compatible
-// with google/protobuf/field_mask.proto.
 class LIBPROTOBUF_EXPORT FieldMaskUtil::MergeOptions {
  public:
   MergeOptions()
@@ -231,6 +239,8 @@ class LIBPROTOBUF_EXPORT FieldMaskUtil::TrimOptions {
 
 }  // namespace util
 }  // namespace protobuf
-
 }  // namespace google
+
+#include <google/protobuf/port_undef.inc>
+
 #endif  // GOOGLE_PROTOBUF_UTIL_FIELD_MASK_UTIL_H__

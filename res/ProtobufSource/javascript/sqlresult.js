@@ -205,7 +205,7 @@ proto.ArmyAntMessage.DBProxy.SqlResult.prototype.clearTable = function() {
 
 /**
  * Returns whether this field is set.
- * @return {!boolean}
+ * @return {boolean}
  */
 proto.ArmyAntMessage.DBProxy.SqlResult.prototype.hasTable = function() {
   return jspb.Message.getField(this, 1) != null;
@@ -214,15 +214,15 @@ proto.ArmyAntMessage.DBProxy.SqlResult.prototype.hasTable = function() {
 
 /**
  * repeated SqlHeadOne heads = 2;
- * @return {!Array.<!proto.ArmyAntMessage.DBProxy.SqlHeadOne>}
+ * @return {!Array<!proto.ArmyAntMessage.DBProxy.SqlHeadOne>}
  */
 proto.ArmyAntMessage.DBProxy.SqlResult.prototype.getHeadsList = function() {
-  return /** @type{!Array.<!proto.ArmyAntMessage.DBProxy.SqlHeadOne>} */ (
+  return /** @type{!Array<!proto.ArmyAntMessage.DBProxy.SqlHeadOne>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.ArmyAntMessage.DBProxy.SqlHeadOne, 2));
 };
 
 
-/** @param {!Array.<!proto.ArmyAntMessage.DBProxy.SqlHeadOne>} value */
+/** @param {!Array<!proto.ArmyAntMessage.DBProxy.SqlHeadOne>} value */
 proto.ArmyAntMessage.DBProxy.SqlResult.prototype.setHeadsList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
@@ -245,15 +245,15 @@ proto.ArmyAntMessage.DBProxy.SqlResult.prototype.clearHeadsList = function() {
 
 /**
  * repeated SqlRow rows = 3;
- * @return {!Array.<!proto.ArmyAntMessage.DBProxy.SqlRow>}
+ * @return {!Array<!proto.ArmyAntMessage.DBProxy.SqlRow>}
  */
 proto.ArmyAntMessage.DBProxy.SqlResult.prototype.getRowsList = function() {
-  return /** @type{!Array.<!proto.ArmyAntMessage.DBProxy.SqlRow>} */ (
+  return /** @type{!Array<!proto.ArmyAntMessage.DBProxy.SqlRow>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.ArmyAntMessage.DBProxy.SqlRow, 3));
 };
 
 
-/** @param {!Array.<!proto.ArmyAntMessage.DBProxy.SqlRow>} value */
+/** @param {!Array<!proto.ArmyAntMessage.DBProxy.SqlRow>} value */
 proto.ArmyAntMessage.DBProxy.SqlResult.prototype.setRowsList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 3, value);
 };

@@ -60,7 +60,8 @@ proto.ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.prototype.toObject = function(op
  */
 proto.ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    type: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    tablename: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -101,6 +102,10 @@ proto.ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.deserializeBinaryFromReader = fu
       var value = /** @type {number} */ (reader.readInt32());
       msg.setType(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTablename(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -137,6 +142,13 @@ proto.ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.serializeBinaryToWriter = functi
       f
     );
   }
+  f = message.getTablename();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -152,6 +164,21 @@ proto.ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.prototype.getType = function() {
 /** @param {number} value */
 proto.ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.prototype.setType = function(value) {
   jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string tableName = 2;
+ * @return {string}
+ */
+proto.ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.prototype.getTablename = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.prototype.setTablename = function(value) {
+  jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

@@ -82,6 +82,7 @@ final class UnsafeUtil {
     return HAS_UNSAFE_BYTEBUFFER_OPERATIONS;
   }
 
+
   static long objectFieldOffset(Field field) {
     return MEMORY_ACCESSOR.objectFieldOffset(field);
   }
@@ -266,7 +267,7 @@ final class UnsafeUtil {
   /**
    * Gets the {@code sun.misc.Unsafe} instance, or {@code null} if not available on this platform.
    */
-  private static sun.misc.Unsafe getUnsafe() {
+  static sun.misc.Unsafe getUnsafe() {
     sun.misc.Unsafe unsafe = null;
     try {
       unsafe =
@@ -346,6 +347,10 @@ final class UnsafeUtil {
       clazz.getMethod("objectFieldOffset", Field.class);
       clazz.getMethod("getLong", Object.class, long.class);
 
+      if (bufferAddressField() == null) {
+        return false;
+      }
+
       clazz.getMethod("getByte", long.class);
       clazz.getMethod("putByte", long.class, byte.class);
       clazz.getMethod("getInt", long.class);
@@ -364,18 +369,10 @@ final class UnsafeUtil {
   }
 
 
-  @SuppressWarnings("unchecked")
-  private static <T> Class<T> getClassForName(String name) {
-    try {
-      return (Class<T>) Class.forName(name);
-    } catch (Throwable e) {
-      return null;
-    }
-  }
-
   /** Finds the address field within a direct {@link Buffer}. */
   private static Field bufferAddressField() {
-    return field(Buffer.class, "address");
+    Field field = field(Buffer.class, "address");
+    return field != null && field.getType() == long.class ? field : null;
   }
 
   /**

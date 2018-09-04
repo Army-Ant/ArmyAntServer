@@ -42,7 +42,8 @@ import java.util.RandomAccess;
  *
  * @author dweis@google.com (Daniel Weis)
  */
-final class DoubleArrayList extends AbstractProtobufList<Double>
+final class DoubleArrayList
+    extends AbstractProtobufList<Double>
     implements DoubleList, RandomAccess, PrimitiveNonBoxingCollection {
 
   private static final DoubleArrayList EMPTY_LIST = new DoubleArrayList();
@@ -79,6 +80,18 @@ final class DoubleArrayList extends AbstractProtobufList<Double>
   private DoubleArrayList(double[] other, int size) {
     array = other;
     this.size = size;
+  }
+
+  @Override
+  protected void removeRange(int fromIndex, int toIndex) {
+    ensureIsMutable();
+    if (toIndex < fromIndex) {
+      throw new IndexOutOfBoundsException("toIndex < fromIndex");
+    }
+
+    System.arraycopy(array, toIndex, array, fromIndex, size - toIndex);
+    size -= (toIndex - fromIndex);
+    modCount++;
   }
 
   @Override
@@ -247,7 +260,9 @@ final class DoubleArrayList extends AbstractProtobufList<Double>
     ensureIsMutable();
     ensureIndexInRange(index);
     double value = array[index];
-    System.arraycopy(array, index + 1, array, index, size - index);
+    if (index < size - 1) {
+      System.arraycopy(array, index + 1, array, index, size - index);
+    }
     size--;
     modCount++;
     return value;

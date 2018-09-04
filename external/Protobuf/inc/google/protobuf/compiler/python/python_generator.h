@@ -38,8 +38,6 @@
 #include <string>
 
 #include <google/protobuf/compiler/code_generator.h>
-#include <google/protobuf/stubs/mutex.h>
-#include <google/protobuf/stubs/common.h>
 
 namespace google {
 namespace protobuf {
@@ -135,8 +133,7 @@ class LIBPROTOC_EXPORT Generator : public CodeGenerator {
       const ServiceDescriptor& descriptor) const;
 
   void PrintEnumValueDescriptor(const EnumValueDescriptor& descriptor) const;
-  string OptionsValue(const string& class_name,
-                      const string& serialized_options) const;
+  string OptionsValue(const string& serialized_options) const;
   bool GeneratingDescriptorProto() const;
 
   template <typename DescriptorT>
@@ -171,6 +168,6 @@ class LIBPROTOC_EXPORT Generator : public CodeGenerator {
 }  // namespace python
 }  // namespace compiler
 }  // namespace protobuf
-
 }  // namespace google
+
 #endif  // GOOGLE_PROTOBUF_COMPILER_PYTHON_GENERATOR_H__
