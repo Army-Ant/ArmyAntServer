@@ -56,8 +56,7 @@
           <output>../../bin/armyantserverd</output>
           <linkerLibItems>
             <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
-            <linkerOptionItem>-lprotobuf</linkerOptionItem>
-            <linkerOptionItem>-lprotobuf-lite</linkerOptionItem>
+            <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_d_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../ServerCore"
@@ -140,8 +139,7 @@
           <output>../../bin/armyantserver</output>
           <linkerLibItems>
             <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
-            <linkerOptionItem>-lprotobuf</linkerOptionItem>
-            <linkerOptionItem>-lprotobuf-lite</linkerOptionItem>
+            <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../ServerCore"
