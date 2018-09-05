@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INIT_SQL_PATH=../res/sqlScripts/initializeNewEmptyDB.sql
+INIT_SQL_PATH=../res/sqlScripts/initializeNewEmptyDB_MariaDB.sql
 MYSQL_DATA_PATH=/data/mysql/data
 
 mysqld --initialize-insecure
