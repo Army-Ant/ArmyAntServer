@@ -29,7 +29,7 @@
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
-            <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
+            <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
             <pElem>../../res/ProtobufSource/cpp</pElem>
             <pElem>..</pElem>
@@ -54,16 +54,12 @@
         </asmTool>
         <linkerTool>
           <output>../../bin/dbproxyd</output>
-          <linkerAddLib>
-            <pElem>../../external/ArmyAntLib/bin</pElem>
-            <pElem>../../external/mysql/mysql-connector-c++-8.0.11/lib64</pElem>
-          </linkerAddLib>
           <linkerLibItems>
-            <linkerLibLibItem>ArmyAnt_d_64</linkerLibLibItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so</linkerLibFileItem>
+            <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libcrypto.so</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn-static.a</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn8-static.a</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libssl.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../DatabaseProxyCore"
                             CT="3"
@@ -117,7 +113,7 @@
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
-            <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
+            <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
             <pElem>../../res/ProtobufSource/cpp</pElem>
             <pElem>..</pElem>
@@ -143,16 +139,12 @@
         </asmTool>
         <linkerTool>
           <output>../../bin/dbproxy</output>
-          <linkerAddLib>
-            <pElem>../../external/ArmyAntLib/bin</pElem>
-            <pElem>../../external/mysql/mysql-connector-c++-8.0.11/lib64</pElem>
-          </linkerAddLib>
           <linkerLibItems>
-            <linkerLibLibItem>ArmyAnt_64</linkerLibLibItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libcrypto.so</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn-static.a</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libmysqlcppconn8-static.a</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.11/lib64/libssl.so</linkerLibFileItem>
+            <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libcrypto.so</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn-static.a</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn8-static.a</linkerLibFileItem>
+            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libssl.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../DatabaseProxyCore"
                             CT="3"

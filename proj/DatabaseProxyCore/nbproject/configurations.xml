@@ -37,7 +37,7 @@
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
-            <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
+            <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
             <pElem>../../res/ProtobufSource/cpp</pElem>
           </incDir>
@@ -94,7 +94,7 @@
           <incDir>
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
-            <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
+            <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
             <pElem>../../res/ProtobufSource/cpp</pElem>
           </incDir>
