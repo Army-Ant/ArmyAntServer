@@ -54,6 +54,7 @@
 #define HAVE_UINT32_T 1
 #define HAVE_INT64_T  1
 #define HAVE_UINT64_T 1
+#ifdef OS_WINDOWS
 #define HAVE_MS_INT8     1
 #define HAVE_MS_UINT8    1
 #define HAVE_MS_INT16    1
@@ -62,7 +63,16 @@
 #define HAVE_MS_UINT32   1
 #define HAVE_MS_INT64   1
 #define HAVE_MS_UINT64   1
-
+#else
+/* #undef HAVE_MS_INT8 */
+/* #undef HAVE_MS_UINT8 */
+/* #undef HAVE_MS_INT16 */
+/* #undef HAVE_MS_UINT16 */
+/* #undef HAVE_MS_INT32 */
+/* #undef HAVE_MS_UINT32 */
+/* #undef HAVE_MS_INT64 */
+/* #undef HAVE_MS_UINT64 */
+#endif
 
 #ifdef HAVE_STDINT_H
 #include <stdint.h>
