@@ -21,6 +21,7 @@
         <cTool>
           <architecture>2</architecture>
           <standard>3</standard>
+          <commandlineTool>gcc</commandlineTool>
           <warningLevel>2</warningLevel>
         </cTool>
         <ccTool>
@@ -30,7 +31,6 @@
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
-            <pElem>../../external/Protobuf/inc</pElem>
             <pElem>../../res/ProtobufSource/cpp</pElem>
             <pElem>..</pElem>
           </incDir>
@@ -55,11 +55,9 @@
         <linkerTool>
           <output>../../bin/dbproxyd</output>
           <linkerLibItems>
-            <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
+            <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
             <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_d_64.so</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn.so</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn8.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../DatabaseProxyCore"
                             CT="3"
@@ -114,7 +112,6 @@
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
-            <pElem>../../external/Protobuf/inc</pElem>
             <pElem>../../res/ProtobufSource/cpp</pElem>
             <pElem>..</pElem>
           </incDir>
@@ -140,11 +137,9 @@
         <linkerTool>
           <output>../../bin/dbproxy</output>
           <linkerLibItems>
-            <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
+            <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
             <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_64.so</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn.so</linkerLibFileItem>
-            <linkerLibFileItem>../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn8.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../DatabaseProxyCore"
                             CT="3"

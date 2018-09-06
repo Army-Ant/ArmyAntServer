@@ -52,21 +52,15 @@ FFLAGS=-m64
 ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../external/boost/stage/lib64-shared/libboost_system.so ../../external/Protobuf/bin/libprotobuf.so ../../external/ArmyAntLib/bin/libArmyAnt_d_64.so ../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn.so ../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn8.so ../DatabaseProxyCore/../../bin/libdatabaseproxycore_d.a ../ServerUtilities/../../bin/libserverutilities_d.a
+LDLIBSOPTIONS=-lmysqlcppconn ../../external/Protobuf/bin/libprotobuf.so ../../external/ArmyAntLib/bin/libArmyAnt_d_64.so ../DatabaseProxyCore/../../bin/libdatabaseproxycore_d.a ../ServerUtilities/../../bin/libserverutilities_d.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../bin/dbproxyd
 
-../../bin/dbproxyd: ../../external/boost/stage/lib64-shared/libboost_system.so
-
 ../../bin/dbproxyd: ../../external/Protobuf/bin/libprotobuf.so
 
 ../../bin/dbproxyd: ../../external/ArmyAntLib/bin/libArmyAnt_d_64.so
-
-../../bin/dbproxyd: ../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn.so
-
-../../bin/dbproxyd: ../../external/mysql/mysql-connector-c++-8.0.12/lib64/libmysqlcppconn8.so
 
 ../../bin/dbproxyd: ../DatabaseProxyCore/../../bin/libdatabaseproxycore_d.a
 
@@ -79,7 +73,7 @@ LDLIBSOPTIONS=../../external/boost/stage/lib64-shared/libboost_system.so ../../e
 ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk ../../src/DBProxyEntry/ArmyAntDBProxy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/fbe89dad
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DDEBUG -DOS_Linux -D_64BIT -D_DEBUG -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.12/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -I.. -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o ../../src/DBProxyEntry/ArmyAntDBProxy.cpp
+	$(COMPILE.cc) -g -Wall -DDEBUG -DOS_Linux -D_64BIT -D_DEBUG -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.12/include -I../../res/ProtobufSource/cpp -I.. -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o ../../src/DBProxyEntry/ArmyAntDBProxy.cpp
 
 # Subprojects
 .build-subprojects:

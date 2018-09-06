@@ -55,7 +55,6 @@
         <linkerTool>
           <output>../../bin/armyantserverd</output>
           <linkerLibItems>
-            <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_d_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
@@ -138,7 +137,6 @@
         <linkerTool>
           <output>../../bin/armyantserver</output>
           <linkerLibItems>
-            <linkerLibFileItem>../../external/boost/stage/lib64-shared/libboost_system.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_64.so</linkerLibFileItem>
             <linkerLibProjectItem>

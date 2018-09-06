@@ -2,7 +2,8 @@
 
 echo Start to compile protobuf ...
 
-PROTOC_PATH=../external/Protobuf/bin
+#PROTOC_PATH=../external/Protobuf/bin/protoc
+PROTOC_PATH=protoc
 PROTOFILE_PATH=../proto
 
 PROTOCPP_PATH=../res/ProtobufSource/cpp
@@ -31,9 +32,9 @@ if [ ! -d $PROTOBINARY_PATH ]; then
     mkdir $PROTOBINARY_PATH
 fi
 
-${PROTOC_PATH}/protoc -I=$PROTOFILE_PATH --cpp_out=$PROTOCPP_PATH --csharp_out=$PROTOCSHARP_PATH --js_out=$PROTOJAVASCRIPT_PATH --python_out=$PROTOPYTHON_PATH --ruby_out=$PROTORUBY_PATH $PROTOFILE_PATH/ArmyAntMessage/System/SocketHead.proto
-${PROTOC_PATH}/protoc -I=$PROTOFILE_PATH --cpp_out=$PROTOCPP_PATH --csharp_out=$PROTOCSHARP_PATH --js_out=$PROTOJAVASCRIPT_PATH --python_out=$PROTOPYTHON_PATH --ruby_out=$PROTORUBY_PATH $PROTOFILE_PATH/ArmyAntMessage/System/SessionStart.proto
-${PROTOC_PATH}/protoc -I=$PROTOFILE_PATH --cpp_out=$PROTOCPP_PATH --csharp_out=$PROTOCSHARP_PATH --js_out=$PROTOJAVASCRIPT_PATH --python_out=$PROTOPYTHON_PATH --ruby_out=$PROTORUBY_PATH $PROTOFILE_PATH/ArmyAntMessage/DBProxy/SqlRequest.proto
+${PROTOC_PATH} -I=$PROTOFILE_PATH --cpp_out=$PROTOCPP_PATH --csharp_out=$PROTOCSHARP_PATH --js_out=$PROTOJAVASCRIPT_PATH --python_out=$PROTOPYTHON_PATH --ruby_out=$PROTORUBY_PATH $PROTOFILE_PATH/ArmyAntMessage/System/SocketHead.proto
+${PROTOC_PATH} -I=$PROTOFILE_PATH --cpp_out=$PROTOCPP_PATH --csharp_out=$PROTOCSHARP_PATH --js_out=$PROTOJAVASCRIPT_PATH --python_out=$PROTOPYTHON_PATH --ruby_out=$PROTORUBY_PATH $PROTOFILE_PATH/ArmyAntMessage/System/SessionStart.proto
+${PROTOC_PATH} -I=$PROTOFILE_PATH --cpp_out=$PROTOCPP_PATH --csharp_out=$PROTOCSHARP_PATH --js_out=$PROTOJAVASCRIPT_PATH --python_out=$PROTOPYTHON_PATH --ruby_out=$PROTORUBY_PATH $PROTOFILE_PATH/ArmyAntMessage/DBProxy/SqlRequest.proto
 
 read -rsp $'Finished !\nPress any key to exit.\n' -n 1 key
 # echo $key

@@ -52,13 +52,11 @@ FFLAGS=-m64
 ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../external/boost/stage/lib64-shared/libboost_system.so ../../external/Protobuf/bin/libprotobuf.so ../../external/ArmyAntLib/bin/libArmyAnt_d_64.so ../ServerCore/../../bin/libservercore_d.a ../ServerUtilities/../../bin/libserverutilities_d.a
+LDLIBSOPTIONS=../../external/Protobuf/bin/libprotobuf.so ../../external/ArmyAntLib/bin/libArmyAnt_d_64.so ../ServerCore/../../bin/libservercore_d.a ../ServerUtilities/../../bin/libserverutilities_d.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../bin/armyantserverd
-
-../../bin/armyantserverd: ../../external/boost/stage/lib64-shared/libboost_system.so
 
 ../../bin/armyantserverd: ../../external/Protobuf/bin/libprotobuf.so
 
