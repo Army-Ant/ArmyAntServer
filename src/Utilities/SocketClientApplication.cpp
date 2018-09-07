@@ -105,7 +105,7 @@ bool SocketClientApplication::onClientSendResponse(mac_uint sendedSize, uint32 r
 	return false;
 }
 
-void SocketClientApplication::onClientErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis){
+void SocketClientApplication::onClientErrorReport(const ArmyAnt::SocketException& err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis){
 	auto self = static_cast<SocketClientApplication*>(pThis);
 	if(self->eventCallback != nullptr){
 		self->eventCallback(SocketClientApplication::EventType::ErrorReport, ArmyAnt::String("Found error, code:") + int64(err.code) + ", message: " + err.message);

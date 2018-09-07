@@ -4,7 +4,7 @@
     "logPath":"./DBProxyLog.log",
     "logFileLevel":"info",
     "logConsoleLevel":"verbose",
-    "mysqlServerHost":"127.0.0.1:3306/ArmyAntDB",
+    "mysqlServerHost":"192.168.15.131:3306/ArmyAntDB",
     "mysqlUsername":"aa_server_dbproxy",
     "mysqlPassword":"L05rg05rgP8K"
 }

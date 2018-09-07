@@ -126,7 +126,7 @@ bool SocketApplication::onServerSendResponse(mac_uint sendedSize, uint32 retried
 	return false;
 }
 
-void SocketApplication::onServerErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis){
+void SocketApplication::onServerErrorReport(const ArmyAnt::SocketException& err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 	uint32 index = self->tcpSocket.getIndexByAddrPort(addr, port);
 	if(self->eventCallback != nullptr){

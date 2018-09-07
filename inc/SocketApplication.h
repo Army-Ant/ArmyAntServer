@@ -74,7 +74,7 @@ private:
 	static void onServerDisonnected(uint32 index, void*pThis);
 	static void onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
 	static bool onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
-	static void onServerErrorReport(ArmyAnt::SocketException err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
+	static void onServerErrorReport(const ArmyAnt::SocketException& err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
 
 private:
 	AA_FORBID_ASSGN_OPR(SocketApplication);
