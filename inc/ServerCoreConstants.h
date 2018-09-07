@@ -12,6 +12,7 @@ struct ServerMainMsg{
 };
 
 struct ServerMainReturnValues{
+	static const int32 serverStartFailed = -5;
 	static const int32 moduleInitFailed = -4;
 	static const int32 parseConfigJElementFailed = -3;
 	static const int32 parseConfigJsonFailed = -2;

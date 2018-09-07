@@ -33,7 +33,11 @@ int32 ServerMain::main(){
 	// 3. 初始化并开启 socket TCP server
 	socket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	socket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
-	socket.start(port, 16384, false);
+	auto socketStartRes = socket.start(port, 16384, false);
+	if(!socketStartRes){
+		logger.pushLog("Server started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		return Constants::ServerMainReturnValues::serverStartFailed;
+	}
 	logger.pushLog("Server started", Logger::AlertLevel::Info, LOGGER_TAG);
 
 	// 4. 开始监听主线程消息队列

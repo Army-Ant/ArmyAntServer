@@ -18,25 +18,29 @@ DBProxyMain::DBProxyMain() :debug(false), port(0), msgQueue(nullptr), socket(), 
 DBProxyMain::~DBProxyMain(){}
 
 int32 DBProxyMain::main(){
-	// 1. ��ȡ����
+	// 1. 读取配置
 	auto parseRes = parseConfig();
 	if(parseRes != Constants::DBProxyMainReturnValues::normalExit){
 		return parseRes;
 	}
 
-	// 2. ��ʼ������ģ��, ע��˳��
+	// 2. 初始化各个模块, 注意顺序
 	auto initRes = modulesInitialization();
 	if(initRes != Constants::DBProxyMainReturnValues::normalExit){
 		return initRes;
 	}
 
-	// 3. ��ʼ�������� socket TCP server
+	// 3. 初始化并开启 socket TCP server
 	socket.setEventCallback(std::bind(&DBProxyMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	socket.setReceiveCallback(std::bind(&DBProxyMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
-	socket.start(port, 16384, false);
+	auto socketStartRes = socket.start(port, 16384, false);
+	if(!socketStartRes){
+		logger.pushLog("DBProxy started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		return Constants::DBProxyMainReturnValues::serverStartFailed;
+	}
 	logger.pushLog("DBProxy started", Logger::AlertLevel::Info, LOGGER_TAG);
 
-	// 4. ��ʼ�������߳���Ϣ����
+	// 4. 开始监听主线程消息队列
 	msgQueue = msgQueueMgr.createQueue(ArmyAntServer::SpecialUserIndex::DBPROXY_MAIN);
 	int32 retVal = Constants::DBProxyMainReturnValues::normalExit;
 	bool exitCommand = false;
@@ -67,12 +71,12 @@ ArmyAntServer::MessageQueueManager&DBProxyMain::getMessageQueueManager(){
 
 int32 DBProxyMain::parseConfig(){
 	ArmyAnt::File configJson;
-	// �������ļ�
+	// 打开设置文件
 	bool openRes = configJson.Open(Constants::DB_PROXY_CONFIG_FILE_PATH);
 	if(!openRes){
 		return Constants::DBProxyMainReturnValues::openConfigFileFailed;
 	}
-	// ��ȡ��������
+	// 读取设置内容
 	auto jsonFileLen = configJson.GetLength();
 	char* buf = new char[jsonFileLen + 20];
 	memset(buf, 0, jsonFileLen + 20);
@@ -82,7 +86,7 @@ int32 DBProxyMain::parseConfig(){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		return Constants::DBProxyMainReturnValues::parseConfigJsonFailed;
 	}
-	// ���л�������
+	// 序列化设置项
 	auto json = ArmyAnt::JsonUnit::create(buf);
 	auto pJo = dynamic_cast<ArmyAnt::JsonObject*>(json);
 	if(pJo == nullptr){
@@ -91,7 +95,7 @@ int32 DBProxyMain::parseConfig(){
 		return Constants::DBProxyMainReturnValues::parseConfigJElementFailed;
 	}
 
-	// ����������ڴ�
+	// 保存设置项到内存
 	auto&jo = *pJo;
 	auto jdebug = jo.getChild("debug");
 	auto pjdebug = dynamic_cast<ArmyAnt::JsonBoolean*>(jdebug);
@@ -120,7 +124,7 @@ int32 DBProxyMain::parseConfig(){
 	}
 	logger.setLogFile(logFilePath->getString());
 
-	// �ļ���־ɸѡ����
+	// 文件日志筛选级别
 	auto logFileLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logFileLevel"));
 	if(logFileLevel->getString() == ArmyAnt::String("verbose")){
 		logger.setFileLevel(Logger::AlertLevel::Verbose);
@@ -140,7 +144,7 @@ int32 DBProxyMain::parseConfig(){
 		logger.setFileLevel(Logger::AlertLevel::Verbose);
 	}
 
-	// ����̨��־ɸѡ����
+	// 控制台日志筛选级别
 	auto logConsoleLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logConsoleLevel"));
 	if(logConsoleLevel->getString() == ArmyAnt::String("verbose")){
 		logger.setConsoleLevel(Logger::AlertLevel::Verbose);
@@ -160,7 +164,7 @@ int32 DBProxyMain::parseConfig(){
 		logger.setConsoleLevel(Logger::AlertLevel::Import);
 	}
 
-	// MySql ��¼����
+	// MySql 登录参数
 	auto jMysqlServerHost = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlServerHost"));
 	if(jMysqlServerHost == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
@@ -193,9 +197,17 @@ int32 DBProxyMain::parseConfig(){
 
 int32 DBProxyMain::modulesInitialization(){
 	auto connRes = mysqlBridge.connect(mysqlServerHost);
+	int32 retriedTimes = 0;
+	while(!connRes && retriedTimes < 19){
+		logger.pushLog("Connect to Mysql failed", Logger::AlertLevel::Error, LOGGER_TAG);
+		connRes = mysqlBridge.connect(mysqlServerHost);
+		++retriedTimes;
+	}
 	if(!connRes){
-		logger.pushLog("Connect to Mysql failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		logger.pushLog("Connect to Mysql failed 20 times, server will exit !", Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::DBProxyMainReturnValues::moduleInitFailed;
+	}else{
+		logger.pushLog("Connect to Mysql successful", Logger::AlertLevel::Error, LOGGER_TAG);
 	}
 
 	logger.pushLog("All modules initialized successful", Logger::AlertLevel::Info, LOGGER_TAG);
