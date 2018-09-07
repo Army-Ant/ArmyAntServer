@@ -25,6 +25,7 @@
 
 #include <map>
 #include <exception>
+#include <mutex>
 #include "AADefine.h"
 
 namespace ArmyAnt {
@@ -47,12 +48,13 @@ namespace ArmyAnt {
 template <class T_Out, class T_In>
 class ClassPrivateHandleManager
 {
-	ClassPrivateHandleManager() :handleMap() {}
+	ClassPrivateHandleManager() :handleMap(), _mutex() {}
 public:
 	~ClassPrivateHandleManager() {}
 
 	//创建一个内部类实例，这通常是在建立外部实例时进行调用的
 	void GetHandle(const T_Out* src, T_In* newObject = new T_In());
+	void MoveTo(const T_Out* oldOut, const T_Out* newOut);
 	//销毁内部实例，这通常是与外部实例的析构一起进行的
     T_In* ReleaseHandle(const T_Out* src);
 
@@ -64,12 +66,14 @@ public:
 	//根据句柄获取内部实例，是GetDataByHandle的快捷调用法
 	T_In* operator[](const T_Out* out);
 
-	//内外实例以及句柄的表图
-	std::map<const T_Out*, T_In*> handleMap;
 
 	static ClassPrivateHandleManager<T_Out, T_In>& getInstance();
 
 private:
+	//内外实例以及句柄的表图, 为了保证线程安全性, 禁止外部获取此变量, 现已改为私有成员
+	std::map<const T_Out*, T_In*> handleMap;
+	std::mutex _mutex;
+
 	static  ClassPrivateHandleManager<T_Out, T_In> instance;
 
 	AA_FORBID_COPY_CTOR(ClassPrivateHandleManager);
@@ -88,49 +92,77 @@ ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>& ArmyAnt::ClassPrivateHandleMana
 template <class T_Out, class T_In>
 void ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetHandle(const T_Out* src, T_In* newObject)
 {
+	_mutex.lock();
     //设置句柄，创建内部实例，并关联到外部实例
     if (handleMap.empty() || handleMap.find(src) == handleMap.end())
     {
         handleMap.insert(std::make_pair(src, newObject));
+		_mutex.unlock();
     }
-    else
-        throw std::out_of_range("the handle has been existed");
+	else{
+		_mutex.unlock();
+		throw std::out_of_range("the handle has been existed");
+	}
+}
+
+template <class T_Out, class T_In>
+void ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::MoveTo(const T_Out* oldOut, const T_Out* newOut){
+	_mutex.lock();
+	auto ret = handleMap.find(oldOut);
+	if(ret == handleMap.end()){
+		_mutex.unlock();
+		AAAssert(false,);
+	}
+	auto strp = ret->second;
+	handleMap.erase(ret);
+	handleMap.insert(std::make_pair(newOut, strp));
+	_mutex.unlock();
 }
 
 template <class T_Out, class T_In>
 T_In* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::ReleaseHandle(const T_Out* src)
 {
+	_mutex.lock();
 	auto ret = handleMap.find(src);
 	//销毁内部实例，解除关联
 	if(ret != handleMap.end())
 	{
         auto result = ret->second;
 		handleMap.erase(ret);
+		_mutex.unlock();
         return result;
 	}
+	_mutex.unlock();
     return nullptr;
 }
 
 template <class T_Out, class T_In>
 const T_Out* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetSourceByHandle(const T_In* in)
 {
+	_mutex.lock();
     for (auto i = handleMap.begin(); i != handleMap.end(); ++i)
     {
-        if (i->second == in)
-            return i->first;
+		if(i->second == in){
+			_mutex.unlock();
+			return i->first;
+		}
     }
+	_mutex.unlock();
 	return nullptr;
 }
 
 template <class T_Out, class T_In>
 T_In* ArmyAnt::ClassPrivateHandleManager<T_Out, T_In>::GetDataByHandle(const T_Out* out, bool noWonderNull)
 {
+	_mutex.lock();
 	auto ret = handleMap.find(out);
 	if(ret == handleMap.end()){
+		_mutex.unlock();
 		if(!noWonderNull)
 			AAAssert(false, nullptr);
 		return nullptr;
 	}
+	_mutex.unlock();
 	return ret->second;
 }
 
