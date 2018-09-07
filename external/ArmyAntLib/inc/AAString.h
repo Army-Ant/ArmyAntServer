@@ -242,7 +242,7 @@ public:
 public:
     friend inline bool operator<<(std::iostream&stream, const String&str);
 
-#ifdef _DEBUG
+#if defined _DEBUG && defined OS_WINDOWS
 private:
 	const char* v;
 #endif
