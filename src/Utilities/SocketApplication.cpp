@@ -130,9 +130,11 @@ void SocketApplication::onServerErrorReport(const ArmyAnt::SocketException& err,
 	auto self = static_cast<SocketApplication*>(pThis);
 	uint32 index = self->tcpSocket.getIndexByAddrPort(addr, port);
 	if(self->eventCallback != nullptr){
-		self->eventCallback(SocketApplication::EventType::ErrorReport, 
-							index, 
-							ArmyAnt::String("Found error, code:") + int64(err.code) + ", message: " + err.message);
+                ArmyAnt::String msg =  "Found error, code:";
+                msg += int64(err.code);
+                msg += ", message:";
+                msg += err.message;
+		self->eventCallback(SocketApplication::EventType::ErrorReport, 	index, 	msg);
 	}
 }
 

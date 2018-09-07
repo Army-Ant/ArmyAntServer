@@ -157,6 +157,8 @@ public:
 
 public:
 	SocketException(ErrorType type, const char* message, int code = 0);
+	SocketException(const SocketException& value);
+	SocketException(SocketException&& moved);
 
 public:
 	ErrorType type;

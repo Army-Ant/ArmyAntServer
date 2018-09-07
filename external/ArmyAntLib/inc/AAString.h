@@ -257,17 +257,6 @@ String ARMYANTLIB_API operator-(int headLength, const String&str);
 bool ARMYANTLIB_API operator==(const char*cstr, const String&str);
 bool ARMYANTLIB_API operator!=(const char*cstr, const String&str);
 
-// right referenced this value operators
-String ARMYANTLIB_API operator+(String&&temp, const String&value);
-String ARMYANTLIB_API operator+(String&&temp, const char*value);
-String ARMYANTLIB_API operator+(String&&temp, char c);
-String ARMYANTLIB_API operator+(String&&temp, int64 value);
-String ARMYANTLIB_API operator+(String&&temp, double value);
-String ARMYANTLIB_API operator-(String&&temp, int64 tailLength);
-String ARMYANTLIB_API operator-(String&&temp, char c);
-String ARMYANTLIB_API operator-(String&&temp, const String&value);
-String ARMYANTLIB_API operator-(String&&temp, const char*value);
-
 
 template<class Type_Num>
 inline bool String::itoa(char * str, Type_Num num)
