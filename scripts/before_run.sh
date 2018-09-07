@@ -13,7 +13,9 @@ fi
 
 cp $MYSQL_PATH/lib64/*.so $BINARY_PATH
 cp $MYSQL_PATH/lib64/*.so* $BINARY_PATH
+rm -rf $BINARY_PATH/libArmyAnt*.s*
 cp $AALIB_PATH/*.so $BINARY_PATH
+rm -rf /usr/lib/x86_64-linux-gnu/libArmyAnt*.s*
 ln -d $BINARY_PATH/libArmyAnt*.s* /usr/lib/x86_64-linux-gnu/
 ldconfig
 
