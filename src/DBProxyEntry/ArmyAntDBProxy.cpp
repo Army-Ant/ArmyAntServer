@@ -3,8 +3,6 @@
 
 #include <stdafx.h>
 
-#include <iostream>
-
 #include <DBProxyMain.h>
 
 int main()
