@@ -4,7 +4,7 @@
     "logPath":"./ServerMainLog.log",
     "logFileLevel":"info",
     "logConsoleLevel":"verbose",
-    "dbProxyAddr":"192.168.15.131",
+    "dbProxyAddr":"127.0.0.1",
     "dbProxyPort":1510,
     "dbProxyLocalPort":1129
 }

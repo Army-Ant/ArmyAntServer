@@ -180,12 +180,12 @@ public:
 	//TCP服务器丢失客户端连接回调，参数分别为客户端IPv4，客户端端口号，用户传入参数
 	typedef std::function<void(uint32 clientIndex, void*pUser)> ServerLostCall;
 
-	//TCP客户端连接回调，参数分别为连接是否成功, 用户传入参数, 如果连接失败而返回true, 则重新连接
-	typedef std::function<bool(bool isSucceed, void*pUser)> ClientConnectCall;
+	//TCP客户端连接回调，参数分别为连接是否成功, 用户传入参数, 请勿在此函数中调用重新连接
+	typedef std::function<void(bool isSucceed, void*pUser)> ClientConnectCall;
 	//TCP客户端收到数据回调，参数分别为对方IPv4，对方端口号，数据包，数据包容量大小（不是数据包大小），用户传入参数
 	typedef std::function<void(uint8*data, mac_uint datalen, void*pUser)> ClientGettingCall;
-	//TCP客户端断开连接回调，参数为用户传入参数, 返回false表示要求重新连接
-	typedef std::function<bool(void*pUser)> ClientLostCall;
+	//TCP客户端断开连接回调，参数为用户传入参数, 请勿在此函数中调用重新连接
+	typedef std::function<void(void*pUser)> ClientLostCall;
 
 	//UDP收到数据回调，参数分别为对方IPv4，对方端口号，数据包，数据包容量大小（不是数据包大小），用户传入参数
 	typedef std::function<void(const IPAddr&addr, uint16 port, uint8*data, mac_uint datalen, void*pUser)> UDPGettingCall;

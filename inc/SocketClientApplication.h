@@ -26,7 +26,6 @@ public:
 public:
 	bool setEventCallback(EventCallback cb);
 	bool setReceiveCallback(ReceiveCallback cb);
-	void setWillReconnectWhenLost(bool reconnect);
 	ArmyAnt::TCPClient&getSocket();
 
 	bool connect(ArmyAnt::IPAddr&ip, uint16 port, uint16 localPort, bool isAsync, uint32 maxBufferLength);
@@ -45,10 +44,9 @@ private:
 	std::map<int32, uint8*>waitingResponseSended;
 	uint8*receivingBuffer;
 	uint32 receivingBufferEnd;
-	bool reconnectLost;
 
-	static bool onClientConnected(bool isSucceed, void*pThis);
-	static bool onClientLostServer(void*pThis);
+	static void onClientConnected(bool isSucceed, void*pThis);
+	static void onClientLostServer(void*pThis);
 	static void onClientReceived(uint8*data, mac_uint datalen, void*pThis);
 	static bool onClientSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32, void*sendedData, uint64 len, void* pThis);
 	static void onClientErrorReport(const ArmyAnt::SocketException& err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);

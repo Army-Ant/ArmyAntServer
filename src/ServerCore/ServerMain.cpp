@@ -55,6 +55,9 @@ int32 ServerMain::main(){
 					logger.pushLog("Server stopped", Logger::AlertLevel::Info, LOGGER_TAG);
 					exitCommand = true;
 					break;
+				case Constants::ServerMainMsg::dbProxyNeedReconnect:
+					connectDBProxy(true);
+					break;
 				default:
 					logger.pushLog("ServerMain received an unknown message, code:" + ArmyAnt::String(msg.id) + ", data:" + int64(msg.data), Logger::AlertLevel::Warning, LOGGER_TAG);
 			}
@@ -202,22 +205,27 @@ int32 ServerMain::parseConfig(){
 
 int32 ServerMain::modulesInitialization(){
 	// 连接数据库代理进程
-	dbConnector.setEventCallback(std::bind(&ServerMain::onDBConnectorEvent, this, std::placeholders::_1, std::placeholders::_2));
-	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
-	dbConnector.setWillReconnectWhenLost(true);
-	auto ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
-	while(!ret){
-		logger.pushLog("DBproxy connected failed", Logger::AlertLevel::Error, LOGGER_TAG);
-		ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
-	}
-	ArmyAnt::Fragment::AA_SAFE_DEL(dbAddr);
+	connectDBProxy();
 
 	logger.pushLog("All modules initialized successful", Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;
 }
 
+void ServerMain::connectDBProxy(bool isReconnect){
+	dbConnector.setEventCallback(std::bind(&ServerMain::onDBConnectorEvent, this, std::placeholders::_1, std::placeholders::_2));
+	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5));
+	auto ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
+	while(!ret){
+		logger.pushLog("DBproxy connected failed", Logger::AlertLevel::Error, LOGGER_TAG);
+		ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
+	}
+	if(isReconnect)
+		logger.pushLog("DBproxy reconnected", Logger::AlertLevel::Info, LOGGER_TAG);
+}
+
 int32 ServerMain::modulesUninitialization(){
 	dbConnector.disconnect();
+	ArmyAnt::Fragment::AA_SAFE_DEL(dbAddr);
 
 	logger.pushLog("All modules uninitialized OK", Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;
@@ -258,6 +266,7 @@ void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, Arm
 			break;
 		case SocketClientApplication::EventType::LostServer:
 			logger.pushLog("DBProxy server lost!", Logger::AlertLevel::Info, LOGGER_TAG);
+			msgQueue->pushMessage(Message{Constants::ServerMainMsg::dbProxyNeedReconnect, 0, nullptr});
 			break;
 		case SocketClientApplication::EventType::SendingResponse:
 			logger.pushLog("Sending to DBProxy responsed", Logger::AlertLevel::Verbose, LOGGER_TAG);

@@ -9,6 +9,7 @@ const char* SERVER_CONFIG_FILE_PATH = "../res/ConfigJson/ServerMainConfig.json";
 
 struct ServerMainMsg{
 	static const int32 exitMainThread = 1001;
+	static const int32 dbProxyNeedReconnect = 1002;
 };
 
 struct ServerMainReturnValues{

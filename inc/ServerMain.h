@@ -42,6 +42,8 @@ private:
 	int32 parseConfig();
 	// 初始化各模块的函数
 	int32 modulesInitialization();
+	// 连接数据库代理, 会一直尝试连接直到成功
+	void connectDBProxy(bool isReconnect = false);
 	// 退出时销毁资源
 	int32 modulesUninitialization();
 
