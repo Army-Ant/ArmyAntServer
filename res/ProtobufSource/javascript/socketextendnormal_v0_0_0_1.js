@@ -62,7 +62,9 @@ proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.toObject = function(incl
   var f, obj = {
     appId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     contentLength: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    messageCode: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    messageCode: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    conversationCode: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    conversationStepIndex: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -110,6 +112,14 @@ proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.deserializeBinaryFromRea
     case 3:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setMessageCode(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setConversationCode(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setConversationStepIndex(value);
       break;
     default:
       reader.skipField();
@@ -161,6 +171,20 @@ proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.serializeBinaryToWriter 
       f
     );
   }
+  f = message.getConversationCode();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+  f = message.getConversationStepIndex();
+  if (f !== 0) {
+    writer.writeInt32(
+      5,
+      f
+    );
+  }
 };
 
 
@@ -206,6 +230,36 @@ proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.prototype.getMessageCode
 /** @param {number} value */
 proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.prototype.setMessageCode = function(value) {
   jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int32 conversation_code = 4;
+ * @return {number}
+ */
+proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.prototype.getConversationCode = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.prototype.setConversationCode = function(value) {
+  jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional int32 conversation_step_index = 5;
+ * @return {number}
+ */
+proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.prototype.getConversationStepIndex = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/** @param {number} value */
+proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.prototype.setConversationStepIndex = function(value) {
+  jspb.Message.setProto3IntField(this, 5, value);
 };
 
 

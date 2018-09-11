@@ -12,7 +12,6 @@ goog.provide('proto.ArmyAntMessage.DBProxy.SqlTableInfo');
 goog.require('jspb.BinaryReader');
 goog.require('jspb.BinaryWriter');
 goog.require('jspb.Message');
-goog.require('proto.ArmyAntMessage.DBProxy.SqlDatabaseInfo');
 
 
 /**
@@ -61,10 +60,9 @@ proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.toObject = function(opt_incl
  */
 proto.ArmyAntMessage.DBProxy.SqlTableInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
-    tablename: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    tableName: jspb.Message.getFieldWithDefault(msg, 5, ""),
     engine: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    comment: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    database: (f = msg.getDatabase()) && proto.ArmyAntMessage.DBProxy.SqlDatabaseInfo.toObject(includeInstance, f)
+    comment: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -103,7 +101,7 @@ proto.ArmyAntMessage.DBProxy.SqlTableInfo.deserializeBinaryFromReader = function
     switch (field) {
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTablename(value);
+      msg.setTableName(value);
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
@@ -112,11 +110,6 @@ proto.ArmyAntMessage.DBProxy.SqlTableInfo.deserializeBinaryFromReader = function
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setComment(value);
-      break;
-    case 8:
-      var value = new proto.ArmyAntMessage.DBProxy.SqlDatabaseInfo;
-      reader.readMessage(value,proto.ArmyAntMessage.DBProxy.SqlDatabaseInfo.deserializeBinaryFromReader);
-      msg.setDatabase(value);
       break;
     default:
       reader.skipField();
@@ -147,7 +140,7 @@ proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.serializeBinary = function()
  */
 proto.ArmyAntMessage.DBProxy.SqlTableInfo.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getTablename();
+  f = message.getTableName();
   if (f.length > 0) {
     writer.writeString(
       5,
@@ -168,28 +161,20 @@ proto.ArmyAntMessage.DBProxy.SqlTableInfo.serializeBinaryToWriter = function(mes
       f
     );
   }
-  f = message.getDatabase();
-  if (f != null) {
-    writer.writeMessage(
-      8,
-      f,
-      proto.ArmyAntMessage.DBProxy.SqlDatabaseInfo.serializeBinaryToWriter
-    );
-  }
 };
 
 
 /**
- * optional string tableName = 5;
+ * optional string table_name = 5;
  * @return {string}
  */
-proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.getTablename = function() {
+proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.getTableName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /** @param {string} value */
-proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.setTablename = function(value) {
+proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.setTableName = function(value) {
   jspb.Message.setProto3StringField(this, 5, value);
 };
 
@@ -221,36 +206,6 @@ proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.getComment = function() {
 /** @param {string} value */
 proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.setComment = function(value) {
   jspb.Message.setProto3StringField(this, 7, value);
-};
-
-
-/**
- * optional SqlDatabaseInfo database = 8;
- * @return {?proto.ArmyAntMessage.DBProxy.SqlDatabaseInfo}
- */
-proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.getDatabase = function() {
-  return /** @type{?proto.ArmyAntMessage.DBProxy.SqlDatabaseInfo} */ (
-    jspb.Message.getWrapperField(this, proto.ArmyAntMessage.DBProxy.SqlDatabaseInfo, 8));
-};
-
-
-/** @param {?proto.ArmyAntMessage.DBProxy.SqlDatabaseInfo|undefined} value */
-proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.setDatabase = function(value) {
-  jspb.Message.setWrapperField(this, 8, value);
-};
-
-
-proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.clearDatabase = function() {
-  this.setDatabase(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.ArmyAntMessage.DBProxy.SqlTableInfo.prototype.hasDatabase = function() {
-  return jspb.Message.getField(this, 8) != null;
 };
 
 

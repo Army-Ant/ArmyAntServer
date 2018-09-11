@@ -29,6 +29,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -62,6 +63,31 @@ template<> ::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1* Arena::CreateM
 namespace ArmyAntMessage {
 namespace System {
 
+enum ConversationStepType {
+  Default = 0,
+  NoticeOnly = 1,
+  AskFor = 2,
+  StartConversation = 3,
+  ConversationStepOn = 4,
+  ResponseEnd = 5,
+  ConversationStepType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::min(),
+  ConversationStepType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::max()
+};
+bool ConversationStepType_IsValid(int value);
+const ConversationStepType ConversationStepType_MIN = Default;
+const ConversationStepType ConversationStepType_MAX = ResponseEnd;
+const int ConversationStepType_ARRAYSIZE = ConversationStepType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ConversationStepType_descriptor();
+inline const ::std::string& ConversationStepType_Name(ConversationStepType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ConversationStepType_descriptor(), value);
+}
+inline bool ConversationStepType_Parse(
+    const ::std::string& name, ConversationStepType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ConversationStepType>(
+    ConversationStepType_descriptor(), name, value);
+}
 // ===================================================================
 
 class SocketExtendNormal_V0_0_0_1 : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1) */ {
@@ -176,6 +202,18 @@ class SocketExtendNormal_V0_0_0_1 : public ::google::protobuf::Message /* @@prot
   ::google::protobuf::int32 message_code() const;
   void set_message_code(::google::protobuf::int32 value);
 
+  // int32 conversation_code = 4;
+  void clear_conversation_code();
+  static const int kConversationCodeFieldNumber = 4;
+  ::google::protobuf::int32 conversation_code() const;
+  void set_conversation_code(::google::protobuf::int32 value);
+
+  // int32 conversation_step_index = 5;
+  void clear_conversation_step_index();
+  static const int kConversationStepIndexFieldNumber = 5;
+  ::google::protobuf::int32 conversation_step_index() const;
+  void set_conversation_step_index(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
  private:
   class HasBitSetters;
@@ -184,6 +222,8 @@ class SocketExtendNormal_V0_0_0_1 : public ::google::protobuf::Message /* @@prot
   ::google::protobuf::int64 app_id_;
   ::google::protobuf::int32 content_length_;
   ::google::protobuf::int32 message_code_;
+  ::google::protobuf::int32 conversation_code_;
+  ::google::protobuf::int32 conversation_step_index_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ArmyAntMessage_2fSystem_2fSocketHead_2eproto;
 };
@@ -240,6 +280,34 @@ inline void SocketExtendNormal_V0_0_0_1::set_message_code(::google::protobuf::in
   // @@protoc_insertion_point(field_set:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.message_code)
 }
 
+// int32 conversation_code = 4;
+inline void SocketExtendNormal_V0_0_0_1::clear_conversation_code() {
+  conversation_code_ = 0;
+}
+inline ::google::protobuf::int32 SocketExtendNormal_V0_0_0_1::conversation_code() const {
+  // @@protoc_insertion_point(field_get:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.conversation_code)
+  return conversation_code_;
+}
+inline void SocketExtendNormal_V0_0_0_1::set_conversation_code(::google::protobuf::int32 value) {
+  
+  conversation_code_ = value;
+  // @@protoc_insertion_point(field_set:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.conversation_code)
+}
+
+// int32 conversation_step_index = 5;
+inline void SocketExtendNormal_V0_0_0_1::clear_conversation_step_index() {
+  conversation_step_index_ = 0;
+}
+inline ::google::protobuf::int32 SocketExtendNormal_V0_0_0_1::conversation_step_index() const {
+  // @@protoc_insertion_point(field_get:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.conversation_step_index)
+  return conversation_step_index_;
+}
+inline void SocketExtendNormal_V0_0_0_1::set_conversation_step_index(::google::protobuf::int32 value) {
+  
+  conversation_step_index_ = value;
+  // @@protoc_insertion_point(field_set:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.conversation_step_index)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -248,6 +316,18 @@ inline void SocketExtendNormal_V0_0_0_1::set_message_code(::google::protobuf::in
 
 }  // namespace System
 }  // namespace ArmyAntMessage
+
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::ArmyAntMessage::System::ConversationStepType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::ArmyAntMessage::System::ConversationStepType>() {
+  return ::ArmyAntMessage::System::ConversationStepType_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

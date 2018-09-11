@@ -199,6 +199,15 @@
     <ClCompile Include="..\src\Utilities\SocketApplication.cpp" />
     <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\proto\ArmyAntMessage\DBProxy\SqlRequest.proto" />
+    <None Include="..\proto\ArmyAntMessage\System\SessionStart.proto" />
+    <None Include="..\proto\ArmyAntMessage\System\SocketHead.proto" />
+    <None Include="..\res\ConfigJson\DBProxyConfig.json" />
+    <None Include="..\res\ConfigJson\ServerMainConfig.json" />
+    <None Include="..\res\sqlScripts\initializeNewEmptyDB_MariaDB.sql" />
+    <None Include="..\res\sqlScripts\initializeNewEmptyDB_OracleMySql.sql" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

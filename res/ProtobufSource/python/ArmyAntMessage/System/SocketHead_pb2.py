@@ -3,6 +3,7 @@
 
 import sys
 _b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
+from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
@@ -19,9 +20,54 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='ArmyAntMessage.System',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n&ArmyAntMessage/System/SocketHead.proto\x12\x15\x41rmyAntMessage.System\"[\n\x1bSocketExtendNormal_V0_0_0_1\x12\x0e\n\x06\x61pp_id\x18\x01 \x01(\x03\x12\x16\n\x0e\x63ontent_length\x18\x02 \x01(\x05\x12\x14\n\x0cmessage_code\x18\x03 \x01(\x05\x62\x06proto3')
+  serialized_pb=_b('\n&ArmyAntMessage/System/SocketHead.proto\x12\x15\x41rmyAntMessage.System\"\x97\x01\n\x1bSocketExtendNormal_V0_0_0_1\x12\x0e\n\x06\x61pp_id\x18\x01 \x01(\x03\x12\x16\n\x0e\x63ontent_length\x18\x02 \x01(\x05\x12\x14\n\x0cmessage_code\x18\x03 \x01(\x05\x12\x19\n\x11\x63onversation_code\x18\x04 \x01(\x05\x12\x1f\n\x17\x63onversation_step_index\x18\x05 \x01(\x05*\x7f\n\x14\x43onversationStepType\x12\x0b\n\x07\x44\x65\x66\x61ult\x10\x00\x12\x0e\n\nNoticeOnly\x10\x01\x12\n\n\x06\x41skFor\x10\x02\x12\x15\n\x11StartConversation\x10\x03\x12\x16\n\x12\x43onversationStepOn\x10\x04\x12\x0f\n\x0bResponseEnd\x10\x05\x62\x06proto3')
 )
 
+_CONVERSATIONSTEPTYPE = _descriptor.EnumDescriptor(
+  name='ConversationStepType',
+  full_name='ArmyAntMessage.System.ConversationStepType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='Default', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NoticeOnly', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='AskFor', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='StartConversation', index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ConversationStepOn', index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ResponseEnd', index=5, number=5,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=219,
+  serialized_end=346,
+)
+_sym_db.RegisterEnumDescriptor(_CONVERSATIONSTEPTYPE)
+
+ConversationStepType = enum_type_wrapper.EnumTypeWrapper(_CONVERSATIONSTEPTYPE)
+Default = 0
+NoticeOnly = 1
+AskFor = 2
+StartConversation = 3
+ConversationStepOn = 4
+ResponseEnd = 5
 
 
 
@@ -53,6 +99,20 @@ _SOCKETEXTENDNORMAL_V0_0_0_1 = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='conversation_code', full_name='ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.conversation_code', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='conversation_step_index', full_name='ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.conversation_step_index', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -65,11 +125,12 @@ _SOCKETEXTENDNORMAL_V0_0_0_1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=65,
-  serialized_end=156,
+  serialized_start=66,
+  serialized_end=217,
 )
 
 DESCRIPTOR.message_types_by_name['SocketExtendNormal_V0_0_0_1'] = _SOCKETEXTENDNORMAL_V0_0_0_1
+DESCRIPTOR.enum_types_by_name['ConversationStepType'] = _CONVERSATIONSTEPTYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 SocketExtendNormal_V0_0_0_1 = _reflection.GeneratedProtocolMessageType('SocketExtendNormal_V0_0_0_1', (_message.Message,), dict(

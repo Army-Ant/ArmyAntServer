@@ -4,13 +4,34 @@
 require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
+  add_message "ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest" do
+    optional :mac_address, :int64, 1
+    optional :ip, :string, 2
+    optional :server_type_checksum, :string, 3
+  end
+  add_message "ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful" do
+    optional :auth_string, :string, 1
+    optional :current_time, :int64, 2
+    optional :end_time, :int64, 3
+  end
+  add_message "ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure" do
+    optional :code, :int32, 1
+    optional :message, :string, 2
+  end
+  add_message "ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest" do
+    optional :auth_string, :string, 1
+  end
+  add_message "ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse" do
+    optional :result, :bool, 1
+    optional :message, :string, 2
+  end
   add_message "ArmyAntMessage.DBProxy.SqlHeadOne" do
     optional :length, :int32, 1
-    optional :catalogName, :string, 2
-    optional :columnName, :string, 3
+    optional :catalog_name, :string, 2
+    optional :column_name, :string, 3
     optional :type, :int32, 4
-    optional :allowNumm, :bool, 5
-    optional :autoIncrease, :bool, 6
+    optional :allow_num, :bool, 5
+    optional :auto_increase, :bool, 6
   end
   add_message "ArmyAntMessage.DBProxy.SqlRow" do
     repeated :fields, :string, 1
@@ -19,32 +40,103 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     optional :name, :string, 1
     optional :server, :string, 2
     optional :charset, :string, 3
-    optional :sortRule, :string, 4
+    optional :sort_rule, :string, 4
   end
   add_message "ArmyAntMessage.DBProxy.SqlTableInfo" do
-    optional :tableName, :string, 5
+    optional :table_name, :string, 5
     optional :engine, :string, 6
     optional :comment, :string, 7
-    optional :database, :message, 8, "ArmyAntMessage.DBProxy.SqlDatabaseInfo"
+  end
+  add_message "ArmyAntMessage.DBProxy.SqlColumnInfo" do
   end
   add_message "ArmyAntMessage.DBProxy.SqlResult" do
     optional :table, :message, 1, "ArmyAntMessage.DBProxy.SqlTableInfo"
     repeated :heads, :message, 2, "ArmyAntMessage.DBProxy.SqlHeadOne"
     repeated :rows, :message, 3, "ArmyAntMessage.DBProxy.SqlRow"
   end
-  add_message "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest" do
-    optional :type, :int32, 1
-    optional :tableName, :string, 2
+  add_message "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table" do
+    optional :auth_string, :string, 1
+    optional :type, :enum, 2, "ArmyAntMessage.DBProxy.SqlRequestType"
+    optional :table_name, :string, 3
+    optional :table_create_data, :message, 4, "ArmyAntMessage.DBProxy.SqlTableInfo"
+  end
+  add_message "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select" do
+    optional :auth_string, :string, 1
+    optional :table_name, :string, 2
+    repeated :columns, :string, 3
+    repeated :clauses, :string, 4
+  end
+  add_message "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update" do
+    optional :auth_string, :string, 1
+    optional :type, :enum, 2, "ArmyAntMessage.DBProxy.SqlRequestType"
+    optional :table_name, :string, 3
+    repeated :columns, :string, 4
+    repeated :values, :string, 5
+    repeated :clauses, :string, 6
+  end
+  add_message "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column" do
+    optional :auth_string, :string, 1
+    optional :type, :enum, 2, "ArmyAntMessage.DBProxy.SqlRequestType"
+    optional :table_name, :string, 3
+    optional :column_name, :string, 4
+    optional :column_create_info, :message, 5, "ArmyAntMessage.DBProxy.SqlColumnInfo"
+  end
+  add_message "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString" do
+    optional :auth_string, :string, 1
+    optional :type, :enum, 2, "ArmyAntMessage.DBProxy.SqlRequestType_SqlString"
+    optional :str, :string, 3
+  end
+  add_message "ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean" do
+    optional :result, :bool, 1
+  end
+  add_message "ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts" do
+    repeated :result, :int32, 1
+  end
+  add_message "ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables" do
+    repeated :result, :message, 1, "ArmyAntMessage.DBProxy.SqlResult"
+  end
+  add_message "ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error" do
+    optional :code, :int32, 1
+    optional :message, :string, 2
+  end
+  add_enum "ArmyAntMessage.DBProxy.SqlRequestType" do
+    value :DEFAULT, 0
+    value :SELECT, 1
+    value :UPDATE, 2
+    value :DELETE, 3
+    value :INSERT, 4
+  end
+  add_enum "ArmyAntMessage.DBProxy.SqlRequestType_SqlString" do
+    value :EXECUTEBYSQLSTRING, 0
+    value :QUERYBYSQLSTRING, 1
+    value :UPDATEBYSQLSTRING, 2
+    value :EXECUTEBYSQLSCRIPT, 3
   end
 end
 
 module ArmyAntMessage
   module DBProxy
+    Any2Dbp_LoginRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest").msgclass
+    Dbp2Any_LoginResponseSuccessful = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful").msgclass
+    Dbp2Any_LoginResponseFailure = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure").msgclass
+    Any2Dbp_LogoutRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest").msgclass
+    Dbp2Any_LogoutResponse = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse").msgclass
     SqlHeadOne = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.SqlHeadOne").msgclass
     SqlRow = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.SqlRow").msgclass
     SqlDatabaseInfo = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.SqlDatabaseInfo").msgclass
     SqlTableInfo = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.SqlTableInfo").msgclass
+    SqlColumnInfo = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.SqlColumnInfo").msgclass
     SqlResult = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.SqlResult").msgclass
-    Any2Dbp_SqlRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest").msgclass
+    Any2Dbp_SqlRequest_Table = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table").msgclass
+    Any2Dbp_SqlRequest_Select = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select").msgclass
+    Any2Dbp_SqlRequest_Update = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update").msgclass
+    Any2Dbp_SqlRequest_Column = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column").msgclass
+    Any2Dbp_SqlRequest_SqlString = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString").msgclass
+    Dbp2Any_SqlResponse_Boolean = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean").msgclass
+    Dbp2Any_SqlResponse_Counts = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts").msgclass
+    Dbp2Any_SqlResponse_Tables = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables").msgclass
+    Dbp2Any_SqlResponse_Error = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error").msgclass
+    SqlRequestType = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.SqlRequestType").enummodule
+    SqlRequestType_SqlString = Google::Protobuf::DescriptorPool.generated_pool.lookup("ArmyAntMessage.DBProxy.SqlRequestType_SqlString").enummodule
   end
 end

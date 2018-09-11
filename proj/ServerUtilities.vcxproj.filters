@@ -19,6 +19,27 @@
     <Filter Include="base">
       <UniqueIdentifier>{02c85b3d-418f-48d5-ab3f-e07906d0cf0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{cd9d63b9-7032-4d3f-b0cb-d3e4baf89e68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\proto">
+      <UniqueIdentifier>{78e0d90d-c8a3-4c3a-b327-38894d418dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\sql">
+      <UniqueIdentifier>{9aba62db-476e-4bd2-8b03-a5b7c37292c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\proto\ArmyAntMessage">
+      <UniqueIdentifier>{d0ad90af-9347-4e0e-ba22-7659e057aa0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\proto\ArmyAntMessage\DBProxy">
+      <UniqueIdentifier>{0678ceb9-dabc-4518-80c0-a2668c4df8c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\proto\ArmyAntMessage\System">
+      <UniqueIdentifier>{16a32bf0-917d-4c3a-9f86-5a9245193f98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\json">
+      <UniqueIdentifier>{9625e46a-fadc-4ee8-b758-e7a8debb357f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\Logger.h">
@@ -92,5 +113,28 @@
     <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc">
       <Filter>protobuf</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\res\sqlScripts\initializeNewEmptyDB_MariaDB.sql">
+      <Filter>resources\sql</Filter>
+    </None>
+    <None Include="..\res\sqlScripts\initializeNewEmptyDB_OracleMySql.sql">
+      <Filter>resources\sql</Filter>
+    </None>
+    <None Include="..\proto\ArmyAntMessage\DBProxy\SqlRequest.proto">
+      <Filter>resources\proto\ArmyAntMessage\DBProxy</Filter>
+    </None>
+    <None Include="..\proto\ArmyAntMessage\System\SessionStart.proto">
+      <Filter>resources\proto\ArmyAntMessage\System</Filter>
+    </None>
+    <None Include="..\proto\ArmyAntMessage\System\SocketHead.proto">
+      <Filter>resources\proto\ArmyAntMessage\System</Filter>
+    </None>
+    <None Include="..\res\ConfigJson\ServerMainConfig.json">
+      <Filter>resources\json</Filter>
+    </None>
+    <None Include="..\res\ConfigJson\DBProxyConfig.json">
+      <Filter>resources\json</Filter>
+    </None>
   </ItemGroup>
 </Project>

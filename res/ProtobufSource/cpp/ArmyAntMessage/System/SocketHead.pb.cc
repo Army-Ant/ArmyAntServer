@@ -47,7 +47,7 @@ void InitDefaults_ArmyAntMessage_2fSystem_2fSocketHead_2eproto() {
 }
 
 ::google::protobuf::Metadata file_level_metadata_ArmyAntMessage_2fSystem_2fSocketHead_2eproto[1];
-constexpr ::google::protobuf::EnumDescriptor const** file_level_enum_descriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto = nullptr;
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto[1];
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto = nullptr;
 
 const ::google::protobuf::uint32 TableStruct_ArmyAntMessage_2fSystem_2fSocketHead_2eproto::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -59,6 +59,8 @@ const ::google::protobuf::uint32 TableStruct_ArmyAntMessage_2fSystem_2fSocketHea
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1, app_id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1, content_length_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1, message_code_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1, conversation_code_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1, conversation_step_index_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1)},
@@ -77,12 +79,16 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 ::google::protobuf::internal::DescriptorTable descriptor_table_ArmyAntMessage_2fSystem_2fSocketHead_2eproto = {
   false, InitDefaults_ArmyAntMessage_2fSystem_2fSocketHead_2eproto, 
   "\n&ArmyAntMessage/System/SocketHead.proto"
-  "\022\025ArmyAntMessage.System\"[\n\033SocketExtendN"
-  "ormal_V0_0_0_1\022\016\n\006app_id\030\001 \001(\003\022\026\n\016conten"
-  "t_length\030\002 \001(\005\022\024\n\014message_code\030\003 \001(\005b\006pr"
-  "oto3"
+  "\022\025ArmyAntMessage.System\"\227\001\n\033SocketExtend"
+  "Normal_V0_0_0_1\022\016\n\006app_id\030\001 \001(\003\022\026\n\016conte"
+  "nt_length\030\002 \001(\005\022\024\n\014message_code\030\003 \001(\005\022\031\n"
+  "\021conversation_code\030\004 \001(\005\022\037\n\027conversation"
+  "_step_index\030\005 \001(\005*\177\n\024ConversationStepTyp"
+  "e\022\013\n\007Default\020\000\022\016\n\nNoticeOnly\020\001\022\n\n\006AskFor"
+  "\020\002\022\025\n\021StartConversation\020\003\022\026\n\022Conversatio"
+  "nStepOn\020\004\022\017\n\013ResponseEnd\020\005b\006proto3"
 ,
-  "ArmyAntMessage/System/SocketHead.proto", &assign_descriptors_table_ArmyAntMessage_2fSystem_2fSocketHead_2eproto, 164,
+  "ArmyAntMessage/System/SocketHead.proto", &assign_descriptors_table_ArmyAntMessage_2fSystem_2fSocketHead_2eproto, 354,
 };
 
 void AddDescriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto() {
@@ -96,6 +102,24 @@ void AddDescriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto() {
 static bool dynamic_init_dummy_ArmyAntMessage_2fSystem_2fSocketHead_2eproto = []() { AddDescriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto(); return true; }();
 namespace ArmyAntMessage {
 namespace System {
+const ::google::protobuf::EnumDescriptor* ConversationStepType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_ArmyAntMessage_2fSystem_2fSocketHead_2eproto);
+  return file_level_enum_descriptors_ArmyAntMessage_2fSystem_2fSocketHead_2eproto[0];
+}
+bool ConversationStepType_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 
@@ -109,6 +133,8 @@ class SocketExtendNormal_V0_0_0_1::HasBitSetters {
 const int SocketExtendNormal_V0_0_0_1::kAppIdFieldNumber;
 const int SocketExtendNormal_V0_0_0_1::kContentLengthFieldNumber;
 const int SocketExtendNormal_V0_0_0_1::kMessageCodeFieldNumber;
+const int SocketExtendNormal_V0_0_0_1::kConversationCodeFieldNumber;
+const int SocketExtendNormal_V0_0_0_1::kConversationStepIndexFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 SocketExtendNormal_V0_0_0_1::SocketExtendNormal_V0_0_0_1()
@@ -121,15 +147,15 @@ SocketExtendNormal_V0_0_0_1::SocketExtendNormal_V0_0_0_1(const SocketExtendNorma
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&app_id_, &from.app_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&message_code_) -
-    reinterpret_cast<char*>(&app_id_)) + sizeof(message_code_));
+    static_cast<size_t>(reinterpret_cast<char*>(&conversation_step_index_) -
+    reinterpret_cast<char*>(&app_id_)) + sizeof(conversation_step_index_));
   // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1)
 }
 
 void SocketExtendNormal_V0_0_0_1::SharedCtor() {
   ::memset(&app_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&message_code_) -
-      reinterpret_cast<char*>(&app_id_)) + sizeof(message_code_));
+      reinterpret_cast<char*>(&conversation_step_index_) -
+      reinterpret_cast<char*>(&app_id_)) + sizeof(conversation_step_index_));
 }
 
 SocketExtendNormal_V0_0_0_1::~SocketExtendNormal_V0_0_0_1() {
@@ -156,8 +182,8 @@ void SocketExtendNormal_V0_0_0_1::Clear() {
   (void) cached_has_bits;
 
   ::memset(&app_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&message_code_) -
-      reinterpret_cast<char*>(&app_id_)) + sizeof(message_code_));
+      reinterpret_cast<char*>(&conversation_step_index_) -
+      reinterpret_cast<char*>(&app_id_)) + sizeof(conversation_step_index_));
   _internal_metadata_.Clear();
 }
 
@@ -203,6 +229,26 @@ const char* SocketExtendNormal_V0_0_0_1::_InternalParse(const char* begin, const
         if (!ptr) goto error;
         ::google::protobuf::int32 value = val;
         msg->set_message_code(value);
+        break;
+      }
+      // int32 conversation_code = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_conversation_code(value);
+        break;
+      }
+      // int32 conversation_step_index = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 40) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_conversation_step_index(value);
         break;
       }
       default: {
@@ -279,6 +325,32 @@ bool SocketExtendNormal_V0_0_0_1::MergePartialFromCodedStream(
         break;
       }
 
+      // int32 conversation_code = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &conversation_code_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 conversation_step_index = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &conversation_step_index_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -321,6 +393,16 @@ void SocketExtendNormal_V0_0_0_1::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->message_code(), output);
   }
 
+  // int32 conversation_code = 4;
+  if (this->conversation_code() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->conversation_code(), output);
+  }
+
+  // int32 conversation_step_index = 5;
+  if (this->conversation_step_index() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->conversation_step_index(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -348,6 +430,16 @@ void SocketExtendNormal_V0_0_0_1::SerializeWithCachedSizes(
   // int32 message_code = 3;
   if (this->message_code() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->message_code(), target);
+  }
+
+  // int32 conversation_code = 4;
+  if (this->conversation_code() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->conversation_code(), target);
+  }
+
+  // int32 conversation_step_index = 5;
+  if (this->conversation_step_index() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->conversation_step_index(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -392,6 +484,20 @@ size_t SocketExtendNormal_V0_0_0_1::ByteSizeLong() const {
         this->message_code());
   }
 
+  // int32 conversation_code = 4;
+  if (this->conversation_code() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->conversation_code());
+  }
+
+  // int32 conversation_step_index = 5;
+  if (this->conversation_step_index() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->conversation_step_index());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -428,6 +534,12 @@ void SocketExtendNormal_V0_0_0_1::MergeFrom(const SocketExtendNormal_V0_0_0_1& f
   if (from.message_code() != 0) {
     set_message_code(from.message_code());
   }
+  if (from.conversation_code() != 0) {
+    set_conversation_code(from.conversation_code());
+  }
+  if (from.conversation_step_index() != 0) {
+    set_conversation_step_index(from.conversation_step_index());
+  }
 }
 
 void SocketExtendNormal_V0_0_0_1::CopyFrom(const ::google::protobuf::Message& from) {
@@ -458,6 +570,8 @@ void SocketExtendNormal_V0_0_0_1::InternalSwap(SocketExtendNormal_V0_0_0_1* othe
   swap(app_id_, other->app_id_);
   swap(content_length_, other->content_length_);
   swap(message_code_, other->message_code_);
+  swap(conversation_code_, other->conversation_code_);
+  swap(conversation_step_index_, other->conversation_step_index_);
 }
 
 ::google::protobuf::Metadata SocketExtendNormal_V0_0_0_1::GetMetadata() const {

@@ -61,11 +61,11 @@ proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.toObject = function(opt_includ
 proto.ArmyAntMessage.DBProxy.SqlHeadOne.toObject = function(includeInstance, msg) {
   var f, obj = {
     length: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    catalogname: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    columnname: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    catalogName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    columnName: jspb.Message.getFieldWithDefault(msg, 3, ""),
     type: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    allownumm: jspb.Message.getFieldWithDefault(msg, 5, false),
-    autoincrease: jspb.Message.getFieldWithDefault(msg, 6, false)
+    allowNum: jspb.Message.getFieldWithDefault(msg, 5, false),
+    autoIncrease: jspb.Message.getFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -108,11 +108,11 @@ proto.ArmyAntMessage.DBProxy.SqlHeadOne.deserializeBinaryFromReader = function(m
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCatalogname(value);
+      msg.setCatalogName(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setColumnname(value);
+      msg.setColumnName(value);
       break;
     case 4:
       var value = /** @type {number} */ (reader.readInt32());
@@ -120,11 +120,11 @@ proto.ArmyAntMessage.DBProxy.SqlHeadOne.deserializeBinaryFromReader = function(m
       break;
     case 5:
       var value = /** @type {boolean} */ (reader.readBool());
-      msg.setAllownumm(value);
+      msg.setAllowNum(value);
       break;
     case 6:
       var value = /** @type {boolean} */ (reader.readBool());
-      msg.setAutoincrease(value);
+      msg.setAutoIncrease(value);
       break;
     default:
       reader.skipField();
@@ -162,14 +162,14 @@ proto.ArmyAntMessage.DBProxy.SqlHeadOne.serializeBinaryToWriter = function(messa
       f
     );
   }
-  f = message.getCatalogname();
+  f = message.getCatalogName();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getColumnname();
+  f = message.getColumnName();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -183,14 +183,14 @@ proto.ArmyAntMessage.DBProxy.SqlHeadOne.serializeBinaryToWriter = function(messa
       f
     );
   }
-  f = message.getAllownumm();
+  f = message.getAllowNum();
   if (f) {
     writer.writeBool(
       5,
       f
     );
   }
-  f = message.getAutoincrease();
+  f = message.getAutoIncrease();
   if (f) {
     writer.writeBool(
       6,
@@ -216,31 +216,31 @@ proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setLength = function(value) {
 
 
 /**
- * optional string catalogName = 2;
+ * optional string catalog_name = 2;
  * @return {string}
  */
-proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.getCatalogname = function() {
+proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.getCatalogName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setCatalogname = function(value) {
+proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setCatalogName = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional string columnName = 3;
+ * optional string column_name = 3;
  * @return {string}
  */
-proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.getColumnname = function() {
+proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.getColumnName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setColumnname = function(value) {
+proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setColumnName = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
 };
 
@@ -261,35 +261,35 @@ proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setType = function(value) {
 
 
 /**
- * optional bool allowNumm = 5;
+ * optional bool allow_num = 5;
  * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.getAllownumm = function() {
+proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.getAllowNum = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 5, false));
 };
 
 
 /** @param {boolean} value */
-proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setAllownumm = function(value) {
+proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setAllowNum = function(value) {
   jspb.Message.setProto3BooleanField(this, 5, value);
 };
 
 
 /**
- * optional bool autoIncrease = 6;
+ * optional bool auto_increase = 6;
  * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.getAutoincrease = function() {
+proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.getAutoIncrease = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 6, false));
 };
 
 
 /** @param {boolean} value */
-proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setAutoincrease = function(value) {
+proto.ArmyAntMessage.DBProxy.SqlHeadOne.prototype.setAutoIncrease = function(value) {
   jspb.Message.setProto3BooleanField(this, 6, value);
 };
 

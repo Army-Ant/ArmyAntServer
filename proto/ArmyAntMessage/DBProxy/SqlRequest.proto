@@ -2,15 +2,43 @@ syntax = "proto3";
 
 package ArmyAntMessage.DBProxy;
 
+////////// Login User Authorication Checking ////////////
+
+message Any2Dbp_LoginRequest{
+	int64 mac_address = 1;
+	string ip = 2;
+	string server_type_checksum = 3;
+}
+
+message Dbp2Any_LoginResponseSuccessful {
+	string auth_string = 1;
+	int64 current_time = 2;
+	int64 end_time = 3;
+}
+
+message Dbp2Any_LoginResponseFailure {
+	int32 code = 1;
+	string message = 2;
+}
+
+message Any2Dbp_LogoutRequest {
+	string auth_string = 1;
+}
+
+message Dbp2Any_LogoutResponse {
+	bool result = 1;
+	string message = 2;
+}
+
 ////////// Message Inner Structures /////////////////////
 
 message SqlHeadOne {
 	int32 length = 1;
-	string catalogName = 2;
-	string columnName = 3;
+	string catalog_name = 2;
+	string column_name = 3;
 	int32 type = 4;
-	bool allowNumm = 5;
-	bool autoIncrease = 6;
+	bool allow_num = 5;
+	bool auto_increase = 6;
 }
 
 message SqlRow {
@@ -21,14 +49,17 @@ message SqlDatabaseInfo{
 	string name = 1;
 	string server = 2;
 	string charset = 3;
-	string sortRule = 4;
+	string sort_rule = 4;
 }
 
 message SqlTableInfo{
-	string tableName = 5;
+	string table_name = 5;
 	string engine = 6;
 	string comment = 7;
-	SqlDatabaseInfo database = 8;
+}
+
+message SqlColumnInfo{
+	
 }
 
 message SqlResult{
@@ -40,8 +71,71 @@ message SqlResult{
 
 ////////// Socket IO Messages /////////////////////////////
 
-message Any2Dbp_SqlRequest{
-	int32 type = 1;		// 1: select, 2: update, 3: alter, 4: execute
-	string tableName = 2;
-	
+enum SqlRequestType{
+	DEFAULT = 0;
+	SELECT = 1;
+	UPDATE = 2;
+	DELETE = 3;
+	INSERT = 4;
+}
+
+enum SqlRequestType_SqlString {
+	EXECUTEBYSQLSTRING = 0;
+	QUERYBYSQLSTRING = 1;
+	UPDATEBYSQLSTRING = 2;
+	EXECUTEBYSQLSCRIPT = 3;
+}
+
+message Any2Dbp_SqlRequest_Table{
+	string auth_string = 1;
+	SqlRequestType type = 2;  // Cannot update, insert == create
+	string table_name = 3;
+	SqlTableInfo  table_create_data = 4;
+}
+
+message Any2Dbp_SqlRequest_Select{
+	string auth_string = 1;
+	string table_name = 2;
+	repeated string columns = 3;
+	repeated string clauses = 4;
+}
+
+message Any2Dbp_SqlRequest_Update{
+	string auth_string = 1;
+	SqlRequestType type = 2;
+	string table_name = 3;
+	repeated string columns = 4;
+	repeated string values = 5;
+	repeated string clauses = 6;
+}
+
+message Any2Dbp_SqlRequest_Column{
+	string auth_string = 1;
+	SqlRequestType type = 2;	// Cannot update
+	string table_name = 3;
+	string column_name = 4;
+	SqlColumnInfo column_create_info = 5;
+}
+
+message Any2Dbp_SqlRequest_SqlString{
+	string auth_string = 1;
+	SqlRequestType_SqlString type = 2;
+	string str = 3;
+}
+
+message Dbp2Any_SqlResponse_Boolean{
+	bool result = 1;
+}
+
+message Dbp2Any_SqlResponse_Counts{
+	repeated int32 result = 1;
+}
+
+message Dbp2Any_SqlResponse_Tables{
+	repeated SqlResult result = 1;
+}
+
+message Dbp2Any_SqlResponse_Error{
+	int32 code = 1;
+	string message = 2;
 }

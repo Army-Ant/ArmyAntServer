@@ -25,18 +25,37 @@ namespace ArmyAntMessage.System {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiZBcm15QW50TWVzc2FnZS9TeXN0ZW0vU29ja2V0SGVhZC5wcm90bxIVQXJt",
-            "eUFudE1lc3NhZ2UuU3lzdGVtIlsKG1NvY2tldEV4dGVuZE5vcm1hbF9WMF8w",
-            "XzBfMRIOCgZhcHBfaWQYASABKAMSFgoOY29udGVudF9sZW5ndGgYAiABKAUS",
-            "FAoMbWVzc2FnZV9jb2RlGAMgASgFYgZwcm90bzM="));
+            "eUFudE1lc3NhZ2UuU3lzdGVtIpcBChtTb2NrZXRFeHRlbmROb3JtYWxfVjBf",
+            "MF8wXzESDgoGYXBwX2lkGAEgASgDEhYKDmNvbnRlbnRfbGVuZ3RoGAIgASgF",
+            "EhQKDG1lc3NhZ2VfY29kZRgDIAEoBRIZChFjb252ZXJzYXRpb25fY29kZRgE",
+            "IAEoBRIfChdjb252ZXJzYXRpb25fc3RlcF9pbmRleBgFIAEoBSp/ChRDb252",
+            "ZXJzYXRpb25TdGVwVHlwZRILCgdEZWZhdWx0EAASDgoKTm90aWNlT25seRAB",
+            "EgoKBkFza0ZvchACEhUKEVN0YXJ0Q29udmVyc2F0aW9uEAMSFgoSQ29udmVy",
+            "c2F0aW9uU3RlcE9uEAQSDwoLUmVzcG9uc2VFbmQQBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1), global::ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.Parser, new[]{ "AppId", "ContentLength", "MessageCode" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ArmyAntMessage.System.ConversationStepType), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1), global::ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1.Parser, new[]{ "AppId", "ContentLength", "MessageCode", "ConversationCode", "ConversationStepIndex" }, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum ConversationStepType {
+    [pbr::OriginalName("Default")] Default = 0,
+    [pbr::OriginalName("NoticeOnly")] NoticeOnly = 1,
+    [pbr::OriginalName("AskFor")] AskFor = 2,
+    [pbr::OriginalName("StartConversation")] StartConversation = 3,
+    [pbr::OriginalName("ConversationStepOn")] ConversationStepOn = 4,
+    /// <summary>
+    /// Used to end an asking or conversation
+    /// </summary>
+    [pbr::OriginalName("ResponseEnd")] ResponseEnd = 5,
+  }
+
+  #endregion
+
   #region Messages
   public sealed partial class SocketExtendNormal_V0_0_0_1 : pb::IMessage<SocketExtendNormal_V0_0_0_1> {
     private static readonly pb::MessageParser<SocketExtendNormal_V0_0_0_1> _parser = new pb::MessageParser<SocketExtendNormal_V0_0_0_1>(() => new SocketExtendNormal_V0_0_0_1());
@@ -66,6 +85,8 @@ namespace ArmyAntMessage.System {
       appId_ = other.appId_;
       contentLength_ = other.contentLength_;
       messageCode_ = other.messageCode_;
+      conversationCode_ = other.conversationCode_;
+      conversationStepIndex_ = other.conversationStepIndex_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -107,6 +128,28 @@ namespace ArmyAntMessage.System {
       }
     }
 
+    /// <summary>Field number for the "conversation_code" field.</summary>
+    public const int ConversationCodeFieldNumber = 4;
+    private int conversationCode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ConversationCode {
+      get { return conversationCode_; }
+      set {
+        conversationCode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "conversation_step_index" field.</summary>
+    public const int ConversationStepIndexFieldNumber = 5;
+    private int conversationStepIndex_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ConversationStepIndex {
+      get { return conversationStepIndex_; }
+      set {
+        conversationStepIndex_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as SocketExtendNormal_V0_0_0_1);
@@ -123,6 +166,8 @@ namespace ArmyAntMessage.System {
       if (AppId != other.AppId) return false;
       if (ContentLength != other.ContentLength) return false;
       if (MessageCode != other.MessageCode) return false;
+      if (ConversationCode != other.ConversationCode) return false;
+      if (ConversationStepIndex != other.ConversationStepIndex) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,6 +177,8 @@ namespace ArmyAntMessage.System {
       if (AppId != 0L) hash ^= AppId.GetHashCode();
       if (ContentLength != 0) hash ^= ContentLength.GetHashCode();
       if (MessageCode != 0) hash ^= MessageCode.GetHashCode();
+      if (ConversationCode != 0) hash ^= ConversationCode.GetHashCode();
+      if (ConversationStepIndex != 0) hash ^= ConversationStepIndex.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -157,6 +204,14 @@ namespace ArmyAntMessage.System {
         output.WriteRawTag(24);
         output.WriteInt32(MessageCode);
       }
+      if (ConversationCode != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(ConversationCode);
+      }
+      if (ConversationStepIndex != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(ConversationStepIndex);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -173,6 +228,12 @@ namespace ArmyAntMessage.System {
       }
       if (MessageCode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(MessageCode);
+      }
+      if (ConversationCode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ConversationCode);
+      }
+      if (ConversationStepIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ConversationStepIndex);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -193,6 +254,12 @@ namespace ArmyAntMessage.System {
       }
       if (other.MessageCode != 0) {
         MessageCode = other.MessageCode;
+      }
+      if (other.ConversationCode != 0) {
+        ConversationCode = other.ConversationCode;
+      }
+      if (other.ConversationStepIndex != 0) {
+        ConversationStepIndex = other.ConversationStepIndex;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -215,6 +282,14 @@ namespace ArmyAntMessage.System {
           }
           case 24: {
             MessageCode = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            ConversationCode = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            ConversationStepIndex = input.ReadInt32();
             break;
           }
         }

@@ -20,12 +20,33 @@
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 
-extern PROTOBUF_INTERNAL_EXPORT_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SqlDatabaseInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SqlColumnInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SqlHeadOne_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SqlRow_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_SqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto ::google::protobuf::internal::SCCInfo<3> scc_info_SqlResult_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto;
 namespace ArmyAntMessage {
 namespace DBProxy {
+class Any2Dbp_LoginRequestDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Any2Dbp_LoginRequest> _instance;
+} _Any2Dbp_LoginRequest_default_instance_;
+class Dbp2Any_LoginResponseSuccessfulDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Dbp2Any_LoginResponseSuccessful> _instance;
+} _Dbp2Any_LoginResponseSuccessful_default_instance_;
+class Dbp2Any_LoginResponseFailureDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Dbp2Any_LoginResponseFailure> _instance;
+} _Dbp2Any_LoginResponseFailure_default_instance_;
+class Any2Dbp_LogoutRequestDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Any2Dbp_LogoutRequest> _instance;
+} _Any2Dbp_LogoutRequest_default_instance_;
+class Dbp2Any_LogoutResponseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Dbp2Any_LogoutResponse> _instance;
+} _Dbp2Any_LogoutResponse_default_instance_;
 class SqlHeadOneDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<SqlHeadOne> _instance;
@@ -42,16 +63,122 @@ class SqlTableInfoDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<SqlTableInfo> _instance;
 } _SqlTableInfo_default_instance_;
+class SqlColumnInfoDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<SqlColumnInfo> _instance;
+} _SqlColumnInfo_default_instance_;
 class SqlResultDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<SqlResult> _instance;
 } _SqlResult_default_instance_;
-class Any2Dbp_SqlRequestDefaultTypeInternal {
+class Any2Dbp_SqlRequest_TableDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Any2Dbp_SqlRequest> _instance;
-} _Any2Dbp_SqlRequest_default_instance_;
+  ::google::protobuf::internal::ExplicitlyConstructed<Any2Dbp_SqlRequest_Table> _instance;
+} _Any2Dbp_SqlRequest_Table_default_instance_;
+class Any2Dbp_SqlRequest_SelectDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Any2Dbp_SqlRequest_Select> _instance;
+} _Any2Dbp_SqlRequest_Select_default_instance_;
+class Any2Dbp_SqlRequest_UpdateDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Any2Dbp_SqlRequest_Update> _instance;
+} _Any2Dbp_SqlRequest_Update_default_instance_;
+class Any2Dbp_SqlRequest_ColumnDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Any2Dbp_SqlRequest_Column> _instance;
+} _Any2Dbp_SqlRequest_Column_default_instance_;
+class Any2Dbp_SqlRequest_SqlStringDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Any2Dbp_SqlRequest_SqlString> _instance;
+} _Any2Dbp_SqlRequest_SqlString_default_instance_;
+class Dbp2Any_SqlResponse_BooleanDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Dbp2Any_SqlResponse_Boolean> _instance;
+} _Dbp2Any_SqlResponse_Boolean_default_instance_;
+class Dbp2Any_SqlResponse_CountsDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Dbp2Any_SqlResponse_Counts> _instance;
+} _Dbp2Any_SqlResponse_Counts_default_instance_;
+class Dbp2Any_SqlResponse_TablesDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Dbp2Any_SqlResponse_Tables> _instance;
+} _Dbp2Any_SqlResponse_Tables_default_instance_;
+class Dbp2Any_SqlResponse_ErrorDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Dbp2Any_SqlResponse_Error> _instance;
+} _Dbp2Any_SqlResponse_Error_default_instance_;
 }  // namespace DBProxy
 }  // namespace ArmyAntMessage
+static void InitDefaultsAny2Dbp_LoginRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Any2Dbp_LoginRequest_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Any2Dbp_LoginRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsAny2Dbp_LoginRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsDbp2Any_LoginResponseSuccessful_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Dbp2Any_LoginResponseSuccessful_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Dbp2Any_LoginResponseSuccessful_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDbp2Any_LoginResponseSuccessful_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsDbp2Any_LoginResponseFailure_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Dbp2Any_LoginResponseFailure_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseFailure();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseFailure::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Dbp2Any_LoginResponseFailure_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDbp2Any_LoginResponseFailure_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsAny2Dbp_LogoutRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Any2Dbp_LogoutRequest_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Any2Dbp_LogoutRequest();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Any2Dbp_LogoutRequest::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Any2Dbp_LogoutRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsAny2Dbp_LogoutRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsDbp2Any_LogoutResponse_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Dbp2Any_LogoutResponse_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Dbp2Any_LogoutResponse();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Dbp2Any_LogoutResponse::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Dbp2Any_LogoutResponse_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDbp2Any_LogoutResponse_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
 static void InitDefaultsSqlHeadOne_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -105,9 +232,22 @@ static void InitDefaultsSqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2epro
   ::ArmyAntMessage::DBProxy::SqlTableInfo::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_SqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {
-      &scc_info_SqlDatabaseInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base,}};
+::google::protobuf::internal::SCCInfo<0> scc_info_SqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsSqlColumnInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_SqlColumnInfo_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::SqlColumnInfo();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::SqlColumnInfo::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_SqlColumnInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSqlColumnInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
 
 static void InitDefaultsSqlResult_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -126,45 +266,210 @@ static void InitDefaultsSqlResult_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto(
       &scc_info_SqlHeadOne_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base,
       &scc_info_SqlRow_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base,}};
 
-static void InitDefaultsAny2Dbp_SqlRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+static void InitDefaultsAny2Dbp_SqlRequest_Table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_default_instance_;
-    new (ptr) ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest();
+    void* ptr = &::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Table_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest::InitAsDefaultInstance();
+  ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Any2Dbp_SqlRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsAny2Dbp_SqlRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<1> scc_info_Any2Dbp_SqlRequest_Table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsAny2Dbp_SqlRequest_Table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {
+      &scc_info_SqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base,}};
+
+static void InitDefaultsAny2Dbp_SqlRequest_Select_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Select_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Any2Dbp_SqlRequest_Select_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsAny2Dbp_SqlRequest_Select_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsAny2Dbp_SqlRequest_Update_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Update_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Any2Dbp_SqlRequest_Update_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsAny2Dbp_SqlRequest_Update_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsAny2Dbp_SqlRequest_Column_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Column_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<1> scc_info_Any2Dbp_SqlRequest_Column_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsAny2Dbp_SqlRequest_Column_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {
+      &scc_info_SqlColumnInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base,}};
+
+static void InitDefaultsAny2Dbp_SqlRequest_SqlString_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_SqlString_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Any2Dbp_SqlRequest_SqlString_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsAny2Dbp_SqlRequest_SqlString_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsDbp2Any_SqlResponse_Boolean_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Dbp2Any_SqlResponse_Boolean_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Boolean();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Boolean::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Dbp2Any_SqlResponse_Boolean_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDbp2Any_SqlResponse_Boolean_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsDbp2Any_SqlResponse_Counts_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Dbp2Any_SqlResponse_Counts_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Counts();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Counts::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Dbp2Any_SqlResponse_Counts_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDbp2Any_SqlResponse_Counts_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
+
+static void InitDefaultsDbp2Any_SqlResponse_Tables_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Dbp2Any_SqlResponse_Tables_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Tables();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Tables::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<1> scc_info_Dbp2Any_SqlResponse_Tables_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsDbp2Any_SqlResponse_Tables_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {
+      &scc_info_SqlResult_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base,}};
+
+static void InitDefaultsDbp2Any_SqlResponse_Error_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::ArmyAntMessage::DBProxy::_Dbp2Any_SqlResponse_Error_default_instance_;
+    new (ptr) ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Error();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Error::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Dbp2Any_SqlResponse_Error_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsDbp2Any_SqlResponse_Error_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto}, {}};
 
 void InitDefaults_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
+  ::google::protobuf::internal::InitSCC(&scc_info_Any2Dbp_LoginRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Dbp2Any_LoginResponseSuccessful_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Dbp2Any_LoginResponseFailure_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Any2Dbp_LogoutRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Dbp2Any_LogoutResponse_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SqlHeadOne_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SqlRow_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SqlDatabaseInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_SqlColumnInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SqlResult_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Any2Dbp_SqlRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Any2Dbp_SqlRequest_Table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Any2Dbp_SqlRequest_Select_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Any2Dbp_SqlRequest_Update_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Any2Dbp_SqlRequest_Column_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Any2Dbp_SqlRequest_SqlString_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Dbp2Any_SqlResponse_Boolean_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Dbp2Any_SqlResponse_Counts_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Dbp2Any_SqlResponse_Tables_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Dbp2Any_SqlResponse_Error_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
 }
 
-::google::protobuf::Metadata file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[6];
-constexpr ::google::protobuf::EnumDescriptor const** file_level_enum_descriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto = nullptr;
+::google::protobuf::Metadata file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[20];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[2];
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto = nullptr;
 
 const ::google::protobuf::uint32 TableStruct_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest, mac_address_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest, ip_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest, server_type_checksum_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful, auth_string_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful, current_time_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful, end_time_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseFailure, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseFailure, code_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseFailure, message_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_LogoutRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_LogoutRequest, auth_string_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LogoutResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LogoutResponse, result_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_LogoutResponse, message_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, length_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, catalogname_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, columnname_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, catalog_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, column_name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, allownumm_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, autoincrease_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, allow_num_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlHeadOne, auto_increase_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlRow, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -179,16 +484,20 @@ const ::google::protobuf::uint32 TableStruct_ArmyAntMessage_2fDBProxy_2fSqlReque
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlDatabaseInfo, name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlDatabaseInfo, server_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlDatabaseInfo, charset_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlDatabaseInfo, sortrule_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlDatabaseInfo, sort_rule_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlTableInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlTableInfo, tablename_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlTableInfo, table_name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlTableInfo, engine_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlTableInfo, comment_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlTableInfo, database_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlColumnInfo, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlResult, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -198,58 +507,188 @@ const ::google::protobuf::uint32 TableStruct_ArmyAntMessage_2fDBProxy_2fSqlReque
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlResult, heads_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::SqlResult, rows_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest, tablename_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table, auth_string_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table, table_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table, table_create_data_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select, auth_string_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select, table_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select, columns_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select, clauses_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update, auth_string_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update, table_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update, columns_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update, values_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update, clauses_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column, auth_string_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column, table_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column, column_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column, column_create_info_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString, auth_string_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString, str_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Boolean, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Boolean, result_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Counts, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Counts, result_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Tables, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Tables, result_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Error, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Error, code_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Error, message_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::ArmyAntMessage::DBProxy::SqlHeadOne)},
-  { 11, -1, sizeof(::ArmyAntMessage::DBProxy::SqlRow)},
-  { 17, -1, sizeof(::ArmyAntMessage::DBProxy::SqlDatabaseInfo)},
-  { 26, -1, sizeof(::ArmyAntMessage::DBProxy::SqlTableInfo)},
-  { 35, -1, sizeof(::ArmyAntMessage::DBProxy::SqlResult)},
-  { 43, -1, sizeof(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest)},
+  { 0, -1, sizeof(::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest)},
+  { 8, -1, sizeof(::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful)},
+  { 16, -1, sizeof(::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseFailure)},
+  { 23, -1, sizeof(::ArmyAntMessage::DBProxy::Any2Dbp_LogoutRequest)},
+  { 29, -1, sizeof(::ArmyAntMessage::DBProxy::Dbp2Any_LogoutResponse)},
+  { 36, -1, sizeof(::ArmyAntMessage::DBProxy::SqlHeadOne)},
+  { 47, -1, sizeof(::ArmyAntMessage::DBProxy::SqlRow)},
+  { 53, -1, sizeof(::ArmyAntMessage::DBProxy::SqlDatabaseInfo)},
+  { 62, -1, sizeof(::ArmyAntMessage::DBProxy::SqlTableInfo)},
+  { 70, -1, sizeof(::ArmyAntMessage::DBProxy::SqlColumnInfo)},
+  { 75, -1, sizeof(::ArmyAntMessage::DBProxy::SqlResult)},
+  { 83, -1, sizeof(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table)},
+  { 92, -1, sizeof(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select)},
+  { 101, -1, sizeof(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update)},
+  { 112, -1, sizeof(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column)},
+  { 122, -1, sizeof(::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString)},
+  { 130, -1, sizeof(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Boolean)},
+  { 136, -1, sizeof(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Counts)},
+  { 142, -1, sizeof(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Tables)},
+  { 148, -1, sizeof(::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Error)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Any2Dbp_LoginRequest_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Dbp2Any_LoginResponseSuccessful_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Dbp2Any_LoginResponseFailure_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Any2Dbp_LogoutRequest_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Dbp2Any_LogoutResponse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_SqlHeadOne_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_SqlRow_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_SqlDatabaseInfo_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_SqlTableInfo_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_SqlColumnInfo_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_SqlResult_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Table_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Select_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Update_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Column_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_SqlString_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Dbp2Any_SqlResponse_Boolean_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Dbp2Any_SqlResponse_Counts_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Dbp2Any_SqlResponse_Tables_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ArmyAntMessage::DBProxy::_Dbp2Any_SqlResponse_Error_default_instance_),
 };
 
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto = {
   {}, AddDescriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto, "ArmyAntMessage/DBProxy/SqlRequest.proto", schemas,
   file_default_instances, TableStruct_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto::offsets,
-  file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto, 6, file_level_enum_descriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto, file_level_service_descriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto,
+  file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto, 20, file_level_enum_descriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto, file_level_service_descriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto,
 };
 
 ::google::protobuf::internal::DescriptorTable descriptor_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto = {
   false, InitDefaults_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto, 
   "\n\'ArmyAntMessage/DBProxy/SqlRequest.prot"
-  "o\022\026ArmyAntMessage.DBProxy\"|\n\nSqlHeadOne\022"
-  "\016\n\006length\030\001 \001(\005\022\023\n\013catalogName\030\002 \001(\t\022\022\n\n"
-  "columnName\030\003 \001(\t\022\014\n\004type\030\004 \001(\005\022\021\n\tallowN"
-  "umm\030\005 \001(\010\022\024\n\014autoIncrease\030\006 \001(\010\"\030\n\006SqlRo"
-  "w\022\016\n\006fields\030\001 \003(\t\"R\n\017SqlDatabaseInfo\022\014\n\004"
-  "name\030\001 \001(\t\022\016\n\006server\030\002 \001(\t\022\017\n\007charset\030\003 "
-  "\001(\t\022\020\n\010sortRule\030\004 \001(\t\"}\n\014SqlTableInfo\022\021\n"
-  "\ttableName\030\005 \001(\t\022\016\n\006engine\030\006 \001(\t\022\017\n\007comm"
-  "ent\030\007 \001(\t\0229\n\010database\030\010 \001(\0132\'.ArmyAntMes"
-  "sage.DBProxy.SqlDatabaseInfo\"\241\001\n\tSqlResu"
-  "lt\0223\n\005table\030\001 \001(\0132$.ArmyAntMessage.DBPro"
-  "xy.SqlTableInfo\0221\n\005heads\030\002 \003(\0132\".ArmyAnt"
-  "Message.DBProxy.SqlHeadOne\022,\n\004rows\030\003 \003(\013"
-  "2\036.ArmyAntMessage.DBProxy.SqlRow\"5\n\022Any2"
-  "Dbp_SqlRequest\022\014\n\004type\030\001 \001(\005\022\021\n\ttableNam"
-  "e\030\002 \001(\tb\006proto3"
+  "o\022\026ArmyAntMessage.DBProxy\"U\n\024Any2Dbp_Log"
+  "inRequest\022\023\n\013mac_address\030\001 \001(\003\022\n\n\002ip\030\002 \001"
+  "(\t\022\034\n\024server_type_checksum\030\003 \001(\t\"^\n\037Dbp2"
+  "Any_LoginResponseSuccessful\022\023\n\013auth_stri"
+  "ng\030\001 \001(\t\022\024\n\014current_time\030\002 \001(\003\022\020\n\010end_ti"
+  "me\030\003 \001(\003\"=\n\034Dbp2Any_LoginResponseFailure"
+  "\022\014\n\004code\030\001 \001(\005\022\017\n\007message\030\002 \001(\t\",\n\025Any2D"
+  "bp_LogoutRequest\022\023\n\013auth_string\030\001 \001(\t\"9\n"
+  "\026Dbp2Any_LogoutResponse\022\016\n\006result\030\001 \001(\010\022"
+  "\017\n\007message\030\002 \001(\t\"\177\n\nSqlHeadOne\022\016\n\006length"
+  "\030\001 \001(\005\022\024\n\014catalog_name\030\002 \001(\t\022\023\n\013column_n"
+  "ame\030\003 \001(\t\022\014\n\004type\030\004 \001(\005\022\021\n\tallow_num\030\005 \001"
+  "(\010\022\025\n\rauto_increase\030\006 \001(\010\"\030\n\006SqlRow\022\016\n\006f"
+  "ields\030\001 \003(\t\"S\n\017SqlDatabaseInfo\022\014\n\004name\030\001"
+  " \001(\t\022\016\n\006server\030\002 \001(\t\022\017\n\007charset\030\003 \001(\t\022\021\n"
+  "\tsort_rule\030\004 \001(\t\"C\n\014SqlTableInfo\022\022\n\ntabl"
+  "e_name\030\005 \001(\t\022\016\n\006engine\030\006 \001(\t\022\017\n\007comment\030"
+  "\007 \001(\t\"\017\n\rSqlColumnInfo\"\241\001\n\tSqlResult\0223\n\005"
+  "table\030\001 \001(\0132$.ArmyAntMessage.DBProxy.Sql"
+  "TableInfo\0221\n\005heads\030\002 \003(\0132\".ArmyAntMessag"
+  "e.DBProxy.SqlHeadOne\022,\n\004rows\030\003 \003(\0132\036.Arm"
+  "yAntMessage.DBProxy.SqlRow\"\272\001\n\030Any2Dbp_S"
+  "qlRequest_Table\022\023\n\013auth_string\030\001 \001(\t\0224\n\004"
+  "type\030\002 \001(\0162&.ArmyAntMessage.DBProxy.SqlR"
+  "equestType\022\022\n\ntable_name\030\003 \001(\t\022\?\n\021table_"
+  "create_data\030\004 \001(\0132$.ArmyAntMessage.DBPro"
+  "xy.SqlTableInfo\"f\n\031Any2Dbp_SqlRequest_Se"
+  "lect\022\023\n\013auth_string\030\001 \001(\t\022\022\n\ntable_name\030"
+  "\002 \001(\t\022\017\n\007columns\030\003 \003(\t\022\017\n\007clauses\030\004 \003(\t\""
+  "\254\001\n\031Any2Dbp_SqlRequest_Update\022\023\n\013auth_st"
+  "ring\030\001 \001(\t\0224\n\004type\030\002 \001(\0162&.ArmyAntMessag"
+  "e.DBProxy.SqlRequestType\022\022\n\ntable_name\030\003"
+  " \001(\t\022\017\n\007columns\030\004 \003(\t\022\016\n\006values\030\005 \003(\t\022\017\n"
+  "\007clauses\030\006 \003(\t\"\322\001\n\031Any2Dbp_SqlRequest_Co"
+  "lumn\022\023\n\013auth_string\030\001 \001(\t\0224\n\004type\030\002 \001(\0162"
+  "&.ArmyAntMessage.DBProxy.SqlRequestType\022"
+  "\022\n\ntable_name\030\003 \001(\t\022\023\n\013column_name\030\004 \001(\t"
+  "\022A\n\022column_create_info\030\005 \001(\0132%.ArmyAntMe"
+  "ssage.DBProxy.SqlColumnInfo\"\200\001\n\034Any2Dbp_"
+  "SqlRequest_SqlString\022\023\n\013auth_string\030\001 \001("
+  "\t\022>\n\004type\030\002 \001(\01620.ArmyAntMessage.DBProxy"
+  ".SqlRequestType_SqlString\022\013\n\003str\030\003 \001(\t\"-"
+  "\n\033Dbp2Any_SqlResponse_Boolean\022\016\n\006result\030"
+  "\001 \001(\010\",\n\032Dbp2Any_SqlResponse_Counts\022\016\n\006r"
+  "esult\030\001 \003(\005\"O\n\032Dbp2Any_SqlResponse_Table"
+  "s\0221\n\006result\030\001 \003(\0132!.ArmyAntMessage.DBPro"
+  "xy.SqlResult\":\n\031Dbp2Any_SqlResponse_Erro"
+  "r\022\014\n\004code\030\001 \001(\005\022\017\n\007message\030\002 \001(\t*M\n\016SqlR"
+  "equestType\022\013\n\007DEFAULT\020\000\022\n\n\006SELECT\020\001\022\n\n\006U"
+  "PDATE\020\002\022\n\n\006DELETE\020\003\022\n\n\006INSERT\020\004*w\n\030SqlRe"
+  "questType_SqlString\022\026\n\022EXECUTEBYSQLSTRIN"
+  "G\020\000\022\024\n\020QUERYBYSQLSTRING\020\001\022\025\n\021UPDATEBYSQL"
+  "STRING\020\002\022\026\n\022EXECUTEBYSQLSCRIPT\020\003b\006proto3"
 ,
-  "ArmyAntMessage/DBProxy/SqlRequest.proto", &assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto, 655,
+  "ArmyAntMessage/DBProxy/SqlRequest.proto", &assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto, 2160,
 };
 
 void AddDescriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
@@ -263,6 +702,1853 @@ void AddDescriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto() {
 static bool dynamic_init_dummy_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto = []() { AddDescriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto(); return true; }();
 namespace ArmyAntMessage {
 namespace DBProxy {
+const ::google::protobuf::EnumDescriptor* SqlRequestType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return file_level_enum_descriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[0];
+}
+bool SqlRequestType_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* SqlRequestType_SqlString_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return file_level_enum_descriptors_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[1];
+}
+bool SqlRequestType_SqlString_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+
+// ===================================================================
+
+void Any2Dbp_LoginRequest::InitAsDefaultInstance() {
+}
+class Any2Dbp_LoginRequest::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Any2Dbp_LoginRequest::kMacAddressFieldNumber;
+const int Any2Dbp_LoginRequest::kIpFieldNumber;
+const int Any2Dbp_LoginRequest::kServerTypeChecksumFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Any2Dbp_LoginRequest::Any2Dbp_LoginRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+}
+Any2Dbp_LoginRequest::Any2Dbp_LoginRequest(const Any2Dbp_LoginRequest& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ip_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.ip().size() > 0) {
+    ip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_);
+  }
+  server_type_checksum_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.server_type_checksum().size() > 0) {
+    server_type_checksum_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.server_type_checksum_);
+  }
+  mac_address_ = from.mac_address_;
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+}
+
+void Any2Dbp_LoginRequest::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Any2Dbp_LoginRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  ip_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  server_type_checksum_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  mac_address_ = GOOGLE_PROTOBUF_LONGLONG(0);
+}
+
+Any2Dbp_LoginRequest::~Any2Dbp_LoginRequest() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  SharedDtor();
+}
+
+void Any2Dbp_LoginRequest::SharedDtor() {
+  ip_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  server_type_checksum_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Any2Dbp_LoginRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Any2Dbp_LoginRequest& Any2Dbp_LoginRequest::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Any2Dbp_LoginRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Any2Dbp_LoginRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  server_type_checksum_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  mac_address_ = GOOGLE_PROTOBUF_LONGLONG(0);
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Any2Dbp_LoginRequest::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Any2Dbp_LoginRequest*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // int64 mac_address = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int64 value = val;
+        msg->set_mac_address(value);
+        break;
+      }
+      // string ip = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest.ip");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_ip();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // string server_type_checksum = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest.server_type_checksum");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_server_type_checksum();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Any2Dbp_LoginRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int64 mac_address = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &mac_address_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string ip = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_ip()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->ip().data(), static_cast<int>(this->ip().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest.ip"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string server_type_checksum = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_server_type_checksum()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->server_type_checksum().data(), static_cast<int>(this->server_type_checksum().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest.server_type_checksum"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Any2Dbp_LoginRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int64 mac_address = 1;
+  if (this->mac_address() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->mac_address(), output);
+  }
+
+  // string ip = 2;
+  if (this->ip().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip().data(), static_cast<int>(this->ip().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest.ip");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->ip(), output);
+  }
+
+  // string server_type_checksum = 3;
+  if (this->server_type_checksum().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->server_type_checksum().data(), static_cast<int>(this->server_type_checksum().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest.server_type_checksum");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->server_type_checksum(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+}
+
+::google::protobuf::uint8* Any2Dbp_LoginRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int64 mac_address = 1;
+  if (this->mac_address() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->mac_address(), target);
+  }
+
+  // string ip = 2;
+  if (this->ip().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->ip().data(), static_cast<int>(this->ip().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest.ip");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->ip(), target);
+  }
+
+  // string server_type_checksum = 3;
+  if (this->server_type_checksum().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->server_type_checksum().data(), static_cast<int>(this->server_type_checksum().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest.server_type_checksum");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->server_type_checksum(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  return target;
+}
+
+size_t Any2Dbp_LoginRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string ip = 2;
+  if (this->ip().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->ip());
+  }
+
+  // string server_type_checksum = 3;
+  if (this->server_type_checksum().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->server_type_checksum());
+  }
+
+  // int64 mac_address = 1;
+  if (this->mac_address() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->mac_address());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Any2Dbp_LoginRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Any2Dbp_LoginRequest* source =
+      ::google::protobuf::DynamicCastToGenerated<Any2Dbp_LoginRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+    MergeFrom(*source);
+  }
+}
+
+void Any2Dbp_LoginRequest::MergeFrom(const Any2Dbp_LoginRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.ip().size() > 0) {
+
+    ip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_);
+  }
+  if (from.server_type_checksum().size() > 0) {
+
+    server_type_checksum_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.server_type_checksum_);
+  }
+  if (from.mac_address() != 0) {
+    set_mac_address(from.mac_address());
+  }
+}
+
+void Any2Dbp_LoginRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Any2Dbp_LoginRequest::CopyFrom(const Any2Dbp_LoginRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_LoginRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Any2Dbp_LoginRequest::IsInitialized() const {
+  return true;
+}
+
+void Any2Dbp_LoginRequest::Swap(Any2Dbp_LoginRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Any2Dbp_LoginRequest::InternalSwap(Any2Dbp_LoginRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ip_.Swap(&other->ip_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  server_type_checksum_.Swap(&other->server_type_checksum_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(mac_address_, other->mac_address_);
+}
+
+::google::protobuf::Metadata Any2Dbp_LoginRequest::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Dbp2Any_LoginResponseSuccessful::InitAsDefaultInstance() {
+}
+class Dbp2Any_LoginResponseSuccessful::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Dbp2Any_LoginResponseSuccessful::kAuthStringFieldNumber;
+const int Dbp2Any_LoginResponseSuccessful::kCurrentTimeFieldNumber;
+const int Dbp2Any_LoginResponseSuccessful::kEndTimeFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Dbp2Any_LoginResponseSuccessful::Dbp2Any_LoginResponseSuccessful()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+}
+Dbp2Any_LoginResponseSuccessful::Dbp2Any_LoginResponseSuccessful(const Dbp2Any_LoginResponseSuccessful& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.auth_string().size() > 0) {
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  ::memcpy(&current_time_, &from.current_time_,
+    static_cast<size_t>(reinterpret_cast<char*>(&end_time_) -
+    reinterpret_cast<char*>(&current_time_)) + sizeof(end_time_));
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+}
+
+void Dbp2Any_LoginResponseSuccessful::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Dbp2Any_LoginResponseSuccessful_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&current_time_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&end_time_) -
+      reinterpret_cast<char*>(&current_time_)) + sizeof(end_time_));
+}
+
+Dbp2Any_LoginResponseSuccessful::~Dbp2Any_LoginResponseSuccessful() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  SharedDtor();
+}
+
+void Dbp2Any_LoginResponseSuccessful::SharedDtor() {
+  auth_string_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Dbp2Any_LoginResponseSuccessful::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Dbp2Any_LoginResponseSuccessful& Dbp2Any_LoginResponseSuccessful::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Dbp2Any_LoginResponseSuccessful_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Dbp2Any_LoginResponseSuccessful::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  auth_string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&current_time_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&end_time_) -
+      reinterpret_cast<char*>(&current_time_)) + sizeof(end_time_));
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Dbp2Any_LoginResponseSuccessful::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Dbp2Any_LoginResponseSuccessful*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful.auth_string");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_auth_string();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // int64 current_time = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int64 value = val;
+        msg->set_current_time(value);
+        break;
+      }
+      // int64 end_time = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int64 value = val;
+        msg->set_end_time(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Dbp2Any_LoginResponseSuccessful::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_auth_string()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful.auth_string"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int64 current_time = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &current_time_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int64 end_time = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &end_time_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Dbp2Any_LoginResponseSuccessful::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful.auth_string");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->auth_string(), output);
+  }
+
+  // int64 current_time = 2;
+  if (this->current_time() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->current_time(), output);
+  }
+
+  // int64 end_time = 3;
+  if (this->end_time() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(3, this->end_time(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+}
+
+::google::protobuf::uint8* Dbp2Any_LoginResponseSuccessful::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful.auth_string");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->auth_string(), target);
+  }
+
+  // int64 current_time = 2;
+  if (this->current_time() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->current_time(), target);
+  }
+
+  // int64 end_time = 3;
+  if (this->end_time() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(3, this->end_time(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  return target;
+}
+
+size_t Dbp2Any_LoginResponseSuccessful::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->auth_string());
+  }
+
+  // int64 current_time = 2;
+  if (this->current_time() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->current_time());
+  }
+
+  // int64 end_time = 3;
+  if (this->end_time() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->end_time());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Dbp2Any_LoginResponseSuccessful::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Dbp2Any_LoginResponseSuccessful* source =
+      ::google::protobuf::DynamicCastToGenerated<Dbp2Any_LoginResponseSuccessful>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+    MergeFrom(*source);
+  }
+}
+
+void Dbp2Any_LoginResponseSuccessful::MergeFrom(const Dbp2Any_LoginResponseSuccessful& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.auth_string().size() > 0) {
+
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  if (from.current_time() != 0) {
+    set_current_time(from.current_time());
+  }
+  if (from.end_time() != 0) {
+    set_end_time(from.end_time());
+  }
+}
+
+void Dbp2Any_LoginResponseSuccessful::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Dbp2Any_LoginResponseSuccessful::CopyFrom(const Dbp2Any_LoginResponseSuccessful& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseSuccessful)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Dbp2Any_LoginResponseSuccessful::IsInitialized() const {
+  return true;
+}
+
+void Dbp2Any_LoginResponseSuccessful::Swap(Dbp2Any_LoginResponseSuccessful* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Dbp2Any_LoginResponseSuccessful::InternalSwap(Dbp2Any_LoginResponseSuccessful* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auth_string_.Swap(&other->auth_string_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(current_time_, other->current_time_);
+  swap(end_time_, other->end_time_);
+}
+
+::google::protobuf::Metadata Dbp2Any_LoginResponseSuccessful::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Dbp2Any_LoginResponseFailure::InitAsDefaultInstance() {
+}
+class Dbp2Any_LoginResponseFailure::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Dbp2Any_LoginResponseFailure::kCodeFieldNumber;
+const int Dbp2Any_LoginResponseFailure::kMessageFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Dbp2Any_LoginResponseFailure::Dbp2Any_LoginResponseFailure()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+}
+Dbp2Any_LoginResponseFailure::Dbp2Any_LoginResponseFailure(const Dbp2Any_LoginResponseFailure& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.message().size() > 0) {
+    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  code_ = from.code_;
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+}
+
+void Dbp2Any_LoginResponseFailure::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Dbp2Any_LoginResponseFailure_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  code_ = 0;
+}
+
+Dbp2Any_LoginResponseFailure::~Dbp2Any_LoginResponseFailure() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  SharedDtor();
+}
+
+void Dbp2Any_LoginResponseFailure::SharedDtor() {
+  message_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Dbp2Any_LoginResponseFailure::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Dbp2Any_LoginResponseFailure& Dbp2Any_LoginResponseFailure::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Dbp2Any_LoginResponseFailure_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Dbp2Any_LoginResponseFailure::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  message_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  code_ = 0;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Dbp2Any_LoginResponseFailure::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Dbp2Any_LoginResponseFailure*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // int32 code = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_code(value);
+        break;
+      }
+      // string message = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure.message");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_message();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Dbp2Any_LoginResponseFailure::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 code = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &code_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string message = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_message()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->message().data(), static_cast<int>(this->message().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure.message"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Dbp2Any_LoginResponseFailure::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 code = 1;
+  if (this->code() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->code(), output);
+  }
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->message().data(), static_cast<int>(this->message().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure.message");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->message(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+}
+
+::google::protobuf::uint8* Dbp2Any_LoginResponseFailure::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 code = 1;
+  if (this->code() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->code(), target);
+  }
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->message().data(), static_cast<int>(this->message().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure.message");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->message(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  return target;
+}
+
+size_t Dbp2Any_LoginResponseFailure::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->message());
+  }
+
+  // int32 code = 1;
+  if (this->code() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->code());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Dbp2Any_LoginResponseFailure::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Dbp2Any_LoginResponseFailure* source =
+      ::google::protobuf::DynamicCastToGenerated<Dbp2Any_LoginResponseFailure>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+    MergeFrom(*source);
+  }
+}
+
+void Dbp2Any_LoginResponseFailure::MergeFrom(const Dbp2Any_LoginResponseFailure& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.message().size() > 0) {
+
+    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  if (from.code() != 0) {
+    set_code(from.code());
+  }
+}
+
+void Dbp2Any_LoginResponseFailure::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Dbp2Any_LoginResponseFailure::CopyFrom(const Dbp2Any_LoginResponseFailure& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LoginResponseFailure)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Dbp2Any_LoginResponseFailure::IsInitialized() const {
+  return true;
+}
+
+void Dbp2Any_LoginResponseFailure::Swap(Dbp2Any_LoginResponseFailure* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Dbp2Any_LoginResponseFailure::InternalSwap(Dbp2Any_LoginResponseFailure* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  message_.Swap(&other->message_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(code_, other->code_);
+}
+
+::google::protobuf::Metadata Dbp2Any_LoginResponseFailure::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Any2Dbp_LogoutRequest::InitAsDefaultInstance() {
+}
+class Any2Dbp_LogoutRequest::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Any2Dbp_LogoutRequest::kAuthStringFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Any2Dbp_LogoutRequest::Any2Dbp_LogoutRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+}
+Any2Dbp_LogoutRequest::Any2Dbp_LogoutRequest(const Any2Dbp_LogoutRequest& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.auth_string().size() > 0) {
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+}
+
+void Any2Dbp_LogoutRequest::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Any2Dbp_LogoutRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+Any2Dbp_LogoutRequest::~Any2Dbp_LogoutRequest() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  SharedDtor();
+}
+
+void Any2Dbp_LogoutRequest::SharedDtor() {
+  auth_string_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Any2Dbp_LogoutRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Any2Dbp_LogoutRequest& Any2Dbp_LogoutRequest::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Any2Dbp_LogoutRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Any2Dbp_LogoutRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  auth_string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Any2Dbp_LogoutRequest::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Any2Dbp_LogoutRequest*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest.auth_string");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_auth_string();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Any2Dbp_LogoutRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_auth_string()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest.auth_string"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Any2Dbp_LogoutRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest.auth_string");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->auth_string(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+}
+
+::google::protobuf::uint8* Any2Dbp_LogoutRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest.auth_string");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->auth_string(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  return target;
+}
+
+size_t Any2Dbp_LogoutRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->auth_string());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Any2Dbp_LogoutRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Any2Dbp_LogoutRequest* source =
+      ::google::protobuf::DynamicCastToGenerated<Any2Dbp_LogoutRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+    MergeFrom(*source);
+  }
+}
+
+void Any2Dbp_LogoutRequest::MergeFrom(const Any2Dbp_LogoutRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.auth_string().size() > 0) {
+
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+}
+
+void Any2Dbp_LogoutRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Any2Dbp_LogoutRequest::CopyFrom(const Any2Dbp_LogoutRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_LogoutRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Any2Dbp_LogoutRequest::IsInitialized() const {
+  return true;
+}
+
+void Any2Dbp_LogoutRequest::Swap(Any2Dbp_LogoutRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Any2Dbp_LogoutRequest::InternalSwap(Any2Dbp_LogoutRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auth_string_.Swap(&other->auth_string_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+}
+
+::google::protobuf::Metadata Any2Dbp_LogoutRequest::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Dbp2Any_LogoutResponse::InitAsDefaultInstance() {
+}
+class Dbp2Any_LogoutResponse::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Dbp2Any_LogoutResponse::kResultFieldNumber;
+const int Dbp2Any_LogoutResponse::kMessageFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Dbp2Any_LogoutResponse::Dbp2Any_LogoutResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+}
+Dbp2Any_LogoutResponse::Dbp2Any_LogoutResponse(const Dbp2Any_LogoutResponse& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.message().size() > 0) {
+    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  result_ = from.result_;
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+}
+
+void Dbp2Any_LogoutResponse::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Dbp2Any_LogoutResponse_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  result_ = false;
+}
+
+Dbp2Any_LogoutResponse::~Dbp2Any_LogoutResponse() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  SharedDtor();
+}
+
+void Dbp2Any_LogoutResponse::SharedDtor() {
+  message_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Dbp2Any_LogoutResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Dbp2Any_LogoutResponse& Dbp2Any_LogoutResponse::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Dbp2Any_LogoutResponse_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Dbp2Any_LogoutResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  message_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  result_ = false;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Dbp2Any_LogoutResponse::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Dbp2Any_LogoutResponse*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bool result = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        bool value = val;
+        msg->set_result(value);
+        break;
+      }
+      // string message = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse.message");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_message();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Dbp2Any_LogoutResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // bool result = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &result_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string message = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_message()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->message().data(), static_cast<int>(this->message().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse.message"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Dbp2Any_LogoutResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool result = 1;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->result(), output);
+  }
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->message().data(), static_cast<int>(this->message().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse.message");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->message(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+}
+
+::google::protobuf::uint8* Dbp2Any_LogoutResponse::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool result = 1;
+  if (this->result() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->result(), target);
+  }
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->message().data(), static_cast<int>(this->message().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse.message");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->message(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  return target;
+}
+
+size_t Dbp2Any_LogoutResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->message());
+  }
+
+  // bool result = 1;
+  if (this->result() != 0) {
+    total_size += 1 + 1;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Dbp2Any_LogoutResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Dbp2Any_LogoutResponse* source =
+      ::google::protobuf::DynamicCastToGenerated<Dbp2Any_LogoutResponse>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+    MergeFrom(*source);
+  }
+}
+
+void Dbp2Any_LogoutResponse::MergeFrom(const Dbp2Any_LogoutResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.message().size() > 0) {
+
+    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void Dbp2Any_LogoutResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Dbp2Any_LogoutResponse::CopyFrom(const Dbp2Any_LogoutResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_LogoutResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Dbp2Any_LogoutResponse::IsInitialized() const {
+  return true;
+}
+
+void Dbp2Any_LogoutResponse::Swap(Dbp2Any_LogoutResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Dbp2Any_LogoutResponse::InternalSwap(Dbp2Any_LogoutResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  message_.Swap(&other->message_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(result_, other->result_);
+}
+
+::google::protobuf::Metadata Dbp2Any_LogoutResponse::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
 
 // ===================================================================
 
@@ -277,7 +2563,7 @@ const int SqlHeadOne::kLengthFieldNumber;
 const int SqlHeadOne::kCatalogNameFieldNumber;
 const int SqlHeadOne::kColumnNameFieldNumber;
 const int SqlHeadOne::kTypeFieldNumber;
-const int SqlHeadOne::kAllowNummFieldNumber;
+const int SqlHeadOne::kAllowNumFieldNumber;
 const int SqlHeadOne::kAutoIncreaseFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -290,28 +2576,28 @@ SqlHeadOne::SqlHeadOne(const SqlHeadOne& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  catalogname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.catalogname().size() > 0) {
-    catalogname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.catalogname_);
+  catalog_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.catalog_name().size() > 0) {
+    catalog_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.catalog_name_);
   }
-  columnname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.columnname().size() > 0) {
-    columnname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.columnname_);
+  column_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.column_name().size() > 0) {
+    column_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.column_name_);
   }
   ::memcpy(&length_, &from.length_,
-    static_cast<size_t>(reinterpret_cast<char*>(&autoincrease_) -
-    reinterpret_cast<char*>(&length_)) + sizeof(autoincrease_));
+    static_cast<size_t>(reinterpret_cast<char*>(&auto_increase_) -
+    reinterpret_cast<char*>(&length_)) + sizeof(auto_increase_));
   // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.SqlHeadOne)
 }
 
 void SqlHeadOne::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_SqlHeadOne_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
-  catalogname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  columnname_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  catalog_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  column_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&length_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&autoincrease_) -
-      reinterpret_cast<char*>(&length_)) + sizeof(autoincrease_));
+      reinterpret_cast<char*>(&auto_increase_) -
+      reinterpret_cast<char*>(&length_)) + sizeof(auto_increase_));
 }
 
 SqlHeadOne::~SqlHeadOne() {
@@ -320,8 +2606,8 @@ SqlHeadOne::~SqlHeadOne() {
 }
 
 void SqlHeadOne::SharedDtor() {
-  catalogname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  columnname_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  catalog_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  column_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void SqlHeadOne::SetCachedSize(int size) const {
@@ -339,11 +2625,11 @@ void SqlHeadOne::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  catalogname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  columnname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  catalog_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  column_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&length_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&autoincrease_) -
-      reinterpret_cast<char*>(&length_)) + sizeof(autoincrease_));
+      reinterpret_cast<char*>(&auto_increase_) -
+      reinterpret_cast<char*>(&length_)) + sizeof(auto_increase_));
   _internal_metadata_.Clear();
 }
 
@@ -371,14 +2657,14 @@ const char* SqlHeadOne::_InternalParse(const char* begin, const char* end, void*
         msg->set_length(value);
         break;
       }
-      // string catalogName = 2;
+      // string catalog_name = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
         ptr = Varint::Parse32Inline(ptr, &size);
         if (!ptr) goto error;
-        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.SqlHeadOne.catalogName");
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.SqlHeadOne.catalog_name");
         parser_till_end = ::google::protobuf::internal::StringParserUTF8;
-        ::std::string* str = msg->mutable_catalogname();
+        ::std::string* str = msg->mutable_catalog_name();
         str->clear();
         object = str;
         if (size > end - ptr) goto len_delim_till_end;
@@ -387,14 +2673,14 @@ const char* SqlHeadOne::_InternalParse(const char* begin, const char* end, void*
         ptr = newend;
         break;
       }
-      // string columnName = 3;
+      // string column_name = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
         ptr = Varint::Parse32Inline(ptr, &size);
         if (!ptr) goto error;
-        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.SqlHeadOne.columnName");
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.SqlHeadOne.column_name");
         parser_till_end = ::google::protobuf::internal::StringParserUTF8;
-        ::std::string* str = msg->mutable_columnname();
+        ::std::string* str = msg->mutable_column_name();
         str->clear();
         object = str;
         if (size > end - ptr) goto len_delim_till_end;
@@ -413,24 +2699,24 @@ const char* SqlHeadOne::_InternalParse(const char* begin, const char* end, void*
         msg->set_type(value);
         break;
       }
-      // bool allowNumm = 5;
+      // bool allow_num = 5;
       case 5: {
         if (static_cast<::google::protobuf::uint8>(tag) != 40) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         if (!ptr) goto error;
         bool value = val;
-        msg->set_allownumm(value);
+        msg->set_allow_num(value);
         break;
       }
-      // bool autoIncrease = 6;
+      // bool auto_increase = 6;
       case 6: {
         if (static_cast<::google::protobuf::uint8>(tag) != 48) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         if (!ptr) goto error;
         bool value = val;
-        msg->set_autoincrease(value);
+        msg->set_auto_increase(value);
         break;
       }
       default: {
@@ -481,30 +2767,30 @@ bool SqlHeadOne::MergePartialFromCodedStream(
         break;
       }
 
-      // string catalogName = 2;
+      // string catalog_name = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_catalogname()));
+                input, this->mutable_catalog_name()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->catalogname().data(), static_cast<int>(this->catalogname().length()),
+            this->catalog_name().data(), static_cast<int>(this->catalog_name().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "ArmyAntMessage.DBProxy.SqlHeadOne.catalogName"));
+            "ArmyAntMessage.DBProxy.SqlHeadOne.catalog_name"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // string columnName = 3;
+      // string column_name = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_columnname()));
+                input, this->mutable_column_name()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->columnname().data(), static_cast<int>(this->columnname().length()),
+            this->column_name().data(), static_cast<int>(this->column_name().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "ArmyAntMessage.DBProxy.SqlHeadOne.columnName"));
+            "ArmyAntMessage.DBProxy.SqlHeadOne.column_name"));
         } else {
           goto handle_unusual;
         }
@@ -524,26 +2810,26 @@ bool SqlHeadOne::MergePartialFromCodedStream(
         break;
       }
 
-      // bool allowNumm = 5;
+      // bool allow_num = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &allownumm_)));
+                 input, &allow_num_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // bool autoIncrease = 6;
+      // bool auto_increase = 6;
       case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (48 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &autoincrease_)));
+                 input, &auto_increase_)));
         } else {
           goto handle_unusual;
         }
@@ -582,24 +2868,24 @@ void SqlHeadOne::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->length(), output);
   }
 
-  // string catalogName = 2;
-  if (this->catalogname().size() > 0) {
+  // string catalog_name = 2;
+  if (this->catalog_name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->catalogname().data(), static_cast<int>(this->catalogname().length()),
+      this->catalog_name().data(), static_cast<int>(this->catalog_name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.SqlHeadOne.catalogName");
+      "ArmyAntMessage.DBProxy.SqlHeadOne.catalog_name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->catalogname(), output);
+      2, this->catalog_name(), output);
   }
 
-  // string columnName = 3;
-  if (this->columnname().size() > 0) {
+  // string column_name = 3;
+  if (this->column_name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->columnname().data(), static_cast<int>(this->columnname().length()),
+      this->column_name().data(), static_cast<int>(this->column_name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.SqlHeadOne.columnName");
+      "ArmyAntMessage.DBProxy.SqlHeadOne.column_name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->columnname(), output);
+      3, this->column_name(), output);
   }
 
   // int32 type = 4;
@@ -607,14 +2893,14 @@ void SqlHeadOne::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->type(), output);
   }
 
-  // bool allowNumm = 5;
-  if (this->allownumm() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->allownumm(), output);
+  // bool allow_num = 5;
+  if (this->allow_num() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->allow_num(), output);
   }
 
-  // bool autoIncrease = 6;
-  if (this->autoincrease() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->autoincrease(), output);
+  // bool auto_increase = 6;
+  if (this->auto_increase() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->auto_increase(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -636,26 +2922,26 @@ void SqlHeadOne::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->length(), target);
   }
 
-  // string catalogName = 2;
-  if (this->catalogname().size() > 0) {
+  // string catalog_name = 2;
+  if (this->catalog_name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->catalogname().data(), static_cast<int>(this->catalogname().length()),
+      this->catalog_name().data(), static_cast<int>(this->catalog_name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.SqlHeadOne.catalogName");
+      "ArmyAntMessage.DBProxy.SqlHeadOne.catalog_name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->catalogname(), target);
+        2, this->catalog_name(), target);
   }
 
-  // string columnName = 3;
-  if (this->columnname().size() > 0) {
+  // string column_name = 3;
+  if (this->column_name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->columnname().data(), static_cast<int>(this->columnname().length()),
+      this->column_name().data(), static_cast<int>(this->column_name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.SqlHeadOne.columnName");
+      "ArmyAntMessage.DBProxy.SqlHeadOne.column_name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->columnname(), target);
+        3, this->column_name(), target);
   }
 
   // int32 type = 4;
@@ -663,14 +2949,14 @@ void SqlHeadOne::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->type(), target);
   }
 
-  // bool allowNumm = 5;
-  if (this->allownumm() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->allownumm(), target);
+  // bool allow_num = 5;
+  if (this->allow_num() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->allow_num(), target);
   }
 
-  // bool autoIncrease = 6;
-  if (this->autoincrease() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->autoincrease(), target);
+  // bool auto_increase = 6;
+  if (this->auto_increase() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->auto_increase(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -694,18 +2980,18 @@ size_t SqlHeadOne::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string catalogName = 2;
-  if (this->catalogname().size() > 0) {
+  // string catalog_name = 2;
+  if (this->catalog_name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->catalogname());
+        this->catalog_name());
   }
 
-  // string columnName = 3;
-  if (this->columnname().size() > 0) {
+  // string column_name = 3;
+  if (this->column_name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->columnname());
+        this->column_name());
   }
 
   // int32 length = 1;
@@ -722,13 +3008,13 @@ size_t SqlHeadOne::ByteSizeLong() const {
         this->type());
   }
 
-  // bool allowNumm = 5;
-  if (this->allownumm() != 0) {
+  // bool allow_num = 5;
+  if (this->allow_num() != 0) {
     total_size += 1 + 1;
   }
 
-  // bool autoIncrease = 6;
-  if (this->autoincrease() != 0) {
+  // bool auto_increase = 6;
+  if (this->auto_increase() != 0) {
     total_size += 1 + 1;
   }
 
@@ -759,13 +3045,13 @@ void SqlHeadOne::MergeFrom(const SqlHeadOne& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.catalogname().size() > 0) {
+  if (from.catalog_name().size() > 0) {
 
-    catalogname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.catalogname_);
+    catalog_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.catalog_name_);
   }
-  if (from.columnname().size() > 0) {
+  if (from.column_name().size() > 0) {
 
-    columnname_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.columnname_);
+    column_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.column_name_);
   }
   if (from.length() != 0) {
     set_length(from.length());
@@ -773,11 +3059,11 @@ void SqlHeadOne::MergeFrom(const SqlHeadOne& from) {
   if (from.type() != 0) {
     set_type(from.type());
   }
-  if (from.allownumm() != 0) {
-    set_allownumm(from.allownumm());
+  if (from.allow_num() != 0) {
+    set_allow_num(from.allow_num());
   }
-  if (from.autoincrease() != 0) {
-    set_autoincrease(from.autoincrease());
+  if (from.auto_increase() != 0) {
+    set_auto_increase(from.auto_increase());
   }
 }
 
@@ -806,14 +3092,14 @@ void SqlHeadOne::Swap(SqlHeadOne* other) {
 void SqlHeadOne::InternalSwap(SqlHeadOne* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  catalogname_.Swap(&other->catalogname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  catalog_name_.Swap(&other->catalog_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  columnname_.Swap(&other->columnname_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  column_name_.Swap(&other->column_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(length_, other->length_);
   swap(type_, other->type_);
-  swap(allownumm_, other->allownumm_);
-  swap(autoincrease_, other->autoincrease_);
+  swap(allow_num_, other->allow_num_);
+  swap(auto_increase_, other->auto_increase_);
 }
 
 ::google::protobuf::Metadata SqlHeadOne::GetMetadata() const {
@@ -1153,9 +3439,9 @@ SqlDatabaseInfo::SqlDatabaseInfo(const SqlDatabaseInfo& from)
   if (from.charset().size() > 0) {
     charset_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.charset_);
   }
-  sortrule_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.sortrule().size() > 0) {
-    sortrule_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sortrule_);
+  sort_rule_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.sort_rule().size() > 0) {
+    sort_rule_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sort_rule_);
   }
   // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.SqlDatabaseInfo)
 }
@@ -1166,7 +3452,7 @@ void SqlDatabaseInfo::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   server_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   charset_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  sortrule_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sort_rule_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 SqlDatabaseInfo::~SqlDatabaseInfo() {
@@ -1178,7 +3464,7 @@ void SqlDatabaseInfo::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   server_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   charset_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  sortrule_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sort_rule_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void SqlDatabaseInfo::SetCachedSize(int size) const {
@@ -1199,7 +3485,7 @@ void SqlDatabaseInfo::Clear() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   server_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   charset_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  sortrule_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  sort_rule_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -1265,14 +3551,14 @@ const char* SqlDatabaseInfo::_InternalParse(const char* begin, const char* end, 
         ptr = newend;
         break;
       }
-      // string sortRule = 4;
+      // string sort_rule = 4;
       case 4: {
         if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
         ptr = Varint::Parse32Inline(ptr, &size);
         if (!ptr) goto error;
-        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.SqlDatabaseInfo.sortRule");
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.SqlDatabaseInfo.sort_rule");
         parser_till_end = ::google::protobuf::internal::StringParserUTF8;
-        ::std::string* str = msg->mutable_sortrule();
+        ::std::string* str = msg->mutable_sort_rule();
         str->clear();
         object = str;
         if (size > end - ptr) goto len_delim_till_end;
@@ -1361,15 +3647,15 @@ bool SqlDatabaseInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // string sortRule = 4;
+      // string sort_rule = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_sortrule()));
+                input, this->mutable_sort_rule()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->sortrule().data(), static_cast<int>(this->sortrule().length()),
+            this->sort_rule().data(), static_cast<int>(this->sort_rule().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "ArmyAntMessage.DBProxy.SqlDatabaseInfo.sortRule"));
+            "ArmyAntMessage.DBProxy.SqlDatabaseInfo.sort_rule"));
         } else {
           goto handle_unusual;
         }
@@ -1433,14 +3719,14 @@ void SqlDatabaseInfo::SerializeWithCachedSizes(
       3, this->charset(), output);
   }
 
-  // string sortRule = 4;
-  if (this->sortrule().size() > 0) {
+  // string sort_rule = 4;
+  if (this->sort_rule().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->sortrule().data(), static_cast<int>(this->sortrule().length()),
+      this->sort_rule().data(), static_cast<int>(this->sort_rule().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.SqlDatabaseInfo.sortRule");
+      "ArmyAntMessage.DBProxy.SqlDatabaseInfo.sort_rule");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->sortrule(), output);
+      4, this->sort_rule(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1490,15 +3776,15 @@ void SqlDatabaseInfo::SerializeWithCachedSizes(
         3, this->charset(), target);
   }
 
-  // string sortRule = 4;
-  if (this->sortrule().size() > 0) {
+  // string sort_rule = 4;
+  if (this->sort_rule().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->sortrule().data(), static_cast<int>(this->sortrule().length()),
+      this->sort_rule().data(), static_cast<int>(this->sort_rule().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.SqlDatabaseInfo.sortRule");
+      "ArmyAntMessage.DBProxy.SqlDatabaseInfo.sort_rule");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->sortrule(), target);
+        4, this->sort_rule(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1543,11 +3829,11 @@ size_t SqlDatabaseInfo::ByteSizeLong() const {
         this->charset());
   }
 
-  // string sortRule = 4;
-  if (this->sortrule().size() > 0) {
+  // string sort_rule = 4;
+  if (this->sort_rule().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->sortrule());
+        this->sort_rule());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1589,9 +3875,9 @@ void SqlDatabaseInfo::MergeFrom(const SqlDatabaseInfo& from) {
 
     charset_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.charset_);
   }
-  if (from.sortrule().size() > 0) {
+  if (from.sort_rule().size() > 0) {
 
-    sortrule_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sortrule_);
+    sort_rule_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.sort_rule_);
   }
 }
 
@@ -1626,7 +3912,7 @@ void SqlDatabaseInfo::InternalSwap(SqlDatabaseInfo* other) {
     GetArenaNoVirtual());
   charset_.Swap(&other->charset_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  sortrule_.Swap(&other->sortrule_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  sort_rule_.Swap(&other->sort_rule_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
 }
 
@@ -1639,23 +3925,15 @@ void SqlDatabaseInfo::InternalSwap(SqlDatabaseInfo* other) {
 // ===================================================================
 
 void SqlTableInfo::InitAsDefaultInstance() {
-  ::ArmyAntMessage::DBProxy::_SqlTableInfo_default_instance_._instance.get_mutable()->database_ = const_cast< ::ArmyAntMessage::DBProxy::SqlDatabaseInfo*>(
-      ::ArmyAntMessage::DBProxy::SqlDatabaseInfo::internal_default_instance());
 }
 class SqlTableInfo::HasBitSetters {
  public:
-  static const ::ArmyAntMessage::DBProxy::SqlDatabaseInfo& database(const SqlTableInfo* msg);
 };
 
-const ::ArmyAntMessage::DBProxy::SqlDatabaseInfo&
-SqlTableInfo::HasBitSetters::database(const SqlTableInfo* msg) {
-  return *msg->database_;
-}
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int SqlTableInfo::kTableNameFieldNumber;
 const int SqlTableInfo::kEngineFieldNumber;
 const int SqlTableInfo::kCommentFieldNumber;
-const int SqlTableInfo::kDatabaseFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 SqlTableInfo::SqlTableInfo()
@@ -1667,9 +3945,9 @@ SqlTableInfo::SqlTableInfo(const SqlTableInfo& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  tablename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.tablename().size() > 0) {
-    tablename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.tablename_);
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.table_name().size() > 0) {
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
   }
   engine_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.engine().size() > 0) {
@@ -1679,21 +3957,15 @@ SqlTableInfo::SqlTableInfo(const SqlTableInfo& from)
   if (from.comment().size() > 0) {
     comment_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.comment_);
   }
-  if (from.has_database()) {
-    database_ = new ::ArmyAntMessage::DBProxy::SqlDatabaseInfo(*from.database_);
-  } else {
-    database_ = NULL;
-  }
   // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.SqlTableInfo)
 }
 
 void SqlTableInfo::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_SqlTableInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
-  tablename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   engine_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   comment_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  database_ = NULL;
 }
 
 SqlTableInfo::~SqlTableInfo() {
@@ -1702,10 +3974,9 @@ SqlTableInfo::~SqlTableInfo() {
 }
 
 void SqlTableInfo::SharedDtor() {
-  tablename_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   engine_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   comment_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete database_;
 }
 
 void SqlTableInfo::SetCachedSize(int size) const {
@@ -1723,13 +3994,9 @@ void SqlTableInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  tablename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   engine_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   comment_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && database_ != NULL) {
-    delete database_;
-  }
-  database_ = NULL;
   _internal_metadata_.Clear();
 }
 
@@ -1747,14 +4014,14 @@ const char* SqlTableInfo::_InternalParse(const char* begin, const char* end, voi
     if (!ptr) goto error;
     switch (tag >> 3) {
       case 0: goto error;
-      // string tableName = 5;
+      // string table_name = 5;
       case 5: {
         if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
         ptr = Varint::Parse32Inline(ptr, &size);
         if (!ptr) goto error;
-        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.SqlTableInfo.tableName");
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.SqlTableInfo.table_name");
         parser_till_end = ::google::protobuf::internal::StringParserUTF8;
-        ::std::string* str = msg->mutable_tablename();
+        ::std::string* str = msg->mutable_table_name();
         str->clear();
         object = str;
         if (size > end - ptr) goto len_delim_till_end;
@@ -1789,19 +4056,6 @@ const char* SqlTableInfo::_InternalParse(const char* begin, const char* end, voi
         ::std::string* str = msg->mutable_comment();
         str->clear();
         object = str;
-        if (size > end - ptr) goto len_delim_till_end;
-        auto newend = ptr + size;
-        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
-        ptr = newend;
-        break;
-      }
-      // .ArmyAntMessage.DBProxy.SqlDatabaseInfo database = 8;
-      case 8: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 66) goto handle_unusual;
-        ptr = Varint::Parse32Inline(ptr, &size);
-        if (!ptr) goto error;
-        parser_till_end = ::ArmyAntMessage::DBProxy::SqlDatabaseInfo::_InternalParse;
-        object = msg->mutable_database();
         if (size > end - ptr) goto len_delim_till_end;
         auto newend = ptr + size;
         if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
@@ -1843,15 +4097,15 @@ bool SqlTableInfo::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string tableName = 5;
+      // string table_name = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_tablename()));
+                input, this->mutable_table_name()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->tablename().data(), static_cast<int>(this->tablename().length()),
+            this->table_name().data(), static_cast<int>(this->table_name().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "ArmyAntMessage.DBProxy.SqlTableInfo.tableName"));
+            "ArmyAntMessage.DBProxy.SqlTableInfo.table_name"));
         } else {
           goto handle_unusual;
         }
@@ -1888,17 +4142,6 @@ bool SqlTableInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // .ArmyAntMessage.DBProxy.SqlDatabaseInfo database = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (66 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_database()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -1926,14 +4169,14 @@ void SqlTableInfo::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string tableName = 5;
-  if (this->tablename().size() > 0) {
+  // string table_name = 5;
+  if (this->table_name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->tablename().data(), static_cast<int>(this->tablename().length()),
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.SqlTableInfo.tableName");
+      "ArmyAntMessage.DBProxy.SqlTableInfo.table_name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->tablename(), output);
+      5, this->table_name(), output);
   }
 
   // string engine = 6;
@@ -1956,12 +4199,6 @@ void SqlTableInfo::SerializeWithCachedSizes(
       7, this->comment(), output);
   }
 
-  // .ArmyAntMessage.DBProxy.SqlDatabaseInfo database = 8;
-  if (this->has_database()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, HasBitSetters::database(this), output);
-  }
-
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -1976,15 +4213,15 @@ void SqlTableInfo::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string tableName = 5;
-  if (this->tablename().size() > 0) {
+  // string table_name = 5;
+  if (this->table_name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->tablename().data(), static_cast<int>(this->tablename().length()),
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.SqlTableInfo.tableName");
+      "ArmyAntMessage.DBProxy.SqlTableInfo.table_name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->tablename(), target);
+        5, this->table_name(), target);
   }
 
   // string engine = 6;
@@ -2009,13 +4246,6 @@ void SqlTableInfo::SerializeWithCachedSizes(
         7, this->comment(), target);
   }
 
-  // .ArmyAntMessage.DBProxy.SqlDatabaseInfo database = 8;
-  if (this->has_database()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        8, HasBitSetters::database(this), deterministic, target);
-  }
-
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
@@ -2037,11 +4267,11 @@ size_t SqlTableInfo::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string tableName = 5;
-  if (this->tablename().size() > 0) {
+  // string table_name = 5;
+  if (this->table_name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->tablename());
+        this->table_name());
   }
 
   // string engine = 6;
@@ -2056,13 +4286,6 @@ size_t SqlTableInfo::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->comment());
-  }
-
-  // .ArmyAntMessage.DBProxy.SqlDatabaseInfo database = 8;
-  if (this->has_database()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *database_);
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -2092,9 +4315,9 @@ void SqlTableInfo::MergeFrom(const SqlTableInfo& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.tablename().size() > 0) {
+  if (from.table_name().size() > 0) {
 
-    tablename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.tablename_);
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
   }
   if (from.engine().size() > 0) {
 
@@ -2103,9 +4326,6 @@ void SqlTableInfo::MergeFrom(const SqlTableInfo& from) {
   if (from.comment().size() > 0) {
 
     comment_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.comment_);
-  }
-  if (from.has_database()) {
-    mutable_database()->::ArmyAntMessage::DBProxy::SqlDatabaseInfo::MergeFrom(from.database());
   }
 }
 
@@ -2134,16 +4354,235 @@ void SqlTableInfo::Swap(SqlTableInfo* other) {
 void SqlTableInfo::InternalSwap(SqlTableInfo* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  tablename_.Swap(&other->tablename_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  table_name_.Swap(&other->table_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   engine_.Swap(&other->engine_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   comment_.Swap(&other->comment_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(database_, other->database_);
 }
 
 ::google::protobuf::Metadata SqlTableInfo::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void SqlColumnInfo::InitAsDefaultInstance() {
+}
+class SqlColumnInfo::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+SqlColumnInfo::SqlColumnInfo()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.SqlColumnInfo)
+}
+SqlColumnInfo::SqlColumnInfo(const SqlColumnInfo& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.SqlColumnInfo)
+}
+
+void SqlColumnInfo::SharedCtor() {
+}
+
+SqlColumnInfo::~SqlColumnInfo() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  SharedDtor();
+}
+
+void SqlColumnInfo::SharedDtor() {
+}
+
+void SqlColumnInfo::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const SqlColumnInfo& SqlColumnInfo::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_SqlColumnInfo_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void SqlColumnInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* SqlColumnInfo::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<SqlColumnInfo*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool SqlColumnInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void SqlColumnInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.SqlColumnInfo)
+}
+
+::google::protobuf::uint8* SqlColumnInfo::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  return target;
+}
+
+size_t SqlColumnInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void SqlColumnInfo::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  GOOGLE_DCHECK_NE(&from, this);
+  const SqlColumnInfo* source =
+      ::google::protobuf::DynamicCastToGenerated<SqlColumnInfo>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.SqlColumnInfo)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.SqlColumnInfo)
+    MergeFrom(*source);
+  }
+}
+
+void SqlColumnInfo::MergeFrom(const SqlColumnInfo& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void SqlColumnInfo::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SqlColumnInfo::CopyFrom(const SqlColumnInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.SqlColumnInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SqlColumnInfo::IsInitialized() const {
+  return true;
+}
+
+void SqlColumnInfo::Swap(SqlColumnInfo* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void SqlColumnInfo::InternalSwap(SqlColumnInfo* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata SqlColumnInfo::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
   return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
 }
@@ -2565,74 +5004,102 @@ void SqlResult::InternalSwap(SqlResult* other) {
 
 // ===================================================================
 
-void Any2Dbp_SqlRequest::InitAsDefaultInstance() {
+void Any2Dbp_SqlRequest_Table::InitAsDefaultInstance() {
+  ::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Table_default_instance_._instance.get_mutable()->table_create_data_ = const_cast< ::ArmyAntMessage::DBProxy::SqlTableInfo*>(
+      ::ArmyAntMessage::DBProxy::SqlTableInfo::internal_default_instance());
 }
-class Any2Dbp_SqlRequest::HasBitSetters {
+class Any2Dbp_SqlRequest_Table::HasBitSetters {
  public:
+  static const ::ArmyAntMessage::DBProxy::SqlTableInfo& table_create_data(const Any2Dbp_SqlRequest_Table* msg);
 };
 
+const ::ArmyAntMessage::DBProxy::SqlTableInfo&
+Any2Dbp_SqlRequest_Table::HasBitSetters::table_create_data(const Any2Dbp_SqlRequest_Table* msg) {
+  return *msg->table_create_data_;
+}
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Any2Dbp_SqlRequest::kTypeFieldNumber;
-const int Any2Dbp_SqlRequest::kTableNameFieldNumber;
+const int Any2Dbp_SqlRequest_Table::kAuthStringFieldNumber;
+const int Any2Dbp_SqlRequest_Table::kTypeFieldNumber;
+const int Any2Dbp_SqlRequest_Table::kTableNameFieldNumber;
+const int Any2Dbp_SqlRequest_Table::kTableCreateDataFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Any2Dbp_SqlRequest::Any2Dbp_SqlRequest()
+Any2Dbp_SqlRequest_Table::Any2Dbp_SqlRequest_Table()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
 }
-Any2Dbp_SqlRequest::Any2Dbp_SqlRequest(const Any2Dbp_SqlRequest& from)
+Any2Dbp_SqlRequest_Table::Any2Dbp_SqlRequest_Table(const Any2Dbp_SqlRequest_Table& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  tablename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.tablename().size() > 0) {
-    tablename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.tablename_);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.auth_string().size() > 0) {
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.table_name().size() > 0) {
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+  }
+  if (from.has_table_create_data()) {
+    table_create_data_ = new ::ArmyAntMessage::DBProxy::SqlTableInfo(*from.table_create_data_);
+  } else {
+    table_create_data_ = NULL;
   }
   type_ = from.type_;
-  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
 }
 
-void Any2Dbp_SqlRequest::SharedCtor() {
+void Any2Dbp_SqlRequest_Table::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
-      &scc_info_Any2Dbp_SqlRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
-  tablename_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_ = 0;
+      &scc_info_Any2Dbp_SqlRequest_Table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&table_create_data_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&type_) -
+      reinterpret_cast<char*>(&table_create_data_)) + sizeof(type_));
 }
 
-Any2Dbp_SqlRequest::~Any2Dbp_SqlRequest() {
-  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+Any2Dbp_SqlRequest_Table::~Any2Dbp_SqlRequest_Table() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
   SharedDtor();
 }
 
-void Any2Dbp_SqlRequest::SharedDtor() {
-  tablename_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void Any2Dbp_SqlRequest_Table::SharedDtor() {
+  auth_string_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete table_create_data_;
 }
 
-void Any2Dbp_SqlRequest::SetCachedSize(int size) const {
+void Any2Dbp_SqlRequest_Table::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Any2Dbp_SqlRequest& Any2Dbp_SqlRequest::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Any2Dbp_SqlRequest_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+const Any2Dbp_SqlRequest_Table& Any2Dbp_SqlRequest_Table::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Any2Dbp_SqlRequest_Table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Any2Dbp_SqlRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+void Any2Dbp_SqlRequest_Table::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  tablename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  auth_string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && table_create_data_ != NULL) {
+    delete table_create_data_;
+  }
+  table_create_data_ = NULL;
   type_ = 0;
   _internal_metadata_.Clear();
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Any2Dbp_SqlRequest::_InternalParse(const char* begin, const char* end, void* object,
+const char* Any2Dbp_SqlRequest_Table::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<Any2Dbp_SqlRequest*>(object);
+  auto msg = static_cast<Any2Dbp_SqlRequest_Table*>(object);
   ::google::protobuf::uint32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
@@ -2643,24 +5110,2211 @@ const char* Any2Dbp_SqlRequest::_InternalParse(const char* begin, const char* en
     if (!ptr) goto error;
     switch (tag >> 3) {
       case 0: goto error;
-      // int32 type = 1;
+      // string auth_string = 1;
       case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table.auth_string");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_auth_string();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         if (!ptr) goto error;
-        ::google::protobuf::int32 value = val;
+        ::ArmyAntMessage::DBProxy::SqlRequestType value = static_cast<::ArmyAntMessage::DBProxy::SqlRequestType>(val);
         msg->set_type(value);
         break;
       }
-      // string tableName = 2;
+      // string table_name = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table.table_name");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_table_name();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .ArmyAntMessage.DBProxy.SqlTableInfo table_create_data = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::ArmyAntMessage::DBProxy::SqlTableInfo::_InternalParse;
+        object = msg->mutable_table_create_data();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Any2Dbp_SqlRequest_Table::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_auth_string()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table.auth_string"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+          int value = 0;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_type(static_cast< ::ArmyAntMessage::DBProxy::SqlRequestType >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string table_name = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_table_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->table_name().data(), static_cast<int>(this->table_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table.table_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .ArmyAntMessage.DBProxy.SqlTableInfo table_create_data = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_table_create_data()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Any2Dbp_SqlRequest_Table::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table.auth_string");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->auth_string(), output);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+  if (this->type() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->type(), output);
+  }
+
+  // string table_name = 3;
+  if (this->table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table.table_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->table_name(), output);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlTableInfo table_create_data = 4;
+  if (this->has_table_create_data()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, HasBitSetters::table_create_data(this), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+}
+
+::google::protobuf::uint8* Any2Dbp_SqlRequest_Table::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table.auth_string");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->auth_string(), target);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+  if (this->type() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->type(), target);
+  }
+
+  // string table_name = 3;
+  if (this->table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table.table_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->table_name(), target);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlTableInfo table_create_data = 4;
+  if (this->has_table_create_data()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        4, HasBitSetters::table_create_data(this), deterministic, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  return target;
+}
+
+size_t Any2Dbp_SqlRequest_Table::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->auth_string());
+  }
+
+  // string table_name = 3;
+  if (this->table_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->table_name());
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlTableInfo table_create_data = 4;
+  if (this->has_table_create_data()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *table_create_data_);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+  if (this->type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Any2Dbp_SqlRequest_Table::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Any2Dbp_SqlRequest_Table* source =
+      ::google::protobuf::DynamicCastToGenerated<Any2Dbp_SqlRequest_Table>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+    MergeFrom(*source);
+  }
+}
+
+void Any2Dbp_SqlRequest_Table::MergeFrom(const Any2Dbp_SqlRequest_Table& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.auth_string().size() > 0) {
+
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  if (from.table_name().size() > 0) {
+
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+  }
+  if (from.has_table_create_data()) {
+    mutable_table_create_data()->::ArmyAntMessage::DBProxy::SqlTableInfo::MergeFrom(from.table_create_data());
+  }
+  if (from.type() != 0) {
+    set_type(from.type());
+  }
+}
+
+void Any2Dbp_SqlRequest_Table::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Any2Dbp_SqlRequest_Table::CopyFrom(const Any2Dbp_SqlRequest_Table& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Table)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Any2Dbp_SqlRequest_Table::IsInitialized() const {
+  return true;
+}
+
+void Any2Dbp_SqlRequest_Table::Swap(Any2Dbp_SqlRequest_Table* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Any2Dbp_SqlRequest_Table::InternalSwap(Any2Dbp_SqlRequest_Table* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auth_string_.Swap(&other->auth_string_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  table_name_.Swap(&other->table_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(table_create_data_, other->table_create_data_);
+  swap(type_, other->type_);
+}
+
+::google::protobuf::Metadata Any2Dbp_SqlRequest_Table::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Any2Dbp_SqlRequest_Select::InitAsDefaultInstance() {
+}
+class Any2Dbp_SqlRequest_Select::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Any2Dbp_SqlRequest_Select::kAuthStringFieldNumber;
+const int Any2Dbp_SqlRequest_Select::kTableNameFieldNumber;
+const int Any2Dbp_SqlRequest_Select::kColumnsFieldNumber;
+const int Any2Dbp_SqlRequest_Select::kClausesFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Any2Dbp_SqlRequest_Select::Any2Dbp_SqlRequest_Select()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+}
+Any2Dbp_SqlRequest_Select::Any2Dbp_SqlRequest_Select(const Any2Dbp_SqlRequest_Select& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      columns_(from.columns_),
+      clauses_(from.clauses_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.auth_string().size() > 0) {
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.table_name().size() > 0) {
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+  }
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+}
+
+void Any2Dbp_SqlRequest_Select::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Any2Dbp_SqlRequest_Select_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+Any2Dbp_SqlRequest_Select::~Any2Dbp_SqlRequest_Select() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  SharedDtor();
+}
+
+void Any2Dbp_SqlRequest_Select::SharedDtor() {
+  auth_string_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Any2Dbp_SqlRequest_Select::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Any2Dbp_SqlRequest_Select& Any2Dbp_SqlRequest_Select::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Any2Dbp_SqlRequest_Select_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Any2Dbp_SqlRequest_Select::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  columns_.Clear();
+  clauses_.Clear();
+  auth_string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Any2Dbp_SqlRequest_Select::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Any2Dbp_SqlRequest_Select*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.auth_string");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_auth_string();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // string table_name = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
         ptr = Varint::Parse32Inline(ptr, &size);
         if (!ptr) goto error;
-        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.tableName");
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.table_name");
         parser_till_end = ::google::protobuf::internal::StringParserUTF8;
-        ::std::string* str = msg->mutable_tablename();
+        ::std::string* str = msg->mutable_table_name();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // repeated string columns = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.columns");
+          parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+          ::std::string* str = msg->add_columns();
+          str->clear();
+          object = str;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 26 && (ptr += 1));
+        break;
+      }
+      // repeated string clauses = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.clauses");
+          parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+          ::std::string* str = msg->add_clauses();
+          str->clear();
+          object = str;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 34 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Any2Dbp_SqlRequest_Select::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_auth_string()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.auth_string"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string table_name = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_table_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->table_name().data(), static_cast<int>(this->table_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.table_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string columns = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_columns()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->columns(this->columns_size() - 1).data(),
+            static_cast<int>(this->columns(this->columns_size() - 1).length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.columns"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string clauses = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_clauses()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->clauses(this->clauses_size() - 1).data(),
+            static_cast<int>(this->clauses(this->clauses_size() - 1).length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.clauses"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Any2Dbp_SqlRequest_Select::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.auth_string");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->auth_string(), output);
+  }
+
+  // string table_name = 2;
+  if (this->table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.table_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->table_name(), output);
+  }
+
+  // repeated string columns = 3;
+  for (int i = 0, n = this->columns_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->columns(i).data(), static_cast<int>(this->columns(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.columns");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->columns(i), output);
+  }
+
+  // repeated string clauses = 4;
+  for (int i = 0, n = this->clauses_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->clauses(i).data(), static_cast<int>(this->clauses(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.clauses");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->clauses(i), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+}
+
+::google::protobuf::uint8* Any2Dbp_SqlRequest_Select::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.auth_string");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->auth_string(), target);
+  }
+
+  // string table_name = 2;
+  if (this->table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.table_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->table_name(), target);
+  }
+
+  // repeated string columns = 3;
+  for (int i = 0, n = this->columns_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->columns(i).data(), static_cast<int>(this->columns(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.columns");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(3, this->columns(i), target);
+  }
+
+  // repeated string clauses = 4;
+  for (int i = 0, n = this->clauses_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->clauses(i).data(), static_cast<int>(this->clauses(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select.clauses");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(4, this->clauses(i), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  return target;
+}
+
+size_t Any2Dbp_SqlRequest_Select::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string columns = 3;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->columns_size());
+  for (int i = 0, n = this->columns_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->columns(i));
+  }
+
+  // repeated string clauses = 4;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->clauses_size());
+  for (int i = 0, n = this->clauses_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->clauses(i));
+  }
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->auth_string());
+  }
+
+  // string table_name = 2;
+  if (this->table_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->table_name());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Any2Dbp_SqlRequest_Select::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Any2Dbp_SqlRequest_Select* source =
+      ::google::protobuf::DynamicCastToGenerated<Any2Dbp_SqlRequest_Select>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+    MergeFrom(*source);
+  }
+}
+
+void Any2Dbp_SqlRequest_Select::MergeFrom(const Any2Dbp_SqlRequest_Select& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  columns_.MergeFrom(from.columns_);
+  clauses_.MergeFrom(from.clauses_);
+  if (from.auth_string().size() > 0) {
+
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  if (from.table_name().size() > 0) {
+
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+  }
+}
+
+void Any2Dbp_SqlRequest_Select::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Any2Dbp_SqlRequest_Select::CopyFrom(const Any2Dbp_SqlRequest_Select& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Select)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Any2Dbp_SqlRequest_Select::IsInitialized() const {
+  return true;
+}
+
+void Any2Dbp_SqlRequest_Select::Swap(Any2Dbp_SqlRequest_Select* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Any2Dbp_SqlRequest_Select::InternalSwap(Any2Dbp_SqlRequest_Select* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  columns_.InternalSwap(CastToBase(&other->columns_));
+  clauses_.InternalSwap(CastToBase(&other->clauses_));
+  auth_string_.Swap(&other->auth_string_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  table_name_.Swap(&other->table_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+}
+
+::google::protobuf::Metadata Any2Dbp_SqlRequest_Select::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Any2Dbp_SqlRequest_Update::InitAsDefaultInstance() {
+}
+class Any2Dbp_SqlRequest_Update::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Any2Dbp_SqlRequest_Update::kAuthStringFieldNumber;
+const int Any2Dbp_SqlRequest_Update::kTypeFieldNumber;
+const int Any2Dbp_SqlRequest_Update::kTableNameFieldNumber;
+const int Any2Dbp_SqlRequest_Update::kColumnsFieldNumber;
+const int Any2Dbp_SqlRequest_Update::kValuesFieldNumber;
+const int Any2Dbp_SqlRequest_Update::kClausesFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Any2Dbp_SqlRequest_Update::Any2Dbp_SqlRequest_Update()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+}
+Any2Dbp_SqlRequest_Update::Any2Dbp_SqlRequest_Update(const Any2Dbp_SqlRequest_Update& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      columns_(from.columns_),
+      values_(from.values_),
+      clauses_(from.clauses_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.auth_string().size() > 0) {
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.table_name().size() > 0) {
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+  }
+  type_ = from.type_;
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+}
+
+void Any2Dbp_SqlRequest_Update::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Any2Dbp_SqlRequest_Update_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  type_ = 0;
+}
+
+Any2Dbp_SqlRequest_Update::~Any2Dbp_SqlRequest_Update() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  SharedDtor();
+}
+
+void Any2Dbp_SqlRequest_Update::SharedDtor() {
+  auth_string_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Any2Dbp_SqlRequest_Update::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Any2Dbp_SqlRequest_Update& Any2Dbp_SqlRequest_Update::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Any2Dbp_SqlRequest_Update_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Any2Dbp_SqlRequest_Update::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  columns_.Clear();
+  values_.Clear();
+  clauses_.Clear();
+  auth_string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  type_ = 0;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Any2Dbp_SqlRequest_Update::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Any2Dbp_SqlRequest_Update*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.auth_string");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_auth_string();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::ArmyAntMessage::DBProxy::SqlRequestType value = static_cast<::ArmyAntMessage::DBProxy::SqlRequestType>(val);
+        msg->set_type(value);
+        break;
+      }
+      // string table_name = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.table_name");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_table_name();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // repeated string columns = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.columns");
+          parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+          ::std::string* str = msg->add_columns();
+          str->clear();
+          object = str;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 34 && (ptr += 1));
+        break;
+      }
+      // repeated string values = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.values");
+          parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+          ::std::string* str = msg->add_values();
+          str->clear();
+          object = str;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 42 && (ptr += 1));
+        break;
+      }
+      // repeated string clauses = 6;
+      case 6: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 50) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.clauses");
+          parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+          ::std::string* str = msg->add_clauses();
+          str->clear();
+          object = str;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 50 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Any2Dbp_SqlRequest_Update::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_auth_string()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.auth_string"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+          int value = 0;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_type(static_cast< ::ArmyAntMessage::DBProxy::SqlRequestType >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string table_name = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_table_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->table_name().data(), static_cast<int>(this->table_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.table_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string columns = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_columns()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->columns(this->columns_size() - 1).data(),
+            static_cast<int>(this->columns(this->columns_size() - 1).length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.columns"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string values = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_values()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->values(this->values_size() - 1).data(),
+            static_cast<int>(this->values(this->values_size() - 1).length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.values"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string clauses = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (50 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_clauses()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->clauses(this->clauses_size() - 1).data(),
+            static_cast<int>(this->clauses(this->clauses_size() - 1).length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.clauses"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Any2Dbp_SqlRequest_Update::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.auth_string");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->auth_string(), output);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+  if (this->type() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->type(), output);
+  }
+
+  // string table_name = 3;
+  if (this->table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.table_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->table_name(), output);
+  }
+
+  // repeated string columns = 4;
+  for (int i = 0, n = this->columns_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->columns(i).data(), static_cast<int>(this->columns(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.columns");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->columns(i), output);
+  }
+
+  // repeated string values = 5;
+  for (int i = 0, n = this->values_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->values(i).data(), static_cast<int>(this->values(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.values");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->values(i), output);
+  }
+
+  // repeated string clauses = 6;
+  for (int i = 0, n = this->clauses_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->clauses(i).data(), static_cast<int>(this->clauses(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.clauses");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      6, this->clauses(i), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+}
+
+::google::protobuf::uint8* Any2Dbp_SqlRequest_Update::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.auth_string");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->auth_string(), target);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+  if (this->type() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->type(), target);
+  }
+
+  // string table_name = 3;
+  if (this->table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.table_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->table_name(), target);
+  }
+
+  // repeated string columns = 4;
+  for (int i = 0, n = this->columns_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->columns(i).data(), static_cast<int>(this->columns(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.columns");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(4, this->columns(i), target);
+  }
+
+  // repeated string values = 5;
+  for (int i = 0, n = this->values_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->values(i).data(), static_cast<int>(this->values(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.values");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(5, this->values(i), target);
+  }
+
+  // repeated string clauses = 6;
+  for (int i = 0, n = this->clauses_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->clauses(i).data(), static_cast<int>(this->clauses(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update.clauses");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(6, this->clauses(i), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  return target;
+}
+
+size_t Any2Dbp_SqlRequest_Update::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string columns = 4;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->columns_size());
+  for (int i = 0, n = this->columns_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->columns(i));
+  }
+
+  // repeated string values = 5;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->values_size());
+  for (int i = 0, n = this->values_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->values(i));
+  }
+
+  // repeated string clauses = 6;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->clauses_size());
+  for (int i = 0, n = this->clauses_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->clauses(i));
+  }
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->auth_string());
+  }
+
+  // string table_name = 3;
+  if (this->table_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->table_name());
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+  if (this->type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Any2Dbp_SqlRequest_Update::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Any2Dbp_SqlRequest_Update* source =
+      ::google::protobuf::DynamicCastToGenerated<Any2Dbp_SqlRequest_Update>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+    MergeFrom(*source);
+  }
+}
+
+void Any2Dbp_SqlRequest_Update::MergeFrom(const Any2Dbp_SqlRequest_Update& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  columns_.MergeFrom(from.columns_);
+  values_.MergeFrom(from.values_);
+  clauses_.MergeFrom(from.clauses_);
+  if (from.auth_string().size() > 0) {
+
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  if (from.table_name().size() > 0) {
+
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+  }
+  if (from.type() != 0) {
+    set_type(from.type());
+  }
+}
+
+void Any2Dbp_SqlRequest_Update::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Any2Dbp_SqlRequest_Update::CopyFrom(const Any2Dbp_SqlRequest_Update& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Update)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Any2Dbp_SqlRequest_Update::IsInitialized() const {
+  return true;
+}
+
+void Any2Dbp_SqlRequest_Update::Swap(Any2Dbp_SqlRequest_Update* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Any2Dbp_SqlRequest_Update::InternalSwap(Any2Dbp_SqlRequest_Update* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  columns_.InternalSwap(CastToBase(&other->columns_));
+  values_.InternalSwap(CastToBase(&other->values_));
+  clauses_.InternalSwap(CastToBase(&other->clauses_));
+  auth_string_.Swap(&other->auth_string_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  table_name_.Swap(&other->table_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(type_, other->type_);
+}
+
+::google::protobuf::Metadata Any2Dbp_SqlRequest_Update::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Any2Dbp_SqlRequest_Column::InitAsDefaultInstance() {
+  ::ArmyAntMessage::DBProxy::_Any2Dbp_SqlRequest_Column_default_instance_._instance.get_mutable()->column_create_info_ = const_cast< ::ArmyAntMessage::DBProxy::SqlColumnInfo*>(
+      ::ArmyAntMessage::DBProxy::SqlColumnInfo::internal_default_instance());
+}
+class Any2Dbp_SqlRequest_Column::HasBitSetters {
+ public:
+  static const ::ArmyAntMessage::DBProxy::SqlColumnInfo& column_create_info(const Any2Dbp_SqlRequest_Column* msg);
+};
+
+const ::ArmyAntMessage::DBProxy::SqlColumnInfo&
+Any2Dbp_SqlRequest_Column::HasBitSetters::column_create_info(const Any2Dbp_SqlRequest_Column* msg) {
+  return *msg->column_create_info_;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Any2Dbp_SqlRequest_Column::kAuthStringFieldNumber;
+const int Any2Dbp_SqlRequest_Column::kTypeFieldNumber;
+const int Any2Dbp_SqlRequest_Column::kTableNameFieldNumber;
+const int Any2Dbp_SqlRequest_Column::kColumnNameFieldNumber;
+const int Any2Dbp_SqlRequest_Column::kColumnCreateInfoFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Any2Dbp_SqlRequest_Column::Any2Dbp_SqlRequest_Column()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+}
+Any2Dbp_SqlRequest_Column::Any2Dbp_SqlRequest_Column(const Any2Dbp_SqlRequest_Column& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.auth_string().size() > 0) {
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.table_name().size() > 0) {
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+  }
+  column_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.column_name().size() > 0) {
+    column_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.column_name_);
+  }
+  if (from.has_column_create_info()) {
+    column_create_info_ = new ::ArmyAntMessage::DBProxy::SqlColumnInfo(*from.column_create_info_);
+  } else {
+    column_create_info_ = NULL;
+  }
+  type_ = from.type_;
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+}
+
+void Any2Dbp_SqlRequest_Column::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Any2Dbp_SqlRequest_Column_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  column_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&column_create_info_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&type_) -
+      reinterpret_cast<char*>(&column_create_info_)) + sizeof(type_));
+}
+
+Any2Dbp_SqlRequest_Column::~Any2Dbp_SqlRequest_Column() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  SharedDtor();
+}
+
+void Any2Dbp_SqlRequest_Column::SharedDtor() {
+  auth_string_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  column_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete column_create_info_;
+}
+
+void Any2Dbp_SqlRequest_Column::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Any2Dbp_SqlRequest_Column& Any2Dbp_SqlRequest_Column::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Any2Dbp_SqlRequest_Column_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Any2Dbp_SqlRequest_Column::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  auth_string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  table_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  column_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && column_create_info_ != NULL) {
+    delete column_create_info_;
+  }
+  column_create_info_ = NULL;
+  type_ = 0;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Any2Dbp_SqlRequest_Column::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Any2Dbp_SqlRequest_Column*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.auth_string");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_auth_string();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::ArmyAntMessage::DBProxy::SqlRequestType value = static_cast<::ArmyAntMessage::DBProxy::SqlRequestType>(val);
+        msg->set_type(value);
+        break;
+      }
+      // string table_name = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.table_name");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_table_name();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // string column_name = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.column_name");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_column_name();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .ArmyAntMessage.DBProxy.SqlColumnInfo column_create_info = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        parser_till_end = ::ArmyAntMessage::DBProxy::SqlColumnInfo::_InternalParse;
+        object = msg->mutable_column_create_info();
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Any2Dbp_SqlRequest_Column::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_auth_string()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.auth_string"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+          int value = 0;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_type(static_cast< ::ArmyAntMessage::DBProxy::SqlRequestType >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string table_name = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_table_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->table_name().data(), static_cast<int>(this->table_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.table_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string column_name = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_column_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->column_name().data(), static_cast<int>(this->column_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.column_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .ArmyAntMessage.DBProxy.SqlColumnInfo column_create_info = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_column_create_info()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Any2Dbp_SqlRequest_Column::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.auth_string");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->auth_string(), output);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+  if (this->type() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->type(), output);
+  }
+
+  // string table_name = 3;
+  if (this->table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.table_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->table_name(), output);
+  }
+
+  // string column_name = 4;
+  if (this->column_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->column_name().data(), static_cast<int>(this->column_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.column_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->column_name(), output);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlColumnInfo column_create_info = 5;
+  if (this->has_column_create_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, HasBitSetters::column_create_info(this), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+}
+
+::google::protobuf::uint8* Any2Dbp_SqlRequest_Column::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.auth_string");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->auth_string(), target);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+  if (this->type() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->type(), target);
+  }
+
+  // string table_name = 3;
+  if (this->table_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->table_name().data(), static_cast<int>(this->table_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.table_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->table_name(), target);
+  }
+
+  // string column_name = 4;
+  if (this->column_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->column_name().data(), static_cast<int>(this->column_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column.column_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->column_name(), target);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlColumnInfo column_create_info = 5;
+  if (this->has_column_create_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        5, HasBitSetters::column_create_info(this), deterministic, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  return target;
+}
+
+size_t Any2Dbp_SqlRequest_Column::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->auth_string());
+  }
+
+  // string table_name = 3;
+  if (this->table_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->table_name());
+  }
+
+  // string column_name = 4;
+  if (this->column_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->column_name());
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlColumnInfo column_create_info = 5;
+  if (this->has_column_create_info()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *column_create_info_);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType type = 2;
+  if (this->type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Any2Dbp_SqlRequest_Column::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Any2Dbp_SqlRequest_Column* source =
+      ::google::protobuf::DynamicCastToGenerated<Any2Dbp_SqlRequest_Column>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+    MergeFrom(*source);
+  }
+}
+
+void Any2Dbp_SqlRequest_Column::MergeFrom(const Any2Dbp_SqlRequest_Column& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.auth_string().size() > 0) {
+
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  if (from.table_name().size() > 0) {
+
+    table_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.table_name_);
+  }
+  if (from.column_name().size() > 0) {
+
+    column_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.column_name_);
+  }
+  if (from.has_column_create_info()) {
+    mutable_column_create_info()->::ArmyAntMessage::DBProxy::SqlColumnInfo::MergeFrom(from.column_create_info());
+  }
+  if (from.type() != 0) {
+    set_type(from.type());
+  }
+}
+
+void Any2Dbp_SqlRequest_Column::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Any2Dbp_SqlRequest_Column::CopyFrom(const Any2Dbp_SqlRequest_Column& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_Column)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Any2Dbp_SqlRequest_Column::IsInitialized() const {
+  return true;
+}
+
+void Any2Dbp_SqlRequest_Column::Swap(Any2Dbp_SqlRequest_Column* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Any2Dbp_SqlRequest_Column::InternalSwap(Any2Dbp_SqlRequest_Column* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auth_string_.Swap(&other->auth_string_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  table_name_.Swap(&other->table_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  column_name_.Swap(&other->column_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(column_create_info_, other->column_create_info_);
+  swap(type_, other->type_);
+}
+
+::google::protobuf::Metadata Any2Dbp_SqlRequest_Column::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Any2Dbp_SqlRequest_SqlString::InitAsDefaultInstance() {
+}
+class Any2Dbp_SqlRequest_SqlString::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Any2Dbp_SqlRequest_SqlString::kAuthStringFieldNumber;
+const int Any2Dbp_SqlRequest_SqlString::kTypeFieldNumber;
+const int Any2Dbp_SqlRequest_SqlString::kStrFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Any2Dbp_SqlRequest_SqlString::Any2Dbp_SqlRequest_SqlString()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
+}
+Any2Dbp_SqlRequest_SqlString::Any2Dbp_SqlRequest_SqlString(const Any2Dbp_SqlRequest_SqlString& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.auth_string().size() > 0) {
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.str().size() > 0) {
+    str_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.str_);
+  }
+  type_ = from.type_;
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
+}
+
+void Any2Dbp_SqlRequest_SqlString::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Any2Dbp_SqlRequest_SqlString_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  auth_string_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  type_ = 0;
+}
+
+Any2Dbp_SqlRequest_SqlString::~Any2Dbp_SqlRequest_SqlString() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
+  SharedDtor();
+}
+
+void Any2Dbp_SqlRequest_SqlString::SharedDtor() {
+  auth_string_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  str_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Any2Dbp_SqlRequest_SqlString::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Any2Dbp_SqlRequest_SqlString& Any2Dbp_SqlRequest_SqlString::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Any2Dbp_SqlRequest_SqlString_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Any2Dbp_SqlRequest_SqlString::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  auth_string_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  str_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  type_ = 0;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Any2Dbp_SqlRequest_SqlString::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Any2Dbp_SqlRequest_SqlString*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // string auth_string = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString.auth_string");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_auth_string();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      // .ArmyAntMessage.DBProxy.SqlRequestType_SqlString type = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::ArmyAntMessage::DBProxy::SqlRequestType_SqlString value = static_cast<::ArmyAntMessage::DBProxy::SqlRequestType_SqlString>(val);
+        msg->set_type(value);
+        break;
+      }
+      // string str = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString.str");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_str();
         str->clear();
         object = str;
         if (size > end - ptr) goto len_delim_till_end;
@@ -2694,38 +7348,54 @@ group_continues: (void)&&group_continues;
   return ptr;
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Any2Dbp_SqlRequest::MergePartialFromCodedStream(
+bool Any2Dbp_SqlRequest_SqlString::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 type = 1;
+      // string auth_string = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &type_)));
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_auth_string()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString.auth_string"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // string tableName = 2;
+      // .ArmyAntMessage.DBProxy.SqlRequestType_SqlString type = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+          int value = 0;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_type(static_cast< ::ArmyAntMessage::DBProxy::SqlRequestType_SqlString >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string str = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_tablename()));
+                input, this->mutable_str()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->tablename().data(), static_cast<int>(this->tablename().length()),
+            this->str().data(), static_cast<int>(this->str().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.tableName"));
+            "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString.str"));
         } else {
           goto handle_unusual;
         }
@@ -2744,76 +7414,99 @@ bool Any2Dbp_SqlRequest::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void Any2Dbp_SqlRequest::SerializeWithCachedSizes(
+void Any2Dbp_SqlRequest_SqlString::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 type = 1;
-  if (this->type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->type(), output);
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString.auth_string");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->auth_string(), output);
   }
 
-  // string tableName = 2;
-  if (this->tablename().size() > 0) {
+  // .ArmyAntMessage.DBProxy.SqlRequestType_SqlString type = 2;
+  if (this->type() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->type(), output);
+  }
+
+  // string str = 3;
+  if (this->str().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->tablename().data(), static_cast<int>(this->tablename().length()),
+      this->str().data(), static_cast<int>(this->str().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.tableName");
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString.str");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->tablename(), output);
+      3, this->str(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
 }
 
-::google::protobuf::uint8* Any2Dbp_SqlRequest::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Any2Dbp_SqlRequest_SqlString::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 type = 1;
-  if (this->type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->type(), target);
-  }
-
-  // string tableName = 2;
-  if (this->tablename().size() > 0) {
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->tablename().data(), static_cast<int>(this->tablename().length()),
+      this->auth_string().data(), static_cast<int>(this->auth_string().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest.tableName");
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString.auth_string");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->tablename(), target);
+        1, this->auth_string(), target);
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType_SqlString type = 2;
+  if (this->type() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->type(), target);
+  }
+
+  // string str = 3;
+  if (this->str().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->str().data(), static_cast<int>(this->str().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString.str");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->str(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   return target;
 }
 
-size_t Any2Dbp_SqlRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+size_t Any2Dbp_SqlRequest_SqlString::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2825,18 +7518,24 @@ size_t Any2Dbp_SqlRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string tableName = 2;
-  if (this->tablename().size() > 0) {
+  // string auth_string = 1;
+  if (this->auth_string().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->tablename());
+        this->auth_string());
   }
 
-  // int32 type = 1;
+  // string str = 3;
+  if (this->str().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->str());
+  }
+
+  // .ArmyAntMessage.DBProxy.SqlRequestType_SqlString type = 2;
   if (this->type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->type());
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -2844,68 +7543,1288 @@ size_t Any2Dbp_SqlRequest::ByteSizeLong() const {
   return total_size;
 }
 
-void Any2Dbp_SqlRequest::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+void Any2Dbp_SqlRequest_SqlString::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   GOOGLE_DCHECK_NE(&from, this);
-  const Any2Dbp_SqlRequest* source =
-      ::google::protobuf::DynamicCastToGenerated<Any2Dbp_SqlRequest>(
+  const Any2Dbp_SqlRequest_SqlString* source =
+      ::google::protobuf::DynamicCastToGenerated<Any2Dbp_SqlRequest_SqlString>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
     MergeFrom(*source);
   }
 }
 
-void Any2Dbp_SqlRequest::MergeFrom(const Any2Dbp_SqlRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+void Any2Dbp_SqlRequest_SqlString::MergeFrom(const Any2Dbp_SqlRequest_SqlString& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.tablename().size() > 0) {
+  if (from.auth_string().size() > 0) {
 
-    tablename_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.tablename_);
+    auth_string_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.auth_string_);
+  }
+  if (from.str().size() > 0) {
+
+    str_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.str_);
   }
   if (from.type() != 0) {
     set_type(from.type());
   }
 }
 
-void Any2Dbp_SqlRequest::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+void Any2Dbp_SqlRequest_SqlString::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Any2Dbp_SqlRequest::CopyFrom(const Any2Dbp_SqlRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest)
+void Any2Dbp_SqlRequest_SqlString::CopyFrom(const Any2Dbp_SqlRequest_SqlString& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Any2Dbp_SqlRequest_SqlString)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Any2Dbp_SqlRequest::IsInitialized() const {
+bool Any2Dbp_SqlRequest_SqlString::IsInitialized() const {
   return true;
 }
 
-void Any2Dbp_SqlRequest::Swap(Any2Dbp_SqlRequest* other) {
+void Any2Dbp_SqlRequest_SqlString::Swap(Any2Dbp_SqlRequest_SqlString* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Any2Dbp_SqlRequest::InternalSwap(Any2Dbp_SqlRequest* other) {
+void Any2Dbp_SqlRequest_SqlString::InternalSwap(Any2Dbp_SqlRequest_SqlString* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  tablename_.Swap(&other->tablename_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  auth_string_.Swap(&other->auth_string_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  str_.Swap(&other->str_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(type_, other->type_);
 }
 
-::google::protobuf::Metadata Any2Dbp_SqlRequest::GetMetadata() const {
+::google::protobuf::Metadata Any2Dbp_SqlRequest_SqlString::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Dbp2Any_SqlResponse_Boolean::InitAsDefaultInstance() {
+}
+class Dbp2Any_SqlResponse_Boolean::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Dbp2Any_SqlResponse_Boolean::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Dbp2Any_SqlResponse_Boolean::Dbp2Any_SqlResponse_Boolean()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+}
+Dbp2Any_SqlResponse_Boolean::Dbp2Any_SqlResponse_Boolean(const Dbp2Any_SqlResponse_Boolean& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  result_ = from.result_;
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+}
+
+void Dbp2Any_SqlResponse_Boolean::SharedCtor() {
+  result_ = false;
+}
+
+Dbp2Any_SqlResponse_Boolean::~Dbp2Any_SqlResponse_Boolean() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  SharedDtor();
+}
+
+void Dbp2Any_SqlResponse_Boolean::SharedDtor() {
+}
+
+void Dbp2Any_SqlResponse_Boolean::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Dbp2Any_SqlResponse_Boolean& Dbp2Any_SqlResponse_Boolean::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Dbp2Any_SqlResponse_Boolean_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Dbp2Any_SqlResponse_Boolean::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  result_ = false;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Dbp2Any_SqlResponse_Boolean::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Dbp2Any_SqlResponse_Boolean*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // bool result = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        bool value = val;
+        msg->set_result(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Dbp2Any_SqlResponse_Boolean::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // bool result = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &result_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Dbp2Any_SqlResponse_Boolean::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool result = 1;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->result(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+}
+
+::google::protobuf::uint8* Dbp2Any_SqlResponse_Boolean::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool result = 1;
+  if (this->result() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->result(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  return target;
+}
+
+size_t Dbp2Any_SqlResponse_Boolean::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool result = 1;
+  if (this->result() != 0) {
+    total_size += 1 + 1;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Dbp2Any_SqlResponse_Boolean::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Dbp2Any_SqlResponse_Boolean* source =
+      ::google::protobuf::DynamicCastToGenerated<Dbp2Any_SqlResponse_Boolean>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+    MergeFrom(*source);
+  }
+}
+
+void Dbp2Any_SqlResponse_Boolean::MergeFrom(const Dbp2Any_SqlResponse_Boolean& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void Dbp2Any_SqlResponse_Boolean::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Dbp2Any_SqlResponse_Boolean::CopyFrom(const Dbp2Any_SqlResponse_Boolean& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Boolean)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Dbp2Any_SqlResponse_Boolean::IsInitialized() const {
+  return true;
+}
+
+void Dbp2Any_SqlResponse_Boolean::Swap(Dbp2Any_SqlResponse_Boolean* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Dbp2Any_SqlResponse_Boolean::InternalSwap(Dbp2Any_SqlResponse_Boolean* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(result_, other->result_);
+}
+
+::google::protobuf::Metadata Dbp2Any_SqlResponse_Boolean::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Dbp2Any_SqlResponse_Counts::InitAsDefaultInstance() {
+}
+class Dbp2Any_SqlResponse_Counts::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Dbp2Any_SqlResponse_Counts::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Dbp2Any_SqlResponse_Counts::Dbp2Any_SqlResponse_Counts()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+}
+Dbp2Any_SqlResponse_Counts::Dbp2Any_SqlResponse_Counts(const Dbp2Any_SqlResponse_Counts& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      result_(from.result_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+}
+
+void Dbp2Any_SqlResponse_Counts::SharedCtor() {
+}
+
+Dbp2Any_SqlResponse_Counts::~Dbp2Any_SqlResponse_Counts() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  SharedDtor();
+}
+
+void Dbp2Any_SqlResponse_Counts::SharedDtor() {
+}
+
+void Dbp2Any_SqlResponse_Counts::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Dbp2Any_SqlResponse_Counts& Dbp2Any_SqlResponse_Counts::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Dbp2Any_SqlResponse_Counts_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Dbp2Any_SqlResponse_Counts::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  result_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Dbp2Any_SqlResponse_Counts::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Dbp2Any_SqlResponse_Counts*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // repeated int32 result = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) == 10) {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::google::protobuf::internal::PackedInt32Parser;
+          object = msg->mutable_result();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          break;
+        } else if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        do {
+          ::google::protobuf::uint64 val;
+          ptr = Varint::Parse64(ptr, &val);
+          if (!ptr) goto error;
+          ::google::protobuf::int32 value = val;
+          msg->add_result(value);
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 8 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Dbp2Any_SqlResponse_Counts::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated int32 result = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_result())));
+        } else if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 10u, input, this->mutable_result())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Dbp2Any_SqlResponse_Counts::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated int32 result = 1;
+  if (this->result_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(1, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_result_cached_byte_size_.load(
+        std::memory_order_relaxed));
+  }
+  for (int i = 0, n = this->result_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32NoTag(
+      this->result(i), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+}
+
+::google::protobuf::uint8* Dbp2Any_SqlResponse_Counts::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated int32 result = 1;
+  if (this->result_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      1,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        _result_cached_byte_size_.load(std::memory_order_relaxed),
+         target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt32NoTagToArray(this->result_, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  return target;
+}
+
+size_t Dbp2Any_SqlResponse_Counts::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated int32 result = 1;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      Int32Size(this->result_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast<::google::protobuf::int32>(data_size));
+    }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    _result_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Dbp2Any_SqlResponse_Counts::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Dbp2Any_SqlResponse_Counts* source =
+      ::google::protobuf::DynamicCastToGenerated<Dbp2Any_SqlResponse_Counts>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+    MergeFrom(*source);
+  }
+}
+
+void Dbp2Any_SqlResponse_Counts::MergeFrom(const Dbp2Any_SqlResponse_Counts& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  result_.MergeFrom(from.result_);
+}
+
+void Dbp2Any_SqlResponse_Counts::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Dbp2Any_SqlResponse_Counts::CopyFrom(const Dbp2Any_SqlResponse_Counts& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Counts)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Dbp2Any_SqlResponse_Counts::IsInitialized() const {
+  return true;
+}
+
+void Dbp2Any_SqlResponse_Counts::Swap(Dbp2Any_SqlResponse_Counts* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Dbp2Any_SqlResponse_Counts::InternalSwap(Dbp2Any_SqlResponse_Counts* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  result_.InternalSwap(&other->result_);
+}
+
+::google::protobuf::Metadata Dbp2Any_SqlResponse_Counts::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Dbp2Any_SqlResponse_Tables::InitAsDefaultInstance() {
+}
+class Dbp2Any_SqlResponse_Tables::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Dbp2Any_SqlResponse_Tables::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Dbp2Any_SqlResponse_Tables::Dbp2Any_SqlResponse_Tables()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+}
+Dbp2Any_SqlResponse_Tables::Dbp2Any_SqlResponse_Tables(const Dbp2Any_SqlResponse_Tables& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      result_(from.result_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+}
+
+void Dbp2Any_SqlResponse_Tables::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Dbp2Any_SqlResponse_Tables_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+}
+
+Dbp2Any_SqlResponse_Tables::~Dbp2Any_SqlResponse_Tables() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  SharedDtor();
+}
+
+void Dbp2Any_SqlResponse_Tables::SharedDtor() {
+}
+
+void Dbp2Any_SqlResponse_Tables::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Dbp2Any_SqlResponse_Tables& Dbp2Any_SqlResponse_Tables::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Dbp2Any_SqlResponse_Tables_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Dbp2Any_SqlResponse_Tables::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  result_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Dbp2Any_SqlResponse_Tables::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Dbp2Any_SqlResponse_Tables*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // repeated .ArmyAntMessage.DBProxy.SqlResult result = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          if (!ptr) goto error;
+          parser_till_end = ::ArmyAntMessage::DBProxy::SqlResult::_InternalParse;
+          object = msg->add_result();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+          ptr = newend;
+          if (ptr >= end) break;
+        } while((*reinterpret_cast<const ::google::protobuf::uint64*>(ptr) & 255) == 10 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Dbp2Any_SqlResponse_Tables::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .ArmyAntMessage.DBProxy.SqlResult result = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+                input, add_result()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Dbp2Any_SqlResponse_Tables::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .ArmyAntMessage.DBProxy.SqlResult result = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->result_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1,
+      this->result(static_cast<int>(i)),
+      output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+}
+
+::google::protobuf::uint8* Dbp2Any_SqlResponse_Tables::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .ArmyAntMessage.DBProxy.SqlResult result = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->result_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        1, this->result(static_cast<int>(i)), deterministic, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  return target;
+}
+
+size_t Dbp2Any_SqlResponse_Tables::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .ArmyAntMessage.DBProxy.SqlResult result = 1;
+  {
+    unsigned int count = static_cast<unsigned int>(this->result_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->result(static_cast<int>(i)));
+    }
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Dbp2Any_SqlResponse_Tables::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Dbp2Any_SqlResponse_Tables* source =
+      ::google::protobuf::DynamicCastToGenerated<Dbp2Any_SqlResponse_Tables>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+    MergeFrom(*source);
+  }
+}
+
+void Dbp2Any_SqlResponse_Tables::MergeFrom(const Dbp2Any_SqlResponse_Tables& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  result_.MergeFrom(from.result_);
+}
+
+void Dbp2Any_SqlResponse_Tables::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Dbp2Any_SqlResponse_Tables::CopyFrom(const Dbp2Any_SqlResponse_Tables& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Tables)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Dbp2Any_SqlResponse_Tables::IsInitialized() const {
+  return true;
+}
+
+void Dbp2Any_SqlResponse_Tables::Swap(Dbp2Any_SqlResponse_Tables* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Dbp2Any_SqlResponse_Tables::InternalSwap(Dbp2Any_SqlResponse_Tables* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  CastToBase(&result_)->InternalSwap(CastToBase(&other->result_));
+}
+
+::google::protobuf::Metadata Dbp2Any_SqlResponse_Tables::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
+  return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Dbp2Any_SqlResponse_Error::InitAsDefaultInstance() {
+}
+class Dbp2Any_SqlResponse_Error::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Dbp2Any_SqlResponse_Error::kCodeFieldNumber;
+const int Dbp2Any_SqlResponse_Error::kMessageFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Dbp2Any_SqlResponse_Error::Dbp2Any_SqlResponse_Error()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+}
+Dbp2Any_SqlResponse_Error::Dbp2Any_SqlResponse_Error(const Dbp2Any_SqlResponse_Error& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.message().size() > 0) {
+    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  code_ = from.code_;
+  // @@protoc_insertion_point(copy_constructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+}
+
+void Dbp2Any_SqlResponse_Error::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_Dbp2Any_SqlResponse_Error_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  code_ = 0;
+}
+
+Dbp2Any_SqlResponse_Error::~Dbp2Any_SqlResponse_Error() {
+  // @@protoc_insertion_point(destructor:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  SharedDtor();
+}
+
+void Dbp2Any_SqlResponse_Error::SharedDtor() {
+  message_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Dbp2Any_SqlResponse_Error::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Dbp2Any_SqlResponse_Error& Dbp2Any_SqlResponse_Error::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_Dbp2Any_SqlResponse_Error_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Dbp2Any_SqlResponse_Error::Clear() {
+// @@protoc_insertion_point(message_clear_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  message_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  code_ = 0;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Dbp2Any_SqlResponse_Error::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<Dbp2Any_SqlResponse_Error*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    if (!ptr) goto error;
+    switch (tag >> 3) {
+      case 0: goto error;
+      // int32 code = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        if (!ptr) goto error;
+        ::google::protobuf::int32 value = val;
+        msg->set_code(value);
+        break;
+      }
+      // string message = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        if (!ptr) goto error;
+        ctx->extra_parse_data().SetFieldName("ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error.message");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_message();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (!ctx->ParseExactRange({parser_till_end, object}, ptr, newend)) goto error;
+        ptr = newend;
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4) {
+          if (!ctx->ValidEndGroup(tag)) goto error;
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+error:
+  return nullptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Dbp2Any_SqlResponse_Error::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 code = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &code_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string message = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_message()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->message().data(), static_cast<int>(this->message().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error.message"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Dbp2Any_SqlResponse_Error::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 code = 1;
+  if (this->code() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->code(), output);
+  }
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->message().data(), static_cast<int>(this->message().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error.message");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->message(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+}
+
+::google::protobuf::uint8* Dbp2Any_SqlResponse_Error::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 code = 1;
+  if (this->code() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->code(), target);
+  }
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->message().data(), static_cast<int>(this->message().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error.message");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->message(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  return target;
+}
+
+size_t Dbp2Any_SqlResponse_Error::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->message());
+  }
+
+  // int32 code = 1;
+  if (this->code() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->code());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Dbp2Any_SqlResponse_Error::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Dbp2Any_SqlResponse_Error* source =
+      ::google::protobuf::DynamicCastToGenerated<Dbp2Any_SqlResponse_Error>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+    MergeFrom(*source);
+  }
+}
+
+void Dbp2Any_SqlResponse_Error::MergeFrom(const Dbp2Any_SqlResponse_Error& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.message().size() > 0) {
+
+    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  if (from.code() != 0) {
+    set_code(from.code());
+  }
+}
+
+void Dbp2Any_SqlResponse_Error::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Dbp2Any_SqlResponse_Error::CopyFrom(const Dbp2Any_SqlResponse_Error& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ArmyAntMessage.DBProxy.Dbp2Any_SqlResponse_Error)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Dbp2Any_SqlResponse_Error::IsInitialized() const {
+  return true;
+}
+
+void Dbp2Any_SqlResponse_Error::Swap(Dbp2Any_SqlResponse_Error* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Dbp2Any_SqlResponse_Error::InternalSwap(Dbp2Any_SqlResponse_Error* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  message_.Swap(&other->message_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(code_, other->code_);
+}
+
+::google::protobuf::Metadata Dbp2Any_SqlResponse_Error::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto);
   return ::file_level_metadata_ArmyAntMessage_2fDBProxy_2fSqlRequest_2eproto[kIndexInFileMessages];
 }
@@ -2916,6 +8835,21 @@ void Any2Dbp_SqlRequest::InternalSwap(Any2Dbp_SqlRequest* other) {
 }  // namespace ArmyAntMessage
 namespace google {
 namespace protobuf {
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Any2Dbp_LoginRequest >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseSuccessful >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseFailure* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseFailure >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Dbp2Any_LoginResponseFailure >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Any2Dbp_LogoutRequest* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Any2Dbp_LogoutRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Any2Dbp_LogoutRequest >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Dbp2Any_LogoutResponse* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Dbp2Any_LogoutResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Dbp2Any_LogoutResponse >(arena);
+}
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::SqlHeadOne* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::SqlHeadOne >(Arena* arena) {
   return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::SqlHeadOne >(arena);
 }
@@ -2928,11 +8862,38 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::SqlData
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::SqlTableInfo* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::SqlTableInfo >(Arena* arena) {
   return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::SqlTableInfo >(arena);
 }
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::SqlColumnInfo* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::SqlColumnInfo >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::SqlColumnInfo >(arena);
+}
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::SqlResult* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::SqlResult >(Arena* arena) {
   return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::SqlResult >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest >(Arena* arena) {
-  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Table >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Select >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Update >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_Column >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Any2Dbp_SqlRequest_SqlString >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Boolean* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Boolean >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Boolean >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Counts* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Counts >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Counts >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Tables* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Tables >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Tables >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Error* Arena::CreateMaybeMessage< ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Error >(Arena* arena) {
+  return Arena::CreateInternal< ::ArmyAntMessage::DBProxy::Dbp2Any_SqlResponse_Error >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

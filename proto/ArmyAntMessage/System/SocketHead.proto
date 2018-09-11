@@ -2,8 +2,19 @@ syntax = "proto3";
 
 package ArmyAntMessage.System;
 
+enum ConversationStepType {
+	Default = 0;
+	NoticeOnly = 1;
+	AskFor = 2;
+	StartConversation = 3;
+	ConversationStepOn = 4;
+	ResponseEnd = 5;		// Used to end an asking or conversation
+}
+
 message SocketExtendNormal_V0_0_0_1{
 	int64 app_id = 1;
 	int32 content_length = 2;
 	int32 message_code = 3;
+	int32 conversation_code = 4;
+	int32 conversation_step_index = 5;
 }
