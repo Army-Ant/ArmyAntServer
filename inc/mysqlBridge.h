@@ -12,7 +12,7 @@ class MySQL_Driver;
 }
 }
 
-namespace ArmyAntDBProxy{
+namespace ArmyAntServer{
 
 class MySqlBridge : public ArmyAnt::ISqlClient{
 public:

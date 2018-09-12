@@ -6,11 +6,9 @@
 
 #include <DBProxyConstants.h>
 
-using ArmyAntServer::Logger;
-
 static const char* const LOGGER_TAG = "DBProxyMain";
 
-namespace ArmyAntDBProxy{
+namespace ArmyAntServer{
 
 
 DBProxyMain::DBProxyMain() :debug(false), port(0), msgQueue(nullptr), socket(), logger(), eventMgr(), msgQueueMgr(), mysqlBridge(){}
@@ -32,7 +30,7 @@ int32 DBProxyMain::main(){
 
 	// 3. 初始化并开启 socket TCP server
 	socket.setEventCallback(std::bind(&DBProxyMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-	socket.setReceiveCallback(std::bind(&DBProxyMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
+	socket.setReceiveCallback(std::bind(&DBProxyMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8));
 	auto socketStartRes = socket.start(port, 16384, false);
 	if(!socketStartRes){
 		logger.pushLog("DBProxy started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
@@ -41,7 +39,7 @@ int32 DBProxyMain::main(){
 	logger.pushLog("DBProxy started", Logger::AlertLevel::Info, LOGGER_TAG);
 
 	// 4. 开始监听主线程消息队列
-	msgQueue = msgQueueMgr.createQueue(ArmyAntServer::SpecialUserIndex::DBPROXY_MAIN);
+	msgQueue = msgQueueMgr.createQueue(SpecialUserIndex::DBPROXY_MAIN);
 	int32 retVal = Constants::DBProxyMainReturnValues::normalExit;
 	bool exitCommand = false;
 	while(!exitCommand){
@@ -65,7 +63,7 @@ int32 DBProxyMain::main(){
 	return retVal;
 }
 
-ArmyAntServer::MessageQueueManager&DBProxyMain::getMessageQueueManager(){
+MessageQueueManager&DBProxyMain::getMessageQueueManager(){
 	return msgQueueMgr;
 }
 
@@ -222,21 +220,21 @@ int32 DBProxyMain::modulesUninitialization(){
 }
 
 
-void DBProxyMain::onSocketEvent(ArmyAntServer::SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content){
+void DBProxyMain::onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content){
 	switch(type){
-		case ArmyAntServer::SocketApplication::EventType::Connected:
+		case SocketApplication::EventType::Connected:
 			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
 			break;
-		case ArmyAntServer::SocketApplication::EventType::Disconnected:
+		case SocketApplication::EventType::Disconnected:
 			logger.pushLog("Client disconnected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
 			break;
-		case ArmyAntServer::SocketApplication::EventType::SendingResponse:
+		case SocketApplication::EventType::SendingResponse:
 			logger.pushLog("Sending to client responsed, client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Verbose, LOGGER_TAG);
 			break;
-		case ArmyAntServer::SocketApplication::EventType::ErrorReport:
+		case SocketApplication::EventType::ErrorReport:
 			logger.pushLog("Get socket error-report, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
 			break;
-		case ArmyAntServer::SocketApplication::EventType::Unknown:
+		case SocketApplication::EventType::Unknown:
 			logger.pushLog("Get an unknown socket event, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
 			break;
 		default:
@@ -244,7 +242,7 @@ void DBProxyMain::onSocketEvent(ArmyAntServer::SocketApplication::EventType type
 	}
 }
 
-void DBProxyMain::onSocketReceived(const uint32 clientIndex, const ArmyAntServer::MessageBaseHead&head, uint64 appid, int32 contentLength, int32 contentCode, void*body){
+void DBProxyMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, void*body){
 	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
 

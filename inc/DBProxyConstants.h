@@ -1,7 +1,7 @@
 #ifndef DBPROXY_CONSTANTS_H_20180827
 #define DBPROXY_CONSTANTS_H_20180827
 
-namespace ArmyAntDBProxy{
+namespace ArmyAntServer{
 
 namespace Constants{
 

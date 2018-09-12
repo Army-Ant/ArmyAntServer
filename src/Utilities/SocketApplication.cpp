@@ -61,7 +61,9 @@ void SocketApplication::onServerReceived(uint32 index, uint8*data, mac_uint data
 				if(clientBuffer.receivingBufferEnd >= sizeof(MessageBaseHead) + tmpHead.extendLength){
 					int64 appId = 0;
 					int32 contentLength = 0;
-					int32 contentCode = 0;
+					int32 messageCode = 0;
+					int32 conversationCode = 0;
+					int32 conversationStepIndex = 0;
 					switch(tmpHead.extendVersion){
 						case 1:
 						{
@@ -69,15 +71,16 @@ void SocketApplication::onServerReceived(uint32 index, uint8*data, mac_uint data
 							extend.ParseFromArray(clientBuffer.receivingBuffer + sizeof(MessageBaseHead), tmpHead.extendLength);
 							appId = extend.app_id();
 							contentLength = extend.content_length();
-							contentCode = extend.message_code();
+							messageCode = extend.message_code();
+							conversationCode = extend.conversation_code();
+							conversationStepIndex = extend.conversation_step_index();
 							break;
 						}
 					}
 					// 获取内容, 发送回调
 					uint32 usedLength = sizeof(MessageBaseHead) + tmpHead.extendLength + contentLength;
 					if(clientBuffer.receivingBufferEnd >= usedLength){
-						self->receiveCallback(index, tmpHead, appId, contentLength, contentCode, 
-											  clientBuffer.receivingBuffer + sizeof(MessageBaseHead) + tmpHead.extendLength);
+						self->receiveCallback(index, tmpHead, appId, contentLength, messageCode, conversationCode, conversationStepIndex, clientBuffer.receivingBuffer + sizeof(MessageBaseHead) + tmpHead.extendLength);
 						// 若之后仍有内容, 则转移到起点处, 已处理过的信息从buffer移除
 						if(clientBuffer.receivingBufferEnd > usedLength){
 							memcpy(clientBuffer.receivingBuffer, clientBuffer.receivingBuffer + usedLength, clientBuffer.receivingBufferEnd - usedLength);

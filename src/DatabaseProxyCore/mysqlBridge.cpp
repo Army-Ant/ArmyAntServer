@@ -4,7 +4,7 @@
 #include <jdbc/cppconn/statement.h>
 #include <jdbc/cppconn/metadata.h>
 
-namespace ArmyAntDBProxy{
+namespace ArmyAntServer{
 
 MySqlBridge::MySqlBridge() :connection(nullptr), driver(nullptr){}
 

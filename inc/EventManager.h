@@ -5,6 +5,7 @@
 #include <map>
 
 #include <google/protobuf/message.h>
+#include <ArmyAntMessage/Common/base.pb.h>
 
 #include <AADefine.h>
 
@@ -41,6 +42,10 @@ public:
 	bool unregisterNetworkResponse(int32 code, int32 userIndex);
 	bool dispatchNetworkResponse(int32 code, int32 userIndex, google::protobuf::Message*message);
 
+public:
+	static int32 getProtobufMessageCode(google::protobuf::Message*message);
+	template <class T> static int32 getProtobufMessageCode();
+
 private:
 	bool enabled;
 	LocalEventCallback localCB;
@@ -52,6 +57,11 @@ private:
 	AA_FORBID_ASSGN_OPR(EventManager);
 	AA_FORBID_COPY_CTOR(EventManager);
 };
+
+template <class T> static int32 EventManager::getProtobufMessageCode(){
+	T::descriptor()->options().GetExtension(msg_code);
+}
+
 
 } // namespace ArmyAntServer
 

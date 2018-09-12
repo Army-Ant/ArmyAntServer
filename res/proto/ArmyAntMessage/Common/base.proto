@@ -3,7 +3,7 @@ syntax = "proto3";
 import "google/protobuf/descriptor.proto";
 
 extend google.protobuf.MessageOptions {
-	int64 msg_code = 50001;
+	int32 msg_code = 50001;
 }
 
 

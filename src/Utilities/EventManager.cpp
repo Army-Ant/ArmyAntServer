@@ -1,4 +1,7 @@
 #include <EventManager.h>
+#include <google/protobuf/message.h>
+#include <google/protobuf/descriptor.h>
+#include <google/protobuf/descriptor.pb.h>
 
 namespace ArmyAntServer{
 
@@ -105,6 +108,10 @@ bool EventManager::dispatchNetworkResponse(int32 code, int32 userIndex, google::
 		return false;
 	netCB(code, userIndex, data);
 	return true;
+}
+
+int32 EventManager::getProtobufMessageCode(google::protobuf::Message * message){
+	return message->GetDescriptor()->options().GetExtension(msg_code);
 }
 
 

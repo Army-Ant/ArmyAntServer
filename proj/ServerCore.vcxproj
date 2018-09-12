@@ -209,15 +209,11 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\inc\ServerCoreConstants.h" />
+    <ClInclude Include="..\inc\ServerConstants.h" />
     <ClInclude Include="..\inc\ServerMain.h" />
-    <ClInclude Include="..\inc\UserSession.h" />
-    <ClInclude Include="..\inc\UserSessionManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\ServerCore\ServerMain.cpp" />
-    <ClCompile Include="..\src\ServerCore\UserSession.cpp" />
-    <ClCompile Include="..\src\ServerCore\UserSessionManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ServerUtilities.vcxproj">

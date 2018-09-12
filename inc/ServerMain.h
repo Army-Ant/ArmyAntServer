@@ -51,12 +51,12 @@ private:
 	// 收到 Socket 本地事件的处理函数
 	void onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content);
 	// 收到 Socket 网络消息的处理函数
-	void onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 contentCode, void*body);
+	void onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, void*body);
 
 	// 收到 DBProxy 连接相关的本地事件的处理函数
 	void onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content);
 	// 收到 DBProxy 网络消息的处理函数
-	void onDBConnectorReceived(const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 contentCode, void*body);
+	void onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, void * body);
 
 private:
 	bool debug;    // 是否处于调试模式, 由配置文件决定此参数

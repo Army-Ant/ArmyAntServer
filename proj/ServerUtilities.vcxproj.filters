@@ -43,6 +43,9 @@
     <Filter Include="resources\proto\ArmyAntMessage\Common">
       <UniqueIdentifier>{982fdb7c-fa1b-4198-8ab0-c1f63a5f216d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="userSessionManager">
+      <UniqueIdentifier>{8ef24cca-d54e-45aa-91b7-386692b4b2a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\Logger.h">
@@ -84,6 +87,12 @@
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.h">
       <Filter>protobuf</Filter>
     </ClInclude>
+    <ClInclude Include="..\inc\UserSession.h">
+      <Filter>userSessionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\UserSessionManager.h">
+      <Filter>userSessionManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
@@ -118,6 +127,12 @@
     </ClCompile>
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.cc">
       <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\UserSession.cpp">
+      <Filter>userSessionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\UserSessionManager.cpp">
+      <Filter>userSessionManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

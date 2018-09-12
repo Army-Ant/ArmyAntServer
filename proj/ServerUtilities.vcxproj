@@ -182,6 +182,8 @@
     <ClInclude Include="..\inc\SocketClientApplication.h" />
     <ClInclude Include="..\inc\SocketStructs.h" />
     <ClInclude Include="..\inc\SpecialUserIndexDefined.h" />
+    <ClInclude Include="..\inc\UserSession.h" />
+    <ClInclude Include="..\inc\UserSessionManager.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h" />
@@ -199,6 +201,8 @@
     <ClCompile Include="..\src\Utilities\MessageQueueManager.cpp" />
     <ClCompile Include="..\src\Utilities\SocketApplication.cpp" />
     <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp" />
+    <ClCompile Include="..\src\Utilities\UserSession.cpp" />
+    <ClCompile Include="..\src\Utilities\UserSessionManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\res\ConfigJson\DBProxyConfig.json" />

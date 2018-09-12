@@ -7,7 +7,7 @@
 
 int main()
 {
-	ArmyAntDBProxy::DBProxyMain dbProxy;
+	ArmyAntServer::DBProxyMain dbProxy;
 	auto returnValue = dbProxy.main();
 
 
