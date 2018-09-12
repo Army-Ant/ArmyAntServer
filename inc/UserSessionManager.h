@@ -8,11 +8,11 @@
 #include "UserSession.h"
 
 namespace ArmyAntServer{
-class ServerMain;
+class MessageQueueManager;
 
 class UserSessionManager{
 public:
-	UserSessionManager(ServerMain&server);
+	UserSessionManager(MessageQueueManager&queueMgr);
 	~UserSessionManager();
 
 public:
@@ -21,7 +21,7 @@ public:
 	bool removeUserSession(int32 userId);
 
 private:
-	ServerMain & server;
+	MessageQueueManager&queueMgr;
 	std::map<int32, UserSession*> sessionList;
 
 	AA_FORBID_ASSGN_OPR(UserSessionManager);

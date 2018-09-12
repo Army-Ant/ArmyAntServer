@@ -10,12 +10,6 @@
     <Filter Include="protobuf">
       <UniqueIdentifier>{01b03fca-fdd1-4a20-83a0-d92ad45c92e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="eventManager">
-      <UniqueIdentifier>{e515f6be-a7f1-4599-ba77-93ed1d97f5a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MessageQueue">
-      <UniqueIdentifier>{b9224b33-57f1-4fa1-8519-4462d38a3c5c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="base">
       <UniqueIdentifier>{02c85b3d-418f-48d5-ab3f-e07906d0cf0a}</UniqueIdentifier>
     </Filter>
@@ -43,8 +37,17 @@
     <Filter Include="resources\proto\ArmyAntMessage\Common">
       <UniqueIdentifier>{982fdb7c-fa1b-4198-8ab0-c1f63a5f216d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="userSessionManager">
+    <Filter Include="message-event operation">
+      <UniqueIdentifier>{0283f97a-b8a9-413e-800a-61468b67666d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="message-event operation\UserSessionManager">
       <UniqueIdentifier>{8ef24cca-d54e-45aa-91b7-386692b4b2a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="message-event operation\MessageQueue">
+      <UniqueIdentifier>{b9224b33-57f1-4fa1-8519-4462d38a3c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="message-event operation\EventManager">
+      <UniqueIdentifier>{e515f6be-a7f1-4599-ba77-93ed1d97f5a2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -55,19 +58,19 @@
       <Filter>socketApp</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\EventManager.h">
-      <Filter>eventManager</Filter>
+      <Filter>message-event operation\EventManager</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\LocalEventCode.h">
-      <Filter>eventManager</Filter>
+      <Filter>message-event operation\EventManager</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\MessageQueue.h">
-      <Filter>MessageQueue</Filter>
+      <Filter>message-event operation\MessageQueue</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\MessageQueueManager.h">
-      <Filter>MessageQueue</Filter>
+      <Filter>message-event operation\MessageQueue</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\SpecialUserIndexDefined.h">
-      <Filter>eventManager</Filter>
+      <Filter>message-event operation\EventManager</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\SocketClientApplication.h">
       <Filter>socketApp</Filter>
@@ -88,10 +91,10 @@
       <Filter>protobuf</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\UserSession.h">
-      <Filter>userSessionManager</Filter>
+      <Filter>message-event operation\UserSessionManager</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\UserSessionManager.h">
-      <Filter>userSessionManager</Filter>
+      <Filter>message-event operation\UserSessionManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -102,16 +105,16 @@
       <Filter>socketApp</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\EventManager.cpp">
-      <Filter>eventManager</Filter>
+      <Filter>message-event operation\EventManager</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\base.cpp">
       <Filter>base</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\MessageQueueManager.cpp">
-      <Filter>MessageQueue</Filter>
+      <Filter>message-event operation\MessageQueue</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\MessageQueue.cpp">
-      <Filter>MessageQueue</Filter>
+      <Filter>message-event operation\MessageQueue</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp">
       <Filter>socketApp</Filter>
@@ -129,10 +132,10 @@
       <Filter>protobuf</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\UserSession.cpp">
-      <Filter>userSessionManager</Filter>
+      <Filter>message-event operation\UserSessionManager</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\UserSessionManager.cpp">
-      <Filter>userSessionManager</Filter>
+      <Filter>message-event operation\UserSessionManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

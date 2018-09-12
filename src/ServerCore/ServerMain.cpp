@@ -12,7 +12,7 @@ namespace ArmyAntServer{
 
 
 ServerMain::ServerMain()
-	:debug(false), port(0), msgQueue(nullptr), socket(), logger(), eventMgr(), msgQueueMgr(), sessionMgr(*this), dbConnector(), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
+	:debug(false), port(0), msgQueue(nullptr), socket(), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr), eventMgr(sessionMgr), dbConnector(), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
 {}
 
 ServerMain::~ServerMain(){}
@@ -32,7 +32,7 @@ int32 ServerMain::main(){
 
 	// 3. 初始化并开启 socket TCP server
 	socket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-	socket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8));
+	socket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8, std::placeholders::_9));
 	auto socketStartRes = socket.start(port, 16384, false);
 	if(!socketStartRes){
 		logger.pushLog("Server started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
@@ -213,7 +213,7 @@ int32 ServerMain::modulesInitialization(){
 
 void ServerMain::connectDBProxy(bool isReconnect){
 	dbConnector.setEventCallback(std::bind(&ServerMain::onDBConnectorEvent, this, std::placeholders::_1, std::placeholders::_2));
-	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7));
+	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8));
 	auto ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
 	while(!ret){
 		logger.pushLog("DBproxy connected failed", Logger::AlertLevel::Error, LOGGER_TAG);
@@ -251,11 +251,11 @@ void ServerMain::onSocketEvent(SocketApplication::EventType type, const uint32 c
 			logger.pushLog("Get an unknown socket event, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
 			break;
 		default:
-			logger.pushLog("Get an unknown nomber of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientIndex) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			logger.pushLog("Get an unknown number of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientIndex) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
 	}
 }
 
-void ServerMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, void*body){
+void ServerMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body){
 	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
 
@@ -282,9 +282,13 @@ void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, Arm
 	}
 }
 
-void ServerMain::onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, void * body){
+void ServerMain::onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void * body){
 	logger.pushLog("Received from DBProxy, appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
+
+void ServerMain::onLocalEvent(int32 code, int32 userIndex, LocalEventData * data){}
+
+void ServerMain::onNetworkEvent(int32 code, int32 userIndex, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message * message){}
 
 
 }

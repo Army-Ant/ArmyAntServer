@@ -4,6 +4,13 @@ package ArmyAntMessage.System;
 
 import "ArmyAntMessage/Common/base.proto";
 
-message ClientEnter{
+message C2SM_ClientEnterRequest{
 	option (msg_code) = 11001;
 }
+
+message SM2C_ClientEnterResponse{
+	option (msg_code) = 12001;
+	int32 result = 1;	// 0: successful, others: error code
+	string message = 2;
+}
+

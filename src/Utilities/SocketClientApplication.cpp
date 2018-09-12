@@ -45,6 +45,7 @@ void SocketClientApplication::onClientReceived(uint8*data, mac_uint datalen, voi
 					int32 messageCode = 0;
 					int32 conversationCode = 0;
 					int32 conversationStepIndex = 0;
+					ArmyAntMessage::System::ConversationStepType conversationStepType;
 					switch(tmpHead.extendVersion){
 						case 1:
 						{
@@ -55,13 +56,14 @@ void SocketClientApplication::onClientReceived(uint8*data, mac_uint datalen, voi
 							messageCode = extend.message_code();
 							conversationCode = extend.conversation_code();
 							conversationStepIndex = extend.conversation_step_index();
+							conversationStepType = extend.conversation_step_type();
 							break;
 						}
 					}
 					// 获取内容, 发送回调
 					uint32 usedLength = sizeof(MessageBaseHead) + tmpHead.extendLength + contentLength;
 					if(self->receivingBufferEnd >= usedLength){
-						self->receiveCallback(tmpHead, appId, contentLength, messageCode, conversationCode, conversationStepIndex, self->receivingBuffer + sizeof(MessageBaseHead) + tmpHead.extendLength);
+						self->receiveCallback(tmpHead, appId, contentLength, messageCode, conversationCode, conversationStepIndex, conversationStepType, self->receivingBuffer + sizeof(MessageBaseHead) + tmpHead.extendLength);
 						// 若之后仍有内容, 则转移到起点处, 已处理过的信息从buffer移除
 						if(self->receivingBufferEnd > usedLength){
 							memcpy(self->receivingBuffer, self->receivingBuffer + usedLength, self->receivingBufferEnd - usedLength);

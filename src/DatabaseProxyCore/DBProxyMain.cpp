@@ -11,7 +11,7 @@ static const char* const LOGGER_TAG = "DBProxyMain";
 namespace ArmyAntServer{
 
 
-DBProxyMain::DBProxyMain() :debug(false), port(0), msgQueue(nullptr), socket(), logger(), eventMgr(), msgQueueMgr(), mysqlBridge(){}
+DBProxyMain::DBProxyMain() :debug(false), port(0), msgQueue(nullptr), socket(), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr), eventMgr(sessionMgr), mysqlBridge(){}
 
 DBProxyMain::~DBProxyMain(){}
 
@@ -30,7 +30,7 @@ int32 DBProxyMain::main(){
 
 	// 3. 初始化并开启 socket TCP server
 	socket.setEventCallback(std::bind(&DBProxyMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-	socket.setReceiveCallback(std::bind(&DBProxyMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8));
+	socket.setReceiveCallback(std::bind(&DBProxyMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8, std::placeholders::_9));
 	auto socketStartRes = socket.start(port, 16384, false);
 	if(!socketStartRes){
 		logger.pushLog("DBProxy started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
@@ -61,6 +61,10 @@ int32 DBProxyMain::main(){
 
 	logger.pushLog("Program over", Logger::AlertLevel::Info, LOGGER_TAG);
 	return retVal;
+}
+
+UserSessionManager & DBProxyMain::getUserSessionManager(){
+	return sessionMgr;
 }
 
 MessageQueueManager&DBProxyMain::getMessageQueueManager(){
@@ -194,6 +198,7 @@ int32 DBProxyMain::parseConfig(){
 }
 
 int32 DBProxyMain::modulesInitialization(){
+	// 连接目标数据库
 	auto connRes = mysqlBridge.connect(mysqlServerHost);
 	int32 retriedTimes = 0;
 	while(!connRes && retriedTimes < 19){
@@ -224,9 +229,11 @@ void DBProxyMain::onSocketEvent(SocketApplication::EventType type, const uint32 
 	switch(type){
 		case SocketApplication::EventType::Connected:
 			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
+			sessionMgr.createUserSession(clientIndex);
 			break;
 		case SocketApplication::EventType::Disconnected:
 			logger.pushLog("Client disconnected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
+			sessionMgr.removeUserSession(clientIndex);
 			break;
 		case SocketApplication::EventType::SendingResponse:
 			logger.pushLog("Sending to client responsed, client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Verbose, LOGGER_TAG);
@@ -242,9 +249,12 @@ void DBProxyMain::onSocketEvent(SocketApplication::EventType type, const uint32 
 	}
 }
 
-void DBProxyMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, void*body){
+void DBProxyMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body){
 	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
 
+void DBProxyMain::onLocalEvent(int32 code, int32 userIndex, LocalEventData * data){}
+
+void DBProxyMain::onNetworkEvent(int32 code, int32 userIndex, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message * message){}
 
 }

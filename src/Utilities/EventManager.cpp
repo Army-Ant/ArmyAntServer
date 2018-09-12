@@ -2,11 +2,16 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/descriptor.pb.h>
+#include <UserSessionManager.h>
 
 namespace ArmyAntServer{
 
-EventManager::EventManager()
-	:enabled(false), localCB(nullptr), netCB(nullptr){
+LocalEventData::LocalEventData(int32 code) : code(code){}
+
+LocalEventData::~LocalEventData(){}
+
+
+EventManager::EventManager(UserSessionManager& sessionMgr):sessionMgr(sessionMgr){
 
 }
 
@@ -14,99 +19,81 @@ EventManager::~EventManager(){
 
 }
 
-void EventManager::setEnable(bool enable){
-	enabled = enable;
-}
-
-bool EventManager::isEnabled() const{
-	return enabled;
-}
-
-bool EventManager::setLocalEventCallback(LocalEventCallback cb){
-	localCB = cb;
+bool EventManager::addListenerForLocalEvent(int32 code, int32 userId, LocalEventCallback cb){
+	auto userses = sessionMgr.getUserSession(userId);
+	if(userses == nullptr)
+		return false;
+	userses->localEventListenerList.insert(std::make_pair(code, cb));
 	return true;
 }
 
-bool EventManager::setNetworkResponseCallback(NetworkResponseCallback cb){
-	netCB = cb;
+bool EventManager::removeListenerForLocalEvent(int32 code, int32 userId){
+	auto userses = sessionMgr.getUserSession(userId);
+	if(userses == nullptr)
+		return false;
+	auto finded = userses->localEventListenerList.find(code);
+	if(finded != userses->localEventListenerList.end())
+		userses->localEventListenerList.erase(finded);
 	return true;
 }
 
-bool EventManager::registerLocalEvent(int32 code, int32 userIndex){
-	auto listeners = localListener.find(code);
-	if(listeners == localListener.end()){
-		localListener.insert(std::make_pair(code, std::vector<int32>()));
-		listeners = localListener.find(code);
-	}
-	if(std::find(listeners->second.begin(), listeners->second.end(), userIndex) != listeners->second.end()){
+bool EventManager::dispatchLocalEvent(int32 code, int32 userId, LocalEventData*data){
+	auto userses = sessionMgr.getUserSession(userId);
+	if(userses == nullptr)
 		return false;
-	}
-	listeners->second.push_back(userIndex);
+	auto finded = userses->localEventListenerList.find(code);
+	if(finded == userses->localEventListenerList.end())
+		return false;
+	finded->second(data);
 	return true;
 }
 
-bool EventManager::unregisterLocalEvent(int32 code, int32 userIndex){
-	auto listeners = localListener.find(code);
-	if(listeners == localListener.end()){
-		localListener.insert(std::make_pair(code, std::vector<int32>()));
+bool EventManager::addListenerForNetworkResponse(int32 code, int32 userId, NetworkResponseCallback cb){
+	auto userses = sessionMgr.getUserSession(userId);
+	if(userses == nullptr)
 		return false;
-	}
-	auto cb = std::find(listeners->second.begin(), listeners->second.end(), userIndex);
-	if(cb == listeners->second.end()){
-		return false;
-	}
-	listeners->second.erase(cb);
+	userses->networkListenerList.insert(std::make_pair(code, cb));
 	return true;
 }
 
-bool EventManager::dispatchLocalEvent(int32 code, int32 userIndex, LocalEventData*data){
-	if(localCB == nullptr)
+bool EventManager::removeListenerForNetworkResponse(int32 code, int32 userId){
+	auto userses = sessionMgr.getUserSession(userId);
+	if(userses == nullptr)
 		return false;
-	auto listeners = localListener.find(code);
-	if(listeners == localListener.end())
-		return false;
-	if(std::find(listeners->second.begin(), listeners->second.end(), userIndex) == listeners->second.end())
-		return false;
-	localCB(code, userIndex, data);
+	auto finded = userses->networkListenerList.find(code);
+	if(finded != userses->networkListenerList.end())
+		userses->networkListenerList.erase(finded);
 	return true;
 }
 
-bool EventManager::registerNetworkResponse(int32 code, int32 userIndex){
-	auto listeners = networkListener.find(code);
-	if(listeners == networkListener.end()){
-		networkListener.insert(std::make_pair(code, std::vector<int32>()));
-		listeners = networkListener.find(code);
-	}
-	if(std::find(listeners->second.begin(), listeners->second.end(), userIndex) != listeners->second.end()){
+bool EventManager::dispatchNetworkResponse(int32 code, int32 userId, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message*data){
+	// Find user and listener-handler
+	auto userses = sessionMgr.getUserSession(userId);
+	if(userses == nullptr)
 		return false;
+	auto finded = userses->networkListenerList.find(code);
+	if(finded == userses->networkListenerList.end())
+		return false;
+	// Find the conversation record
+	// TODO : Have not been completed
+	auto convRecord = userses->conversationWaitingList.find(conversationCode);
+	switch(conversationStepType){
+		case ArmyAntMessage::System::ConversationStepType::NoticeOnly:
+			break;
+		case ArmyAntMessage::System::ConversationStepType::AskFor:
+			break;
+		case ArmyAntMessage::System::ConversationStepType::StartConversation:
+			break;
+		case ArmyAntMessage::System::ConversationStepType::ConversationStepOn:
+			break;
+		case ArmyAntMessage::System::ConversationStepType::ResponseEnd:
+			break;
+		default:
+			break;
 	}
-	listeners->second.push_back(userIndex);
-	return true;
-}
 
-bool EventManager::unregisterNetworkResponse(int32 code, int32 userIndex){
-	auto listeners = networkListener.find(code);
-	if(listeners == networkListener.end()){
-		networkListener.insert(std::make_pair(code, std::vector<int32>()));
-		return false;
-	}
-	auto cb = std::find(listeners->second.begin(), listeners->second.end(), userIndex);
-	if(cb == listeners->second.end()){
-		return false;
-	}
-	listeners->second.erase(cb);
-	return true;
-}
-
-bool EventManager::dispatchNetworkResponse(int32 code, int32 userIndex, google::protobuf::Message*data){
-	if(netCB == nullptr)
-		return false;
-	auto listeners = networkListener.find(code);
-	if(listeners == networkListener.end())
-		return false;
-	if(std::find(listeners->second.begin(), listeners->second.end(), userIndex) == listeners->second.end())
-		return false;
-	netCB(code, userIndex, data);
+	// Call response listener
+	finded->second(data);
 	return true;
 }
 

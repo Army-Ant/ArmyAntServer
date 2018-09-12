@@ -20,4 +20,5 @@ message SocketExtendNormal_V0_0_0_1{
 	int32 message_code = 3;
 	int32 conversation_code = 4;
 	int32 conversation_step_index = 5;
+	ConversationStepType conversation_step_type = 6;
 }

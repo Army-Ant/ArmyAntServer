@@ -6,52 +6,49 @@
 
 #include <google/protobuf/message.h>
 #include <ArmyAntMessage/Common/base.pb.h>
+#include <ArmyAntMessage/System/SocketHead.pb.h>
 
 #include <AADefine.h>
 
 namespace ArmyAntServer{
+class UserSessionManager;
 
 // local event data must be inherited from this class
 // network response will defaultly inherited from google::protobuf::message
 class LocalEventData{
 public:
-	LocalEventData();
+	LocalEventData(int32 code);
 	~LocalEventData();
+
+private:
+	int32 code;
 };
 
 class EventManager{
 public:
-	typedef std::function<void(int32 code, int32 userIndex, LocalEventData*data)> LocalEventCallback;
-	typedef std::function<void(int32 code, int32 userIndex, google::protobuf::Message*message)> NetworkResponseCallback;
+	typedef std::function<void(LocalEventData*data)> LocalEventCallback;
+	typedef std::function<void(google::protobuf::Message*message)> NetworkResponseCallback;
 
 public:
-	EventManager();
+	EventManager(UserSessionManager& sessionMgr);
 	~EventManager();
 
 public:
-	void setEnable(bool enable);
-	bool isEnabled()const;
-	bool setLocalEventCallback(LocalEventCallback cb);
-	bool setNetworkResponseCallback(NetworkResponseCallback cb);
 
-	bool registerLocalEvent(int32 code, int32 userIndex);
-	bool unregisterLocalEvent(int32 code, int32 userIndex);
-	bool dispatchLocalEvent(int32 code, int32 userIndex, LocalEventData*data);
+	bool addListenerForLocalEvent(int32 code, int32 userId, LocalEventCallback cb);
+	bool removeListenerForLocalEvent(int32 code, int32 userId);
+	bool dispatchLocalEvent(int32 code, int32 userId, LocalEventData*data);
 
-	bool registerNetworkResponse(int32 code, int32 userIndex);
-	bool unregisterNetworkResponse(int32 code, int32 userIndex);
-	bool dispatchNetworkResponse(int32 code, int32 userIndex, google::protobuf::Message*message);
+	bool addListenerForNetworkResponse(int32 code, int32 userId, NetworkResponseCallback cb);
+	bool removeListenerForNetworkResponse(int32 code, int32 userId);
+	bool dispatchNetworkResponse(int32 code, int32 userId, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message*message);
 
 public:
 	static int32 getProtobufMessageCode(google::protobuf::Message*message);
 	template <class T> static int32 getProtobufMessageCode();
 
 private:
-	bool enabled;
-	LocalEventCallback localCB;
-	NetworkResponseCallback netCB;
-	std::map<int32, std::vector<int32>> localListener;
-	std::map<int32, std::vector<int32>> networkListener;
+	UserSessionManager& sessionMgr;
 
 private:
 	AA_FORBID_ASSGN_OPR(EventManager);

@@ -2,6 +2,7 @@
 #define SOCKET_CLIENT_APPLICATION_H_20180825
 
 #include "SocketStructs.h"
+#include <ArmyAntMessage/System/SocketHead.pb.h>
 
 namespace ArmyAntServer{
 
@@ -16,7 +17,7 @@ public:
 	};
 
 	typedef std::function<void(EventType type, ArmyAnt::String content)> EventCallback;
-	typedef std::function<void(const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, void*body)> ReceiveCallback;
+	typedef std::function<void(const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body)> ReceiveCallback;
 
 public:
 	SocketClientApplication();
