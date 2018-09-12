@@ -178,16 +178,17 @@
     <ClInclude Include="..\inc\Logger.h" />
     <ClInclude Include="..\inc\MessageQueue.h" />
     <ClInclude Include="..\inc\MessageQueueManager.h" />
-    <ClInclude Include="..\inc\NetworkMessageCode.h" />
     <ClInclude Include="..\inc\SocketApplication.h" />
     <ClInclude Include="..\inc\SocketClientApplication.h" />
     <ClInclude Include="..\inc\SocketStructs.h" />
     <ClInclude Include="..\inc\SpecialUserIndexDefined.h" />
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.cc" />
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc" />
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc" />
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc" />
@@ -202,6 +203,7 @@
   <ItemGroup>
     <None Include="..\res\ConfigJson\DBProxyConfig.json" />
     <None Include="..\res\ConfigJson\ServerMainConfig.json" />
+    <None Include="..\res\proto\ArmyAntMessage\Common\base.proto" />
     <None Include="..\res\proto\ArmyAntMessage\DBProxy\SqlRequest.proto" />
     <None Include="..\res\proto\ArmyAntMessage\System\SessionStart.proto" />
     <None Include="..\res\proto\ArmyAntMessage\System\SocketHead.proto" />

@@ -40,6 +40,9 @@
     <Filter Include="resources\json">
       <UniqueIdentifier>{9625e46a-fadc-4ee8-b758-e7a8debb357f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources\proto\ArmyAntMessage\Common">
+      <UniqueIdentifier>{982fdb7c-fa1b-4198-8ab0-c1f63a5f216d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\Logger.h">
@@ -52,9 +55,6 @@
       <Filter>eventManager</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\LocalEventCode.h">
-      <Filter>eventManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\inc\NetworkMessageCode.h">
       <Filter>eventManager</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\MessageQueue.h">
@@ -79,6 +79,9 @@
       <Filter>protobuf</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.h">
       <Filter>protobuf</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,6 +116,9 @@
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc">
       <Filter>protobuf</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\res\sqlScripts\initializeNewEmptyDB_MariaDB.sql">
@@ -135,6 +141,9 @@
     </None>
     <None Include="..\res\proto\ArmyAntMessage\System\SocketHead.proto">
       <Filter>resources\proto\ArmyAntMessage\System</Filter>
+    </None>
+    <None Include="..\res\proto\ArmyAntMessage\Common\base.proto">
+      <Filter>resources\proto\ArmyAntMessage\Common</Filter>
     </None>
   </ItemGroup>
 </Project>
