@@ -66,19 +66,19 @@
     <ClInclude Include="..\inc\SpecialUserIndexDefined.h">
       <Filter>eventManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h">
-      <Filter>protobuf</Filter>
-    </ClInclude>
-    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h">
-      <Filter>protobuf</Filter>
-    </ClInclude>
     <ClInclude Include="..\inc\SocketClientApplication.h">
       <Filter>socketApp</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\SocketStructs.h">
       <Filter>socketApp</Filter>
     </ClInclude>
-    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h">
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h">
       <Filter>protobuf</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,16 +101,16 @@
     <ClCompile Include="..\src\Utilities\MessageQueue.cpp">
       <Filter>MessageQueue</Filter>
     </ClCompile>
-    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc">
-      <Filter>protobuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc">
-      <Filter>protobuf</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp">
       <Filter>socketApp</Filter>
     </ClCompile>
-    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc">
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc">
       <Filter>protobuf</Filter>
     </ClCompile>
   </ItemGroup>
@@ -121,20 +121,20 @@
     <None Include="..\res\sqlScripts\initializeNewEmptyDB_OracleMySql.sql">
       <Filter>resources\sql</Filter>
     </None>
-    <None Include="..\proto\ArmyAntMessage\DBProxy\SqlRequest.proto">
-      <Filter>resources\proto\ArmyAntMessage\DBProxy</Filter>
-    </None>
-    <None Include="..\proto\ArmyAntMessage\System\SessionStart.proto">
-      <Filter>resources\proto\ArmyAntMessage\System</Filter>
-    </None>
-    <None Include="..\proto\ArmyAntMessage\System\SocketHead.proto">
-      <Filter>resources\proto\ArmyAntMessage\System</Filter>
-    </None>
     <None Include="..\res\ConfigJson\ServerMainConfig.json">
       <Filter>resources\json</Filter>
     </None>
     <None Include="..\res\ConfigJson\DBProxyConfig.json">
       <Filter>resources\json</Filter>
+    </None>
+    <None Include="..\res\proto\ArmyAntMessage\DBProxy\SqlRequest.proto">
+      <Filter>resources\proto\ArmyAntMessage\DBProxy</Filter>
+    </None>
+    <None Include="..\res\proto\ArmyAntMessage\System\SessionStart.proto">
+      <Filter>resources\proto\ArmyAntMessage\System</Filter>
+    </None>
+    <None Include="..\res\proto\ArmyAntMessage\System\SocketHead.proto">
+      <Filter>resources\proto\ArmyAntMessage\System</Filter>
     </None>
   </ItemGroup>
 </Project>

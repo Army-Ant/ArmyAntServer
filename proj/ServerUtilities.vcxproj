@@ -183,14 +183,14 @@
     <ClInclude Include="..\inc\SocketClientApplication.h" />
     <ClInclude Include="..\inc\SocketStructs.h" />
     <ClInclude Include="..\inc\SpecialUserIndexDefined.h" />
-    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h" />
-    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h" />
-    <ClInclude Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h" />
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h" />
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h" />
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc" />
-    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc" />
-    <ClCompile Include="..\res\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc" />
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc" />
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc" />
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc" />
     <ClCompile Include="..\src\Utilities\base.cpp" />
     <ClCompile Include="..\src\Utilities\EventManager.cpp" />
     <ClCompile Include="..\src\Utilities\Logger.cpp" />
@@ -200,11 +200,11 @@
     <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\proto\ArmyAntMessage\DBProxy\SqlRequest.proto" />
-    <None Include="..\proto\ArmyAntMessage\System\SessionStart.proto" />
-    <None Include="..\proto\ArmyAntMessage\System\SocketHead.proto" />
     <None Include="..\res\ConfigJson\DBProxyConfig.json" />
     <None Include="..\res\ConfigJson\ServerMainConfig.json" />
+    <None Include="..\res\proto\ArmyAntMessage\DBProxy\SqlRequest.proto" />
+    <None Include="..\res\proto\ArmyAntMessage\System\SessionStart.proto" />
+    <None Include="..\res\proto\ArmyAntMessage\System\SocketHead.proto" />
     <None Include="..\res\sqlScripts\initializeNewEmptyDB_MariaDB.sql" />
     <None Include="..\res\sqlScripts\initializeNewEmptyDB_OracleMySql.sql" />
   </ItemGroup>

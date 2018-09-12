@@ -5,13 +5,14 @@ echo Start to compile protobuf ...
 #PROTOC_PATH=../external/Protobuf/bin/protoc
 PROTOC_PATH=protoc
 PROTOFILE_PATH=../proto
+PROTOSRC_BASE=../src/ProtobufSource
 
-PROTOCPP_PATH=../res/ProtobufSource/cpp
-PROTOCSHARP_PATH=../res/ProtobufSource/csharp
-PROTOJAVASCRIPT_PATH=../res/ProtobufSource/javascript
-PROTOPYTHON_PATH=../res/ProtobufSource/python
-PROTORUBY_PATH=../res/ProtobufSource/ruby
-PROTOBINARY_PATH=../res/ProtobufSource/pb
+PROTOCPP_PATH=$PROTOFILE_PATH/cpp
+PROTOCSHARP_PATH=$PROTOFILE_PATH/csharp
+PROTOJAVASCRIPT_PATH=$PROTOFILE_PATH/javascript
+PROTOPYTHON_PATH=$PROTOFILE_PATH/python
+PROTORUBY_PATH=$PROTOFILE_PATH/ruby
+PROTOBINARY_PATH=$PROTOFILE_PATH/pb
 
 if [ ! -d $PROTOCPP_PATH ]; then
     mkdir $PROTOCPP_PATH
