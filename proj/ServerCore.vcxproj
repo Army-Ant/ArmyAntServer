@@ -211,13 +211,19 @@
   <ItemGroup>
     <ClInclude Include="..\inc\ServerConstants.h" />
     <ClInclude Include="..\inc\ServerMain.h" />
+    <ClInclude Include="..\inc\subApplication.h" />
+    <ClInclude Include="..\inc\SubApplicationManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\ServerCore\ServerMain.cpp" />
+    <ClCompile Include="..\src\ServerCore\subApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ServerUtilities.vcxproj">
       <Project>{4fc51bfa-39af-4a3e-bffd-c9562cd66f89}</Project>
+    </ProjectReference>
+    <ProjectReference Include="SimpleEchoApp.vcxproj">
+      <Project>{2bc19af5-031e-419d-bbd4-f49145f633b4}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

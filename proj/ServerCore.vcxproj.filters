@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\ServerCore\ServerMain.cpp" />
+    <ClCompile Include="..\src\ServerCore\subApplication.cpp">
+      <Filter>subapp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\ServerConstants.h" />
+    <ClInclude Include="..\inc\ServerMain.h" />
+    <ClInclude Include="..\inc\subApplication.h">
+      <Filter>subapp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\SubApplicationManager.h">
+      <Filter>subapp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="subapp">
+      <UniqueIdentifier>{373e18d8-cd91-4730-8dea-563f87fce158}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

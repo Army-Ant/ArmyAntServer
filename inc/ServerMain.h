@@ -48,12 +48,12 @@ private:
 	int32 modulesUninitialization();
 
 private:
-	// 收到 Socket 本地事件的处理函数
+	// 收到 Socket 连接的消息报告的处理函数
 	void onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content);
 	// 收到 Socket 网络消息的处理函数
 	void onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body);
 
-	// 收到 DBProxy 连接相关的本地事件的处理函数
+	// 收到 DBProxy 连接的消息报告的处理函数
 	void onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content);
 	// 收到 DBProxy 网络消息的处理函数
 	void onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void * body);
