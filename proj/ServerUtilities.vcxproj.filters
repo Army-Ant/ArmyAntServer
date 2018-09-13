@@ -96,6 +96,9 @@
     <ClInclude Include="..\inc\UserSessionManager.h">
       <Filter>message-event operation\UserSessionManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\inc\UserSessionMsgCode.h">
+      <Filter>message-event operation\UserSessionManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">

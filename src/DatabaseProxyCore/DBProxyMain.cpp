@@ -11,7 +11,7 @@ static const char* const LOGGER_TAG = "DBProxyMain";
 namespace ArmyAntServer{
 
 
-DBProxyMain::DBProxyMain() :debug(false), port(0), msgQueue(nullptr), socket(), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr), eventMgr(sessionMgr), mysqlBridge(){}
+DBProxyMain::DBProxyMain() :debug(false), port(0), msgQueue(nullptr), socket(), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr, logger), eventMgr(sessionMgr, logger), mysqlBridge(){}
 
 DBProxyMain::~DBProxyMain(){}
 

@@ -4,11 +4,13 @@
 #include <AADefine.h>
 #include <map>
 #include <functional>
+#include <thread>
 #include <EventManager.h>
 
 namespace ArmyAntServer{
 class UserSessionManager;
 class MessageQueue;
+class Logger;
 
 class UserSession{
 public:
@@ -21,12 +23,22 @@ public:    // Outer data
 	void*getUserData()const;
 	void setUserData(void*data);
 
+public:
+	void dispatchLocalEvent(int32 code, LocalEventData* data);
+	void dispatchNetworkEvent(int32 code, google::protobuf::Message* data);
+
+public:
+	void onUpdate();
+
 private:
 	// Outer data
 	int32 index;
 	MessageQueue&msgQueue;
 	UserSessionManager&mgr;
 	void*userdata;
+
+	bool threadEnd;
+	std::thread updateThread;
 
 	// Event data
 	std::map<int32, EventManager::LocalEventCallback> localEventListenerList;

@@ -12,13 +12,16 @@ class MessageQueueManager;
 
 class UserSessionManager{
 public:
-	UserSessionManager(MessageQueueManager&queueMgr);
+	UserSessionManager(MessageQueueManager&queueMgr, Logger& logger);
 	~UserSessionManager();
 
 public:
 	UserSession * getUserSession(int32 userId);
 	UserSession * createUserSession(int32 userId);
 	bool removeUserSession(int32 userId);
+
+public:
+	Logger& logger;
 
 private:
 	MessageQueueManager&queueMgr;

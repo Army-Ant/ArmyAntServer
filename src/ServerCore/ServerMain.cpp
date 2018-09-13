@@ -12,7 +12,7 @@ namespace ArmyAntServer{
 
 
 ServerMain::ServerMain()
-	:debug(false), port(0), msgQueue(nullptr), socket(), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr), eventMgr(sessionMgr), dbConnector(), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
+	:debug(false), port(0), msgQueue(nullptr), socket(), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr, logger), eventMgr(sessionMgr, logger), dbConnector(), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
 {}
 
 ServerMain::~ServerMain(){}
@@ -257,6 +257,7 @@ void ServerMain::onSocketEvent(SocketApplication::EventType type, const uint32 c
 
 void ServerMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body){
 	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
+	eventMgr.dispatchNetworkResponse(messageCode, clientIndex, conversationCode, conversationStepIndex, conversationStepType, static_cast<google::protobuf::Message*>(body));
 }
 
 void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content){
@@ -285,10 +286,6 @@ void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, Arm
 void ServerMain::onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void * body){
 	logger.pushLog("Received from DBProxy, appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
-
-void ServerMain::onLocalEvent(int32 code, int32 userIndex, LocalEventData * data){}
-
-void ServerMain::onNetworkEvent(int32 code, int32 userIndex, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message * message){}
 
 
 }

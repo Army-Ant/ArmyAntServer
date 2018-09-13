@@ -12,6 +12,7 @@
 
 namespace ArmyAntServer{
 class UserSessionManager;
+class Logger;
 
 // local event data must be inherited from this class
 // network response will defaultly inherited from google::protobuf::message
@@ -30,7 +31,7 @@ public:
 	typedef std::function<void(google::protobuf::Message*message)> NetworkResponseCallback;
 
 public:
-	EventManager(UserSessionManager& sessionMgr);
+	EventManager(UserSessionManager& sessionMgr, Logger&logger);
 	~EventManager();
 
 public:
@@ -49,6 +50,7 @@ public:
 
 private:
 	UserSessionManager& sessionMgr;
+	Logger&logger;
 
 private:
 	AA_FORBID_ASSGN_OPR(EventManager);

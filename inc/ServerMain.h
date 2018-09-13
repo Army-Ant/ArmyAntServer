@@ -58,11 +58,6 @@ private:
 	// 收到 DBProxy 网络消息的处理函数
 	void onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void * body);
 
-	// 本地事件分发函数
-	void onLocalEvent(int32 code, int32 userIndex, LocalEventData*data);
-	// 网络消息分发函数
-	void onNetworkEvent(int32 code, int32 userIndex, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message*message);
-
 private:
 	bool debug;    // 是否处于调试模式, 由配置文件决定此参数
 	uint16 port;    // ServerMain服务器端口号, 由配置文件决定此参数
