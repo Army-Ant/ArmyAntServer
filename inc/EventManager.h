@@ -27,8 +27,8 @@ private:
 
 class EventManager{
 public:
-	typedef std::function<void(LocalEventData*data)> LocalEventCallback;
-	typedef std::function<void(void*message)> NetworkResponseCallback;
+	typedef std::function<void(int32 userId, LocalEventData*data)> LocalEventCallback;
+	typedef std::function<void(int32 extendVerstion, int32 conversationCode, int32 userId, void*message, int32 length)> NetworkResponseCallback;
 
 public:
 	EventManager(UserSessionManager& sessionMgr, Logger&logger);
@@ -37,20 +37,27 @@ public:
 public:
 
 	bool addListenerForLocalEvent(int32 code, int32 userId, LocalEventCallback cb);
+	bool addGlobalListenerForLocalEvent(std::string tag, int32 code, LocalEventCallback cb);
 	bool removeListenerForLocalEvent(int32 code, int32 userId);
+	bool removeGlobalListenerForLocalEvent(std::string tag, int32 code);
 	bool dispatchLocalEvent(int32 code, int32 userId, LocalEventData*data);
 
 	bool addListenerForNetworkResponse(int32 code, int32 userId, NetworkResponseCallback cb);
+	bool addGlobalListenerForNetworkResponse(std::string tag, int32 code, NetworkResponseCallback cb);
 	bool removeListenerForNetworkResponse(int32 code, int32 userId);
-	bool dispatchNetworkResponse(int32 code, int32 userId, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message*message);
+	bool removeGlobalListenerForNetworkResponse(std::string tag, int32 code);
+	bool dispatchNetworkResponse(int32 code, int32 userId, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*message, int32 messageLen);
 
 public:
 	static int32 getProtobufMessageCode(google::protobuf::Message*message);
 	template <class T> static int32 getProtobufMessageCode();
+	template <class T> static T* castMessage(void*message);
 
 private:
 	UserSessionManager& sessionMgr;
 	Logger&logger;
+	std::map<int32, std::map<std::string, LocalEventCallback>> localEventListenerList;
+	std::map<int32, std::map<std::string, NetworkResponseCallback>> networkListenerList;
 
 private:
 	AA_FORBID_ASSGN_OPR(EventManager);
@@ -58,7 +65,11 @@ private:
 };
 
 template <class T> static int32 EventManager::getProtobufMessageCode(){
-	T::descriptor()->options().GetExtension(msg_code);
+	return T::descriptor()->options().GetExtension(msg_code);
+}
+
+template <class T> static T* EventManager::castMessage(void*message){
+	return dynamic_cast<T*>(static_cast<google::protobuf::Message*>(message));
 }
 
 

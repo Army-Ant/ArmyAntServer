@@ -97,6 +97,14 @@ bool ServerMain::send(uint32 clientId, int32 serials, MessageType type, int32 ex
 	return true;
 }
 
+Logger & ServerMain::getLogger(){
+	return logger;
+}
+
+EventManager & ServerMain::getEventManager(){
+	return eventMgr;
+}
+
 UserSessionManager&ServerMain::getUserSessionManager(){
 	return sessionMgr;
 }
@@ -297,7 +305,7 @@ void ServerMain::onSocketEvent(SocketApplication::EventType type, const uint32 c
 
 void ServerMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body){
 	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
-	eventMgr.dispatchNetworkResponse(messageCode, clientIndex, conversationCode, conversationStepIndex, conversationStepType, static_cast<google::protobuf::Message*>(body));
+	eventMgr.dispatchNetworkResponse(messageCode, clientIndex, conversationCode, conversationStepIndex, conversationStepType, body, contentLength);
 }
 
 void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content){

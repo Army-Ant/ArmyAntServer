@@ -29,6 +29,10 @@ public:
 	bool send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content);
 
 public:
+	Logger& getLogger();
+	// Get the EventManager to register or listen events
+	// 获取事件管理器, 以便注册和监听本地事件或网络消息
+	EventManager & getEventManager();
 	// Get the UserSessionManager to set user session logic
 	// 获取用户会话管理器, 以便服务器逻辑部分能够设置和处理用户会话
 	UserSessionManager & getUserSessionManager();

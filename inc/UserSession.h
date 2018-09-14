@@ -29,7 +29,7 @@ public:
 
 public:
 	void dispatchLocalEvent(int32 code, LocalEventData* data);
-	void dispatchNetworkEvent(int32 code, google::protobuf::Message* data);
+	void dispatchNetworkEvent(int32 extendVerstion, int32 conversationCode, int32 code, void * data, int32 length);
 
 public:
 	void onUpdate();
