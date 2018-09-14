@@ -54,6 +54,7 @@ void EchoApp::onUserLogin(int32 extendVerstion, int32 conversationCode, int32 us
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoLogoutRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserLogout));
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoSendRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserSend));
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserBroadcast));
+		server.getLogger().pushLog(("User login: " + msg.user_name()).c_str(), Logger::AlertLevel::Info, LOGGER_TAG);
 	}
 	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 }
@@ -81,6 +82,7 @@ void EchoApp::onUserLogout(int32 extendVerstion, int32 conversationCode, int32 u
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoSendRequest>(), userId);
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest>(), userId);
 		userList.erase(oldUser);
+		server.getLogger().pushLog(("User logout: " + msg.user_name()).c_str(), Logger::AlertLevel::Info, LOGGER_TAG);
 	}
 	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 }
