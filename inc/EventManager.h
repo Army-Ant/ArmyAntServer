@@ -28,7 +28,7 @@ private:
 class EventManager{
 public:
 	typedef std::function<void(LocalEventData*data)> LocalEventCallback;
-	typedef std::function<void(google::protobuf::Message*message)> NetworkResponseCallback;
+	typedef std::function<void(void*message)> NetworkResponseCallback;
 
 public:
 	EventManager(UserSessionManager& sessionMgr, Logger&logger);

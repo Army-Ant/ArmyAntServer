@@ -5,6 +5,9 @@
 #include <thread>
 
 #include <ServerConstants.h>
+#include <ArmyAntMessage/System/SocketHead.pb.h>
+
+#include <EchoApp.h>
 
 static const char* const LOGGER_TAG = "ServerMain";
 
@@ -12,7 +15,7 @@ namespace ArmyAntServer{
 
 
 ServerMain::ServerMain()
-	:debug(false), port(0), msgQueue(nullptr), socket(), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr, logger), eventMgr(sessionMgr, logger), dbConnector(), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
+	:debug(false), port(0), msgQueue(nullptr), socket(), logger(), msgQueueMgr(), sessionMgr(socket, msgQueueMgr, logger), eventMgr(sessionMgr, logger), appMgr(logger), dbConnector(), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
 {}
 
 ServerMain::~ServerMain(){}
@@ -36,6 +39,10 @@ int32 ServerMain::main(){
 	auto socketStartRes = socket.start(port, 16384, false);
 	if(!socketStartRes){
 		logger.pushLog("Server started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		return Constants::ServerMainReturnValues::serverStartFailed;
+	}
+	if(!appMgr.startAllApplications()){
+		logger.pushLog("An sub-application started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::ServerMainReturnValues::serverStartFailed;
 	}
 	logger.pushLog("Server started", Logger::AlertLevel::Info, LOGGER_TAG);
@@ -70,12 +77,36 @@ int32 ServerMain::main(){
 	return retVal;
 }
 
+bool ServerMain::send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content){
+	switch(extendVersion){
+		case 1:
+		{
+			ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1 extend;
+			extend.set_app_id(appid);
+			extend.set_content_length(contentLength);
+			extend.set_message_code(messageCode);
+			extend.set_conversation_code(conversationCode);
+			extend.set_conversation_step_index(conversationStepIndex);
+			extend.set_conversation_step_type(conversationStepType);
+			socket.send(clientId, serials, type, extendVersion, extend, content);
+		}
+		default:
+			logger.pushLog("Sending a network message with an unknown head version: " + int64(extendVersion), Logger::AlertLevel::Error, LOGGER_TAG);
+			return false;
+	}
+	return true;
+}
+
 UserSessionManager&ServerMain::getUserSessionManager(){
 	return sessionMgr;
 }
 
 MessageQueueManager&ServerMain::getMessageQueueManager(){
 	return msgQueueMgr;
+}
+
+SubApplicationManager & ServerMain::getSubApplicationManager(){
+	return appMgr;
 }
 
 int32 ServerMain::parseConfig(){
@@ -207,6 +238,10 @@ int32 ServerMain::modulesInitialization(){
 	// 连接数据库代理进程
 	connectDBProxy();
 
+	// 初始化所有子程序
+	appMgr.registerApplication(Constants::ServerMainAppid::simpleEchoApp, new EchoApp(Constants::ServerMainAppid::simpleEchoApp, *this));
+
+
 	logger.pushLog("All modules initialized successful", Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;
 }
@@ -224,8 +259,13 @@ void ServerMain::connectDBProxy(bool isReconnect){
 }
 
 int32 ServerMain::modulesUninitialization(){
+	// 断开数据库代理的连接
 	dbConnector.disconnect();
 	ArmyAnt::Fragment::AA_SAFE_DEL(dbAddr);
+
+	// 关闭子应用
+	appMgr.stopAllApplications();
+	delete appMgr.unregisterApplication(Constants::ServerMainAppid::simpleEchoApp);
 
 	logger.pushLog("All modules uninitialized OK", Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;

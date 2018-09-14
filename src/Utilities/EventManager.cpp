@@ -86,6 +86,7 @@ bool EventManager::dispatchNetworkResponse(int32 code, int32 userId, int32 conve
 		return false;
 	}
 	// Find the conversation record
+	userses->ioMutex.lock();
 	auto convRecord = userses->conversationWaitingList.find(conversationCode);
 	switch(conversationStepType){
 		case ArmyAntMessage::System::ConversationStepType::NoticeOnly:
@@ -153,6 +154,7 @@ bool EventManager::dispatchNetworkResponse(int32 code, int32 userId, int32 conve
 	}
 
 	// Call response listener
+	userses->ioMutex.unlock();
 	userses->dispatchNetworkEvent(code, data);
 	return true;
 }

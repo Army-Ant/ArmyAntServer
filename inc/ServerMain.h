@@ -11,10 +11,9 @@
 #include <EventManager.h>
 #include <MessageQueueManager.h>
 #include <UserSessionManager.h>
+#include <SubApplicationManager.h>
 
 namespace ArmyAntServer{
-class UserSessionManager;
-class MessageQueueManager;
 
 class ServerMain{
 public:
@@ -27,7 +26,7 @@ public:
 	// Run the server, start parameter is set in setting file : Constants::SERVER_CONFIG_FILE_PATH
 	// 启动服务器, 根据日志里的配置
 	int32 main();
-	bool send();
+	bool send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content);
 
 public:
 	// Get the UserSessionManager to set user session logic
@@ -36,6 +35,9 @@ public:
 	// Get the MessageQueueManager to send message to serverMain ( or to other parts )
 	// 获取消息队列管理器, 以便新建消息队列, 或者向服务器其他模块发送消息
 	MessageQueueManager & getMessageQueueManager();
+	// Get the SubApplicationManager to do something between subapplications
+	// 获取子应用管理器
+	SubApplicationManager & getSubApplicationManager();
 
 private:
 	// 解析配置文件的函数
@@ -51,7 +53,7 @@ private:
 	// 收到 Socket 连接的消息报告的处理函数
 	void onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content);
 	// 收到 Socket 网络消息的处理函数
-	void onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body);
+	void onSocketReceived(const uint32 clientId, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body);
 
 	// 收到 DBProxy 连接的消息报告的处理函数
 	void onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content);
@@ -69,6 +71,7 @@ private:
 	EventManager eventMgr;    // 事件管理器
 	MessageQueueManager msgQueueMgr;    // 消息队列管理器
 	UserSessionManager sessionMgr;    // 用户会话管理器
+	SubApplicationManager appMgr;
 
 private:
 	SocketClientApplication dbConnector;

@@ -49,6 +49,9 @@
     <Filter Include="message-event operation\EventManager">
       <UniqueIdentifier>{e515f6be-a7f1-4599-ba77-93ed1d97f5a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources\proto\ArmyAntMessage\SubApps">
+      <UniqueIdentifier>{bfc9fbc6-5270-4b50-8547-bafadf04ff68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\Logger.h">
@@ -78,6 +81,18 @@
     <ClInclude Include="..\inc\SocketStructs.h">
       <Filter>socketApp</Filter>
     </ClInclude>
+    <ClInclude Include="..\inc\UserSession.h">
+      <Filter>message-event operation\UserSessionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\UserSessionManager.h">
+      <Filter>message-event operation\UserSessionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\UserSessionMsgCode.h">
+      <Filter>message-event operation\UserSessionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h">
       <Filter>protobuf</Filter>
     </ClInclude>
@@ -87,17 +102,8 @@
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h">
       <Filter>protobuf</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.h">
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\SimpleEcho.pb.h">
       <Filter>protobuf</Filter>
-    </ClInclude>
-    <ClInclude Include="..\inc\UserSession.h">
-      <Filter>message-event operation\UserSessionManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\inc\UserSessionManager.h">
-      <Filter>message-event operation\UserSessionManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\inc\UserSessionMsgCode.h">
-      <Filter>message-event operation\UserSessionManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +128,15 @@
     <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp">
       <Filter>socketApp</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Utilities\UserSession.cpp">
+      <Filter>message-event operation\UserSessionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\UserSessionManager.cpp">
+      <Filter>message-event operation\UserSessionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc">
       <Filter>protobuf</Filter>
     </ClCompile>
@@ -131,14 +146,8 @@
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc">
       <Filter>protobuf</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.cc">
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\SimpleEcho.pb.cc">
       <Filter>protobuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Utilities\UserSession.cpp">
-      <Filter>message-event operation\UserSessionManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Utilities\UserSessionManager.cpp">
-      <Filter>message-event operation\UserSessionManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +174,9 @@
     </None>
     <None Include="..\res\proto\ArmyAntMessage\Common\base.proto">
       <Filter>resources\proto\ArmyAntMessage\Common</Filter>
+    </None>
+    <None Include="..\res\proto\ArmyAntMessage\SubApps\SimpleEcho.proto">
+      <Filter>resources\proto\ArmyAntMessage\SubApps</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -21,6 +21,10 @@ struct ServerMainReturnValues{
 	static const int32 normalExit = 0;
 };
 
+struct ServerMainAppid{
+	static const int32 simpleEchoApp = 1001;
+};
+
 }
 
 }

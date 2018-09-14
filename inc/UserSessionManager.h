@@ -9,10 +9,11 @@
 
 namespace ArmyAntServer{
 class MessageQueueManager;
+class SocketApplication;
 
 class UserSessionManager{
 public:
-	UserSessionManager(MessageQueueManager&queueMgr, Logger& logger);
+	UserSessionManager(SocketApplication&socket, MessageQueueManager&queueMgr, Logger& logger);
 	~UserSessionManager();
 
 public:
@@ -22,6 +23,7 @@ public:
 
 public:
 	Logger& logger;
+	SocketApplication&socket;
 
 private:
 	MessageQueueManager&queueMgr;

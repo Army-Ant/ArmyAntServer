@@ -5,6 +5,9 @@
     <ClCompile Include="..\src\ServerCore\subApplication.cpp">
       <Filter>subapp</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\ServerCore\subApplicationManager.cpp">
+      <Filter>subapp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\ServerConstants.h" />

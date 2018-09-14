@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package ArmyAntMessage.SubApps;
+
+import "ArmyAntMessage/Common/base.proto";
+
+message C2SM_EchoLoginRequest{
+	option (msg_code) = 10011001;
+	string user_name = 1;
+}
+
+message SM2C_EchoLoginResponse{
+	option (msg_code) = 10012001;
+	int32 result = 1;	// 0: normal, others: error code
+	string message = 2;
+}
+
+message C2SM_EchoLogoutRequest{
+	option (msg_code) = 10011002;
+	string user_name = 1;
+}
+
+message SM2C_EchoLogoutResponse{
+	option (msg_code) = 10012002;
+	int32 result = 1;	// 0: normal, others: error code
+	string message = 2;
+}
+
+message C2SM_EchoSendRequest{
+	option (msg_code) = 10011003;
+	string target = 1;
+	string message = 2;
+}
+
+message SM2C_EchoSendResponse{
+	option (msg_code) = 10012003;
+	int32 result = 1;	// 0: normal, others: error code
+	string message = 2;
+	C2SM_EchoSendRequest request = 3;
+}
+
+message C2SM_EchoBroadcastRequest{
+	option (msg_code) = 10011004;
+	string message = 1;
+}
+
+message SM2C_EchoBroadcastResponse{
+	option (msg_code) = 10012004;
+	int32 result = 1;	// 0: normal, others: error code
+	string message = 2;
+	C2SM_EchoBroadcastRequest request = 3;
+}
+
+message SM2C_EchoReceiveNotice{
+	option (msg_code) = 10011005;
+	bool is_boradcast = 1;
+	string from = 2;
+	string message = 3;
+}
+
+message SM2C_EchoError {
+	option (msg_code) = 10011006;
+	int32 error_code = 1;
+	string message = 2;
+}
+

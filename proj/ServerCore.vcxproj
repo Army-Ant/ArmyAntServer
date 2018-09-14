@@ -217,6 +217,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\ServerCore\ServerMain.cpp" />
     <ClCompile Include="..\src\ServerCore\subApplication.cpp" />
+    <ClCompile Include="..\src\ServerCore\subApplicationManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ServerUtilities.vcxproj">

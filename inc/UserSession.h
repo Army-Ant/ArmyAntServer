@@ -5,6 +5,7 @@
 #include <map>
 #include <functional>
 #include <thread>
+#include <mutex>
 #include <EventManager.h>
 
 namespace ArmyAntServer{
@@ -24,6 +25,9 @@ public:    // Outer data
 	void setUserData(void*data);
 
 public:
+	bool sendNetwork(int32 extendVersion, uint64 appid, int32 conversationCode, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message*content);
+
+public:
 	void dispatchLocalEvent(int32 code, LocalEventData* data);
 	void dispatchNetworkEvent(int32 code, google::protobuf::Message* data);
 
@@ -39,6 +43,7 @@ private:
 
 	bool threadEnd;
 	std::thread updateThread;
+	std::mutex ioMutex;
 
 	// Event data
 	std::map<int32, EventManager::LocalEventCallback> localEventListenerList;

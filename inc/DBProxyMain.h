@@ -26,7 +26,7 @@ public:
 	// Run the DBProxy, start parameter is set in setting file : Constants::DB_PROXY_CONFIG_FILE_PATH
 	// 启动服务器, 根据日志里的配置
 	int32 main();
-	bool send();
+	bool send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content);
 
 public:
 	// Get the UserSessionManager
