@@ -46,10 +46,10 @@ void EchoApp::onUserLogin(int32 extendVerstion, int32 conversationCode, int32 us
 	ArmyAntMessage::SubApps::SM2C_EchoLoginResponse response;
 	if(oldUser != userList.end()){
 		response.set_result(3);
-		response.set_message("The user of this name has logged in");
+		response.set_message(std::string("The user of this name has logged in"));
 	} else{
 		response.set_result(0);
-		response.set_message("Login successful !");
+		response.set_message(std::string("Login successful !"));
 		userList.insert(std::make_pair(msg.user_name(), userId));
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoLogoutRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserLogout));
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoSendRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserSend));
@@ -74,10 +74,10 @@ void EchoApp::onUserLogout(int32 extendVerstion, int32 conversationCode, int32 u
 	ArmyAntMessage::SubApps::SM2C_EchoLogoutResponse response;
 	if(oldUser == userList.end()){
 		response.set_result(3);
-		response.set_message("The user of this name has not logged in");
+		response.set_message(std::string("The user of this name has not logged in"));
 	} else{
 		response.set_result(0);
-		response.set_message("Logout successful !");
+		response.set_message(std::string("Logout successful !"));
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoLogoutRequest>(), userId);
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoSendRequest>(), userId);
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest>(), userId);
@@ -101,7 +101,7 @@ void EchoApp::onUserSend(int32 extendVerstion, int32 conversationCode, int32 use
 	const char* fromUser = nullptr;
 	for(auto i = userList.begin(); i != userList.end(); ++i){
 		if(i->second == userId){
-			fromUser == i->first.c_str();
+			fromUser = i->first.c_str();
 			break;
 		}
 	}
@@ -109,14 +109,15 @@ void EchoApp::onUserSend(int32 extendVerstion, int32 conversationCode, int32 use
 	ArmyAntMessage::SubApps::SM2C_EchoSendResponse response;
 	if(tarUser == userList.end()){
 		response.set_result(4);
-		response.set_message("The user of the target name has not logged in");
+		response.set_message(std::string("The user of the target name has not logged in"));
 	} else if(fromUser == nullptr){
 		response.set_result(3);
-		response.set_message("You have not logged in");
+		response.set_message(std::string("You have not logged in"));
 	} else{
 		response.set_result(0);
-		response.set_message("Send successful !");
-		response.set_allocated_request(&msg);
+		response.set_message(std::string("Send successful !"));
+		auto ret = new ArmyAntMessage::SubApps::C2SM_EchoSendRequest(msg);
+		response.set_allocated_request(ret);
 		ArmyAntMessage::SubApps::SM2C_EchoReceiveNotice notice;
 		notice.set_is_boradcast(false);
 		notice.set_from(fromUser);
@@ -140,20 +141,21 @@ void EchoApp::onUserBroadcast(int32 extendVerstion, int32 conversationCode, int3
 	const char* fromUser = nullptr;
 	for(auto i = userList.begin(); i != userList.end(); ++i){
 		if(i->second == userId){
-			fromUser == i->first.c_str();
+			fromUser = i->first.c_str();
 			break;
 		}
 	}
 	ArmyAntMessage::SubApps::SM2C_EchoBroadcastResponse response;
 	if(fromUser == nullptr){
 		response.set_result(3);
-		response.set_message("You have not logged in");
+		response.set_message(std::string("You have not logged in"));
 	} else{
 		response.set_result(0);
-		response.set_message("Send successful !");
-		response.set_allocated_request(&msg);
+		response.set_message(std::string("Send successful !"));
+		auto ret = new ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest(msg);
+		response.set_allocated_request(ret);
 		ArmyAntMessage::SubApps::SM2C_EchoReceiveNotice notice;
-		notice.set_is_boradcast(false);
+		notice.set_is_boradcast(true);
 		notice.set_from(fromUser);
 		notice.set_message(msg.message());
 		for(auto i = userList.begin(); i != userList.end(); ++i){

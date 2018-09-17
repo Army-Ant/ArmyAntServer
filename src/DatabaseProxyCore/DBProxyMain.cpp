@@ -80,7 +80,7 @@ bool DBProxyMain::send(uint32 clientId, int32 serials, MessageType type, int32 e
 			socket.send(clientId, serials, type, extendVersion, extend, content);
 		}
 		default:
-			logger.pushLog("Sending a network message with an unknown head version: " + int64(extendVersion), Logger::AlertLevel::Error, LOGGER_TAG);
+			logger.pushLog(ArmyAnt::String("Sending a network message with an unknown head version: ") + int64(extendVersion), Logger::AlertLevel::Error, LOGGER_TAG);
 			return false;
 	}
 	return true;

@@ -89,7 +89,7 @@ bool SocketClientApplication::onClientSendResponse(mac_uint sendedSize, uint32 r
 	if(self->eventCallback != nullptr){
 		if(sendedSize > 0){
 			int32 sendingIndex = 0;
-			auto sendedList = self->waitingResponseSended;
+			auto&sendedList = self->waitingResponseSended;
 			for(auto i = sendedList.begin(); i != sendedList.end(); ++i){
 				if(!memcmp(sendedData, i->second, sendedSize))
 					sendingIndex = i->first;

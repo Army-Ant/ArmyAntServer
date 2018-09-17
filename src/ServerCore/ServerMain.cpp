@@ -91,7 +91,7 @@ bool ServerMain::send(uint32 clientId, int32 serials, MessageType type, int32 ex
 			socket.send(clientId, serials, type, extendVersion, extend, content);
 		}
 		default:
-			logger.pushLog("Sending a network message with an unknown head version: " + int64(extendVersion), Logger::AlertLevel::Error, LOGGER_TAG);
+			logger.pushLog(ArmyAnt::String("Sending a network message with an unknown head version: ") + int64(extendVersion), Logger::AlertLevel::Error, LOGGER_TAG);
 			return false;
 	}
 	return true;
@@ -305,7 +305,7 @@ void ServerMain::onSocketEvent(SocketApplication::EventType type, const uint32 c
 
 void ServerMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body){
 	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
-	eventMgr.dispatchNetworkResponse(messageCode, clientIndex, conversationCode, conversationStepIndex, conversationStepType, body, contentLength);
+	eventMgr.dispatchNetworkResponse(head.extendVersion, messageCode, clientIndex, conversationCode, conversationStepIndex, conversationStepType, body, contentLength);
 }
 
 void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content){
@@ -332,7 +332,7 @@ void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, Arm
 }
 
 void ServerMain::onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void * body){
-	logger.pushLog("Received from DBProxy, appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
+	logger.pushLog(ArmyAnt::String("Received from DBProxy, appid: ") + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
 
 

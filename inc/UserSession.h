@@ -25,7 +25,7 @@ public:    // Outer data
 	void setUserData(void*data);
 
 public:
-	bool sendNetwork(int32 extendVersion, uint64 appid, int32 conversationCode, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message*content);
+	void sendNetwork(int32 extendVersion, int64 appid, int32 conversationCode, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message*content);
 
 public:
 	void dispatchLocalEvent(int32 code, LocalEventData* data);

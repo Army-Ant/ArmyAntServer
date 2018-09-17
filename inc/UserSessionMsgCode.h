@@ -8,6 +8,7 @@ namespace ArmyAntServer{
 struct UserSessionMsgCode{
 	static const int32 LocalEventMessage = 1;
 	static const int32 NetworkEventMessage = 2;
+	static const int32 SendNetworkMessage = 3;
 };
 
 }

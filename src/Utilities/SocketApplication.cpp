@@ -110,7 +110,9 @@ bool SocketApplication::onServerSendResponse(mac_uint sendedSize, uint32 retried
 	if(self->eventCallback != nullptr){
 		if(sendedSize > 0){
 			int32 sendingIndex = 0;
-			auto sendedList = self->clients.find(index)->second->waitingResponseSended;
+			auto cl = self->clients.find(index);
+			cl->second->rwMutex.lock();
+			auto&sendedList = cl->second->waitingResponseSended;
 			for(auto i = sendedList.begin(); i != sendedList.end(); ++i){
 				if(!memcmp(sendedData, i->second, sendedSize))
 					sendingIndex = i->first;
@@ -123,6 +125,7 @@ bool SocketApplication::onServerSendResponse(mac_uint sendedSize, uint32 retried
 				ArmyAnt::Fragment::AA_SAFE_DELALL(i->second);
 				sendedList.erase(i);
 			}
+			cl->second->rwMutex.unlock();
 		}else
 			self->eventCallback(SocketApplication::EventType::ErrorReport,
 								index,
@@ -155,10 +158,12 @@ ClientInformation::ClientInformation(ClientInformation&&moved)
 
 ClientInformation::~ClientInformation(){
 	ArmyAnt::Fragment::AA_SAFE_DELALL(receivingBuffer);
-	for(auto i = waitingResponseSended.begin(); i != waitingResponseSended.end(); i = waitingResponseSended.begin()){
-		ArmyAnt::Fragment::AA_SAFE_DELALL(i->second);
-		waitingResponseSended.erase(i);
+	rwMutex.lock();
+	while(!waitingResponseSended.empty()){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(waitingResponseSended.begin()->second);
+		waitingResponseSended.erase(waitingResponseSended.begin());
 	}
+	rwMutex.unlock();
 }
 
 void ClientInformation::setMaxBufferLength(uint32 bufferLength){

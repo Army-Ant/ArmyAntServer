@@ -128,7 +128,7 @@ bool EventManager::removeGlobalListenerForNetworkResponse(std::string tag, int32
 	return true;
 }
 
-bool EventManager::dispatchNetworkResponse(int32 code, int32 userId, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*message, int32 messageLen){
+bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int32 userId, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*message, int32 messageLen){
 	// Find user and listener-handler
 	auto userses = sessionMgr.getUserSession(userId);
 	bool ret = true;
@@ -211,7 +211,7 @@ bool EventManager::dispatchNetworkResponse(int32 code, int32 userId, int32 conve
 
 		// Call response listener
 		userses->ioMutex.unlock();
-		userses->dispatchNetworkEvent(conversationCode, conversationCode, code, message, messageLen);
+		userses->dispatchNetworkEvent(extendVerstion, conversationCode, code, message, messageLen);
 	}
 
 	auto finded = networkListenerList.find(code);

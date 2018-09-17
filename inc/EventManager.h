@@ -46,7 +46,7 @@ public:
 	bool addGlobalListenerForNetworkResponse(std::string tag, int32 code, NetworkResponseCallback cb);
 	bool removeListenerForNetworkResponse(int32 code, int32 userId);
 	bool removeGlobalListenerForNetworkResponse(std::string tag, int32 code);
-	bool dispatchNetworkResponse(int32 code, int32 userId, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*message, int32 messageLen);
+	bool dispatchNetworkResponse(int32 extendVerstion, int32 code, int32 userId, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*message, int32 messageLen);
 
 public:
 	static int32 getProtobufMessageCode(google::protobuf::Message*message);
