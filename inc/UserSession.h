@@ -48,6 +48,7 @@ private:
 	// Event data
 	std::map<int32, EventManager::LocalEventCallback> localEventListenerList;
 	std::map<int32, EventManager::NetworkResponseCallback> networkListenerList;
+	std::map<std::string, EventManager::DisconnectCallback> disconnectCallback;
 	std::map<int32, int32> conversationWaitingList;
 
 	// unused private constructor

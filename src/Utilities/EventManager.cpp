@@ -223,6 +223,65 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 	return ret;
 }
 
+bool EventManager::addListenerForUserDisconnect(int32 userId, std::string tag, DisconnectCallback cb){
+	auto userses = sessionMgr.getUserSession(userId);
+	if(userses == nullptr)
+		return false;
+	auto finded = userses->disconnectCallback.find(tag);
+	if(finded == userses->disconnectCallback.end()){
+		userses->disconnectCallback.insert(std::make_pair(tag, cb));
+		return true;
+	}
+	return false;
+}
+
+bool EventManager::addGlobalListenerForUserDisconnect(std::string tag, DisconnectCallback cb){
+	auto finded = disconnectListenerList.find(tag);
+	if(finded == disconnectListenerList.end()){
+		disconnectListenerList.insert(std::make_pair(tag, cb));
+		return true;
+	}
+
+	return false;
+}
+
+bool EventManager::removeListenerForUserDisconnect(int32 userId, std::string tag){
+	auto userses = sessionMgr.getUserSession(userId);
+	if(userses == nullptr)
+		return false;
+	auto finded = userses->disconnectCallback.find(tag);
+	if(finded == userses->disconnectCallback.end()){
+		return false;
+	}
+	userses->disconnectCallback.erase(finded);
+	return true;
+}
+
+bool EventManager::removeGlobalListenerForUserDisconnect(std::string tag){
+	auto finded = disconnectListenerList.find(tag);
+	if(finded == disconnectListenerList.end()){
+		return false;
+	}
+	disconnectListenerList.erase(finded);
+	return true;
+}
+
+bool EventManager::dispatchUserDisconnected(int32 userId){
+	auto userses = sessionMgr.getUserSession(userId);
+	bool ret = true;
+	if(userses == nullptr){
+		logger.pushLog("Cannot find the target user when dispatching disconnect event, user: " + ArmyAnt::String(userId), Logger::AlertLevel::Error, LOGGER_TAG);
+		ret = false;
+	} else{
+		for(auto i = userses->disconnectCallback.begin();i!= userses->disconnectCallback.end();++i)
+			i->second(userId);
+	}
+	for(auto i = disconnectListenerList.begin(); i != disconnectListenerList.end(); ++i){
+		i->second(userId);
+	}
+	return ret;
+}
+
 int32 EventManager::getProtobufMessageCode(google::protobuf::Message * message){
 	return message->GetDescriptor()->options().GetExtension(msg_code);
 }

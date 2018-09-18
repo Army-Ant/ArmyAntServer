@@ -4,7 +4,7 @@
 namespace ArmyAntServer{
 
 UserSessionManager::UserSessionManager(SocketApplication&socket, MessageQueueManager&queueMgr, Logger& logger)
-	:socket(socket), queueMgr(queueMgr), logger(logger){
+	:socket(socket), queueMgr(queueMgr), logger(logger), eventMgr(nullptr){
 }
 
 UserSessionManager::~UserSessionManager(){}
@@ -33,6 +33,14 @@ bool UserSessionManager::removeUserSession(int32 userId){
 	delete finded->second;
 	sessionList.erase(finded);
 	return true;
+}
+
+void UserSessionManager::setEventManager(EventManager & eventMgr){
+	this->eventMgr = &eventMgr;
+}
+
+EventManager & UserSessionManager::getEventManager() const{
+	return *eventMgr;
 }
 
 }

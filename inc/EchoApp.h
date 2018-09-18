@@ -21,6 +21,8 @@ public:
 	void onUserSend(int32 extendVerstion, int32 conversationCode, int32 userId, void*message, int32 length);
 	void onUserBroadcast(int32 extendVerstion, int32 conversationCode, int32 userId, void*message, int32 length);
 
+	void onUserDisconnected(int32 userId);
+
 private:
 	std::map<std::string, int32> userList;
 

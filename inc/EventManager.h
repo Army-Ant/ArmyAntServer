@@ -29,6 +29,7 @@ class EventManager{
 public:
 	typedef std::function<void(int32 userId, LocalEventData*data)> LocalEventCallback;
 	typedef std::function<void(int32 extendVerstion, int32 conversationCode, int32 userId, void*message, int32 length)> NetworkResponseCallback;
+	typedef std::function<void(int32 userId)> DisconnectCallback;
 
 public:
 	EventManager(UserSessionManager& sessionMgr, Logger&logger);
@@ -48,6 +49,12 @@ public:
 	bool removeGlobalListenerForNetworkResponse(std::string tag, int32 code);
 	bool dispatchNetworkResponse(int32 extendVerstion, int32 code, int32 userId, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*message, int32 messageLen);
 
+	bool addListenerForUserDisconnect(int32 userId, std::string tag, DisconnectCallback cb);
+	bool addGlobalListenerForUserDisconnect(std::string tag, DisconnectCallback cb);
+	bool removeListenerForUserDisconnect(int32 userId, std::string tag);
+	bool removeGlobalListenerForUserDisconnect(std::string tag);
+	bool dispatchUserDisconnected(int32 userId);
+
 public:
 	static int32 getProtobufMessageCode(google::protobuf::Message*message);
 	template <class T> static int32 getProtobufMessageCode();
@@ -58,6 +65,7 @@ private:
 	Logger&logger;
 	std::map<int32, std::map<std::string, LocalEventCallback>> localEventListenerList;
 	std::map<int32, std::map<std::string, NetworkResponseCallback>> networkListenerList;
+	std::map<std::string, DisconnectCallback> disconnectListenerList;
 
 private:
 	AA_FORBID_ASSGN_OPR(EventManager);

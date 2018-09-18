@@ -2,6 +2,7 @@
 #include <UserSessionManager.h>
 #include <MessageQueue.h>
 #include <MessageQueueManager.h>
+#include <EventManager.h>
 #include <UserSessionMsgCode.h>
 #include <Logger.h>
 #include <SocketApplication.h>
@@ -35,6 +36,7 @@ UserSession::UserSession(UserSession&&moved)
 	: index(moved.index), msgQueue(moved.msgQueue), mgr(moved.mgr), userdata(moved.userdata), threadEnd(false), updateThread(std::bind(&UserSession::onUpdate, this)){}
 
 UserSession::~UserSession(){
+	mgr.getEventManager().dispatchUserDisconnected(index);
 	threadEnd = true;
 	updateThread.join();
 	msgQueue.getManager().removeQueue(index);

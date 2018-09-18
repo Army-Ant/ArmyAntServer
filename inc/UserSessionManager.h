@@ -10,6 +10,7 @@
 namespace ArmyAntServer{
 class MessageQueueManager;
 class SocketApplication;
+class EventManager;
 
 class UserSessionManager{
 public:
@@ -21,9 +22,13 @@ public:
 	UserSession * createUserSession(int32 userId);
 	bool removeUserSession(int32 userId);
 
+	void setEventManager(EventManager&eventMgr);
+	EventManager&getEventManager()const;
+
 public:
 	Logger& logger;
 	SocketApplication&socket;
+	EventManager*eventMgr;
 
 private:
 	MessageQueueManager&queueMgr;
