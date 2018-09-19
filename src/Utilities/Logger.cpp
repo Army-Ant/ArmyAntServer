@@ -1,6 +1,7 @@
 #include <Logger.h>
 
 #include <ctime>
+#include <queue>
 #ifdef OS_LINUX
 #include <sys/time.h>
 #endif
@@ -16,8 +17,13 @@ namespace ArmyAntServer {
 
 	class Logger_Private {
 	public:
-		Logger_Private() {}
-		~Logger_Private() {}
+		Logger_Private() :mutex(), logFileWriteQueue(), threadEnd(false), logFileWriteThread(&Logger_Private::update, this){}
+		~Logger_Private() {
+			threadEnd = true;
+			logFileWriteThread.join();
+		}
+
+		void update();
 
 		static ArmyAnt::String getTimeStamp();
 		static ArmyAnt::String getWholeContent(const char * content, Logger::AlertLevel level, const char * tag);
@@ -27,17 +33,23 @@ namespace ArmyAntServer {
 		Logger::AlertLevel fileLevel = Logger::AlertLevel::Verbose;
 		std::ostream* userStream = nullptr;
 		Logger::AlertLevel userStreamLevel = Logger::AlertLevel::Debug;
+
+		ArmyAnt::String logFileName;
+		std::mutex mutex;
+		std::queue<ArmyAnt::String> logFileWriteQueue;
+		bool threadEnd = false;
+		std::thread logFileWriteThread;
 	};
 
 	ArmyAnt::String Logger_Private::getTimeStamp() {
 #if defined OS_WINDOWS
-                auto tm = _time64(0);
+        auto tm = _time64(0);
 		char ret[64] = "";
 		_ctime64_s(ret,&tm);
 		auto retStr = ArmyAnt::String(ret);
 		retStr.replace('\n', "");
 #else
-                auto tm = time(0);
+        auto tm = time(0);
 		auto retStr =  ArmyAnt::String(ctime(&tm));
 #endif
 		return retStr;
@@ -48,6 +60,44 @@ namespace ArmyAntServer {
 		ArmyAnt::String tagString = "[ " + ArmyAnt::String(tag) + " ] ";
 		ArmyAnt::String wholeContent = timeString + tagString + "[ " + Logger::convertLevelToString(level) + " ] " + content;
 		return wholeContent;
+	}
+
+	void Logger_Private::update(){
+		bool isEmpty = false;
+		while(true){
+			mutex.lock();
+			bool isEmpty = logFileWriteQueue.empty();
+			if(!isEmpty){
+				if(logFile.IsOpened())
+					logFile.Close();
+				if(!logFile.Open(logFileName)){
+					std::this_thread::sleep_for(std::chrono::microseconds(1));
+					continue;
+				}
+				while(!logFileWriteQueue.empty()){
+					auto msg = logFileWriteQueue.front();
+
+					logFile.MoveTo(-1);
+					bool ret = logFile.Write(msg);
+					if(ret != 0){
+						ret = logFile.Write("\n");
+					} else{
+
+					}
+
+					logFileWriteQueue.pop();
+				}
+				logFile.Close();
+				mutex.unlock();
+			} else{
+				mutex.unlock();
+				if(threadEnd){
+					break;
+				} else{
+					std::this_thread::sleep_for(std::chrono::microseconds(1));
+				}
+			}
+		}
 	}
 
 	const char * Logger::convertLevelToString(AlertLevel level)
@@ -89,10 +139,16 @@ namespace ArmyAntServer {
 	}
 
 	bool Logger::setLogFile(const char* path) {
-		AA_HANDLE_MANAGER[this]->logFile.Close();
 		if (path == nullptr)
-			return AA_HANDLE_MANAGER[this]->logFile.GetSourceName() == path;
-		return AA_HANDLE_MANAGER[this]->logFile.Open(path);
+			return false;
+		auto hd = AA_HANDLE_MANAGER[this];
+		hd->logFileName = path;
+		hd->mutex.lock();
+		hd->logFile.SetStreamMode(false, false);
+		auto ret = hd->logFile.Open(path);
+		hd->logFile.Close();
+		hd->mutex.unlock();
+		return ret;
 	}
 	const char*Logger::getLogFilePath()const {
 		return AA_HANDLE_MANAGER[this]->logFile.GetSourceName();
@@ -166,16 +222,10 @@ namespace ArmyAntServer {
 
 	bool Logger::pushLogToFile(const char * wholeContent)
 	{
-		if (!AA_HANDLE_MANAGER[this]->logFile.IsOpened())
-			return true;
-		bool ret = AA_HANDLE_MANAGER[this]->logFile.Write(wholeContent);
-		if (ret == 0) {
-			return false;
-		}
-		ret = AA_HANDLE_MANAGER[this]->logFile.Write("\n");
-		if (ret == 0) {
-			return false;
-		}
+		auto hd = AA_HANDLE_MANAGER[this];
+		hd->mutex.lock();
+		hd->logFileWriteQueue.push(wholeContent);
+		hd->mutex.unlock();
 		return true;
 	}
 
