@@ -1,0 +1,3 @@
+[submodule "external/ArmyAntLib"]
+	path = external/ArmyAntLib
+	url = https://github.com/Army-Ant/ArmyAntLib.git
