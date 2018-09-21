@@ -3,9 +3,9 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(ProjectDir)..\inc\;$(ProjectDir)..\external\ArmyAntLib\inc\;$(ProjectDir)..\external\Protobuf\inc\;$(ProjectDir)..\src\ProtobufSource\cpp\;$(ProjectDir)..\external\mysql\mysql-connector-c++-8.0.12\include\;$(ProjectDir)..\external\ArmyAntLib\external\boost;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\inc\;$(ProjectDir)..\external\ArmyAntLib\inc\;$(ProjectDir)..\external\Protobuf\include\;$(ProjectDir)..\src\ProtobufSource\cpp\;$(ProjectDir)..\external\mysql\mysql-connector-c++-8.0.12\include\;$(ProjectDir)..\external\ArmyAntLib\external\boost;$(IncludePath)</IncludePath>
     <_PropertySheetDisplayName>ArmyAntServer_DirSet_Common</_PropertySheetDisplayName>
-    <LibraryPath>$(ProjectDir)..\external\ArmyAntLib;$(ProjectDir)..\external\mysql\mysql-connector-c++-8.0.12\lib64-win\vs14;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)..\external\ArmyAntLib;$(ProjectDir)..\external\mysql\mysql-connector-c++-8.0.12\lib64-win\vs14;$(ProjectDir)..\external\Protobuf\lib;$(LibraryPath)</LibraryPath>
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)..\bin\</OutDir>
   </PropertyGroup>
