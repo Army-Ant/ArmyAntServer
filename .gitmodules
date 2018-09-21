@@ -1,3 +1,6 @@
 [submodule "external/ArmyAntLib"]
 	path = external/ArmyAntLib
 	url = https://github.com/Army-Ant/ArmyAntLib.git
+[submodule "external/Protobuf"]
+	path = external/Protobuf
+	url = https://github.com/google/protobuf.git
