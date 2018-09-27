@@ -185,6 +185,7 @@
     <ClInclude Include="..\inc\UserSession.h" />
     <ClInclude Include="..\inc\UserSessionManager.h" />
     <ClInclude Include="..\inc\UserSessionMsgCode.h" />
+    <ClInclude Include="..\inc\WebsocketApplication.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\SimpleEcho.pb.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp" />
     <ClCompile Include="..\src\Utilities\UserSession.cpp" />
     <ClCompile Include="..\src\Utilities\UserSessionManager.cpp" />
+    <ClCompile Include="..\src\Utilities\WebsocketApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\res\ConfigJson\DBProxyConfig.json" />

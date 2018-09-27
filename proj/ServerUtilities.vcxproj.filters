@@ -4,9 +4,6 @@
     <Filter Include="logger">
       <UniqueIdentifier>{98a1e745-0f56-447d-96a0-f2b572e49423}</UniqueIdentifier>
     </Filter>
-    <Filter Include="socketApp">
-      <UniqueIdentifier>{151b0fcf-955d-437d-908f-3fc1d49a8ced}</UniqueIdentifier>
-    </Filter>
     <Filter Include="protobuf">
       <UniqueIdentifier>{01b03fca-fdd1-4a20-83a0-d92ad45c92e1}</UniqueIdentifier>
     </Filter>
@@ -52,13 +49,19 @@
     <Filter Include="resources\proto\ArmyAntMessage\SubApps">
       <UniqueIdentifier>{bfc9fbc6-5270-4b50-8547-bafadf04ff68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="socketApplication">
+      <UniqueIdentifier>{151b0fcf-955d-437d-908f-3fc1d49a8ced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="websocket">
+      <UniqueIdentifier>{8e148d37-b4f2-49c9-942c-fdaa61a40ba7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\Logger.h">
       <Filter>logger</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\SocketApplication.h">
-      <Filter>socketApp</Filter>
+      <Filter>socketApplication</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\EventManager.h">
       <Filter>message-event operation\EventManager</Filter>
@@ -76,10 +79,10 @@
       <Filter>message-event operation\EventManager</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\SocketClientApplication.h">
-      <Filter>socketApp</Filter>
+      <Filter>socketApplication</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\SocketStructs.h">
-      <Filter>socketApp</Filter>
+      <Filter>socketApplication</Filter>
     </ClInclude>
     <ClInclude Include="..\inc\UserSession.h">
       <Filter>message-event operation\UserSessionManager</Filter>
@@ -105,13 +108,16 @@
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\SimpleEcho.pb.h">
       <Filter>protobuf</Filter>
     </ClInclude>
+    <ClInclude Include="..\inc\WebsocketApplication.h">
+      <Filter>websocket</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
       <Filter>logger</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\SocketApplication.cpp">
-      <Filter>socketApp</Filter>
+      <Filter>socketApplication</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\EventManager.cpp">
       <Filter>message-event operation\EventManager</Filter>
@@ -126,7 +132,7 @@
       <Filter>message-event operation\MessageQueue</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\SocketClientApplication.cpp">
-      <Filter>socketApp</Filter>
+      <Filter>socketApplication</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utilities\UserSession.cpp">
       <Filter>message-event operation\UserSessionManager</Filter>
@@ -148,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\SimpleEcho.pb.cc">
       <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\WebsocketApplication.cpp">
+      <Filter>websocket</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

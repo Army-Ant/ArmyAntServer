@@ -266,6 +266,8 @@ void ServerMain::connectDBProxy(bool isReconnect){
 	}
 	if(isReconnect)
 		logger.pushLog("DBproxy reconnected", Logger::AlertLevel::Info, LOGGER_TAG);
+	else
+		logger.pushLog("DBproxy connected", Logger::AlertLevel::Info, LOGGER_TAG);
 }
 
 int32 ServerMain::modulesUninitialization(){
