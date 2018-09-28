@@ -38,7 +38,7 @@ void SocketApplication::onServerDisonnected(uint32 index, void*pThis){
 	self->clients.erase(findedClient);
 }
 
-void SocketApplication::onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis){
+void SocketApplication::onServerReceived(uint32 index, const void*data, mac_uint datalen, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 	auto&clientBuffer = *self->clients.find(index)->second;
 	if(self->receiveCallback != nullptr){
@@ -88,7 +88,7 @@ void SocketApplication::onServerReceived(uint32 index, uint8*data, mac_uint data
 							memcpy(clientBuffer.receivingBuffer, clientBuffer.receivingBuffer + usedLength, clientBuffer.receivingBufferEnd - usedLength);
 						}
 						clientBuffer.receivingBufferEnd -= usedLength;
-						data = data + currCopyLen;
+						data = reinterpret_cast<const uint8*>(data) + currCopyLen;
 						continue; // 循环应在这里正确继续和退出
 					}
 				}

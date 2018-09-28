@@ -33,7 +33,7 @@ public:
 	int32 send(int32 serials, MessageType type, int32 extendVersion, google::protobuf::Message&extend, void*content);
 
 private:
-	ArmyAnt::TCPClient tcpSocket;
+	ArmyAnt::TCPWebSocketClient tcpSocket;
 	EventCallback eventCallback;
 	ReceiveCallback receiveCallback;
 
@@ -47,7 +47,7 @@ private:
 
 	static void onClientConnected(bool isSucceed, void*pThis);
 	static void onClientLostServer(void*pThis);
-	static void onClientReceived(uint8*data, mac_uint datalen, void*pThis);
+	static void onClientReceived(const void*data, mac_uint datalen, void*pThis);
 	static bool onClientSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32, void*sendedData, uint64 len, void* pThis);
 	static void onClientErrorReport(const ArmyAnt::SocketException& err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
 

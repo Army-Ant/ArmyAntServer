@@ -59,7 +59,7 @@ public:
 	int32 send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, google::protobuf::Message&extend, void*content);
 
 private:
-	ArmyAnt::TCPServer tcpSocket;
+	ArmyAnt::TCPWebSocketServer tcpSocket;
 	EventCallback eventCallback;
 	ReceiveCallback receiveCallback;
 	std::map<uint32, ClientInformation*> clients;
@@ -71,7 +71,7 @@ private:
 
 	static bool onServerConnected(uint32 index, void*pThis);
 	static void onServerDisonnected(uint32 index, void*pThis);
-	static void onServerReceived(uint32 index, uint8*data, mac_uint datalen, void*pThis);
+	static void onServerReceived(uint32 index, const void*data, mac_uint datalen, void*pThis);
 	static bool onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis);
 	static void onServerErrorReport(const ArmyAnt::SocketException& err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
 

@@ -20,7 +20,7 @@ void SocketClientApplication::onClientLostServer(void*pThis){
 	}
 }
 
-void SocketClientApplication::onClientReceived(uint8*data, mac_uint datalen, void*pThis){
+void SocketClientApplication::onClientReceived(const void*data, mac_uint datalen, void*pThis){
 	auto self = static_cast<SocketClientApplication*>(pThis);
 	if(self->receiveCallback != nullptr){
 		self->rwMutex.lock();
@@ -69,7 +69,7 @@ void SocketClientApplication::onClientReceived(uint8*data, mac_uint datalen, voi
 							memcpy(self->receivingBuffer, self->receivingBuffer + usedLength, self->receivingBufferEnd - usedLength);
 						}
 						self->receivingBufferEnd -= usedLength;
-						data = data + currCopyLen;
+						data = reinterpret_cast<const uint8*>(data) + currCopyLen;
 						continue; // 循环应在这里正确继续和退出
 					}
 				}

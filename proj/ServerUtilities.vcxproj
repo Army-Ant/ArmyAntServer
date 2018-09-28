@@ -220,6 +220,11 @@
     <None Include="..\res\sqlScripts\initializeNewEmptyDB_MariaDB.sql" />
     <None Include="..\res\sqlScripts\initializeNewEmptyDB_OracleMySql.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\external\ArmyAntLib\proj\ArmyAntLib.vcxproj">
+      <Project>{14fa4233-0d4c-46b8-82f1-44262938b95a}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
