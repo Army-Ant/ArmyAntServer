@@ -105,7 +105,7 @@ void SocketApplication::onServerReceived(uint32 index, const void*data, mac_uint
 	}
 }
 
-bool SocketApplication::onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, void*sendedData, uint64 len, void* pThis){
+bool SocketApplication::onServerSendResponse(mac_uint sendedSize, uint32 retriedTimes, uint32 index, const void*sendedData, uint64 len, void* pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
 	if(self->eventCallback != nullptr){
 		if(sendedSize > 0){

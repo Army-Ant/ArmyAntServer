@@ -48,7 +48,7 @@ private:
 	static void onClientConnected(bool isSucceed, void*pThis);
 	static void onClientLostServer(void*pThis);
 	static void onClientReceived(const void*data, mac_uint datalen, void*pThis);
-	static bool onClientSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32, void*sendedData, uint64 len, void* pThis);
+	static bool onClientSendResponse(mac_uint sendedSize, uint32 retriedTimes, int32, const void*sendedData, uint64 len, void* pThis);
 	static void onClientErrorReport(const ArmyAnt::SocketException& err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis);
 
 };
