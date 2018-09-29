@@ -46,3 +46,4 @@
 /proj/DBProxy/build
 /proj/ServerUtilities/build
 /src/ProtobufSource
+/test/proto-js

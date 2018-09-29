@@ -1,6 +1,6 @@
 {
     "debug":true,
-    "port":1510,
+    "port":11510,
     "logPath":"./DBProxyLog.log",
     "logFileLevel":"info",
     "logConsoleLevel":"verbose",

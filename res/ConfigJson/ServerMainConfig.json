@@ -1,10 +1,10 @@
 {
     "debug":true,
-    "port":4774,
+    "port":14774,
     "logPath":"./ServerMainLog.log",
     "logFileLevel":"info",
     "logConsoleLevel":"verbose",
     "dbProxyAddr":"127.0.0.1",
-    "dbProxyPort":1510,
-    "dbProxyLocalPort":1129
+    "dbProxyPort":11510,
+    "dbProxyLocalPort":11129
 }

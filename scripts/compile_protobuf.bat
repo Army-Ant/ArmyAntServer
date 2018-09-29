@@ -28,4 +28,5 @@ if not exist %PROTOBINARY_PATH% (mkdir %PROTOBINARY_PATH%)
 
 %PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% --ruby_out=%PROTORUBY_PATH% %PROTOFILE_PATH%\ArmyAntMessage\SubApps\SimpleEcho.proto
 
-pause
+:End
+
