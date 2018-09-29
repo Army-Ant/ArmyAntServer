@@ -4,3 +4,9 @@
 [submodule "external/Protobuf"]
 	path = external/Protobuf
 	url = https://github.com/google/protobuf.git
+[submodule "external/closure-library"]
+	path = external/closure-library
+	url = https://github.com/google/closure-library.git
+[submodule "external/ArmyAnt.js"]
+	path = external/ArmyAnt.js
+	url = https://github.com/Army-Ant/ArmyAnt.js.git

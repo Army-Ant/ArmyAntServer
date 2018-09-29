@@ -21,12 +21,7 @@ if not exist %PROTOBINARY_PATH% (mkdir %PROTOBINARY_PATH%)
 
 
 :execute_protoc
-%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% --ruby_out=%PROTORUBY_PATH% %PROTOFILE_PATH%\ArmyAntMessage\Common\base.proto
-%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% --ruby_out=%PROTORUBY_PATH% %PROTOFILE_PATH%\ArmyAntMessage\System\SocketHead.proto
-%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% --ruby_out=%PROTORUBY_PATH% %PROTOFILE_PATH%\ArmyAntMessage\System\SessionStart.proto
-%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% --ruby_out=%PROTORUBY_PATH% %PROTOFILE_PATH%\ArmyAntMessage\DBProxy\SqlRequest.proto
-
-%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% --ruby_out=%PROTORUBY_PATH% %PROTOFILE_PATH%\ArmyAntMessage\SubApps\SimpleEcho.proto
+%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% --ruby_out=%PROTORUBY_PATH% %PROTOFILE_PATH%\ArmyAntMessage\Common\base.proto %PROTOFILE_PATH%\ArmyAntMessage\System\SocketHead.proto %PROTOFILE_PATH%\ArmyAntMessage\System\SessionStart.proto %PROTOFILE_PATH%\ArmyAntMessage\DBProxy\SqlRequest.proto %PROTOFILE_PATH%\ArmyAntMessage\SubApps\SimpleEcho.proto
 
 :End
 

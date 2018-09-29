@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
   <title>ArmyAntServer Websocket Test Page</title>
+  <script src="libclosure-js/closure/goog/base.js"></script>
+  <script src="ArmyAnt.js/externals/jquery-2.2.4.js"></script>
+  <script src="ArmyAnt.js/libArmyAnt.js"></script>
+  <script type="text/javascript" src="websocket_test.js"></script>
 </head>
 <body>
-
+    <div id="animation_tester" style="height:960px;width:640px" ></div>
+    <button style="height:60px;width:200px" onclick="libArmyAnt._test()">Test scheduler</button>
+    <a id="tester"></a>
 </body>
 </html>
