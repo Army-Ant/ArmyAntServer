@@ -4,8 +4,15 @@
   <title>ArmyAntServer Websocket Test Page</title>
   <script src="libclosure-js/closure/goog/base.js"></script>
   <script src="ArmyAnt.js/externals/jquery-2.2.4.js"></script>
-  <script src="ArmyAnt.js/libArmyAnt.js"></script>
-  <script type="text/javascript" src="websocket_test.js"></script>
+  <script type="module" >
+	import libArmyAnt from "./ArmyAnt.js/libArmyAnt.js"
+	import websocket_tester from "./websocket_test.js"
+  </script>
+  <script type="text/javascript">
+    window.onload = function(){
+	  
+    }
+  </script>
 </head>
 <body>
     <div id="animation_tester" style="height:960px;width:640px" ></div>

@@ -1,3 +1,4 @@
+'use strict'
 
 var websocket_tester = {
 	_ws:null,
@@ -52,9 +53,4 @@ var websocket_tester = {
 
 websocket_tester.echoServerRequiring();
 
-window.onload = function(){
-	
-}
-
-    
-
+export default websocket_tester;
