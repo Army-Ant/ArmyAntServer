@@ -1,10 +1,12 @@
 :Compile
 @echo off
+echo Compile protobuf
 cd ..\scripts
 call compile_protobuf.bat
 cd ..\test
 
 :Copy_Javascript
+echo Copy protobuf javascript files to test directory
 if exist proto-js (
 	rd proto-js /S /Q
 )
@@ -25,12 +27,11 @@ if not exist ArmyAnt.js (
 )
 
 :Copy_CSharp
-cd ..\src\ProtobufSource\csharp
-if exist .\ArmyAntServer_TestClient_CSharp\ArmyAntServer_TestClient_CSharp\protobufSource (
+echo Copy protobuf csharp files to test directory
+if exist ArmyAntServer_TestClient_CSharp\ArmyAntServer_TestClient_CSharp\protobufSource (
 	rd .\ArmyAntServer_TestClient_CSharp\ArmyAntServer_TestClient_CSharp\protobufSource /S /Q
 )
 xcopy ..\src\ProtobufSource\csharp .\ArmyAntServer_TestClient_CSharp\ArmyAntServer_TestClient_CSharp\protobufSource /E /C /Q /Y /I
 
 :End
-cd ..\..\..\test
 pause
