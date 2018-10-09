@@ -19,6 +19,9 @@ if not exist libclosure-js (
 :: call python libclosure-js\closure\bin\calcdeps.py -i libprotobuf-js/ -i proto-js/ -p libclosure-js/ -o script > armyantmessage.js :: This sentence cannot work well, I will use ArmyAnt.js instead
 if not exist ArmyAnt.js (
     xcopy ..\external\ArmyAnt.js .\ArmyAnt.js  /E /C /Q /Y /I
+    cd ArmyAnt.js
+    git checkout master
+    cd ..
 )
 
 :Copy_CSharp
