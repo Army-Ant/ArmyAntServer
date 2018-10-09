@@ -26,6 +26,10 @@ if not exist ArmyAnt.js (
 
 :Copy_CSharp
 cd ..\src\ProtobufSource\csharp
+if exist .\ArmyAntServer_TestClient_CSharp\ArmyAntServer_TestClient_CSharp\protobufSource (
+	rd .\ArmyAntServer_TestClient_CSharp\ArmyAntServer_TestClient_CSharp\protobufSource /S /Q
+)
+xcopy ..\src\ProtobufSource\csharp .\ArmyAntServer_TestClient_CSharp\ArmyAntServer_TestClient_CSharp\protobufSource /E /C /Q /Y /I
 
 :End
 cd ..\..\..\test
