@@ -169,6 +169,7 @@ ClientInformation::~ClientInformation(){
 void ClientInformation::setMaxBufferLength(uint32 bufferLength){
 	ArmyAnt::Fragment::AA_SAFE_DELALL(receivingBuffer);
 	receivingBuffer = new uint8[bufferLength];
+	memset(receivingBuffer, 0, bufferLength);
 }
 
 

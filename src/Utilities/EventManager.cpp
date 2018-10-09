@@ -217,7 +217,7 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 	auto finded = networkListenerList.find(code);
 	if(finded != networkListenerList.end()){
 		for(auto i = finded->second.begin(); i != finded->second.end(); ++i){
-			i->second(conversationCode, conversationCode, userId, message, messageLen);
+			i->second(extendVerstion, conversationCode, userId, message, messageLen);
 		}
 	}
 	return ret;
