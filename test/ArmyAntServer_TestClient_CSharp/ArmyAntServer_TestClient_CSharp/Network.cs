@@ -11,12 +11,13 @@ namespace ArmyAntServer_TestClient_CSharp
 {
     class Network
     {
-        public delegate bool OnReadCallback(int serials, int type, long appid, int messageCode, int conversationCode, int conversationStepIndex, byte[]data);
+        public delegate bool OnReadCallback(int serials, int type, long appid, int messageCode, int conversationCode, int conversationStepIndex, byte[] data);
         public Network(OnReadCallback cb)
         {
             tcp = null;
             web = null;
-            readCancelToken = CancellationToken.None;
+            readCanceller = new CancellationTokenSource();
+            socketCanceller = new CancellationTokenSource();
             buffer = new Queue<byte>();
             onReadCallback = cb;
             readTask = null;
@@ -31,7 +32,8 @@ namespace ArmyAntServer_TestClient_CSharp
                     web = new ClientWebSocket();
                     var uriStr = "ws://" + address.ToString() + ":" + port.ToString() + "/";
                     var uri = new Uri(uriStr);
-                    await web.ConnectAsync(uri, CancellationToken.None);
+                    socketCanceller = new CancellationTokenSource();
+                    await web.ConnectAsync(uri, socketCanceller.Token);
                 }
                 else
                 {
@@ -55,26 +57,31 @@ namespace ArmyAntServer_TestClient_CSharp
         {
             try
             {
-                readCancelToken.ThrowIfCancellationRequested();
+                readCanceller.Cancel(true);
                 if (web != null)
                 {
-                    await web.CloseAsync(WebSocketCloseStatus.EndpointUnavailable, "Client disconnecting", CancellationToken.None);
-                    web = null;
+                    await web.CloseAsync(WebSocketCloseStatus.EndpointUnavailable, "Client disconnecting", socketCanceller.Token);
                 }
                 if (tcp != null)
                 {
                     tcp.Close();
-                    tcp = null;
                 }
-                if (readTask != null && readTask.Status == TaskStatus.Running)
-                    await readTask;
-                readTask = null;
+            }
+            catch (WebSocketException e)
+            {
+                var txt = e.Message;
             }
             finally
             {
-
+                tcp = null;
+                web = null;
+                if (readTask != null && readTask.Status == TaskStatus.Running)
+                    await readTask;
+                readTask = null;
+                if (!socketCanceller.IsCancellationRequested)
+                    socketCanceller.Cancel();
             }
-        }
+        } 
 
         public async Task SendToServerAsync(int serials, int type /* = 1 */, long appid, int messageCode, int conversationCode, int conversationStepIndex, ArmyAntMessage.System.ConversationStepType convType, byte[] content)
         {
@@ -98,23 +105,23 @@ namespace ArmyAntServer_TestClient_CSharp
             if(tcp != null)
                 await tcp.GetStream().WriteAsync(sendBytes, 0, sendBytes.Length);
             if (web != null)
-                await web.SendAsync(new ArraySegment<byte>(sendBytes), WebSocketMessageType.Binary, true, readCancelToken);
+                await web.SendAsync(new ArraySegment<byte>(sendBytes), WebSocketMessageType.Binary, true, socketCanceller.Token);
         }
 
         private async Task OnRead()
         {
-            readCancelToken = new CancellationToken(false);
-            while (!readCancelToken.IsCancellationRequested)
+            readCanceller = new CancellationTokenSource();
+            while (!readCanceller.IsCancellationRequested)
             {
                 var byteBuffer = new byte[8192];
                 int len = 0;
                 if (tcp != null)
-                    len = await tcp.GetStream().ReadAsync(byteBuffer, 0, 8192, readCancelToken);
+                    len = await tcp.GetStream().ReadAsync(byteBuffer, 0, 8192, readCanceller.Token);
                 else if (web != null)
                 {
                     try
                     {
-                        var result = await web.ReceiveAsync(new ArraySegment<byte>(byteBuffer), readCancelToken);
+                        var result = await web.ReceiveAsync(new ArraySegment<byte>(byteBuffer), readCanceller.Token);
                         len = result.Count;
                     }
                     catch (WebSocketException e)
@@ -150,7 +157,8 @@ namespace ArmyAntServer_TestClient_CSharp
 
         private TcpClient tcp;
         private ClientWebSocket web;
-        private CancellationToken readCancelToken;
+        private CancellationTokenSource readCanceller;
+        private CancellationTokenSource socketCanceller;
         private Queue<byte> buffer;
         private OnReadCallback onReadCallback;
         private Task readTask;
