@@ -53,7 +53,7 @@ message SM2C_EchoBroadcastResponse{
 
 message SM2C_EchoReceiveNotice{
 	option (msg_code) = 10011005;
-	bool is_boradcast = 1;
+	bool is_broadcast = 1;
 	string from = 2;
 	string message = 3;
 }

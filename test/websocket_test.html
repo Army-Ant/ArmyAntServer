@@ -11,10 +11,15 @@
   </script>
 </head>
 <body>
-    <button style="height:60px;width:200px" onclick="document.getElementById('tester').innerHTML += '<br/>' + tester.connect()">连接服务器</button>
-    <button style="height:60px;width:200px" onclick="document.getElementById('tester').innerHTML += '<br/>' + tester.login()">登陆用户jason</button>
-    <button style="height:60px;width:200px" onclick="document.getElementById('tester').innerHTML += '<br/>' + tester.send()">向jason发送消息: "Hello"</button>
-    <button style="height:60px;width:200px" onclick="document.getElementById('tester').innerHTML += '<br/>' + tester.broadcast()">发送广播: "Hello everyone"</button>
-    <a id="tester"></a>
+	<input id="myusername" style="height:20px;width:200px" value="jason" /></br>
+    <button id="btnConnect" style="height:60px;width:200px" onclick="tester.connect();">连接服务器</button></br>
+    <button id="btnLogin" style="height:60px;width:200px" disabled="disabled" onclick="tester.login()">登录</button></br>
+    <button id="btnSend" style="height:60px;width:200px" disabled="disabled" onclick="tester.send()">发送消息</button></br>
+    <button id="btnBroadcast" style="height:60px;width:200px" disabled="disabled" onclick="tester.broadcast()">发送广播</button></br>
+	<a id="tarusername_title">发送到:</a></br>
+	<input id="tarusername" style="height:20px;width:200px" /></br>
+	<a id="sendingcontent_title">发送内容:</a></br>
+	<input id="sendingcontent" style="height:100px;width:200px" /></br>
+    <a id="message" />
 </body>
 </html>

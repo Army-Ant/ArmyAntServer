@@ -104,7 +104,7 @@ namespace ArmyAntServer_TestClient_CSharp
             else if (messageCode == receiveMessageCode)
             {
                 var msg = ArmyAntMessage.SubApps.SM2C_EchoReceiveNotice.Parser.ParseFrom(data);
-                if (msg.IsBoradcast)
+                if (msg.IsBroadcast)
                 {
                     receiveTextBox.Text += "[" + DateTime.Now.ToLongTimeString() + "] [" + msg.From + "] [广播] " + msg.Message + Environment.NewLine;
                 }

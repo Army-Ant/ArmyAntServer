@@ -110,6 +110,7 @@ void EchoApp::onUserSend(int32 extendVerstion, int32 conversationCode, int32 use
 	ArmyAntMessage::SubApps::SM2C_EchoSendResponse response;
 	auto ret = new ArmyAntMessage::SubApps::C2SM_EchoSendRequest(msg);
 	response.set_allocated_request(ret);
+	bool ok = false;
 	if(tarUser == userList.end()){
 		response.set_result(4);
 		response.set_message(std::string("The user of the target name has not logged in"));
@@ -119,13 +120,16 @@ void EchoApp::onUserSend(int32 extendVerstion, int32 conversationCode, int32 use
 	} else{
 		response.set_result(0);
 		response.set_message(std::string("Send successful !"));
+		ok = true;
+	}
+	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
+	if(ok){
 		ArmyAntMessage::SubApps::SM2C_EchoReceiveNotice notice;
-		notice.set_is_boradcast(false);
+		notice.set_is_broadcast(false);
 		notice.set_from(fromUser);
 		notice.set_message(msg.message());
 		server.getUserSessionManager().getUserSession(tarUser->second)->sendNetwork(extendVerstion, appid, 0, ArmyAntMessage::System::ConversationStepType::NoticeOnly, &notice);
 	}
-	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 }
 
 void EchoApp::onUserBroadcast(int32 extendVerstion, int32 conversationCode, int32 userId, void * message, int32 length){
@@ -149,21 +153,25 @@ void EchoApp::onUserBroadcast(int32 extendVerstion, int32 conversationCode, int3
 	ArmyAntMessage::SubApps::SM2C_EchoBroadcastResponse response;
 	auto ret = new ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest(msg);
 	response.set_allocated_request(ret);
+	bool ok = false;
 	if(fromUser == nullptr){
 		response.set_result(3);
 		response.set_message(std::string("You have not logged in"));
 	} else{
 		response.set_result(0);
 		response.set_message(std::string("Send successful !"));
+		ok = true;
+	}
+	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
+	if(ok){
 		ArmyAntMessage::SubApps::SM2C_EchoReceiveNotice notice;
-		notice.set_is_boradcast(true);
+		notice.set_is_broadcast(true);
 		notice.set_from(fromUser);
 		notice.set_message(msg.message());
 		for(auto i = userList.begin(); i != userList.end(); ++i){
 			server.getUserSessionManager().getUserSession(i->second)->sendNetwork(extendVerstion, appid, 0, ArmyAntMessage::System::ConversationStepType::NoticeOnly, &notice);
 		}
 	}
-	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 }
 
 void EchoApp::onUserDisconnected(int32 userId){
