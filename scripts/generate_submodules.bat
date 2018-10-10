@@ -7,6 +7,7 @@ cd external
 
 :GENERATE_BOOST
 cd ArmyAntLib
+git checkout master
 cd external
 call boost_generate_and_build.bat
 cd ../..
@@ -22,5 +23,12 @@ call build_protobuf.bat
 :GENERATE_CLOSURE_LIBRARY
 cd closure-library
 git submodule update --init --progress --recursive
+cd ..
+
+:GENERATE_ARMYANT_JS
+cd ArmyAnt.js
+git checkout master
+call babel-node_setup.bat
+cd ..
 
 :END
