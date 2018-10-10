@@ -20,20 +20,20 @@ public:
 	typedef std::function<void(const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body)> ReceiveCallback;
 
 public:
-	SocketClientApplication();
+	SocketClientApplication(bool isWebSocket);
 	~SocketClientApplication();
 
 public:
 	bool setEventCallback(EventCallback cb);
 	bool setReceiveCallback(ReceiveCallback cb);
-	ArmyAnt::TCPClient&getSocket();
+	ArmyAnt::TCPClient*getSocket();
 
 	bool connect(ArmyAnt::IPAddr&ip, uint16 port, uint16 localPort, bool isAsync, uint32 maxBufferLength);
 	bool disconnect();
 	int32 send(int32 serials, MessageType type, int32 extendVersion, google::protobuf::Message&extend, void*content);
 
 private:
-	ArmyAnt::TCPWebSocketClient tcpSocket;
+	ArmyAnt::TCPClient* tcpSocket;
 	EventCallback eventCallback;
 	ReceiveCallback receiveCallback;
 

@@ -115,9 +115,8 @@ void SocketClientApplication::onClientErrorReport(const ArmyAnt::SocketException
 
 /***********************************************************/
 
-SocketClientApplication::SocketClientApplication()
-	:tcpSocket(), eventCallback(nullptr), receiveCallback(nullptr), rwMutex(), bufferLength(0)
-{}
+SocketClientApplication::SocketClientApplication(bool isWebSocket)
+	:tcpSocket(isWebSocket ? new ArmyAnt::TCPWebSocketClient() : new ArmyAnt::TCPClient()), eventCallback(nullptr), receiveCallback(nullptr), rwMutex(), bufferLength(0){}
 SocketClientApplication::~SocketClientApplication(){}
 
 bool SocketClientApplication::setEventCallback(SocketClientApplication::EventCallback cb){
@@ -130,36 +129,36 @@ bool SocketClientApplication::setReceiveCallback(SocketClientApplication::Receiv
 	return true;
 }
 
-ArmyAnt::TCPClient&SocketClientApplication::getSocket(){
+ArmyAnt::TCPClient*SocketClientApplication::getSocket(){
 	return tcpSocket;
 }
 
 bool SocketClientApplication::connect(ArmyAnt::IPAddr & ip, uint16 port, uint16 localPort, bool isAsync, uint32 maxBufferLength){
-	if(tcpSocket.isConnection())
+	if(tcpSocket->isConnection())
 		return false;
 	if(receiveCallback == nullptr || eventCallback == nullptr)
 		return false;
 
-	tcpSocket.setLostServerCallBack(onClientLostServer, this);
-	tcpSocket.setGettingCallBack(onClientReceived, this);
-	tcpSocket.setSendingResponseCallBack(onClientSendResponse, this);
-	tcpSocket.setErrorReportCallBack(onClientErrorReport, this);
+	tcpSocket->setLostServerCallBack(onClientLostServer, this);
+	tcpSocket->setGettingCallBack(onClientReceived, this);
+	tcpSocket->setSendingResponseCallBack(onClientSendResponse, this);
+	tcpSocket->setErrorReportCallBack(onClientErrorReport, this);
 
 	bufferLength = maxBufferLength;
 	// tcpSocket.setMaxIOBufferLen(maxBufferLength);
-	tcpSocket.setServerAddr(ip);
-	tcpSocket.setServerPort(port);
-	return tcpSocket.connectServer(localPort, isAsync, onClientConnected, this);
+	tcpSocket->setServerAddr(ip);
+	tcpSocket->setServerPort(port);
+	return tcpSocket->connectServer(localPort, isAsync, onClientConnected, this);
 }
 
 bool SocketClientApplication::disconnect(){
-	if(!tcpSocket.isConnection())
+	if(!tcpSocket->isConnection())
 		return true;
-	return tcpSocket.disconnectServer(20000);
+	return tcpSocket->disconnectServer(20000);
 }
 
 int32 SocketClientApplication::send(int32 serials, MessageType type, int32 extendVersion, google::protobuf::Message&extend, void*content){
-	if(!tcpSocket.isConnection())
+	if(!tcpSocket->isConnection())
 		return false;
 
 	int32 extendLength = 0;
@@ -192,7 +191,7 @@ int32 SocketClientApplication::send(int32 serials, MessageType type, int32 exten
 	rwMutex.lock();
 	waitingResponseSended.insert(std::make_pair(++counter, sendingBuffer));
 	rwMutex.unlock();
-	return tcpSocket.send(sendingBuffer, totalLength) == 0 ? 0 : counter;
+	return tcpSocket->send(sendingBuffer, totalLength) == 0 ? 0 : counter;
 }
 
 }

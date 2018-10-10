@@ -136,7 +136,7 @@ bool SocketApplication::onServerSendResponse(mac_uint sendedSize, uint32 retried
 
 void SocketApplication::onServerErrorReport(const ArmyAnt::SocketException& err, const ArmyAnt::IPAddr&addr, uint16 port, ArmyAnt::String functionName, void*pThis){
 	auto self = static_cast<SocketApplication*>(pThis);
-	uint32 index = self->tcpSocket.getIndexByAddrPort(addr, port);
+	uint32 index = self->tcpSocket->getIndexByAddrPort(addr, port);
 	if(self->eventCallback != nullptr){
                 ArmyAnt::String msg =  "Found error, code:";
                 msg += int64(err.code);
@@ -173,12 +173,11 @@ void ClientInformation::setMaxBufferLength(uint32 bufferLength){
 }
 
 
-SocketApplication::SocketApplication()
-	:tcpSocket(AA_INT32_MAX-100), eventCallback(nullptr), receiveCallback(nullptr), clients(), connectMutex(), bufferLength(0){
-}
+SocketApplication::SocketApplication(bool isWebSocket)
+	:tcpSocket(isWebSocket ? new ArmyAnt::TCPWebSocketServer(AA_INT32_MAX - 100) : new ArmyAnt::TCPServer(AA_INT32_MAX - 100)), eventCallback(nullptr), receiveCallback(nullptr), clients(), connectMutex(), bufferLength(0){}
 
 SocketApplication::~SocketApplication(){
-
+	delete tcpSocket;
 }
 
 bool SocketApplication::setEventCallback(SocketApplication::EventCallback cb){
@@ -191,7 +190,7 @@ bool SocketApplication::setReceiveCallback(SocketApplication::ReceiveCallback cb
 	return true;
 }
 
-ArmyAnt::TCPServer&SocketApplication::getSocket(){
+ArmyAnt::TCPServer*SocketApplication::getSocket(){
 	return tcpSocket;
 }
 
@@ -200,29 +199,29 @@ const std::map<uint32, ClientInformation*>&SocketApplication::getClientList()con
 }
 
 bool SocketApplication::start(uint16 port, uint32 maxBufferLength, bool isIpv6){
-	if(tcpSocket.isStarting())
+	if(tcpSocket->isStarting())
 		return false;
 	if(receiveCallback == nullptr || eventCallback == nullptr)
 		return false;
 
-	tcpSocket.setConnectCallBack(onServerConnected, this);
-	tcpSocket.setDisconnectCallBack(onServerDisonnected, this);
-	tcpSocket.setGettingCallBack(onServerReceived, this);
-	tcpSocket.setSendingResponseCallBack(onServerSendResponse, this);
-	tcpSocket.setErrorReportCallBack(onServerErrorReport, this);
+	tcpSocket->setConnectCallBack(onServerConnected, this);
+	tcpSocket->setDisconnectCallBack(onServerDisonnected, this);
+	tcpSocket->setGettingCallBack(onServerReceived, this);
+	tcpSocket->setSendingResponseCallBack(onServerSendResponse, this);
+	tcpSocket->setErrorReportCallBack(onServerErrorReport, this);
 
 	bufferLength = maxBufferLength;
-	return tcpSocket.start(port, isIpv6);
+	return tcpSocket->start(port, isIpv6);
 }
 
 bool SocketApplication::stop(){
-	if(!tcpSocket.isStarting())
+	if(!tcpSocket->isStarting())
 		return true;
-	return tcpSocket.stop(20000);
+	return tcpSocket->stop(20000);
 }
 
 int32 SocketApplication::send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, google::protobuf::Message&extend, void*content){
-	if(!tcpSocket.isStarting())
+	if(!tcpSocket->isStarting())
 		return false;
 
 	auto client = clients.find(clientId);
@@ -259,7 +258,7 @@ int32 SocketApplication::send(uint32 clientId, int32 serials, MessageType type, 
 	client->second->rwMutex.lock();
 	client->second->waitingResponseSended.insert(std::make_pair(++client->second->counter, sendingBuffer));
 	client->second->rwMutex.unlock();
-	return tcpSocket.send(clientId, sendingBuffer, totalLength) == 0 ? 0 : client->second->counter;
+	return tcpSocket->send(clientId, sendingBuffer, totalLength) == 0 ? 0 : client->second->counter;
 }
 
 } // namespace ArmyAntServer

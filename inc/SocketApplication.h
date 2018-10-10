@@ -45,13 +45,13 @@ public:
 	typedef std::function<void(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body)> 		ReceiveCallback;
 
 public:
-	SocketApplication();
+	SocketApplication(bool isWebSocket);
 	~SocketApplication();
 
 public:
 	bool setEventCallback(EventCallback cb);
 	bool setReceiveCallback(ReceiveCallback cb);
-	ArmyAnt::TCPServer&getSocket();
+	ArmyAnt::TCPServer*getSocket();
 	const std::map<uint32, ClientInformation*>&getClientList()const;
 
 	bool start(uint16 port, uint32 maxBufferLength, bool isIpv6 = false);
@@ -59,7 +59,7 @@ public:
 	int32 send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, google::protobuf::Message&extend, void*content);
 
 private:
-	ArmyAnt::TCPWebSocketServer tcpSocket;
+	ArmyAnt::TCPServer* tcpSocket;
 	EventCallback eventCallback;
 	ReceiveCallback receiveCallback;
 	std::map<uint32, ClientInformation*> clients;

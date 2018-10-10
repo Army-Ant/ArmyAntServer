@@ -15,7 +15,7 @@ namespace ArmyAntServer{
 
 
 ServerMain::ServerMain()
-	:debug(false), port(0), msgQueue(nullptr), socket(), logger(), msgQueueMgr(), sessionMgr(socket, msgQueueMgr, logger), eventMgr(sessionMgr, logger), appMgr(logger), dbConnector(), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
+	:debug(false), port(0), msgQueue(nullptr), socket(false), logger(), msgQueueMgr(), sessionMgr(socket, msgQueueMgr, logger), eventMgr(sessionMgr, logger), appMgr(logger), dbConnector(false), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
 {
 	sessionMgr.setEventManager(eventMgr);
 }
