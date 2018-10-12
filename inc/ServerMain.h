@@ -26,7 +26,7 @@ public:
 	// Run the server, start parameter is set in setting file : Constants::SERVER_CONFIG_FILE_PATH
 	// 启动服务器, 根据日志里的配置
 	int32 main();
-	bool send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content);
+	bool send(bool isWebSocket, uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content);
 
 public:
 	Logger& getLogger();
@@ -55,9 +55,9 @@ private:
 
 private:
 	// 收到 Socket 连接的消息报告的处理函数
-	void onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content);
+	void onSocketEvent(bool isWebsocket, SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content);
 	// 收到 Socket 网络消息的处理函数
-	void onSocketReceived(const uint32 clientId, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body);
+	void onSocketReceived(bool isWebsocket, const uint32 clientId, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body);
 
 	// 收到 DBProxy 连接的消息报告的处理函数
 	void onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content);
@@ -66,15 +66,17 @@ private:
 
 private:
 	bool debug;    // 是否处于调试模式, 由配置文件决定此参数
-	uint16 port;    // ServerMain服务器端口号, 由配置文件决定此参数
+	uint16 normalSocketPort;    // ServerMain服务器端口号, 由配置文件决定此参数
+	uint16 webSocketPort;    // ServerMain服务器websocket端口号, 由配置文件决定此参数
 	MessageQueue* msgQueue;   // ServerMain消息队列
 
 private:
-	SocketApplication socket;   // Socket会话类对象
 	Logger logger;    // ServerMain日志文件
-	EventManager eventMgr;    // 事件管理器
 	MessageQueueManager msgQueueMgr;    // 消息队列管理器
+	SocketApplication normalSocket;   // Socket会话类对象
+	SocketApplication webSocket;   // websocket会话类对象
 	UserSessionManager sessionMgr;    // 用户会话管理器
+	EventManager eventMgr;    // 事件管理器
 	SubApplicationManager appMgr;
 
 private:

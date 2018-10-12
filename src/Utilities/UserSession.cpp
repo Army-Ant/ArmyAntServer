@@ -29,11 +29,11 @@ struct NetworkSendStruct{
 	int32 length;
 };
 
-UserSession::UserSession(int32 index, MessageQueue&msgQueue, UserSessionManager&mgr)
-	:index(index), msgQueue(msgQueue), mgr(mgr), userdata(nullptr), threadEnd(false), updateThread(std::bind(&UserSession::onUpdate, this)), ioMutex(){}
+UserSession::UserSession(int32 index, MessageQueue&msgQueue, UserSessionManager&mgr, SocketApplication&socketSender, int32 senderIndex)
+	:index(index), msgQueue(msgQueue), mgr(mgr),socketSender(socketSender), senderIndex(senderIndex), userdata(nullptr), threadEnd(false), updateThread(std::bind(&UserSession::onUpdate, this)), ioMutex(){}
 
 UserSession::UserSession(UserSession&&moved)
-	: index(moved.index), msgQueue(moved.msgQueue), mgr(moved.mgr), userdata(moved.userdata), threadEnd(false), updateThread(std::bind(&UserSession::onUpdate, this)){}
+	: index(moved.index), msgQueue(moved.msgQueue), mgr(moved.mgr), socketSender(moved.socketSender), senderIndex(moved.senderIndex), userdata(moved.userdata), threadEnd(false), updateThread(std::bind(&UserSession::onUpdate, this)){}
 
 UserSession::~UserSession(){
 	mgr.getEventManager().dispatchUserDisconnected(index);
@@ -150,7 +150,7 @@ void UserSession::onUpdate(){
 								extend.set_conversation_code(evt->conversationCode);
 								extend.set_conversation_step_index(conversationStepIndex);
 								extend.set_conversation_step_type(evt->conversationStepType);
-								mgr.socket.send(index, 0, MessageType::Normal, evt->extendVersion, extend, evt->data);
+								socketSender.send(senderIndex, 0, MessageType::Normal, evt->extendVersion, extend, evt->data);
 								break;
 							}
 							default:

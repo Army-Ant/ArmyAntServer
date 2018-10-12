@@ -7,7 +7,7 @@ import libArmyAnt from "./ArmyAnt.js/libArmyAnt.js"
 let serverHost = {
     onStart: function () {
         let svr = new libArmyAnt.HttpServer();
-        svr.start(8080);
+        let ret = svr.start(8088);
     },
 
     onTest: function () {

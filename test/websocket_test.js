@@ -151,7 +151,7 @@ let websocket_tester = {
 			this._ws.close();
 			this.writeMessage('断开服务器...');
 		} else {
-			this._ws = new WebSocket("ws://127.0.0.1:14774/");
+			this._ws = new WebSocket("ws://127.0.0.1:8080/");
 			this._ws.onopen = function(evt) {
 				this.writeMessage("WebSocket 服务器已连接");
 				document.getElementById('btnConnect').innerHTML="断开服务器";

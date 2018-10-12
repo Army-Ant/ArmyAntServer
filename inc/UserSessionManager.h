@@ -14,12 +14,12 @@ class EventManager;
 
 class UserSessionManager{
 public:
-	UserSessionManager(SocketApplication&socket, MessageQueueManager&queueMgr, Logger& logger);
+	UserSessionManager(MessageQueueManager&queueMgr, Logger& logger);
 	~UserSessionManager();
 
 public:
 	UserSession * getUserSession(int32 userId);
-	UserSession * createUserSession(int32 userId);
+	UserSession * createUserSession(int32 userId, SocketApplication&socketSender, int32 senderIndex);
 	bool removeUserSession(int32 userId);
 
 	void setEventManager(EventManager&eventMgr);
@@ -27,7 +27,6 @@ public:
 
 public:
 	Logger& logger;
-	SocketApplication&socket;
 	EventManager*eventMgr;
 
 private:

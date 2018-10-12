@@ -181,7 +181,7 @@ namespace ArmyAntServer_TestClient_CSharp
             }
             else
             {
-                connected = await net.ConnectToServer(IPAddress.Loopback, 14774, cbWebsocket.Checked);
+                connected = await net.ConnectToServer(IPAddress.Loopback, cbWebsocket.Checked ? 8080 : 14774, cbWebsocket.Checked);
                 if (connected)
                 {
                     btnConnectinout.Text = "断开连接";

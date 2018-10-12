@@ -15,7 +15,7 @@ namespace ArmyAntServer{
 
 
 ServerMain::ServerMain()
-	:debug(false), port(0), msgQueue(nullptr), socket(false), logger(), msgQueueMgr(), sessionMgr(socket, msgQueueMgr, logger), eventMgr(sessionMgr, logger), appMgr(logger), dbConnector(false), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
+	:debug(false), normalSocketPort(0), webSocketPort(0), msgQueue(nullptr), normalSocket(false), webSocket(true), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr, logger), eventMgr(sessionMgr, logger), appMgr(logger), dbConnector(false), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
 {
 	sessionMgr.setEventManager(eventMgr);
 }
@@ -35,15 +35,22 @@ int32 ServerMain::main(){
 		return initRes;
 	}
 
-	// 3. 初始化并开启 socket TCP server
-	socket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-	socket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8, std::placeholders::_9));
-	auto socketStartRes = socket.start(port, 16384, false);
+	// 3. 初始化并开启 TCP server 的 socket 以及 websocket
+	normalSocket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, false, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+	normalSocket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, false, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8, std::placeholders::_9));
+	auto socketStartRes = normalSocket.start(normalSocketPort, 16384, false);  // 开启 socket
 	if(!socketStartRes){
-		logger.pushLog("Server started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		logger.pushLog("Server socket started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::ServerMainReturnValues::serverStartFailed;
 	}
-	if(!appMgr.startAllApplications()){
+	webSocket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, true, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+	webSocket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, true, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8, std::placeholders::_9));
+	socketStartRes = webSocket.start(webSocketPort, 16384, false);  // 开启 websocket
+	if(!socketStartRes){
+		logger.pushLog("Server websocket started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		return Constants::ServerMainReturnValues::serverStartFailed;
+	}
+	if(!appMgr.startAllApplications()){  // 开启所有 subApp
 		logger.pushLog("An sub-application started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::ServerMainReturnValues::serverStartFailed;
 	}
@@ -59,7 +66,8 @@ int32 ServerMain::main(){
 			auto msg = msgQueue->popMessage();
 			switch(msg.id){
 				case Constants::ServerMainMsg::exitMainThread:
-					socket.stop();
+					webSocket.stop();
+					normalSocket.stop();
 					retVal = msg.data;
 					logger.pushLog("Server stopped", Logger::AlertLevel::Info, LOGGER_TAG);
 					exitCommand = true;
@@ -79,7 +87,7 @@ int32 ServerMain::main(){
 	return retVal;
 }
 
-bool ServerMain::send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content){
+bool ServerMain::send(bool isWebSocket, uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content){
 	switch(extendVersion){
 		case 1:
 		{
@@ -90,7 +98,10 @@ bool ServerMain::send(uint32 clientId, int32 serials, MessageType type, int32 ex
 			extend.set_conversation_code(conversationCode);
 			extend.set_conversation_step_index(conversationStepIndex);
 			extend.set_conversation_step_type(conversationStepType);
-			socket.send(clientId, serials, type, extendVersion, extend, content);
+			if(isWebSocket)
+				webSocket.send(clientId / 2, serials, type, extendVersion, extend, content);
+			else
+				normalSocket.send(clientId / 2, serials, type, extendVersion, extend, content);
 		}
 		default:
 			logger.pushLog(ArmyAnt::String("Sending a network message with an unknown head version: ") + int64(extendVersion), Logger::AlertLevel::Error, LOGGER_TAG);
@@ -156,14 +167,23 @@ int32 ServerMain::parseConfig(){
 	}
 	debug = pjdebug->getBoolean();
 
-	auto jport = jo.getChild("port");
-	auto pjport = dynamic_cast<ArmyAnt::JsonNumeric*>(jport);
-	if(pjport == nullptr){
+	auto jnormalSocketPort = jo.getChild("normalSocketPort");
+	auto pjnormalSocketPort = dynamic_cast<ArmyAnt::JsonNumeric*>(jnormalSocketPort);
+	if(pjnormalSocketPort == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 		ArmyAnt::JsonUnit::release(json);
 		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
-	port = pjport->getInteger();
+	normalSocketPort = pjnormalSocketPort->getInteger();
+
+	auto jwebsocketPort = jo.getChild("websocketPort");
+	auto pjwebsocketPort = dynamic_cast<ArmyAnt::JsonNumeric*>(jwebsocketPort);
+	if(pjwebsocketPort == nullptr){
+		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+		ArmyAnt::JsonUnit::release(json);
+		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
+	}
+	webSocketPort = pjwebsocketPort->getInteger();
 
 	auto jlogPath = jo.getChild("logPath");
 	auto logFilePath = dynamic_cast<ArmyAnt::JsonString*>(jlogPath);
@@ -283,33 +303,38 @@ int32 ServerMain::modulesUninitialization(){
 	return Constants::ServerMainReturnValues::normalExit;
 }
 
-void ServerMain::onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content){
+void ServerMain::onSocketEvent(bool isWebsocket, SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content){
+	uint32 clientId = isWebsocket ? clientIndex * 2 + 1 : clientIndex * 2;
 	switch(type){
 		case SocketApplication::EventType::Connected:
-			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
-			sessionMgr.createUserSession(clientIndex);
+			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)) + ", client id: "+ ArmyAnt::String(int64(clientId)), Logger::AlertLevel::Info, LOGGER_TAG);
+			if(isWebsocket)
+				sessionMgr.createUserSession(clientId, webSocket, clientIndex);
+			else
+				sessionMgr.createUserSession(clientId, normalSocket, clientIndex);
 			break;
 		case SocketApplication::EventType::Disconnected:
-			logger.pushLog("Client disconnected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
-			sessionMgr.removeUserSession(clientIndex);
+			logger.pushLog("Client disconnected! client id: " + ArmyAnt::String(int64(clientId)), Logger::AlertLevel::Info, LOGGER_TAG);
+			sessionMgr.removeUserSession(clientId);
 			break;
 		case SocketApplication::EventType::SendingResponse:
-			logger.pushLog("Sending to client responsed, client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Verbose, LOGGER_TAG);
+			logger.pushLog("Sending to client responsed, client id: " + ArmyAnt::String(int64(clientId)), Logger::AlertLevel::Verbose, LOGGER_TAG);
 			break;
 		case SocketApplication::EventType::ErrorReport:
-			logger.pushLog("Get socket error-report, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			logger.pushLog("Get socket error-report, client id: " + ArmyAnt::String(int64(clientId)) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
 			break;
 		case SocketApplication::EventType::Unknown:
-			logger.pushLog("Get an unknown socket event, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
+			logger.pushLog("Get an unknown socket event, client id: " + ArmyAnt::String(int64(clientId)) + ", content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
 			break;
 		default:
-			logger.pushLog("Get an unknown number of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientIndex) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			logger.pushLog("Get an unknown number of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientId) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
 	}
 }
 
-void ServerMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body){
-	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
-	eventMgr.dispatchNetworkResponse(head.extendVersion, messageCode, clientIndex, conversationCode, conversationStepIndex, conversationStepType, body, contentLength);
+void ServerMain::onSocketReceived(bool isWebsocket, const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body){
+	uint32 clientId = isWebsocket ? clientIndex * 2 + 1 : clientIndex * 2;
+	logger.pushLog("Received from client id: " + ArmyAnt::String(int64(clientId)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
+	eventMgr.dispatchNetworkResponse(head.extendVersion, messageCode, clientId, conversationCode, conversationStepIndex, conversationStepType, body, contentLength);
 }
 
 void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content){

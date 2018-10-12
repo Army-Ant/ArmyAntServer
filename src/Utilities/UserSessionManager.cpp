@@ -3,8 +3,8 @@
 
 namespace ArmyAntServer{
 
-UserSessionManager::UserSessionManager(SocketApplication&socket, MessageQueueManager&queueMgr, Logger& logger)
-	:socket(socket), queueMgr(queueMgr), logger(logger), eventMgr(nullptr){
+UserSessionManager::UserSessionManager(MessageQueueManager&queueMgr, Logger& logger)
+	:queueMgr(queueMgr), logger(logger), eventMgr(nullptr){
 }
 
 UserSessionManager::~UserSessionManager(){}
@@ -17,11 +17,11 @@ UserSession*UserSessionManager::getUserSession(int32 userId){
 	return  ret;
 }
 
-UserSession* UserSessionManager::createUserSession(int32 userId){
+UserSession* UserSessionManager::createUserSession(int32 userId, SocketApplication&socketSender, int32 senderIndex){
 	auto finded = sessionList.find(userId);
 	if(finded != sessionList.end())
 		return nullptr;
-	sessionList.insert(std::make_pair(userId, new UserSession(userId, *queueMgr.createQueue(userId), *this)));
+	sessionList.insert(std::make_pair(userId, new UserSession(userId, *queueMgr.createQueue(userId), *this, socketSender, senderIndex)));
 	auto&ret = sessionList.find(userId)->second;
 	return ret;
 }

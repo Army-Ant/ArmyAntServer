@@ -1,10 +1,11 @@
 {
-    "debug":true,
-    "port":14774,
-    "logPath":"./ServerMainLog.log",
-    "logFileLevel":"info",
-    "logConsoleLevel":"verbose",
-    "dbProxyAddr":"127.0.0.1",
-    "dbProxyPort":11510,
-    "dbProxyLocalPort":11129
+  "debug": true,
+  "normalSocketPort": 14774,
+  "websocketPort": 8080,
+  "logPath": "./ServerMainLog.log",
+  "logFileLevel": "info",
+  "logConsoleLevel": "verbose",
+  "dbProxyAddr": "127.0.0.1",
+  "dbProxyPort": 11510,
+  "dbProxyLocalPort": 11129
 }

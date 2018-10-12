@@ -12,7 +12,7 @@ static const char* const LOGGER_TAG = "DBProxyMain";
 namespace ArmyAntServer{
 
 
-DBProxyMain::DBProxyMain() :debug(false), port(0), msgQueue(nullptr), socket(false), logger(), msgQueueMgr(), sessionMgr(socket, msgQueueMgr, logger), eventMgr(sessionMgr, logger), mysqlBridge(){
+DBProxyMain::DBProxyMain() :debug(false), port(0), msgQueue(nullptr), socket(false), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr, logger), eventMgr(sessionMgr, logger), mysqlBridge(){
 	sessionMgr.setEventManager(eventMgr);
 }
 
@@ -254,7 +254,7 @@ void DBProxyMain::onSocketEvent(SocketApplication::EventType type, const uint32 
 	switch(type){
 		case SocketApplication::EventType::Connected:
 			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
-			sessionMgr.createUserSession(clientIndex);
+			sessionMgr.createUserSession(clientIndex, socket, clientIndex);
 			break;
 		case SocketApplication::EventType::Disconnected:
 			logger.pushLog("Client disconnected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
