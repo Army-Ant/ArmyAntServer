@@ -17,6 +17,7 @@ set PROTOFILES=%PROTOFILES% %PROTOFILE_PATH%\ArmyAntMessage\System\SocketHead.pr
 set PROTOFILES=%PROTOFILES% %PROTOFILE_PATH%\ArmyAntMessage\System\SessionStart.proto
 set PROTOFILES=%PROTOFILES% %PROTOFILE_PATH%\ArmyAntMessage\DBProxy\SqlRequest.proto
 set PROTOFILES=%PROTOFILES% %PROTOFILE_PATH%\ArmyAntMessage\SubApps\SimpleEcho.proto
+set PROTOFILES=%PROTOFILES% %PROTOFILE_PATH%\ArmyAntMessage\SubApps\Huolong.proto
 
 :create_noexist_path
 if not exist %PROTOCPP_PATH% (mkdir %PROTOCPP_PATH%)

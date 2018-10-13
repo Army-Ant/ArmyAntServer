@@ -23,6 +23,7 @@ struct ServerMainReturnValues{
 
 struct ServerMainAppid{
 	static const int32 simpleEchoApp = 1001;
+	static const int32 huolongServer = 1010;
 };
 
 }

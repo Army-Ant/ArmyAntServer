@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package ArmyAntMessage.SubApps;
+
+import "ArmyAntMessage/Common/base.proto";
+
+message C2SM_HuolongLoginRequest{
+	option (msg_code) = 10101001;
+	string user_name = 1;
+}
+
+message SM2C_HuolongLoginResponse{
+	option (msg_code) = 10102001;
+	int32 result = 1;	// 0: normal, others: error code
+	string message = 2;
+}
+
+message C2SM_HuolongLogoutRequest{
+	option (msg_code) = 10101002;
+	string user_name = 1;
+}
+
+message SM2C_HuolongLogoutResponse{
+	option (msg_code) = 10102002;
+	int32 result = 1;	// 0: normal, others: error code
+	string message = 2;
+}

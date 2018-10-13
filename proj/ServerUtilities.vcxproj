@@ -188,6 +188,7 @@
     <ClInclude Include="..\inc\WebsocketApplication.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.h" />
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\Huolong.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\SimpleEcho.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.h" />
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.h" />
@@ -195,6 +196,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\Common\base.pb.cc" />
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\DBProxy\SqlRequest.pb.cc" />
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\Huolong.pb.cc" />
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\SimpleEcho.pb.cc" />
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc" />
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc" />
@@ -214,6 +216,7 @@
     <None Include="..\res\ConfigJson\ServerMainConfig.json" />
     <None Include="..\res\proto\ArmyAntMessage\Common\base.proto" />
     <None Include="..\res\proto\ArmyAntMessage\DBProxy\SqlRequest.proto" />
+    <None Include="..\res\proto\ArmyAntMessage\SubApps\Huolong.proto" />
     <None Include="..\res\proto\ArmyAntMessage\SubApps\SimpleEcho.proto" />
     <None Include="..\res\proto\ArmyAntMessage\System\SessionStart.proto" />
     <None Include="..\res\proto\ArmyAntMessage\System\SocketHead.proto" />

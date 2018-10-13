@@ -18,38 +18,50 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="ServerUtilities.vcxproj">
+      <Project>{4fc51bfa-39af-4a3e-bffd-c9562cd66f89}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\HuolongServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongServer.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{8D1A0FB3-C01B-4C63-98A4-DC24643E5871}</ProjectGuid>
-    <RootNamespace>ArmyAntServer</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{51B4CC3D-1E7D-446E-A368-12F8F76E1E07}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>HuolongServer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -92,144 +104,82 @@
     <Import Project="ArmyAntServer_OutName_Release_x64.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetExt>.lib</TargetExt>
-    <IncludePath>$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetExt>.lib</TargetExt>
-    <IncludePath>$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetExt>.lib</TargetExt>
-    <IncludePath>$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <TargetExt>.lib</TargetExt>
-    <IncludePath>$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <PreBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>---------编译前脚本---------------------</Message>
-    </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>---------生成后脚本---------------------</Message>
-    </PostBuildEvent>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <PreBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>---------编译前脚本---------------------</Message>
-    </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>---------生成后脚本---------------------</Message>
-    </PostBuildEvent>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <PreBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>---------编译前脚本---------------------</Message>
-    </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>---------生成后脚本---------------------</Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <PreBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>---------编译前脚本---------------------</Message>
-    </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>---------生成后脚本---------------------</Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\inc\ServerConstants.h" />
-    <ClInclude Include="..\inc\ServerMain.h" />
-    <ClInclude Include="..\inc\subApplication.h" />
-    <ClInclude Include="..\inc\SubApplicationManager.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\ServerCore\ServerMain.cpp" />
-    <ClCompile Include="..\src\ServerCore\subApplication.cpp" />
-    <ClCompile Include="..\src\ServerCore\subApplicationManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="HuolongServer.vcxproj">
-      <Project>{51b4cc3d-1e7d-446e-a368-12f8f76e1e07}</Project>
-    </ProjectReference>
-    <ProjectReference Include="ServerUtilities.vcxproj">
-      <Project>{4fc51bfa-39af-4a3e-bffd-c9562cd66f89}</Project>
-    </ProjectReference>
-    <ProjectReference Include="SimpleEchoApp.vcxproj">
-      <Project>{2bc19af5-031e-419d-bbd4-f49145f633b4}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

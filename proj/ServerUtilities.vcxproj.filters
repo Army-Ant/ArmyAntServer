@@ -111,6 +111,9 @@
     <ClInclude Include="..\inc\WebsocketApplication.h">
       <Filter>websocket</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\Huolong.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\Logger.cpp">
@@ -158,6 +161,9 @@
     <ClCompile Include="..\src\Utilities\WebsocketApplication.cpp">
       <Filter>websocket</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\Huolong.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\res\sqlScripts\initializeNewEmptyDB_MariaDB.sql">
@@ -185,6 +191,9 @@
       <Filter>resources\proto\ArmyAntMessage\Common</Filter>
     </None>
     <None Include="..\res\proto\ArmyAntMessage\SubApps\SimpleEcho.proto">
+      <Filter>resources\proto\ArmyAntMessage\SubApps</Filter>
+    </None>
+    <None Include="..\res\proto\ArmyAntMessage\SubApps\Huolong.proto">
       <Filter>resources\proto\ArmyAntMessage\SubApps</Filter>
     </None>
   </ItemGroup>

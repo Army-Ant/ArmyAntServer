@@ -8,6 +8,7 @@
 #include <ArmyAntMessage/System/SocketHead.pb.h>
 
 #include <EchoApp.h>
+#include <HuolongServer.h>
 
 static const char* const LOGGER_TAG = "ServerMain";
 
@@ -270,6 +271,7 @@ int32 ServerMain::modulesInitialization(){
 
 	// 初始化所有子程序
 	appMgr.registerApplication(Constants::ServerMainAppid::simpleEchoApp, new EchoApp(Constants::ServerMainAppid::simpleEchoApp, *this));
+	appMgr.registerApplication(Constants::ServerMainAppid::huolongServer, new HuolongServer(Constants::ServerMainAppid::huolongServer, *this));
 
 
 	logger.pushLog("All modules initialized successful", Logger::AlertLevel::Info, LOGGER_TAG);
