@@ -4,9 +4,15 @@
 [submodule "external/Protobuf"]
 	path = external/Protobuf
 	url = https://github.com/google/protobuf.git
+	ignore = dirty
 [submodule "external/closure-library"]
 	path = external/closure-library
 	url = https://github.com/google/closure-library.git
+	ignore = dirty
 [submodule "external/ArmyAnt.js"]
 	path = external/ArmyAnt.js
 	url = https://github.com/Army-Ant/ArmyAnt.js.git
+[submodule "external/ArmyAntGenerator"]
+	path = external/ArmyAntGenerator
+	url = https://github.com/Army-Ant/ArmyAntGenerator.git
+	ignore = dirty
