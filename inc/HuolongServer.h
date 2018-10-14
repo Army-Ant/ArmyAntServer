@@ -16,10 +16,10 @@ public:
 	virtual bool onStart() override;
 	virtual bool onStop() override;
 
-	void onUserLogin(int32 extendVerstion, int32 conversationCode, int32 userId, void*message, int32 length);
-	void onUserLogout(int32 extendVerstion, int32 conversationCode, int32 userId, void*message, int32 length);
+	//void onUserLogin(int32 extendVerstion, int32 conversationCode, int32 userId, void*message, int32 length);
+	//void onUserLogout(int32 extendVerstion, int32 conversationCode, int32 userId, void*message, int32 length);
 
-	void onUserDisconnected(int32 userId);
+	//void onUserDisconnected(int32 userId);
 
 private:
 	std::map<std::string, int32> userList;

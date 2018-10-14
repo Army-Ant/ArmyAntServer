@@ -21,14 +21,14 @@ HuolongServer::~HuolongServer(){}
 
 bool HuolongServer::onStart(){
 	userList.clear();
-	server.getEventManager().addGlobalListenerForNetworkResponse(EVENT_TAG, EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_HuolongLoginRequest>(), NETWORK_CALLBACK(HuolongServer::onUserLogin));
+	//server.getEventManager().addGlobalListenerForNetworkResponse(EVENT_TAG, EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_HuolongLoginRequest>(), NETWORK_CALLBACK(HuolongServer::onUserLogin));
 
 	server.getLogger().pushLog("Huolong server started !", Logger::AlertLevel::Info, LOGGER_TAG);
 	return true;
 }
 
 bool HuolongServer::onStop(){
-	server.getEventManager().removeGlobalListenerForLocalEvent(EVENT_TAG, EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_HuolongLoginRequest>());
+	//server.getEventManager().removeGlobalListenerForLocalEvent(EVENT_TAG, EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_HuolongLoginRequest>());
 	return false;
 }
 
