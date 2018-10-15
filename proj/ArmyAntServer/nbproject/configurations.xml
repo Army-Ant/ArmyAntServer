@@ -30,8 +30,8 @@
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
-            <pElem>../../res/ProtobufSource/cpp</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
+            <pElem>../../src/ProtobufSource/cpp</pElem>
             <pElem>..</pElem>
           </incDir>
           <preprocessorList>
@@ -55,20 +55,8 @@
         <linkerTool>
           <output>../../bin/armyantserverd</output>
           <linkerLibItems>
-            <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_d_64.so</linkerLibFileItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../ServerCore"
-                            CT="3"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../ServerCore"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="../../bin/libservercore_d.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../ServerUtilities"
                             CT="3"
@@ -81,6 +69,43 @@
                             OP="../../bin/libserverutilities_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../SimpleEchoApp"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../SimpleEchoApp"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="../../bin/libsimpleechoapp_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../HuolongServer"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../HuolongServer"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="../../bin/libhuolongserver_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../ServerCore"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../ServerCore"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="../../bin/libservercore_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerOptionItem>-lprotobuf</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -112,7 +137,7 @@
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
-            <pElem>../../res/ProtobufSource/cpp</pElem>
+            <pElem>../../src/ProtobufSource/cpp</pElem>
             <pElem>..</pElem>
           </incDir>
           <preprocessorList>
@@ -137,20 +162,8 @@
         <linkerTool>
           <output>../../bin/armyantserver</output>
           <linkerLibItems>
-            <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_64.so</linkerLibFileItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../ServerCore"
-                            CT="3"
-                            CN="Release"
-                            AC="false"
-                            BL="true"
-                            WD="../ServerCore"
-                            BC="${MAKE}  -f Makefile CONF=Release"
-                            CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="../../bin/libservercore.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../ServerUtilities"
                             CT="3"
@@ -163,6 +176,43 @@
                             OP="../../bin/libserverutilities.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../SimpleEchoApp"
+                            CT="3"
+                            CN="Release"
+                            AC="false"
+                            BL="true"
+                            WD="../SimpleEchoApp"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="../../bin/libsimpleechoapp.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../HuolongServer"
+                            CT="3"
+                            CN="Release"
+                            AC="false"
+                            BL="true"
+                            WD="../HuolongServer"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="../../bin/libhuolongserver.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../ServerCore"
+                            CT="3"
+                            CN="Release"
+                            AC="false"
+                            BL="true"
+                            WD="../ServerCore"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="../../bin/libservercore.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerOptionItem>-lprotobuf</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

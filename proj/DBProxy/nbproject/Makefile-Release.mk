@@ -52,13 +52,11 @@ FFLAGS=-m64
 ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lmysqlcppconn ../../external/Protobuf/bin/libprotobuf.so ../../external/ArmyAntLib/bin/libArmyAnt_64.so ../DatabaseProxyCore/../../bin/libdatabaseproxycore.a ../ServerUtilities/../../bin/libserverutilities.a
+LDLIBSOPTIONS=-lpthread -lmysqlcppconn ../../external/ArmyAntLib/bin/libArmyAnt_64.so ../DatabaseProxyCore/../../bin/libdatabaseproxycore.a ../ServerUtilities/../../bin/libserverutilities.a -lprotobuf
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../bin/dbproxy
-
-../../bin/dbproxy: ../../external/Protobuf/bin/libprotobuf.so
 
 ../../bin/dbproxy: ../../external/ArmyAntLib/bin/libArmyAnt_64.so
 
@@ -73,7 +71,7 @@ LDLIBSOPTIONS=-lmysqlcppconn ../../external/Protobuf/bin/libprotobuf.so ../../ex
 ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o: nbproject/Makefile-${CND_CONF}.mk ../../src/DBProxyEntry/ArmyAntDBProxy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/fbe89dad
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.12/include -I../../res/ProtobufSource/cpp -I.. -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o ../../src/DBProxyEntry/ArmyAntDBProxy.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.12/include -I../../src/ProtobufSource/cpp -I.. -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/fbe89dad/ArmyAntDBProxy.o ../../src/DBProxyEntry/ArmyAntDBProxy.cpp
 
 # Subprojects
 .build-subprojects:

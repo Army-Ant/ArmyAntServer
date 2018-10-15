@@ -9,8 +9,10 @@
             <header-extensions/>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
+                <make-dep-project>../HuolongServer</make-dep-project>
                 <make-dep-project>../ServerUtilities</make-dep-project>
                 <make-dep-project>../ServerCore</make-dep-project>
+                <make-dep-project>../SimpleEchoApp</make-dep-project>
             </make-dep-projects>
             <sourceRootList/>
             <confList>

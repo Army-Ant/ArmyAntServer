@@ -175,6 +175,9 @@ void UserSession::onUpdate(){
 							case ArmyAntMessage::System::ConversationStepType::ResponseEnd:
 								conversationWaitingList.erase(lastConversation);
 								break;
+                                                        default:
+                                                                // TODO: Warning
+                                                                break;
 						}
 					}
 					ioMutex.unlock();

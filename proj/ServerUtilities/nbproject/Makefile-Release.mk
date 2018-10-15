@@ -35,15 +35,20 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/9e673e4/SqlRequest.pb.o \
-	${OBJECTDIR}/_ext/35c7a07b/SessionStart.pb.o \
-	${OBJECTDIR}/_ext/35c7a07b/SocketHead.pb.o \
+	${OBJECTDIR}/_ext/ad60f73/base.pb.o \
+	${OBJECTDIR}/_ext/3671a428/SqlRequest.pb.o \
+	${OBJECTDIR}/_ext/a7dda84a/Huolong.pb.o \
+	${OBJECTDIR}/_ext/a7dda84a/SimpleEcho.pb.o \
+	${OBJECTDIR}/_ext/26b357b7/SessionStart.pb.o \
+	${OBJECTDIR}/_ext/26b357b7/SocketHead.pb.o \
 	${OBJECTDIR}/_ext/f8bc3adf/EventManager.o \
 	${OBJECTDIR}/_ext/f8bc3adf/Logger.o \
 	${OBJECTDIR}/_ext/f8bc3adf/MessageQueue.o \
 	${OBJECTDIR}/_ext/f8bc3adf/MessageQueueManager.o \
 	${OBJECTDIR}/_ext/f8bc3adf/SocketApplication.o \
 	${OBJECTDIR}/_ext/f8bc3adf/SocketClientApplication.o \
+	${OBJECTDIR}/_ext/f8bc3adf/UserSession.o \
+	${OBJECTDIR}/_ext/f8bc3adf/UserSessionManager.o \
 	${OBJECTDIR}/_ext/f8bc3adf/base.o
 
 
@@ -73,55 +78,80 @@ LDLIBSOPTIONS=
 	${AR} -rv ../../bin/libserverutilities.a ${OBJECTFILES} 
 	$(RANLIB) ../../bin/libserverutilities.a
 
-${OBJECTDIR}/_ext/9e673e4/SqlRequest.pb.o: nbproject/Makefile-${CND_CONF}.mk ../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc 
-	${MKDIR} -p ${OBJECTDIR}/_ext/9e673e4
+${OBJECTDIR}/_ext/ad60f73/base.pb.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.cc 
+	${MKDIR} -p ${OBJECTDIR}/_ext/ad60f73
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/9e673e4/SqlRequest.pb.o ../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/ad60f73/base.pb.o ../../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.cc
 
-${OBJECTDIR}/_ext/35c7a07b/SessionStart.pb.o: nbproject/Makefile-${CND_CONF}.mk ../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc 
-	${MKDIR} -p ${OBJECTDIR}/_ext/35c7a07b
+${OBJECTDIR}/_ext/3671a428/SqlRequest.pb.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc 
+	${MKDIR} -p ${OBJECTDIR}/_ext/3671a428
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/35c7a07b/SessionStart.pb.o ../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/3671a428/SqlRequest.pb.o ../../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc
 
-${OBJECTDIR}/_ext/35c7a07b/SocketHead.pb.o: nbproject/Makefile-${CND_CONF}.mk ../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc 
-	${MKDIR} -p ${OBJECTDIR}/_ext/35c7a07b
+${OBJECTDIR}/_ext/a7dda84a/Huolong.pb.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.cc 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a7dda84a
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/35c7a07b/SocketHead.pb.o ../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a7dda84a/Huolong.pb.o ../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.cc
+
+${OBJECTDIR}/_ext/a7dda84a/SimpleEcho.pb.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.cc 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a7dda84a
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a7dda84a/SimpleEcho.pb.o ../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.cc
+
+${OBJECTDIR}/_ext/26b357b7/SessionStart.pb.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc 
+	${MKDIR} -p ${OBJECTDIR}/_ext/26b357b7
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/26b357b7/SessionStart.pb.o ../../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc
+
+${OBJECTDIR}/_ext/26b357b7/SocketHead.pb.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc 
+	${MKDIR} -p ${OBJECTDIR}/_ext/26b357b7
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/26b357b7/SocketHead.pb.o ../../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc
 
 ${OBJECTDIR}/_ext/f8bc3adf/EventManager.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/EventManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/EventManager.o ../../src/Utilities/EventManager.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/EventManager.o ../../src/Utilities/EventManager.cpp
 
 ${OBJECTDIR}/_ext/f8bc3adf/Logger.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/Logger.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/Logger.o ../../src/Utilities/Logger.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/Logger.o ../../src/Utilities/Logger.cpp
 
 ${OBJECTDIR}/_ext/f8bc3adf/MessageQueue.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/MessageQueue.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/MessageQueue.o ../../src/Utilities/MessageQueue.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/MessageQueue.o ../../src/Utilities/MessageQueue.cpp
 
 ${OBJECTDIR}/_ext/f8bc3adf/MessageQueueManager.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/MessageQueueManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/MessageQueueManager.o ../../src/Utilities/MessageQueueManager.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/MessageQueueManager.o ../../src/Utilities/MessageQueueManager.cpp
 
 ${OBJECTDIR}/_ext/f8bc3adf/SocketApplication.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/SocketApplication.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/SocketApplication.o ../../src/Utilities/SocketApplication.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/SocketApplication.o ../../src/Utilities/SocketApplication.cpp
 
 ${OBJECTDIR}/_ext/f8bc3adf/SocketClientApplication.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/SocketClientApplication.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/SocketClientApplication.o ../../src/Utilities/SocketClientApplication.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/SocketClientApplication.o ../../src/Utilities/SocketClientApplication.cpp
+
+${OBJECTDIR}/_ext/f8bc3adf/UserSession.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/UserSession.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/UserSession.o ../../src/Utilities/UserSession.cpp
+
+${OBJECTDIR}/_ext/f8bc3adf/UserSessionManager.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/UserSessionManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/UserSessionManager.o ../../src/Utilities/UserSessionManager.cpp
 
 ${OBJECTDIR}/_ext/f8bc3adf/base.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/base.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/base.o ../../src/Utilities/base.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f8bc3adf/base.o ../../src/Utilities/base.cpp
 
 # Subprojects
 .build-subprojects:

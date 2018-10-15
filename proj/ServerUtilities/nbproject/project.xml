@@ -12,6 +12,7 @@
             <sourceRootList>
                 <sourceRootElem>../../src/Utilities</sourceRootElem>
                 <sourceRootElem>../../res/ProtobufSource/cpp/ArmyAntMessage</sourceRootElem>
+                <sourceRootElem>../../src/ProtobufSource</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

@@ -52,19 +52,21 @@ FFLAGS=-m64
 ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../external/Protobuf/bin/libprotobuf.so ../../external/ArmyAntLib/bin/libArmyAnt_d_64.so ../ServerCore/../../bin/libservercore_d.a ../ServerUtilities/../../bin/libserverutilities_d.a
+LDLIBSOPTIONS=-lpthread ../../external/ArmyAntLib/bin/libArmyAnt_d_64.so ../ServerUtilities/../../bin/libserverutilities_d.a ../SimpleEchoApp/../../bin/libsimpleechoapp_d.a ../HuolongServer/../../bin/libhuolongserver_d.a ../ServerCore/../../bin/libservercore_d.a -lprotobuf
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../bin/armyantserverd
 
-../../bin/armyantserverd: ../../external/Protobuf/bin/libprotobuf.so
-
 ../../bin/armyantserverd: ../../external/ArmyAntLib/bin/libArmyAnt_d_64.so
 
-../../bin/armyantserverd: ../ServerCore/../../bin/libservercore_d.a
-
 ../../bin/armyantserverd: ../ServerUtilities/../../bin/libserverutilities_d.a
+
+../../bin/armyantserverd: ../SimpleEchoApp/../../bin/libsimpleechoapp_d.a
+
+../../bin/armyantserverd: ../HuolongServer/../../bin/libhuolongserver_d.a
+
+../../bin/armyantserverd: ../ServerCore/../../bin/libservercore_d.a
 
 ../../bin/armyantserverd: ${OBJECTFILES}
 	${MKDIR} -p ../../bin
@@ -73,12 +75,14 @@ LDLIBSOPTIONS=../../external/Protobuf/bin/libprotobuf.so ../../external/ArmyAntL
 ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerEntry/ArmyAntServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/acbbdd84
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DDEBUG -DOS_Linux -D_64BIT -D_DEBUG -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../res/ProtobufSource/cpp -I../../external/Protobuf/inc -I.. -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o ../../src/ServerEntry/ArmyAntServer.cpp
+	$(COMPILE.cc) -g -Wall -DDEBUG -DOS_Linux -D_64BIT -D_DEBUG -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -I.. -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o ../../src/ServerEntry/ArmyAntServer.cpp
 
 # Subprojects
 .build-subprojects:
-	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Debug
 	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug
+	cd ../SimpleEchoApp && ${MAKE}  -f Makefile CONF=Debug
+	cd ../HuolongServer && ${MAKE}  -f Makefile CONF=Debug
+	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -87,8 +91,10 @@ ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ..
 
 # Subprojects
 .clean-subprojects:
-	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../SimpleEchoApp && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../HuolongServer && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

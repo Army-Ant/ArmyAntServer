@@ -36,8 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/371df04d/ServerMain.o \
-	${OBJECTDIR}/_ext/371df04d/UserSession.o \
-	${OBJECTDIR}/_ext/371df04d/UserSessionManager.o
+	${OBJECTDIR}/_ext/371df04d/subApplication.o \
+	${OBJECTDIR}/_ext/371df04d/subApplicationManager.o
 
 
 # C Compiler Flags
@@ -69,17 +69,17 @@ LDLIBSOPTIONS=
 ${OBJECTDIR}/_ext/371df04d/ServerMain.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/ServerMain.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/371df04d
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/ServerMain.o ../../src/ServerCore/ServerMain.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/ServerMain.o ../../src/ServerCore/ServerMain.cpp
 
-${OBJECTDIR}/_ext/371df04d/UserSession.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/UserSession.cpp 
+${OBJECTDIR}/_ext/371df04d/subApplication.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/subApplication.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/371df04d
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/UserSession.o ../../src/ServerCore/UserSession.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/subApplication.o ../../src/ServerCore/subApplication.cpp
 
-${OBJECTDIR}/_ext/371df04d/UserSessionManager.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/UserSessionManager.cpp 
+${OBJECTDIR}/_ext/371df04d/subApplicationManager.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/subApplicationManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/371df04d
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../res/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/UserSessionManager.o ../../src/ServerCore/UserSessionManager.cpp
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/subApplicationManager.o ../../src/ServerCore/subApplicationManager.cpp
 
 # Subprojects
 .build-subprojects:

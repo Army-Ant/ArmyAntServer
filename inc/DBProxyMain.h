@@ -18,54 +18,54 @@ namespace ArmyAntServer{
 class DBProxyMain{
 public:
 	// Initialize DBProxy
-	// ³õÊ¼»¯
+	// åˆå§‹åŒ–
 	DBProxyMain();
 	~DBProxyMain();
 
 public:
 	// Run the DBProxy, start parameter is set in setting file : Constants::DB_PROXY_CONFIG_FILE_PATH
-	// Æô¶¯·şÎñÆ÷, ¸ù¾İÈÕÖ¾ÀïµÄÅäÖÃ
+	// å¯åŠ¨æœåŠ¡å™¨, æ ¹æ®æ—¥å¿—é‡Œçš„é…ç½®
 	int32 main();
 	bool send(uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content);
 
 public:
 	// Get the UserSessionManager
-	// »ñÈ¡ÓÃ»§»á»°¹ÜÀíÆ÷
+	// è·å–ç”¨æˆ·ä¼šè¯ç®¡ç†å™¨
 	UserSessionManager & getUserSessionManager();
 	// Get the MessageQueueManager to send message to DBProxyMain ( or to other parts )
-	// »ñÈ¡ÏûÏ¢¶ÓÁĞ¹ÜÀíÆ÷, ÒÔ±ãĞÂ½¨ÏûÏ¢¶ÓÁĞ, »òÕßÏòÆäËûÄ£¿é·¢ËÍÏûÏ¢
+	// è·å–æ¶ˆæ¯é˜Ÿåˆ—ç®¡ç†å™¨, ä»¥ä¾¿æ–°å»ºæ¶ˆæ¯é˜Ÿåˆ—, æˆ–è€…å‘å…¶ä»–æ¨¡å—å‘é€æ¶ˆæ¯
 	MessageQueueManager & getMessageQueueManager();
 
 private:
-	// ½âÎöÅäÖÃÎÄ¼şµÄº¯Êı
+	// è§£æé…ç½®æ–‡ä»¶çš„å‡½æ•°
 	int32 parseConfig();
-	// ³õÊ¼»¯¸÷Ä£¿éµÄº¯Êı
+	// åˆå§‹åŒ–å„æ¨¡å—çš„å‡½æ•°
 	int32 modulesInitialization();
-	// ÍË³öÊ±Ïú»Ù×ÊÔ´
+	// é€€å‡ºæ—¶é”€æ¯èµ„æº
 	int32 modulesUninitialization();
 
 private:
-	// ÊÕµ½ Socket ÊÂ¼şµÄ´¦Àíº¯Êı
+	// æ”¶åˆ° Socket äº‹ä»¶çš„å¤„ç†å‡½æ•°
 	void onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content);
-	// ÊÕµ½ Socket ÍøÂçÏûÏ¢µÄ´¦Àíº¯Êı
+	// æ”¶åˆ° Socket ç½‘ç»œæ¶ˆæ¯çš„å¤„ç†å‡½æ•°
 	void onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body);
 
-	// ±¾µØÊÂ¼ş·Ö·¢º¯Êı
+	// æœ¬åœ°äº‹ä»¶åˆ†å‘å‡½æ•°
 	void onLocalEvent(int32 code, int32 userIndex, LocalEventData*data);
-	// ÍøÂçÏûÏ¢·Ö·¢º¯Êı
+	// ç½‘ç»œæ¶ˆæ¯åˆ†å‘å‡½æ•°
 	void onNetworkEvent(int32 code, int32 userIndex, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message*message);
 
 private:
-	bool debug;    // ÊÇ·ñ´¦ÓÚµ÷ÊÔÄ£Ê½, ÓÉÅäÖÃÎÄ¼ş¾ö¶¨´Ë²ÎÊı
-	uint16 port;    // DBProxyMain·şÎñÆ÷¶Ë¿ÚºÅ, ÓÉÅäÖÃÎÄ¼ş¾ö¶¨´Ë²ÎÊı
-	MessageQueue* msgQueue;   // DBProxyMainÏûÏ¢¶ÓÁĞ
+	bool debug;    // æ˜¯å¦å¤„äºè°ƒè¯•æ¨¡å¼, ç”±é…ç½®æ–‡ä»¶å†³å®šæ­¤å‚æ•°
+	uint16 port;    // DBProxyMainæœåŠ¡å™¨ç«¯å£å·, ç”±é…ç½®æ–‡ä»¶å†³å®šæ­¤å‚æ•°
+	MessageQueue* msgQueue;   // DBProxyMainæ¶ˆæ¯é˜Ÿåˆ—
 
 private:
-	SocketApplication socket;   // Socket»á»°Àà¶ÔÏó
-	Logger logger;    // DBProxyMainÈÕÖ¾ÎÄ¼ş
-	EventManager eventMgr;    // ÊÂ¼ş¹ÜÀíÆ÷
-	MessageQueueManager msgQueueMgr;    // ÏûÏ¢¶ÓÁĞ¹ÜÀíÆ÷
-	UserSessionManager sessionMgr;    // ÓÃ»§»á»°¹ÜÀíÆ÷
+	SocketApplication socket;   // Socketä¼šè¯ç±»å¯¹è±¡
+	Logger logger;    // DBProxyMainæ—¥å¿—æ–‡ä»¶
+	EventManager eventMgr;    // äº‹ä»¶ç®¡ç†å™¨
+	MessageQueueManager msgQueueMgr;    // æ¶ˆæ¯é˜Ÿåˆ—ç®¡ç†å™¨
+	UserSessionManager sessionMgr;    // ç”¨æˆ·ä¼šè¯ç®¡ç†å™¨
 
 private:
 	MySqlBridge mysqlBridge;
