@@ -35,9 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/371df04d/ServerMain.o \
-	${OBJECTDIR}/_ext/371df04d/subApplication.o \
-	${OBJECTDIR}/_ext/371df04d/subApplicationManager.o
+	${OBJECTDIR}/_ext/371df04d/ServerMain.o
 
 
 # C Compiler Flags
@@ -70,16 +68,6 @@ ${OBJECTDIR}/_ext/371df04d/ServerMain.o: nbproject/Makefile-${CND_CONF}.mk ../..
 	${MKDIR} -p ${OBJECTDIR}/_ext/371df04d
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -DDEBUG -DOS_Linux -D_64BIT -D_DEBUG -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/ServerMain.o ../../src/ServerCore/ServerMain.cpp
-
-${OBJECTDIR}/_ext/371df04d/subApplication.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/subApplication.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/371df04d
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DDEBUG -DOS_Linux -D_64BIT -D_DEBUG -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/subApplication.o ../../src/ServerCore/subApplication.cpp
-
-${OBJECTDIR}/_ext/371df04d/subApplicationManager.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/subApplicationManager.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/371df04d
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -DDEBUG -DOS_Linux -D_64BIT -D_DEBUG -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/subApplicationManager.o ../../src/ServerCore/subApplicationManager.cpp
 
 # Subprojects
 .build-subprojects:

@@ -140,6 +140,8 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>../../src/ServerCore/subApplication.cpp</itemPath>
+    <itemPath>../../src/ServerCore/subApplicationManager.cpp</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>../../src/Utilities</Elem>
@@ -539,6 +541,16 @@
       <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/System/SocketHead_pb.rb"
             ex="false"
             tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ServerCore/subApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ServerCore/subApplicationManager.cpp"
+            ex="false"
+            tool="1"
             flavor2="0">
       </item>
       <item path="../../src/Utilities/EventManager.cpp"
@@ -975,6 +987,16 @@
       <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/System/SocketHead_pb.rb"
             ex="false"
             tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ServerCore/subApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ServerCore/subApplicationManager.cpp"
+            ex="false"
+            tool="1"
             flavor2="0">
       </item>
       <item path="../../src/Utilities/EventManager.cpp"

@@ -52,21 +52,23 @@ FFLAGS=-m64
 ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lpthread ../../external/ArmyAntLib/bin/libArmyAnt_64.so ../ServerUtilities/../../bin/libserverutilities.a ../SimpleEchoApp/../../bin/libsimpleechoapp.a ../HuolongServer/../../bin/libhuolongserver.a ../ServerCore/../../bin/libservercore.a -lprotobuf
+LDLIBSOPTIONS=../ServerCore/../../bin/libservercore.a ../HuolongServer/../../bin/libhuolongserver.a ../SimpleEchoApp/../../bin/libsimpleechoapp.a ../ServerUtilities/../../bin/libserverutilities.a ../../external/ArmyAntLib/bin/libArmyAnt_64.so -lprotobuf ../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a -lpthread
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../bin/armyantserver
 
-../../bin/armyantserver: ../../external/ArmyAntLib/bin/libArmyAnt_64.so
-
-../../bin/armyantserver: ../ServerUtilities/../../bin/libserverutilities.a
-
-../../bin/armyantserver: ../SimpleEchoApp/../../bin/libsimpleechoapp.a
+../../bin/armyantserver: ../ServerCore/../../bin/libservercore.a
 
 ../../bin/armyantserver: ../HuolongServer/../../bin/libhuolongserver.a
 
-../../bin/armyantserver: ../ServerCore/../../bin/libservercore.a
+../../bin/armyantserver: ../SimpleEchoApp/../../bin/libsimpleechoapp.a
+
+../../bin/armyantserver: ../ServerUtilities/../../bin/libserverutilities.a
+
+../../bin/armyantserver: ../../external/ArmyAntLib/bin/libArmyAnt_64.so
+
+../../bin/armyantserver: ../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a
 
 ../../bin/armyantserver: ${OBJECTFILES}
 	${MKDIR} -p ../../bin
@@ -79,10 +81,10 @@ ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ..
 
 # Subprojects
 .build-subprojects:
-	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release
-	cd ../SimpleEchoApp && ${MAKE}  -f Makefile CONF=Release
-	cd ../HuolongServer && ${MAKE}  -f Makefile CONF=Release
 	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release
+	cd ../HuolongServer && ${MAKE}  -f Makefile CONF=Release
+	cd ../SimpleEchoApp && ${MAKE}  -f Makefile CONF=Release
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -91,10 +93,10 @@ ${OBJECTDIR}/_ext/acbbdd84/ArmyAntServer.o: nbproject/Makefile-${CND_CONF}.mk ..
 
 # Subprojects
 .clean-subprojects:
-	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../SimpleEchoApp && ${MAKE}  -f Makefile CONF=Release clean
-	cd ../HuolongServer && ${MAKE}  -f Makefile CONF=Release clean
 	cd ../ServerCore && ${MAKE}  -f Makefile CONF=Release clean
+	cd ../HuolongServer && ${MAKE}  -f Makefile CONF=Release clean
+	cd ../SimpleEchoApp && ${MAKE}  -f Makefile CONF=Release clean
+	cd ../ServerUtilities && ${MAKE}  -f Makefile CONF=Release clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

@@ -52,7 +52,7 @@ FFLAGS=-m64
 ASFLAGS=--64
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lpthread -lmysqlcppconn ../../external/ArmyAntLib/bin/libArmyAnt_64.so ../DatabaseProxyCore/../../bin/libdatabaseproxycore.a ../ServerUtilities/../../bin/libserverutilities.a -lprotobuf
+LDLIBSOPTIONS=-lpthread -lmysqlcppconn ../../external/ArmyAntLib/bin/libArmyAnt_64.so ../DatabaseProxyCore/../../bin/libdatabaseproxycore.a ../ServerUtilities/../../bin/libserverutilities.a -lprotobuf ../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -63,6 +63,8 @@ LDLIBSOPTIONS=-lpthread -lmysqlcppconn ../../external/ArmyAntLib/bin/libArmyAnt_
 ../../bin/dbproxy: ../DatabaseProxyCore/../../bin/libdatabaseproxycore.a
 
 ../../bin/dbproxy: ../ServerUtilities/../../bin/libserverutilities.a
+
+../../bin/dbproxy: ../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a
 
 ../../bin/dbproxy: ${OBJECTFILES}
 	${MKDIR} -p ../../bin

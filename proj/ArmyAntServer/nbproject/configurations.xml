@@ -55,30 +55,16 @@
         <linkerTool>
           <output>../../bin/armyantserverd</output>
           <linkerLibItems>
-            <linkerOptionItem>-lpthread</linkerOptionItem>
-            <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_d_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
-              <makeArtifact PL="../ServerUtilities"
+              <makeArtifact PL="../ServerCore"
                             CT="3"
                             CN="Debug"
                             AC="true"
                             BL="true"
-                            WD="../ServerUtilities"
+                            WD="../ServerCore"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="../../bin/libserverutilities_d.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../SimpleEchoApp"
-                            CT="3"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../SimpleEchoApp"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="../../bin/libsimpleechoapp_d.a">
+                            OP="../../bin/libservercore_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
@@ -94,18 +80,33 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
-              <makeArtifact PL="../ServerCore"
+              <makeArtifact PL="../SimpleEchoApp"
                             CT="3"
                             CN="Debug"
                             AC="true"
                             BL="true"
-                            WD="../ServerCore"
+                            WD="../SimpleEchoApp"
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="../../bin/libservercore_d.a">
+                            OP="../../bin/libsimpleechoapp_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../ServerUtilities"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../ServerUtilities"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="../../bin/libserverutilities_d.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_d_64.so</linkerLibFileItem>
             <linkerOptionItem>-lprotobuf</linkerOptionItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a</linkerLibFileItem>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -162,30 +163,16 @@
         <linkerTool>
           <output>../../bin/armyantserver</output>
           <linkerLibItems>
-            <linkerOptionItem>-lpthread</linkerOptionItem>
-            <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
-              <makeArtifact PL="../ServerUtilities"
+              <makeArtifact PL="../ServerCore"
                             CT="3"
                             CN="Release"
                             AC="false"
                             BL="true"
-                            WD="../ServerUtilities"
+                            WD="../ServerCore"
                             BC="${MAKE}  -f Makefile CONF=Release"
                             CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="../../bin/libserverutilities.a">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../SimpleEchoApp"
-                            CT="3"
-                            CN="Release"
-                            AC="false"
-                            BL="true"
-                            WD="../SimpleEchoApp"
-                            BC="${MAKE}  -f Makefile CONF=Release"
-                            CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="../../bin/libsimpleechoapp.a">
+                            OP="../../bin/libservercore.a">
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
@@ -201,18 +188,33 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
-              <makeArtifact PL="../ServerCore"
+              <makeArtifact PL="../SimpleEchoApp"
                             CT="3"
                             CN="Release"
                             AC="false"
                             BL="true"
-                            WD="../ServerCore"
+                            WD="../SimpleEchoApp"
                             BC="${MAKE}  -f Makefile CONF=Release"
                             CC="${MAKE}  -f Makefile CONF=Release clean"
-                            OP="../../bin/libservercore.a">
+                            OP="../../bin/libsimpleechoapp.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../ServerUtilities"
+                            CT="3"
+                            CN="Release"
+                            AC="false"
+                            BL="true"
+                            WD="../ServerUtilities"
+                            BC="${MAKE}  -f Makefile CONF=Release"
+                            CC="${MAKE}  -f Makefile CONF=Release clean"
+                            OP="../../bin/libserverutilities.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_64.so</linkerLibFileItem>
             <linkerOptionItem>-lprotobuf</linkerOptionItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a</linkerLibFileItem>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

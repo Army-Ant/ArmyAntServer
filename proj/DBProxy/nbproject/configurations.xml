@@ -83,7 +83,7 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerOptionItem>-lprotobuf</linkerOptionItem>
-            <linkerOptionItem>-lboost_system</linkerOptionItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -167,6 +167,7 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerOptionItem>-lprotobuf</linkerOptionItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

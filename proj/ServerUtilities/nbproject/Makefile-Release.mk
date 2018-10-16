@@ -41,6 +41,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/a7dda84a/SimpleEcho.pb.o \
 	${OBJECTDIR}/_ext/26b357b7/SessionStart.pb.o \
 	${OBJECTDIR}/_ext/26b357b7/SocketHead.pb.o \
+	${OBJECTDIR}/_ext/371df04d/subApplication.o \
+	${OBJECTDIR}/_ext/371df04d/subApplicationManager.o \
 	${OBJECTDIR}/_ext/f8bc3adf/EventManager.o \
 	${OBJECTDIR}/_ext/f8bc3adf/Logger.o \
 	${OBJECTDIR}/_ext/f8bc3adf/MessageQueue.o \
@@ -107,6 +109,16 @@ ${OBJECTDIR}/_ext/26b357b7/SocketHead.pb.o: nbproject/Makefile-${CND_CONF}.mk ..
 	${MKDIR} -p ${OBJECTDIR}/_ext/26b357b7
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/26b357b7/SocketHead.pb.o ../../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc
+
+${OBJECTDIR}/_ext/371df04d/subApplication.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/subApplication.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/371df04d
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/subApplication.o ../../src/ServerCore/subApplication.cpp
+
+${OBJECTDIR}/_ext/371df04d/subApplicationManager.o: nbproject/Makefile-${CND_CONF}.mk ../../src/ServerCore/subApplicationManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/371df04d
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Wall -DNDEBUG -DOS_Linux -D_64BIT -D_cplusplus -D_x86 -I../../inc -I../../external/ArmyAntLib/inc -I../../external/mysql/mysql-connector-c++-8.0.11/include -I../../external/Protobuf/inc -I../../src/ProtobufSource/cpp -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/371df04d/subApplicationManager.o ../../src/ServerCore/subApplicationManager.cpp
 
 ${OBJECTDIR}/_ext/f8bc3adf/EventManager.o: nbproject/Makefile-${CND_CONF}.mk ../../src/Utilities/EventManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f8bc3adf
