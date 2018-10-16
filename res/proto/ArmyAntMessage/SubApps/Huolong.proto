@@ -4,20 +4,29 @@ package ArmyAntMessage.SubApps;
 
 import "ArmyAntMessage/Common/base.proto";
 
+//////////////// Account ///////////////////////////////////
+
+// Login
 message C2SM_HuolongLoginRequest{
 	option (msg_code) = 10101001;
-	string user_name = 1;
+	LoginType type = 1;
+	string user_id = 2;
+	string user_password = 3;
+	string account_auth = 4;
+	string auto_login_auth = 5;
 }
 
 message SM2C_HuolongLoginResponse{
 	option (msg_code) = 10102001;
 	int32 result = 1;	// 0: normal, others: error code
 	string message = 2;
+	string auto_login_auth = 3;
 }
 
+// Logout
 message C2SM_HuolongLogoutRequest{
 	option (msg_code) = 10101002;
-	string user_name = 1;
+	string auto_login_auth = 1;
 }
 
 message SM2C_HuolongLogoutResponse{
@@ -25,3 +34,13 @@ message SM2C_HuolongLogoutResponse{
 	int32 result = 1;	// 0: normal, others: error code
 	string message = 2;
 }
+
+////////////////// User Info //////////////////////////////////
+
+////////////////// Table Resolve //////////////////////////////////
+
+////////////////// Game Running //////////////////////////////////
+
+////////////////// Game Hall Notice //////////////////////////////////
+
+////////////////// Game Activity //////////////////////////////////

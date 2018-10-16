@@ -8,4 +8,97 @@ extend google.protobuf.MessageOptions {
 	int32 msg_code = 50001;
 }
 
+enum LoginType{
+	Unknown = 0;
+	// Î¢ÐÅÐ¡ÓÎÏ·/Ð¡³ÌÐò
+	WechatIOS = 1;
+	WechatAndroid = 2;
+	WechatOthers = 3;
+	// ÊÖ»úºÅ°ó¶¨µÇÂ¼
+	AppIOSPhone = 4;
+	AppAndroidPhone = 5;
+	AppOthersPhone = 6;
+	HtmlPhone = 7;
+	// ÄÚÖÃÕËºÅ°ó¶¨µÇÂ¼
+	AppAppleInner = 8;
+	AppGoogleInner = 9;
+	AppMicrosoftInner = 10;
+	// ÕËºÅµÇÂ½
+	AppIOSSelfAccount = 11;
+	AppAndroidSelfAccount = 12;
+	AppWindowsSelfAccount = 13;
+	AppWindowsStoreSelfAccount = 14;
+	AppMacOSSelfAccount = 15;
+	AppLinuxSelfAccount = 16;
+	HtmlSelfAccount = 17;
+	OthersSelfAccount = 18;
+	// QQ°ó¶¨µÇÂ¼
+	AppIOSQQ = 19;
+	AppAndroidQQ = 20;
+	AppWindowsQQ = 21;
+	AppWindowsStoreQQ = 22;
+	AppHtmlQQ = 23;
+	AppOthersQQ = 24;
+	HtlmQQ = 25;
+	// Î¢ÐÅ°ó¶¨µÇÂ¼
+	AppIOSWechat = 26;
+	AppAndroidWechat = 27;
+	AppHtmlWechat = 28;
+	AppOthersWechat = 29;
+	HtmlWechat = 30;
+	// GoogleÕËºÅ°ó¶¨µÇÂ¼
+	AppIOSGoogle = 31;
+	AppHtmlGoogle = 32;
+	AppOthersGoogle = 33;
+	HtmlGoogle = 34;
+	// MicrosoftÕËºÅ°ó¶¨µÇÂ¼
+	AppIOSMicrosoft = 35;
+	AppAndroidMicrosoft = 36;
+	AppHtmlMicrosoft = 37;
+	AppOthersMicrosoft = 38;
+	HtmlMicrosoft = 39;
+	// FacebookÕËºÅ°ó¶¨µÇÂ¼
+	Facebook = 40;
+	// GithubÕËºÅ°ó¶¨µÇÂ¼
+	Github = 41;
+	// Ö§¸¶±¦ÕËºÅ°ó¶¨µÇÂ¼
+	AppIOSAlipay = 42;
+	AppAndroidAlipay = 43;
+	AppHtmlAlipay = 44;
+	AppOthersAlipay = 45;
+	HtmlAlipay = 46;
+	// ¶¤¶¤ÕËºÅ°ó¶¨µÇÂ¼
+	AppIOSDingTalk = 47;
+	AppAndroidDingTalk = 48;
+	AppHtmlDingTalk = 49;
+	AppOthersDingTalk = 50;
+	HtmlDingTalk = 51;
+	// ÓÎ¿ÍµÇÂ¼
+	AppIOSGuest = 52;
+	AppAndroidGuest = 53;
+	AppWindowsGuest = 54;
+	AppWindowsStoreGuest = 55;
+	AppMacOSGuest = 56;
+	AppLinuxGuest = 57;
+	AppHtmlGuest = 58;
+	AppOthersGuest = 59;
+	HtmlGuest = 60;
+	// ÐÂÀËÕËºÅ°ó¶¨µÇÂ¼
+	AppIOSSina = 61;
+	AppAndroidSina = 62;
+	AppHtmlSina = 63;
+	AppOthersSina = 64;
+	HtmlSina = 65;
+	// ÍøÒ×ÕËºÅ°ó¶¨µÇÂ¼
+	NetEase = 66;
+	// SteamÔ­Éú
+	SteamIOS = 67;
+	SteamAndroid = 68;
+	SteamWindows = 69;
+	SteamMacOS = 70;
+	SteamLinux = 71;
+	SteamXbox = 72;
+
+}
+
 
