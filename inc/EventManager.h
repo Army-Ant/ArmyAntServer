@@ -72,11 +72,11 @@ private:
 	AA_FORBID_COPY_CTOR(EventManager);
 };
 
-template <class T> static int32 EventManager::getProtobufMessageCode(){
+template <class T> int32 EventManager::getProtobufMessageCode(){
 	return T::descriptor()->options().GetExtension(msg_code);
 }
 
-template <class T> static T* EventManager::castMessage(void*message){
+template <class T> T* EventManager::castMessage(void*message){
 	return dynamic_cast<T*>(static_cast<google::protobuf::Message*>(message));
 }
 

@@ -52,6 +52,8 @@ package-lock.json
 /proj/DatabaseProxyCore/build
 /proj/DBProxy/build
 /proj/ServerUtilities/build
+/proj/SimpleEchoApp/build/
+/proj/HuolongServer/build/
 
 # Compiled protobuffer source files
 /src/ProtobufSource
@@ -65,3 +67,4 @@ package-lock.json
 /test/ArmyAntServer_TestClient_CSharp/ArmyAntServer_TestClient_CSharp/obj
 /test/ArmyAntServer_TestClient_CSharp/ArmyAntServer_TestClient_CSharp/libprotobof
 /test/ArmyAntServer_TestClient_CSharp/ArmyAntServer_TestClient_CSharp/protobufSource
+

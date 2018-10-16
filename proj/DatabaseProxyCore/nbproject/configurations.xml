@@ -39,7 +39,7 @@
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
-            <pElem>../../res/ProtobufSource/cpp</pElem>
+            <pElem>../../src/ProtobufSource/cpp</pElem>
           </incDir>
           <preprocessorList>
             <Elem>DEBUG</Elem>
@@ -96,7 +96,7 @@
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
-            <pElem>../../res/ProtobufSource/cpp</pElem>
+            <pElem>../../src/ProtobufSource/cpp</pElem>
           </incDir>
           <preprocessorList>
             <Elem>NDEBUG</Elem>

@@ -31,7 +31,7 @@
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
-            <pElem>../../res/ProtobufSource/cpp</pElem>
+            <pElem>../../src/ProtobufSource/cpp</pElem>
             <pElem>..</pElem>
           </incDir>
           <preprocessorList>
@@ -55,8 +55,8 @@
         <linkerTool>
           <output>../../bin/dbproxyd</output>
           <linkerLibItems>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
             <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
-            <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_d_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../DatabaseProxyCore"
@@ -82,6 +82,8 @@
                             OP="../../bin/libserverutilities_d.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerOptionItem>-lprotobuf</linkerOptionItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -112,7 +114,7 @@
             <pElem>../../inc</pElem>
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.12/include</pElem>
-            <pElem>../../res/ProtobufSource/cpp</pElem>
+            <pElem>../../src/ProtobufSource/cpp</pElem>
             <pElem>..</pElem>
           </incDir>
           <preprocessorList>
@@ -137,8 +139,8 @@
         <linkerTool>
           <output>../../bin/dbproxy</output>
           <linkerLibItems>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
             <linkerLibLibItem>mysqlcppconn</linkerLibLibItem>
-            <linkerLibFileItem>../../external/Protobuf/bin/libprotobuf.so</linkerLibFileItem>
             <linkerLibFileItem>../../external/ArmyAntLib/bin/libArmyAnt_64.so</linkerLibFileItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../DatabaseProxyCore"
@@ -164,6 +166,8 @@
                             OP="../../bin/libserverutilities.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerOptionItem>-lprotobuf</linkerOptionItem>
+            <linkerLibFileItem>../../external/ArmyAntLib/external/boost/stage/lib/libboost_system.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

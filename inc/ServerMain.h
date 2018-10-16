@@ -18,65 +18,65 @@ namespace ArmyAntServer{
 class ServerMain{
 public:
 	// Initialize Server
-	// ³õÊ¼»¯·şÎñÆ÷
+	// åˆå§‹åŒ–æœåŠ¡å™¨
 	ServerMain();
 	~ServerMain();
 
 public:
 	// Run the server, start parameter is set in setting file : Constants::SERVER_CONFIG_FILE_PATH
-	// Æô¶¯·şÎñÆ÷, ¸ù¾İÈÕÖ¾ÀïµÄÅäÖÃ
+	// å¯åŠ¨æœåŠ¡å™¨, æ ¹æ®æ—¥å¿—é‡Œçš„é…ç½®
 	int32 main();
 	bool send(bool isWebSocket, uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content);
 
 public:
 	Logger& getLogger();
 	// Get the EventManager to register or listen events
-	// »ñÈ¡ÊÂ¼ş¹ÜÀíÆ÷, ÒÔ±ã×¢²áºÍ¼àÌı±¾µØÊÂ¼ş»òÍøÂçÏûÏ¢
+	// è·å–äº‹ä»¶ç®¡ç†å™¨, ä»¥ä¾¿æ³¨å†Œå’Œç›‘å¬æœ¬åœ°äº‹ä»¶æˆ–ç½‘ç»œæ¶ˆæ¯
 	EventManager & getEventManager();
 	// Get the UserSessionManager to set user session logic
-	// »ñÈ¡ÓÃ»§»á»°¹ÜÀíÆ÷, ÒÔ±ã·şÎñÆ÷Âß¼­²¿·ÖÄÜ¹»ÉèÖÃºÍ´¦ÀíÓÃ»§»á»°
+	// è·å–ç”¨æˆ·ä¼šè¯ç®¡ç†å™¨, ä»¥ä¾¿æœåŠ¡å™¨é€»è¾‘éƒ¨åˆ†èƒ½å¤Ÿè®¾ç½®å’Œå¤„ç†ç”¨æˆ·ä¼šè¯
 	UserSessionManager & getUserSessionManager();
 	// Get the MessageQueueManager to send message to serverMain ( or to other parts )
-	// »ñÈ¡ÏûÏ¢¶ÓÁĞ¹ÜÀíÆ÷, ÒÔ±ãĞÂ½¨ÏûÏ¢¶ÓÁĞ, »òÕßÏò·şÎñÆ÷ÆäËûÄ£¿é·¢ËÍÏûÏ¢
+	// è·å–æ¶ˆæ¯é˜Ÿåˆ—ç®¡ç†å™¨, ä»¥ä¾¿æ–°å»ºæ¶ˆæ¯é˜Ÿåˆ—, æˆ–è€…å‘æœåŠ¡å™¨å…¶ä»–æ¨¡å—å‘é€æ¶ˆæ¯
 	MessageQueueManager & getMessageQueueManager();
 	// Get the SubApplicationManager to do something between subapplications
-	// »ñÈ¡×ÓÓ¦ÓÃ¹ÜÀíÆ÷
+	// è·å–å­åº”ç”¨ç®¡ç†å™¨
 	SubApplicationManager & getSubApplicationManager();
 
 private:
-	// ½âÎöÅäÖÃÎÄ¼şµÄº¯Êı
+	// è§£æé…ç½®æ–‡ä»¶çš„å‡½æ•°
 	int32 parseConfig();
-	// ³õÊ¼»¯¸÷Ä£¿éµÄº¯Êı
+	// åˆå§‹åŒ–å„æ¨¡å—çš„å‡½æ•°
 	int32 modulesInitialization();
-	// Á¬½ÓÊı¾İ¿â´úÀí, »áÒ»Ö±³¢ÊÔÁ¬½ÓÖ±µ½³É¹¦
+	// è¿æ¥æ•°æ®åº“ä»£ç†, ä¼šä¸€ç›´å°è¯•è¿æ¥ç›´åˆ°æˆåŠŸ
 	void connectDBProxy(bool isReconnect = false);
-	// ÍË³öÊ±Ïú»Ù×ÊÔ´
+	// é€€å‡ºæ—¶é”€æ¯èµ„æº
 	int32 modulesUninitialization();
 
 private:
-	// ÊÕµ½ Socket Á¬½ÓµÄÏûÏ¢±¨¸æµÄ´¦Àíº¯Êı
+	// æ”¶åˆ° Socket è¿æ¥çš„æ¶ˆæ¯æŠ¥å‘Šçš„å¤„ç†å‡½æ•°
 	void onSocketEvent(bool isWebsocket, SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content);
-	// ÊÕµ½ Socket ÍøÂçÏûÏ¢µÄ´¦Àíº¯Êı
+	// æ”¶åˆ° Socket ç½‘ç»œæ¶ˆæ¯çš„å¤„ç†å‡½æ•°
 	void onSocketReceived(bool isWebsocket, const uint32 clientId, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body);
 
-	// ÊÕµ½ DBProxy Á¬½ÓµÄÏûÏ¢±¨¸æµÄ´¦Àíº¯Êı
+	// æ”¶åˆ° DBProxy è¿æ¥çš„æ¶ˆæ¯æŠ¥å‘Šçš„å¤„ç†å‡½æ•°
 	void onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content);
-	// ÊÕµ½ DBProxy ÍøÂçÏûÏ¢µÄ´¦Àíº¯Êı
+	// æ”¶åˆ° DBProxy ç½‘ç»œæ¶ˆæ¯çš„å¤„ç†å‡½æ•°
 	void onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void * body);
 
 private:
-	bool debug;    // ÊÇ·ñ´¦ÓÚµ÷ÊÔÄ£Ê½, ÓÉÅäÖÃÎÄ¼ş¾ö¶¨´Ë²ÎÊı
-	uint16 normalSocketPort;    // ServerMain·şÎñÆ÷¶Ë¿ÚºÅ, ÓÉÅäÖÃÎÄ¼ş¾ö¶¨´Ë²ÎÊı
-	uint16 webSocketPort;    // ServerMain·şÎñÆ÷websocket¶Ë¿ÚºÅ, ÓÉÅäÖÃÎÄ¼ş¾ö¶¨´Ë²ÎÊı
-	MessageQueue* msgQueue;   // ServerMainÏûÏ¢¶ÓÁĞ
+	bool debug;    // æ˜¯å¦å¤„äºè°ƒè¯•æ¨¡å¼, ç”±é…ç½®æ–‡ä»¶å†³å®šæ­¤å‚æ•°
+	uint16 normalSocketPort;    // ServerMainæœåŠ¡å™¨ç«¯å£å·, ç”±é…ç½®æ–‡ä»¶å†³å®šæ­¤å‚æ•°
+	uint16 webSocketPort;    // ServerMainæœåŠ¡å™¨websocketç«¯å£å·, ç”±é…ç½®æ–‡ä»¶å†³å®šæ­¤å‚æ•°
+	MessageQueue* msgQueue;   // ServerMainæ¶ˆæ¯é˜Ÿåˆ—
 
 private:
-	Logger logger;    // ServerMainÈÕÖ¾ÎÄ¼ş
-	MessageQueueManager msgQueueMgr;    // ÏûÏ¢¶ÓÁĞ¹ÜÀíÆ÷
-	SocketApplication normalSocket;   // Socket»á»°Àà¶ÔÏó
-	SocketApplication webSocket;   // websocket»á»°Àà¶ÔÏó
-	UserSessionManager sessionMgr;    // ÓÃ»§»á»°¹ÜÀíÆ÷
-	EventManager eventMgr;    // ÊÂ¼ş¹ÜÀíÆ÷
+	Logger logger;    // ServerMainæ—¥å¿—æ–‡ä»¶
+	MessageQueueManager msgQueueMgr;    // æ¶ˆæ¯é˜Ÿåˆ—ç®¡ç†å™¨
+	SocketApplication normalSocket;   // Socketä¼šè¯ç±»å¯¹è±¡
+	SocketApplication webSocket;   // websocketä¼šè¯ç±»å¯¹è±¡
+	UserSessionManager sessionMgr;    // ç”¨æˆ·ä¼šè¯ç®¡ç†å™¨
+	EventManager eventMgr;    // äº‹ä»¶ç®¡ç†å™¨
 	SubApplicationManager appMgr;
 
 private:

@@ -1,18 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="ArmyAntMessage"
-                   displayName="ArmyAntMessage"
+    <logicalFolder name="ProtobufSource"
+                   displayName="ProtobufSource"
                    projectFiles="true">
-      <logicalFolder name="DBProxy" displayName="DBProxy" projectFiles="true">
-        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc</itemPath>
-        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h</itemPath>
+      <logicalFolder name="cpp" displayName="cpp" projectFiles="true">
+        <logicalFolder name="ArmyAntMessage"
+                       displayName="ArmyAntMessage"
+                       projectFiles="true">
+          <logicalFolder name="Common" displayName="Common" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.cc</itemPath>
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="DBProxy" displayName="DBProxy" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc</itemPath>
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SubApps" displayName="SubApps" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.cc</itemPath>
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.h</itemPath>
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.cc</itemPath>
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="System" displayName="System" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc</itemPath>
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h</itemPath>
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc</itemPath>
+            <itemPath>../../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h</itemPath>
+          </logicalFolder>
+        </logicalFolder>
       </logicalFolder>
-      <logicalFolder name="System" displayName="System" projectFiles="true">
-        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc</itemPath>
-        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h</itemPath>
-        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc</itemPath>
-        <itemPath>../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h</itemPath>
+      <logicalFolder name="csharp" displayName="csharp" projectFiles="true">
+        <itemPath>../../src/ProtobufSource/csharp/Base.cs</itemPath>
+        <itemPath>../../src/ProtobufSource/csharp/Huolong.cs</itemPath>
+        <itemPath>../../src/ProtobufSource/csharp/SessionStart.cs</itemPath>
+        <itemPath>../../src/ProtobufSource/csharp/SimpleEcho.cs</itemPath>
+        <itemPath>../../src/ProtobufSource/csharp/SocketHead.cs</itemPath>
+        <itemPath>../../src/ProtobufSource/csharp/SqlRequest.cs</itemPath>
+      </logicalFolder>
+      <logicalFolder name="javascript" displayName="javascript" projectFiles="true">
+        <itemPath>../../src/ProtobufSource/javascript/any2dbp_loginrequest.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/any2dbp_logoutrequest.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/any2dbp_sqlrequest_column.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/any2dbp_sqlrequest_select.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/any2dbp_sqlrequest_sqlstring.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/any2dbp_sqlrequest_table.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/any2dbp_sqlrequest_update.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/c2sm_echobroadcastrequest.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/c2sm_echologinrequest.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/c2sm_echologoutrequest.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/c2sm_echosendrequest.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/c2sm_getserverstatuerequest.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/c2sm_huolongloginrequest.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/c2sm_huolonglogoutrequest.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/conversationsteptype.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/dbp2any_loginresponsefailure.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/dbp2any_loginresponsesuccessful.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/dbp2any_logoutresponse.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/dbp2any_sqlresponse_boolean.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/dbp2any_sqlresponse_counts.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/dbp2any_sqlresponse_error.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/dbp2any_sqlresponse_tables.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sm2c_echobroadcastresponse.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sm2c_echoerror.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sm2c_echologinresponse.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sm2c_echologoutresponse.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sm2c_echoreceivenotice.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sm2c_echosendresponse.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sm2c_getserverstatueresponse.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sm2c_huolongloginresponse.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sm2c_huolonglogoutresponse.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/socketextendnormal_v0_0_0_1.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sqlcolumninfo.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sqldatabaseinfo.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sqlheadone.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sqlrequesttype.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sqlrequesttype_sqlstring.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sqlresult.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sqlrow.js</itemPath>
+        <itemPath>../../src/ProtobufSource/javascript/sqltableinfo.js</itemPath>
+      </logicalFolder>
+      <logicalFolder name="pb" displayName="pb" projectFiles="true">
+      </logicalFolder>
+      <logicalFolder name="python" displayName="python" projectFiles="true">
+        <logicalFolder name="ArmyAntMessage"
+                       displayName="ArmyAntMessage"
+                       projectFiles="true">
+          <logicalFolder name="Common" displayName="Common" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/python/ArmyAntMessage/Common/base_pb2.py</itemPath>
+          </logicalFolder>
+          <logicalFolder name="DBProxy" displayName="DBProxy" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/python/ArmyAntMessage/DBProxy/SqlRequest_pb2.py</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SubApps" displayName="SubApps" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/python/ArmyAntMessage/SubApps/Huolong_pb2.py</itemPath>
+            <itemPath>../../src/ProtobufSource/python/ArmyAntMessage/SubApps/SimpleEcho_pb2.py</itemPath>
+          </logicalFolder>
+          <logicalFolder name="System" displayName="System" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/python/ArmyAntMessage/System/SessionStart_pb2.py</itemPath>
+            <itemPath>../../src/ProtobufSource/python/ArmyAntMessage/System/SocketHead_pb2.py</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="ruby" displayName="ruby" projectFiles="true">
+        <logicalFolder name="ArmyAntMessage"
+                       displayName="ArmyAntMessage"
+                       projectFiles="true">
+          <logicalFolder name="Common" displayName="Common" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/ruby/ArmyAntMessage/Common/base_pb.rb</itemPath>
+          </logicalFolder>
+          <logicalFolder name="DBProxy" displayName="DBProxy" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/ruby/ArmyAntMessage/DBProxy/SqlRequest_pb.rb</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SubApps" displayName="SubApps" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/ruby/ArmyAntMessage/SubApps/Huolong_pb.rb</itemPath>
+            <itemPath>../../src/ProtobufSource/ruby/ArmyAntMessage/SubApps/SimpleEcho_pb.rb</itemPath>
+          </logicalFolder>
+          <logicalFolder name="System" displayName="System" projectFiles="true">
+            <itemPath>../../src/ProtobufSource/ruby/ArmyAntMessage/System/SessionStart_pb.rb</itemPath>
+            <itemPath>../../src/ProtobufSource/ruby/ArmyAntMessage/System/SocketHead_pb.rb</itemPath>
+          </logicalFolder>
+        </logicalFolder>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="Utilities" displayName="Utilities" projectFiles="true">
@@ -22,6 +130,8 @@
       <itemPath>../../src/Utilities/MessageQueueManager.cpp</itemPath>
       <itemPath>../../src/Utilities/SocketApplication.cpp</itemPath>
       <itemPath>../../src/Utilities/SocketClientApplication.cpp</itemPath>
+      <itemPath>../../src/Utilities/UserSession.cpp</itemPath>
+      <itemPath>../../src/Utilities/UserSessionManager.cpp</itemPath>
       <itemPath>../../src/Utilities/base.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -30,16 +140,20 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>../../src/ServerCore/subApplication.cpp</itemPath>
+    <itemPath>../../src/ServerCore/subApplicationManager.cpp</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>../../src/Utilities</Elem>
     <Elem>../../res/ProtobufSource/cpp/ArmyAntMessage</Elem>
+    <Elem>../../src/ProtobufSource</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Debug" type="3">
+    <conf name="Debug" type="3" platformSpecific="true">
       <toolsSet>
         <compilerSet>default</compilerSet>
+        <platform>2</platform>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>true</rebuildPropChanged>
       </toolsSet>
@@ -57,7 +171,7 @@
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
-            <pElem>../../res/ProtobufSource/cpp</pElem>
+            <pElem>../../src/ProtobufSource/cpp</pElem>
           </incDir>
           <preprocessorList>
             <Elem>DEBUG</Elem>
@@ -79,34 +193,364 @@
           <output>../../bin/libserverutilities_d.a</output>
         </archiverTool>
       </compileType>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.cc"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.cc"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.h"
             ex="false"
             tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/Base.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/Huolong.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/SessionStart.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/SimpleEcho.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/SocketHead.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/SqlRequest.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_loginrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_logoutrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_column.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_select.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_sqlstring.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_table.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_update.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_echobroadcastrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_echologinrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_echologoutrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_echosendrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_getserverstatuerequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_huolongloginrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_huolonglogoutrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/conversationsteptype.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_loginresponsefailure.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_loginresponsesuccessful.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_logoutresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_sqlresponse_boolean.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_sqlresponse_counts.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_sqlresponse_error.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_sqlresponse_tables.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echobroadcastresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echoerror.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echologinresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echologoutresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echoreceivenotice.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echosendresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_getserverstatueresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_huolongloginresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_huolonglogoutresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/socketextendnormal_v0_0_0_1.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlcolumninfo.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqldatabaseinfo.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlheadone.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlrequesttype.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlrequesttype_sqlstring.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlresult.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlrow.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqltableinfo.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/Common/base_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/DBProxy/SqlRequest_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/SubApps/Huolong_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/SubApps/SimpleEcho_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/System/SessionStart_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/System/SocketHead_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/Common/base_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/DBProxy/SqlRequest_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/SubApps/Huolong_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/SubApps/SimpleEcho_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/System/SessionStart_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/System/SocketHead_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ServerCore/subApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ServerCore/subApplicationManager.cpp"
+            ex="false"
+            tool="1"
             flavor2="0">
       </item>
       <item path="../../src/Utilities/EventManager.cpp"
@@ -132,6 +576,16 @@
             flavor2="0">
       </item>
       <item path="../../src/Utilities/SocketClientApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/UserSession.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/UserSessionManager.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -162,7 +616,7 @@
             <pElem>../../external/ArmyAntLib/inc</pElem>
             <pElem>../../external/mysql/mysql-connector-c++-8.0.11/include</pElem>
             <pElem>../../external/Protobuf/inc</pElem>
-            <pElem>../../res/ProtobufSource/cpp</pElem>
+            <pElem>../../src/ProtobufSource/cpp</pElem>
           </incDir>
           <preprocessorList>
             <Elem>NDEBUG</Elem>
@@ -185,34 +639,364 @@
           <output>../../bin/libserverutilities.a</output>
         </archiverTool>
       </compileType>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.cc"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.cc"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../res/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h"
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.h"
             ex="false"
             tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/Base.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/Huolong.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/SessionStart.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/SimpleEcho.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/SocketHead.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/csharp/SqlRequest.cs"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_loginrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_logoutrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_column.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_select.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_sqlstring.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_table.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/any2dbp_sqlrequest_update.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_echobroadcastrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_echologinrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_echologoutrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_echosendrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_getserverstatuerequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_huolongloginrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/c2sm_huolonglogoutrequest.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/conversationsteptype.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_loginresponsefailure.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_loginresponsesuccessful.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_logoutresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_sqlresponse_boolean.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_sqlresponse_counts.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_sqlresponse_error.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/dbp2any_sqlresponse_tables.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echobroadcastresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echoerror.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echologinresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echologoutresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echoreceivenotice.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_echosendresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_getserverstatueresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_huolongloginresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sm2c_huolonglogoutresponse.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/socketextendnormal_v0_0_0_1.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlcolumninfo.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqldatabaseinfo.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlheadone.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlrequesttype.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlrequesttype_sqlstring.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlresult.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqlrow.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/javascript/sqltableinfo.js"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/Common/base_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/DBProxy/SqlRequest_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/SubApps/Huolong_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/SubApps/SimpleEcho_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/System/SessionStart_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/python/ArmyAntMessage/System/SocketHead_pb2.py"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/Common/base_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/DBProxy/SqlRequest_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/SubApps/Huolong_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/SubApps/SimpleEcho_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/System/SessionStart_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ProtobufSource/ruby/ArmyAntMessage/System/SocketHead_pb.rb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/ServerCore/subApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/ServerCore/subApplicationManager.cpp"
+            ex="false"
+            tool="1"
             flavor2="0">
       </item>
       <item path="../../src/Utilities/EventManager.cpp"
@@ -238,6 +1022,16 @@
             flavor2="0">
       </item>
       <item path="../../src/Utilities/SocketClientApplication.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/UserSession.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/Utilities/UserSessionManager.cpp"
             ex="false"
             tool="1"
             flavor2="0">

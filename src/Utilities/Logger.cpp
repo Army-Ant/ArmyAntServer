@@ -2,6 +2,7 @@
 
 #include <ctime>
 #include <queue>
+#include <thread>
 #ifdef OS_LINUX
 #include <sys/time.h>
 #endif
@@ -63,7 +64,6 @@ namespace ArmyAntServer {
 	}
 
 	void Logger_Private::update(){
-		bool isEmpty = false;
 		while(true){
 			mutex.lock();
 			bool isEmpty = logFileWriteQueue.empty();
