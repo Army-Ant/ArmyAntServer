@@ -11,6 +11,8 @@ set PROTOPYTHON_PATH=%PROTOSRC_BASE%\python
 ::set PROTORUBY_PATH=%PROTOSRC_BASE%\ruby
 ::set PROTOBINARY_PATH=%PROTOSRC_BASE%\pb
 
+set PROTOCOMMONJS_PATH=..\bin
+
 :set_source_file_list
 set PROTOFILES=%PROTOFILE_PATH%\ArmyAntMessage\Common\base.proto
 set PROTOFILES=%PROTOFILES% %PROTOFILE_PATH%\ArmyAntMessage\System\SocketHead.proto
@@ -28,6 +30,7 @@ if not exist %PROTOPYTHON_PATH% (mkdir %PROTOPYTHON_PATH%)
 ::if not exist %PROTOBINARY_PATH% (mkdir %PROTOBINARY_PATH%)
 
 :execute_protoc
-%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% %PROTOFILES%
+%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=library=aaserver_proto,binary:%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% %PROTOFILES%
+%PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --js_out=import_style=commonjs,binary:%PROTOCOMMONJS_PATH% %PROTOFILES%
 
 :End
