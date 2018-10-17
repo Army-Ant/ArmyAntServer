@@ -25,6 +25,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\HuolongServer.h" />
+    <ClInclude Include="..\inc\HuolongUser.h" />
+    <ClInclude Include="..\inc\HuolongUserDataManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongServer.cpp" />

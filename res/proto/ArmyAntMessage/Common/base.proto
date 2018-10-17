@@ -9,7 +9,8 @@ extend google.protobuf.MessageOptions {
 }
 
 enum LoginType{
-	Unknown = 0;
+	// 用之前获得的Auth授权码直接自动登录
+	Auto = 0;
 	// 微信小游戏/小程序
 	WechatIOS = 1;
 	WechatAndroid = 2;

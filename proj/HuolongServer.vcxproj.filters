@@ -2,6 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="..\inc\HuolongServer.h" />
+    <ClInclude Include="..\inc\HuolongUser.h" />
+    <ClInclude Include="..\inc\HuolongUserDataManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongServer.cpp" />
