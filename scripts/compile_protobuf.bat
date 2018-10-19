@@ -11,7 +11,7 @@ set PROTOPYTHON_PATH=%PROTOSRC_BASE%\python
 ::set PROTORUBY_PATH=%PROTOSRC_BASE%\ruby
 ::set PROTOBINARY_PATH=%PROTOSRC_BASE%\pb
 
-set PROTOCOMMONJS_PATH=..\bin
+set PROTOCOMMONJS_PATH=..\bin\proto-js
 
 :set_source_file_list
 ::base
@@ -35,5 +35,6 @@ if not exist %PROTOPYTHON_PATH% (mkdir %PROTOPYTHON_PATH%)
 :execute_protoc
 %PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --cpp_out=%PROTOCPP_PATH% --csharp_out=%PROTOCSHARP_PATH% --js_out=library=aaserver_proto,binary:%PROTOJAVASCRIPT_PATH% --python_out=%PROTOPYTHON_PATH% %PROTOFILES% %PROTODBPROXYFILES%
 %PROTOC_PATH%\protoc.exe -I=%PROTOFILE_PATH% --js_out=import_style=commonjs,binary:%PROTOCOMMONJS_PATH% %PROTOFILES%
+copy ..\res\proto\proto_message_code_helper.js %PROTOCOMMONJS_PATH%
 
 :End
