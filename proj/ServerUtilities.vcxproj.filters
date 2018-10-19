@@ -52,9 +52,6 @@
     <Filter Include="socketApplication">
       <UniqueIdentifier>{151b0fcf-955d-437d-908f-3fc1d49a8ced}</UniqueIdentifier>
     </Filter>
-    <Filter Include="websocket">
-      <UniqueIdentifier>{8e148d37-b4f2-49c9-942c-fdaa61a40ba7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\Logger.h">
@@ -108,9 +105,6 @@
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\SimpleEcho.pb.h">
       <Filter>protobuf</Filter>
     </ClInclude>
-    <ClInclude Include="..\inc\WebsocketApplication.h">
-      <Filter>websocket</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\Huolong.pb.h">
       <Filter>protobuf</Filter>
     </ClInclude>
@@ -157,9 +151,6 @@
     </ClCompile>
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\SimpleEcho.pb.cc">
       <Filter>protobuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Utilities\WebsocketApplication.cpp">
-      <Filter>websocket</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\Huolong.pb.cc">
       <Filter>protobuf</Filter>
