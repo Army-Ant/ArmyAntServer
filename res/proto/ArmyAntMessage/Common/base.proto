@@ -102,4 +102,15 @@ enum LoginType{
 
 }
 
+enum OnlineStatus {
+	Offline = 0;
+	Online = 1;
+	Logingin = 2;
+	Busy = 3;  // Waiting for response from client
+	HuolongHall = 4;
+	HuolongReady = 5; // Used when user is ready in game battle
+	HuolongPlaying = 6; // Used when user is playing in game battle
+	HuolongRoundReport = 7;
+}
+
 
