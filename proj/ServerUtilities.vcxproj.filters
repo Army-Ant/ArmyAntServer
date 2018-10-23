@@ -187,5 +187,8 @@
     <None Include="..\res\proto\ArmyAntMessage\SubApps\Huolong.proto">
       <Filter>resources\proto\ArmyAntMessage\SubApps</Filter>
     </None>
+    <None Include="..\res\proto\proto_message_code_helper.js">
+      <Filter>resources\proto</Filter>
+    </None>
   </ItemGroup>
 </Project>
