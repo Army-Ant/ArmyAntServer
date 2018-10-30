@@ -36,7 +36,9 @@ set TargetPlatform=%4
 if exist "%ProjectPath%bin" ( echo "%ProjectPath%bin exist" ) else ( mkdir %ProjectPath%bin )
 
 :Build_Protobuf
+cd ..\scripts
 call compile_protobuf.bat
+cd ..\proj
 
 :End
 @echo on

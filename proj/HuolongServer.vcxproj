@@ -30,6 +30,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongServer.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongUser.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongUserDataManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

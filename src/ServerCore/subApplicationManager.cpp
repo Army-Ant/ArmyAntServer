@@ -1,12 +1,12 @@
 #include <SubApplicationManager.h>
 #include <subApplication.h>
-#include <Logger.h>
+#include <AALog.h>
 
 namespace ArmyAntServer{
 
 
 
-SubApplicationManager::SubApplicationManager(Logger & logger) :logger(logger), appList(){}
+SubApplicationManager::SubApplicationManager(ArmyAnt::Logger & logger) :logger(logger), appList(){}
 
 SubApplicationManager::~SubApplicationManager(){}
 

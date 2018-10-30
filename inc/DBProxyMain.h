@@ -5,7 +5,7 @@
 
 #include <AADefine.h>
 
-#include <Logger.h>
+#include <AALog.h>
 #include <SocketApplication.h>
 #include <EventManager.h>
 #include <MessageQueueManager.h>
@@ -62,7 +62,7 @@ private:
 
 private:
 	SocketApplication socket;   // Socket会话类对象
-	Logger logger;    // DBProxyMain日志文件
+	ArmyAnt::Logger logger;    // DBProxyMain日志文件
 	EventManager eventMgr;    // 事件管理器
 	MessageQueueManager msgQueueMgr;    // 消息队列管理器
 	UserSessionManager sessionMgr;    // 用户会话管理器

@@ -1,7 +1,7 @@
 #include <EchoApp.h>
 #include <functional>
 
-#include <Logger.h>
+#include <AALog.h>
 #include <ServerMain.h>
 #include <EventManager.h>
 #include <UserSession.h>
@@ -22,7 +22,7 @@ bool EchoApp::onStart(){
 	userList.clear();
 	server.getEventManager().addGlobalListenerForNetworkResponse(EVENT_TAG, EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoLoginRequest>(), NETWORK_CALLBACK(EchoApp::onUserLogin));
 
-	server.getLogger().pushLog("Simple echo server started !", Logger::AlertLevel::Info, LOGGER_TAG);
+	server.getLogger().pushLog("Simple echo server started !", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	return true;
 }
 
@@ -34,12 +34,12 @@ bool EchoApp::onStop(){
 void EchoApp::onUserLogin(int32 extendVerstion, int32 conversationCode, int32 userId, void * message, int32 length){
 	ArmyAntMessage::SubApps::C2SM_EchoLoginRequest msg;
 	if(!msg.ParseFromArray(message, length)){
-		server.getLogger().pushLog("Parse login protocol failure !", Logger::AlertLevel::Error, LOGGER_TAG);
+		server.getLogger().pushLog("Parse login protocol failure !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
 	auto userSes = server.getUserSessionManager().getUserSession(userId);
 	if(userSes == nullptr){
-		server.getLogger().pushLog("Cannot find the request user in system session list !", Logger::AlertLevel::Error, LOGGER_TAG);
+		server.getLogger().pushLog("Cannot find the request user in system session list !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
 	auto oldUser = userList.find(msg.user_name());
@@ -55,7 +55,7 @@ void EchoApp::onUserLogin(int32 extendVerstion, int32 conversationCode, int32 us
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoSendRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserSend));
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserBroadcast));
 		server.getEventManager().addListenerForUserDisconnect(userId, EVENT_TAG, std::bind(&EchoApp::onUserDisconnected, this, std::placeholders::_1));
-		server.getLogger().pushLog(("User login: " + msg.user_name()).c_str(), Logger::AlertLevel::Info, LOGGER_TAG);
+		server.getLogger().pushLog(("User login: " + msg.user_name()).c_str(), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	}
 	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 }
@@ -63,12 +63,12 @@ void EchoApp::onUserLogin(int32 extendVerstion, int32 conversationCode, int32 us
 void EchoApp::onUserLogout(int32 extendVerstion, int32 conversationCode, int32 userId, void * message, int32 length){
 	ArmyAntMessage::SubApps::C2SM_EchoLogoutRequest msg;
 	if(!msg.ParseFromArray(message, length)){
-		server.getLogger().pushLog("Parse logout protocol failure !", Logger::AlertLevel::Error, LOGGER_TAG);
+		server.getLogger().pushLog("Parse logout protocol failure !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
 	auto userSes = server.getUserSessionManager().getUserSession(userId);
 	if(userSes == nullptr){
-		server.getLogger().pushLog("Cannot find the request user in system session list !", Logger::AlertLevel::Error, LOGGER_TAG);
+		server.getLogger().pushLog("Cannot find the request user in system session list !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
 	auto oldUser = userList.find(msg.user_name());
@@ -83,7 +83,7 @@ void EchoApp::onUserLogout(int32 extendVerstion, int32 conversationCode, int32 u
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoSendRequest>(), userId);
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest>(), userId);
 		userList.erase(oldUser);
-		server.getLogger().pushLog(("User logout: " + msg.user_name()).c_str(), Logger::AlertLevel::Info, LOGGER_TAG);
+		server.getLogger().pushLog(("User logout: " + msg.user_name()).c_str(), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	}
 	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 }
@@ -91,12 +91,12 @@ void EchoApp::onUserLogout(int32 extendVerstion, int32 conversationCode, int32 u
 void EchoApp::onUserSend(int32 extendVerstion, int32 conversationCode, int32 userId, void * message, int32 length){
 	ArmyAntMessage::SubApps::C2SM_EchoSendRequest msg;
 	if(!msg.ParseFromArray(message, length)){
-		server.getLogger().pushLog("Parse send protocol failure !", Logger::AlertLevel::Error, LOGGER_TAG);
+		server.getLogger().pushLog("Parse send protocol failure !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
 	auto userSes = server.getUserSessionManager().getUserSession(userId);
 	if(userSes == nullptr){
-		server.getLogger().pushLog("Cannot find the request user in system session list !", Logger::AlertLevel::Error, LOGGER_TAG);
+		server.getLogger().pushLog("Cannot find the request user in system session list !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
 	const char* fromUser = nullptr;
@@ -135,12 +135,12 @@ void EchoApp::onUserSend(int32 extendVerstion, int32 conversationCode, int32 use
 void EchoApp::onUserBroadcast(int32 extendVerstion, int32 conversationCode, int32 userId, void * message, int32 length){
 	ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest msg;
 	if(!msg.ParseFromArray(message, length)){
-		server.getLogger().pushLog("Parse send protocol failure !", Logger::AlertLevel::Error, LOGGER_TAG);
+		server.getLogger().pushLog("Parse send protocol failure !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
 	auto userSes = server.getUserSessionManager().getUserSession(userId);
 	if(userSes == nullptr){
-		server.getLogger().pushLog("Cannot find the request user in system session list !", Logger::AlertLevel::Error, LOGGER_TAG);
+		server.getLogger().pushLog("Cannot find the request user in system session list !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
 	const char* fromUser = nullptr;
@@ -189,9 +189,9 @@ void EchoApp::onUserDisconnected(int32 userId){
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoLogoutRequest>(), userId);
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoSendRequest>(), userId);
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest>(), userId);
-		server.getLogger().pushLog(("User disconnected without logout, user name: " + fromUser).c_str(), Logger::AlertLevel::Info, LOGGER_TAG);
+		server.getLogger().pushLog(("User disconnected without logout, user name: " + fromUser).c_str(), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	} else{
-		server.getLogger().pushLog(("Get an unknown user disconnected signal ! userId:" + ArmyAnt::String(userId)).c_str(), Logger::AlertLevel::Error, LOGGER_TAG);
+		server.getLogger().pushLog(("Get an unknown user disconnected signal ! userId:" + ArmyAnt::String(userId)).c_str(), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 	}
 }
 

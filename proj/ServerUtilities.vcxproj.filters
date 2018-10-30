@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="logger">
-      <UniqueIdentifier>{98a1e745-0f56-447d-96a0-f2b572e49423}</UniqueIdentifier>
-    </Filter>
     <Filter Include="protobuf">
       <UniqueIdentifier>{01b03fca-fdd1-4a20-83a0-d92ad45c92e1}</UniqueIdentifier>
     </Filter>
@@ -54,9 +51,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\inc\Logger.h">
-      <Filter>logger</Filter>
-    </ClInclude>
     <ClInclude Include="..\inc\SocketApplication.h">
       <Filter>socketApplication</Filter>
     </ClInclude>
@@ -110,9 +104,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Utilities\Logger.cpp">
-      <Filter>logger</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Utilities\SocketApplication.cpp">
       <Filter>socketApplication</Filter>
     </ClCompile>

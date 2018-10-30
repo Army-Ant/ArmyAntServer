@@ -4,6 +4,7 @@
 #include <map>
 
 #include <AADefine.h>
+#include <AALog.h>
 
 #include "UserSession.h"
 
@@ -14,7 +15,7 @@ class EventManager;
 
 class UserSessionManager{
 public:
-	UserSessionManager(MessageQueueManager&queueMgr, Logger& logger);
+	UserSessionManager(MessageQueueManager&queueMgr, ArmyAnt::Logger& logger);
 	~UserSessionManager();
 
 public:
@@ -26,7 +27,7 @@ public:
 	EventManager&getEventManager()const;
 
 public:
-	Logger& logger;
+	ArmyAnt::Logger& logger;
 	EventManager*eventMgr;
 
 private:

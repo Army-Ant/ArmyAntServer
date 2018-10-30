@@ -4,7 +4,7 @@
 #include <MessageQueueManager.h>
 #include <EventManager.h>
 #include <UserSessionMsgCode.h>
-#include <Logger.h>
+#include <AALog.h>
 #include <SocketApplication.h>
 #include <AAString.h>
 
@@ -86,7 +86,7 @@ void UserSession::onUpdate(){
 						cb->second(index, eventData);
 						delete eventData;
 					} else{
-						mgr.logger.pushLog("Cannot find the listener when dispatching local event, code: " + ArmyAnt::String(msg.data) + " , user index: " + int64(index), Logger::AlertLevel::Warning, LOGGER_TAG);
+						mgr.logger.pushLog("Cannot find the listener when dispatching local event, code: " + ArmyAnt::String(msg.data) + " , user index: " + int64(index), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					}
 					break;
 				}
@@ -99,7 +99,7 @@ void UserSession::onUpdate(){
 						ArmyAnt::Fragment::AA_SAFE_DELALL(evt->data);
 						ArmyAnt::Fragment::AA_SAFE_DEL(evt);
 					} else{
-						mgr.logger.pushLog("Cannot find the listener when dispatching network event, code: " + ArmyAnt::String(msg.data) + " , user index: " + int64(index), Logger::AlertLevel::Warning, LOGGER_TAG);
+						mgr.logger.pushLog("Cannot find the listener when dispatching network event, code: " + ArmyAnt::String(msg.data) + " , user index: " + int64(index), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					}
 					break;
 				}
@@ -116,18 +116,18 @@ void UserSession::onUpdate(){
 						case ArmyAntMessage::System::ConversationStepType::StartConversation:
 							conversationStepIndex = 0;
 							if(lastConversation != conversationWaitingList.end()){
-								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as conversation start with an existed code: ") + int64(evt->conversationCode), Logger::AlertLevel::Error, LOGGER_TAG);
+								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as conversation start with an existed code: ") + int64(evt->conversationCode), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 								ret = false;
 							}
 							break;
 						case ArmyAntMessage::System::ConversationStepType::ConversationStepOn:
 							if(lastConversation != conversationWaitingList.end() && lastConversation->second == 0){
-								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as asking reply with an existed normal conversation code: ") + int64(evt->conversationCode), Logger::AlertLevel::Error, LOGGER_TAG);
+								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as asking reply with an existed normal conversation code: ") + int64(evt->conversationCode), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 								ret = false;
 							}
 						case ArmyAntMessage::System::ConversationStepType::ResponseEnd:
 							if(lastConversation == conversationWaitingList.end()){
-								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as conversation reply with an unexisted code: ") + int64(evt->conversationCode), Logger::AlertLevel::Error, LOGGER_TAG);
+								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as conversation reply with an unexisted code: ") + int64(evt->conversationCode), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 								ret = false;
 							} else{
 								conversationStepIndex = lastConversation->second;
@@ -136,7 +136,7 @@ void UserSession::onUpdate(){
 							}
 							break;
 						default:
-							mgr.logger.pushLog(ArmyAnt::String("Unknown conversation step type when sending a network message: ") + int64(evt->conversationStepType), Logger::AlertLevel::Error, LOGGER_TAG);
+							mgr.logger.pushLog(ArmyAnt::String("Unknown conversation step type when sending a network message: ") + int64(evt->conversationStepType), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 							ret = false;
 					}
 					if(ret){
@@ -154,7 +154,7 @@ void UserSession::onUpdate(){
 								break;
 							}
 							default:
-								mgr.logger.pushLog(ArmyAnt::String("Sending a network message with an unknown head version: ") + int64(evt->extendVersion), Logger::AlertLevel::Error, LOGGER_TAG);
+								mgr.logger.pushLog(ArmyAnt::String("Sending a network message with an unknown head version: ") + int64(evt->extendVersion), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 								ret = false;
 						}
 
@@ -186,7 +186,7 @@ void UserSession::onUpdate(){
 					break;
 				}
 				default:
-					mgr.logger.pushLog("Cannot find the event type when dispatching message, id: " + ArmyAnt::String(msg.id) + " , user index: " + int64(index), Logger::AlertLevel::Warning, LOGGER_TAG);
+					mgr.logger.pushLog("Cannot find the event type when dispatching message, id: " + ArmyAnt::String(msg.id) + " , user index: " + int64(index), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					break;
 			}
 		} else if(threadEnd){

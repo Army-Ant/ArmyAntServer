@@ -5,7 +5,7 @@
 
 #include <AADefine.h>
 
-#include <Logger.h>
+#include <AALog.h>
 #include <SocketApplication.h>
 #include <SocketClientApplication.h>
 #include <EventManager.h>
@@ -29,7 +29,7 @@ public:
 	bool send(bool isWebSocket, uint32 clientId, int32 serials, MessageType type, int32 extendVersion, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*content);
 
 public:
-	Logger& getLogger();
+	ArmyAnt::Logger& getLogger();
 	// Get the EventManager to register or listen events
 	// 获取事件管理器, 以便注册和监听本地事件或网络消息
 	EventManager & getEventManager();
@@ -71,7 +71,7 @@ private:
 	MessageQueue* msgQueue;   // ServerMain消息队列
 
 private:
-	Logger logger;    // ServerMain日志文件
+	ArmyAnt::Logger logger;    // ServerMain日志文件
 	MessageQueueManager msgQueueMgr;    // 消息队列管理器
 	SocketApplication normalSocket;   // Socket会话类对象
 	SocketApplication webSocket;   // websocket会话类对象

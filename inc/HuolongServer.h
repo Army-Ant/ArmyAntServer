@@ -8,11 +8,15 @@
 #include <HuolongUserDataManager.h>
 
 namespace ArmyAntServer{
+class HuolongUserDataManager;
 
 class HuolongServer : public SubApplication{
 public:
 	HuolongServer(int64 appid, ServerMain&server);
 	virtual ~HuolongServer();
+
+public:
+	HuolongUserDataManager&getUserDataManager();
 
 public:
 	virtual bool onStart() override;

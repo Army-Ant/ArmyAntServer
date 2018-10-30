@@ -36,10 +36,10 @@ int32 DBProxyMain::main(){
 	socket.setReceiveCallback(std::bind(&DBProxyMain::onSocketReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8, std::placeholders::_9));
 	auto socketStartRes = socket.start(port, 16384, false);
 	if(!socketStartRes){
-		logger.pushLog("DBProxy started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		logger.pushLog("DBProxy started failed", ArmyAnt::Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::DBProxyMainReturnValues::serverStartFailed;
 	}
-	logger.pushLog("DBProxy started", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("DBProxy started", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 
 	// 4. 开始监听主线程消息队列
 	msgQueue = msgQueueMgr.createQueue(SpecialUserIndex::DBPROXY_MAIN);
@@ -53,18 +53,18 @@ int32 DBProxyMain::main(){
 				case Constants::DBProxyMainMsg::exitMainThread:
 					socket.stop();
 					retVal = msg.data;
-					logger.pushLog("DBProxy stopped", Logger::AlertLevel::Info, LOGGER_TAG);
+					logger.pushLog("DBProxy stopped", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 					exitCommand = true;
 					break;
 				default:
-					logger.pushLog("DBProxyMain received an unknown message, code:" + ArmyAnt::String(msg.id) + ", data:" + int64(msg.data), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("DBProxyMain received an unknown message, code:" + ArmyAnt::String(msg.id) + ", data:" + int64(msg.data), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 			}
 		}
 	}
 
 	// 5. 退出时销毁资源
 	auto uninitRes = modulesUninitialization();
-	logger.pushLog("Program over", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("Program over", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	return retVal;
 }
 
@@ -82,7 +82,7 @@ bool DBProxyMain::send(uint32 clientId, int32 serials, MessageType type, int32 e
 			socket.send(clientId, serials, type, extendVersion, extend, content);
 		}
 		default:
-			logger.pushLog(ArmyAnt::String("Sending a network message with an unknown head version: ") + int64(extendVersion), Logger::AlertLevel::Error, LOGGER_TAG);
+			logger.pushLog(ArmyAnt::String("Sending a network message with an unknown head version: ") + int64(extendVersion), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 			return false;
 	}
 	return true;
@@ -154,41 +154,41 @@ int32 DBProxyMain::parseConfig(){
 	// 文件日志筛选级别
 	auto logFileLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logFileLevel"));
 	if(logFileLevel->getString() == ArmyAnt::String("verbose")){
-		logger.setFileLevel(Logger::AlertLevel::Verbose);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Verbose);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("debug")){
-		logger.setFileLevel(Logger::AlertLevel::Debug);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Debug);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("info")){
-		logger.setFileLevel(Logger::AlertLevel::Info);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Info);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("import")){
-		logger.setFileLevel(Logger::AlertLevel::Import);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Import);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("warning")){
-		logger.setFileLevel(Logger::AlertLevel::Warning);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Warning);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("error")){
-		logger.setFileLevel(Logger::AlertLevel::Error);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Error);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("fatal")){
-		logger.setFileLevel(Logger::AlertLevel::Fatal);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Fatal);
 	} else{
-		logger.setFileLevel(Logger::AlertLevel::Verbose);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Verbose);
 	}
 
 	// 控制台日志筛选级别
 	auto logConsoleLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logConsoleLevel"));
 	if(logConsoleLevel->getString() == ArmyAnt::String("verbose")){
-		logger.setConsoleLevel(Logger::AlertLevel::Verbose);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Verbose);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("debug")){
-		logger.setConsoleLevel(Logger::AlertLevel::Debug);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Debug);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("info")){
-		logger.setConsoleLevel(Logger::AlertLevel::Info);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Info);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("import")){
-		logger.setConsoleLevel(Logger::AlertLevel::Import);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Import);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("warning")){
-		logger.setConsoleLevel(Logger::AlertLevel::Warning);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Warning);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("error")){
-		logger.setConsoleLevel(Logger::AlertLevel::Error);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Error);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("fatal")){
-		logger.setConsoleLevel(Logger::AlertLevel::Fatal);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Fatal);
 	} else{
-		logger.setConsoleLevel(Logger::AlertLevel::Import);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Import);
 	}
 
 	// MySql 登录参数
@@ -218,7 +218,7 @@ int32 DBProxyMain::parseConfig(){
 
 	ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 	ArmyAnt::JsonUnit::release(json);
-	logger.pushLog("Config loading successful", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("Config loading successful", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::DBProxyMainReturnValues::normalExit;
 }
 
@@ -227,25 +227,25 @@ int32 DBProxyMain::modulesInitialization(){
 	auto connRes = mysqlBridge.connect(mysqlServerHost);
 	int32 retriedTimes = 0;
 	while(!connRes && retriedTimes < 19){
-		logger.pushLog("Connect to Mysql failed", Logger::AlertLevel::Error, LOGGER_TAG);
+		logger.pushLog("Connect to Mysql failed", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		connRes = mysqlBridge.connect(mysqlServerHost);
 		++retriedTimes;
 	}
 	if(!connRes){
-		logger.pushLog("Connect to Mysql failed 20 times, server will exit !", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		logger.pushLog("Connect to Mysql failed 20 times, server will exit !", ArmyAnt::Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::DBProxyMainReturnValues::moduleInitFailed;
 	}else{
-		logger.pushLog("Connect to Mysql successful", Logger::AlertLevel::Error, LOGGER_TAG);
+		logger.pushLog("Connect to Mysql successful", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 	}
 
-	logger.pushLog("All modules initialized successful", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("All modules initialized successful", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::DBProxyMainReturnValues::normalExit;
 }
 
 int32 DBProxyMain::modulesUninitialization(){
 	mysqlBridge.disconnect();
 
-	logger.pushLog("All modules uninitialized OK", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("All modules uninitialized OK", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::DBProxyMainReturnValues::normalExit;
 }
 
@@ -253,29 +253,29 @@ int32 DBProxyMain::modulesUninitialization(){
 void DBProxyMain::onSocketEvent(SocketApplication::EventType type, const uint32 clientIndex, ArmyAnt::String content){
 	switch(type){
 		case SocketApplication::EventType::Connected:
-			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
+			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 			sessionMgr.createUserSession(clientIndex, socket, clientIndex);
 			break;
 		case SocketApplication::EventType::Disconnected:
-			logger.pushLog("Client disconnected! client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Info, LOGGER_TAG);
+			logger.pushLog("Client disconnected! client index: " + ArmyAnt::String(int64(clientIndex)), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 			sessionMgr.removeUserSession(clientIndex);
 			break;
 		case SocketApplication::EventType::SendingResponse:
-			logger.pushLog("Sending to client responsed, client index: " + ArmyAnt::String(int64(clientIndex)), Logger::AlertLevel::Verbose, LOGGER_TAG);
+			logger.pushLog("Sending to client responsed, client index: " + ArmyAnt::String(int64(clientIndex)), ArmyAnt::Logger::AlertLevel::Verbose, LOGGER_TAG);
 			break;
 		case SocketApplication::EventType::ErrorReport:
-			logger.pushLog("Get socket error-report, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			logger.pushLog("Get socket error-report, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 			break;
 		case SocketApplication::EventType::Unknown:
-			logger.pushLog("Get an unknown socket event, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
+			logger.pushLog("Get an unknown socket event, client index: " + ArmyAnt::String(int64(clientIndex)) + ", content: " + content, ArmyAnt::Logger::AlertLevel::Import, LOGGER_TAG);
 			break;
 		default:
-			logger.pushLog("Get an unknown nomber of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientIndex) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			logger.pushLog("Get an unknown nomber of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientIndex) + ", content: " + content, ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 	}
 }
 
 void DBProxyMain::onSocketReceived(const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body){
-	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
+	logger.pushLog("Received from client index: " + ArmyAnt::String(int64(clientIndex)) + ", appid: " + int64(appid), ArmyAnt::Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
 
 void DBProxyMain::onLocalEvent(int32 code, int32 userIndex, LocalEventData * data){}

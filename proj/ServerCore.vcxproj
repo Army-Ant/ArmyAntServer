@@ -121,10 +121,12 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>---------编译前脚本---------------------</Message>
+      <Message>
+      </Message>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
@@ -142,10 +144,12 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>---------编译前脚本---------------------</Message>
+      <Message>
+      </Message>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
@@ -169,10 +173,12 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>---------编译前脚本---------------------</Message>
+      <Message>
+      </Message>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
@@ -196,10 +202,12 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>---------编译前脚本---------------------</Message>
+      <Message>
+      </Message>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>

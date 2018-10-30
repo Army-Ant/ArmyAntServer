@@ -2,15 +2,15 @@
 #define SUB_APPLICATION_MANAGER_H_20180913
 
 #include <AADefine.h>
+#include <AALog.h>
 #include <map>
 
 namespace ArmyAntServer{
-class Logger;
 class SubApplication;
 
 class SubApplicationManager{
 public:
-	SubApplicationManager(Logger&logger);
+	SubApplicationManager(ArmyAnt::Logger&logger);
 	~SubApplicationManager();
 
 public:
@@ -21,7 +21,7 @@ public:
 	void stopAllApplications();
 
 private:
-	Logger&logger;
+	ArmyAnt::Logger&logger;
 	std::map<int64, SubApplication*> appList;
 
 private:

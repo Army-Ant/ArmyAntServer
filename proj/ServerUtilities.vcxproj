@@ -123,6 +123,10 @@
     <Lib>
       <AdditionalDependencies>libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
+    <PreBuildEvent>
+      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Message>---------编译前脚本---------------------</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -135,6 +139,10 @@
     <Lib>
       <AdditionalDependencies>libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
+    <PreBuildEvent>
+      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Message>---------编译前脚本---------------------</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -153,6 +161,10 @@
     <Lib>
       <AdditionalDependencies>libprotobuf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
+    <PreBuildEvent>
+      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Message>---------编译前脚本---------------------</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -171,11 +183,14 @@
     <Lib>
       <AdditionalDependencies>libprotobuf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
+    <PreBuildEvent>
+      <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Message>---------编译前脚本---------------------</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\EventManager.h" />
     <ClInclude Include="..\inc\LocalEventCode.h" />
-    <ClInclude Include="..\inc\Logger.h" />
     <ClInclude Include="..\inc\MessageQueue.h" />
     <ClInclude Include="..\inc\MessageQueueManager.h" />
     <ClInclude Include="..\inc\SocketApplication.h" />
@@ -201,7 +216,6 @@
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc" />
     <ClCompile Include="..\src\Utilities\base.cpp" />
     <ClCompile Include="..\src\Utilities\EventManager.cpp" />
-    <ClCompile Include="..\src\Utilities\Logger.cpp" />
     <ClCompile Include="..\src\Utilities\MessageQueue.cpp" />
     <ClCompile Include="..\src\Utilities\MessageQueueManager.cpp" />
     <ClCompile Include="..\src\Utilities\SocketApplication.cpp" />

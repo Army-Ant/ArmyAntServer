@@ -9,10 +9,10 @@
 #include <ArmyAntMessage/System/SocketHead.pb.h>
 
 #include <AADefine.h>
+#include <AALog.h>
 
 namespace ArmyAntServer{
 class UserSessionManager;
-class Logger;
 
 // local event data must be inherited from this class
 // network response will defaultly inherited from google::protobuf::message
@@ -32,7 +32,7 @@ public:
 	typedef std::function<void(int32 userId)> DisconnectCallback;
 
 public:
-	EventManager(UserSessionManager& sessionMgr, Logger&logger);
+	EventManager(UserSessionManager& sessionMgr, ArmyAnt::Logger&logger);
 	~EventManager();
 
 public:
@@ -62,7 +62,7 @@ public:
 
 private:
 	UserSessionManager& sessionMgr;
-	Logger&logger;
+	ArmyAnt::Logger&logger;
 	std::map<int32, std::map<std::string, LocalEventCallback>> localEventListenerList;
 	std::map<int32, std::map<std::string, NetworkResponseCallback>> networkListenerList;
 	std::map<std::string, DisconnectCallback> disconnectListenerList;

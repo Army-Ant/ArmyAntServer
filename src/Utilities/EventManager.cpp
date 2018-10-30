@@ -1,10 +1,10 @@
 #include <EventManager.h>
 #include <AAString.h>
+#include <AALog.h>
 #include <google/protobuf/message.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/descriptor.pb.h>
 #include <UserSessionManager.h>
-#include <Logger.h>
 
 namespace ArmyAntServer{
 static const char* const LOGGER_TAG = "EventManager";
@@ -14,7 +14,7 @@ LocalEventData::LocalEventData(int32 code) : code(code){}
 LocalEventData::~LocalEventData(){}
 
 
-EventManager::EventManager(UserSessionManager& sessionMgr, Logger&logger) : sessionMgr(sessionMgr), logger(logger){
+EventManager::EventManager(UserSessionManager& sessionMgr, ArmyAnt::Logger&logger) : sessionMgr(sessionMgr), logger(logger){
 
 }
 
@@ -67,12 +67,12 @@ bool EventManager::dispatchLocalEvent(int32 code, int32 userId, LocalEventData*d
 	auto userses = sessionMgr.getUserSession(userId);
 	bool ret = true;
 	if(userses == nullptr){
-		logger.pushLog("Cannot find the target user when dispatching local event, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), Logger::AlertLevel::Warning, LOGGER_TAG);
+		logger.pushLog("Cannot find the target user when dispatching local event, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 		ret = false;
 	} else{
 		auto finded = userses->localEventListenerList.find(code);
 		if(finded == userses->localEventListenerList.end()){
-			logger.pushLog("Cannot find the target listener when dispatching local event, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), Logger::AlertLevel::Import, LOGGER_TAG);
+			logger.pushLog("Cannot find the target listener when dispatching local event, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), ArmyAnt::Logger::AlertLevel::Import, LOGGER_TAG);
 			ret = false;
 		} else{
 			userses->dispatchLocalEvent(code, data);
@@ -133,12 +133,12 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 	auto userses = sessionMgr.getUserSession(userId);
 	bool ret = true;
 	if(userses == nullptr){
-		logger.pushLog("Cannot find the target user when dispatching network message, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), Logger::AlertLevel::Import, LOGGER_TAG);
+		logger.pushLog("Cannot find the target user when dispatching network message, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), ArmyAnt::Logger::AlertLevel::Import, LOGGER_TAG);
 		ret = false;
 	} else{
 		auto finded = userses->networkListenerList.find(code);
 		if(finded == userses->networkListenerList.end()){
-			logger.pushLog("Cannot find the target listener when dispatching network message, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), Logger::AlertLevel::Info, LOGGER_TAG);
+			logger.pushLog("Cannot find the target listener when dispatching network message, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 			ret = false;
 		}
 		// Find the conversation record
@@ -147,19 +147,19 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 		switch(conversationStepType){
 			case ArmyAntMessage::System::ConversationStepType::NoticeOnly:
 				if(convRecord != userses->conversationWaitingList.end()){
-					logger.pushLog("Notice should not has the same code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("Notice should not has the same code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else if(conversationStepIndex != 0){
-					logger.pushLog("Wrong waiting step index for notice, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("Wrong waiting step index for notice, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				}
 				break;
 			case ArmyAntMessage::System::ConversationStepType::AskFor:
 				if(convRecord != userses->conversationWaitingList.end()){
-					logger.pushLog("Ask-for should not has the same code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("Ask-for should not has the same code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else if(conversationStepIndex != 0){
-					logger.pushLog("Wrong waiting step index for ask-for, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("Wrong waiting step index for ask-for, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else{
 					// Record the ask-for
@@ -168,10 +168,10 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 				break;
 			case ArmyAntMessage::System::ConversationStepType::StartConversation:
 				if(convRecord != userses->conversationWaitingList.end()){
-					logger.pushLog("Conversation-start should not has the same code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("Conversation-start should not has the same code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else if(conversationStepIndex != 0){
-					logger.pushLog("Wrong waiting step index for conversation-start, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("Wrong waiting step index for conversation-start, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else{
 					// Record the conversation
@@ -180,10 +180,10 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 				break;
 			case ArmyAntMessage::System::ConversationStepType::ConversationStepOn:
 				if(convRecord == userses->conversationWaitingList.end()){
-					logger.pushLog("Conversation-step should has the past data code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("Conversation-step should has the past data code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else if(convRecord->second != conversationStepIndex){
-					logger.pushLog("Wrong waiting step index for conversation-step, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("Wrong waiting step index for conversation-step, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else{
 					// Record the conversation step
@@ -194,10 +194,10 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 				break;
 			case ArmyAntMessage::System::ConversationStepType::ResponseEnd:
 				if(convRecord == userses->conversationWaitingList.end()){
-					logger.pushLog("The end should has the past data code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("The end should has the past data code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else if(convRecord->second != conversationStepIndex && convRecord->second != 0){
-					logger.pushLog("Wrong waiting step index for end, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("Wrong waiting step index for end, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else{
 					// Remove the waiting data
@@ -205,7 +205,7 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 				}
 				break;
 			default:
-				logger.pushLog("Network message unknown type number, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation type: " + int64(conversationStepType), Logger::AlertLevel::Warning, LOGGER_TAG);
+				logger.pushLog("Network message unknown type number, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation type: " + int64(conversationStepType), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 				ret = false;
 		}
 
@@ -270,7 +270,7 @@ bool EventManager::dispatchUserDisconnected(int32 userId){
 	auto userses = sessionMgr.getUserSession(userId);
 	bool ret = true;
 	if(userses == nullptr){
-		logger.pushLog("Cannot find the target user when dispatching disconnect event, user: " + ArmyAnt::String(userId), Logger::AlertLevel::Error, LOGGER_TAG);
+		logger.pushLog("Cannot find the target user when dispatching disconnect event, user: " + ArmyAnt::String(userId), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		ret = false;
 	} else{
 		for(auto i = userses->disconnectCallback.begin();i!= userses->disconnectCallback.end();++i)

@@ -41,21 +41,21 @@ int32 ServerMain::main(){
 	normalSocket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, false, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8, std::placeholders::_9));
 	auto socketStartRes = normalSocket.start(normalSocketPort, 16384, false);  // 开启 socket
 	if(!socketStartRes){
-		logger.pushLog("Server socket started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		logger.pushLog("Server socket started failed", ArmyAnt::Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::ServerMainReturnValues::serverStartFailed;
 	}
 	webSocket.setEventCallback(std::bind(&ServerMain::onSocketEvent, this, true, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 	webSocket.setReceiveCallback(std::bind(&ServerMain::onSocketReceived, this, true, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8, std::placeholders::_9));
 	socketStartRes = webSocket.start(webSocketPort, 16384, false);  // 开启 websocket
 	if(!socketStartRes){
-		logger.pushLog("Server websocket started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		logger.pushLog("Server websocket started failed", ArmyAnt::Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::ServerMainReturnValues::serverStartFailed;
 	}
 	if(!appMgr.startAllApplications()){  // 开启所有 subApp
-		logger.pushLog("An sub-application started failed", Logger::AlertLevel::Fatal, LOGGER_TAG);
+		logger.pushLog("An sub-application started failed", ArmyAnt::Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::ServerMainReturnValues::serverStartFailed;
 	}
-	logger.pushLog("Server started", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("Server started", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 
 	// 4. 开始监听主线程消息队列
 	msgQueue = msgQueueMgr.createQueue(SpecialUserIndex::SERVER_MAIN_THREAD);
@@ -70,21 +70,21 @@ int32 ServerMain::main(){
 					webSocket.stop();
 					normalSocket.stop();
 					retVal = msg.data;
-					logger.pushLog("Server stopped", Logger::AlertLevel::Info, LOGGER_TAG);
+					logger.pushLog("Server stopped", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 					exitCommand = true;
 					break;
 				case Constants::ServerMainMsg::dbProxyNeedReconnect:
 					connectDBProxy(true);
 					break;
 				default:
-					logger.pushLog("ServerMain received an unknown message, code:" + ArmyAnt::String(msg.id) + ", data:" + int64(msg.data), Logger::AlertLevel::Warning, LOGGER_TAG);
+					logger.pushLog("ServerMain received an unknown message, code:" + ArmyAnt::String(msg.id) + ", data:" + int64(msg.data), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 			}
 		}
 	}
 
 	// 5. 退出时销毁资源
 	auto uninitRes = modulesUninitialization();
-	logger.pushLog("Program over", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("Program over", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	return retVal;
 }
 
@@ -105,13 +105,13 @@ bool ServerMain::send(bool isWebSocket, uint32 clientId, int32 serials, MessageT
 				normalSocket.send(clientId / 2, serials, type, extendVersion, extend, content);
 		}
 		default:
-			logger.pushLog(ArmyAnt::String("Sending a network message with an unknown head version: ") + int64(extendVersion), Logger::AlertLevel::Error, LOGGER_TAG);
+			logger.pushLog(ArmyAnt::String("Sending a network message with an unknown head version: ") + int64(extendVersion), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 			return false;
 	}
 	return true;
 }
 
-Logger & ServerMain::getLogger(){
+ArmyAnt::Logger & ServerMain::getLogger(){
 	return logger;
 }
 
@@ -198,41 +198,41 @@ int32 ServerMain::parseConfig(){
 	// 文件日志筛选级别
 	auto logFileLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logFileLevel"));
 	if(logFileLevel->getString() == ArmyAnt::String("verbose")){
-		logger.setFileLevel(Logger::AlertLevel::Verbose);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Verbose);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("debug")){
-		logger.setFileLevel(Logger::AlertLevel::Debug);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Debug);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("info")){
-		logger.setFileLevel(Logger::AlertLevel::Info);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Info);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("import")){
-		logger.setFileLevel(Logger::AlertLevel::Import);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Import);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("warning")){
-		logger.setFileLevel(Logger::AlertLevel::Warning);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Warning);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("error")){
-		logger.setFileLevel(Logger::AlertLevel::Error);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Error);
 	} else	if(logFileLevel->getString() == ArmyAnt::String("fatal")){
-		logger.setFileLevel(Logger::AlertLevel::Fatal);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Fatal);
 	} else{
-		logger.setFileLevel(Logger::AlertLevel::Verbose);
+		logger.setFileLevel(ArmyAnt::Logger::AlertLevel::Verbose);
 	}
 
 	// 控制台日志筛选级别
 	auto logConsoleLevel = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("logConsoleLevel"));
 	if(logConsoleLevel->getString() == ArmyAnt::String("verbose")){
-		logger.setConsoleLevel(Logger::AlertLevel::Verbose);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Verbose);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("debug")){
-		logger.setConsoleLevel(Logger::AlertLevel::Debug);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Debug);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("info")){
-		logger.setConsoleLevel(Logger::AlertLevel::Info);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Info);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("import")){
-		logger.setConsoleLevel(Logger::AlertLevel::Import);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Import);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("warning")){
-		logger.setConsoleLevel(Logger::AlertLevel::Warning);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Warning);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("error")){
-		logger.setConsoleLevel(Logger::AlertLevel::Error);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Error);
 	} else	if(logConsoleLevel->getString() == ArmyAnt::String("fatal")){
-		logger.setConsoleLevel(Logger::AlertLevel::Fatal);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Fatal);
 	} else{
-		logger.setConsoleLevel(Logger::AlertLevel::Import);
+		logger.setConsoleLevel(ArmyAnt::Logger::AlertLevel::Import);
 	}
 
 	// DBProxy 地址
@@ -261,7 +261,7 @@ int32 ServerMain::parseConfig(){
 
 	ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 	ArmyAnt::JsonUnit::release(json);
-	logger.pushLog("Config loading successful", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("Config loading successful", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;
 }
 
@@ -274,7 +274,7 @@ int32 ServerMain::modulesInitialization(){
 	appMgr.registerApplication(Constants::ServerMainAppid::huolongServer, new HuolongServer(Constants::ServerMainAppid::huolongServer, *this));
 
 
-	logger.pushLog("All modules initialized successful", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("All modules initialized successful", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;
 }
 
@@ -283,13 +283,13 @@ void ServerMain::connectDBProxy(bool isReconnect){
 	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8));
 	auto ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
 	while(!ret){
-		logger.pushLog("DBproxy connected failed", Logger::AlertLevel::Error, LOGGER_TAG);
+		logger.pushLog("DBproxy connected failed", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
 	}
 	if(isReconnect)
-		logger.pushLog("DBproxy reconnected", Logger::AlertLevel::Info, LOGGER_TAG);
+		logger.pushLog("DBproxy reconnected", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	else
-		logger.pushLog("DBproxy connected", Logger::AlertLevel::Info, LOGGER_TAG);
+		logger.pushLog("DBproxy connected", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 }
 
 int32 ServerMain::modulesUninitialization(){
@@ -301,7 +301,7 @@ int32 ServerMain::modulesUninitialization(){
 	appMgr.stopAllApplications();
 	delete appMgr.unregisterApplication(Constants::ServerMainAppid::simpleEchoApp);
 
-	logger.pushLog("All modules uninitialized OK", Logger::AlertLevel::Info, LOGGER_TAG);
+	logger.pushLog("All modules uninitialized OK", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	return Constants::ServerMainReturnValues::normalExit;
 }
 
@@ -309,61 +309,61 @@ void ServerMain::onSocketEvent(bool isWebsocket, SocketApplication::EventType ty
 	uint32 clientId = isWebsocket ? clientIndex * 2 + 1 : clientIndex * 2;
 	switch(type){
 		case SocketApplication::EventType::Connected:
-			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)) + ", client id: "+ ArmyAnt::String(int64(clientId)), Logger::AlertLevel::Info, LOGGER_TAG);
+			logger.pushLog("New client connected! client index: " + ArmyAnt::String(int64(clientIndex)) + ", client id: "+ ArmyAnt::String(int64(clientId)), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 			if(isWebsocket)
 				sessionMgr.createUserSession(clientId, webSocket, clientIndex);
 			else
 				sessionMgr.createUserSession(clientId, normalSocket, clientIndex);
 			break;
 		case SocketApplication::EventType::Disconnected:
-			logger.pushLog("Client disconnected! client id: " + ArmyAnt::String(int64(clientId)), Logger::AlertLevel::Info, LOGGER_TAG);
+			logger.pushLog("Client disconnected! client id: " + ArmyAnt::String(int64(clientId)), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 			sessionMgr.removeUserSession(clientId);
 			break;
 		case SocketApplication::EventType::SendingResponse:
-			logger.pushLog("Sending to client responsed, client id: " + ArmyAnt::String(int64(clientId)), Logger::AlertLevel::Verbose, LOGGER_TAG);
+			logger.pushLog("Sending to client responsed, client id: " + ArmyAnt::String(int64(clientId)), ArmyAnt::Logger::AlertLevel::Verbose, LOGGER_TAG);
 			break;
 		case SocketApplication::EventType::ErrorReport:
-			logger.pushLog("Get socket error-report, client id: " + ArmyAnt::String(int64(clientId)) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			logger.pushLog("Get socket error-report, client id: " + ArmyAnt::String(int64(clientId)) + ", content: " + content, ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 			break;
 		case SocketApplication::EventType::Unknown:
-			logger.pushLog("Get an unknown socket event, client id: " + ArmyAnt::String(int64(clientId)) + ", content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
+			logger.pushLog("Get an unknown socket event, client id: " + ArmyAnt::String(int64(clientId)) + ", content: " + content, ArmyAnt::Logger::AlertLevel::Import, LOGGER_TAG);
 			break;
 		default:
-			logger.pushLog("Get an unknown number of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientId) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			logger.pushLog("Get an unknown number of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", client index: " + int64(clientId) + ", content: " + content, ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 	}
 }
 
 void ServerMain::onSocketReceived(bool isWebsocket, const uint32 clientIndex, const MessageBaseHead&head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void*body){
 	uint32 clientId = isWebsocket ? clientIndex * 2 + 1 : clientIndex * 2;
-	logger.pushLog("Received from client id: " + ArmyAnt::String(int64(clientId)) + ", appid: " + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
+	logger.pushLog("Received from client id: " + ArmyAnt::String(int64(clientId)) + ", appid: " + int64(appid), ArmyAnt::Logger::AlertLevel::Verbose, LOGGER_TAG);
 	eventMgr.dispatchNetworkResponse(head.extendVersion, messageCode, clientId, conversationCode, conversationStepIndex, conversationStepType, body, contentLength);
 }
 
 void ServerMain::onDBConnectorEvent(SocketClientApplication::EventType type, ArmyAnt::String content){
 	switch(type){
 		case SocketClientApplication::EventType::Connected:
-			logger.pushLog("DBProxy connected!", Logger::AlertLevel::Info, LOGGER_TAG);
+			logger.pushLog("DBProxy connected!", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 			break;
 		case SocketClientApplication::EventType::LostServer:
-			logger.pushLog("DBProxy server lost!", Logger::AlertLevel::Info, LOGGER_TAG);
+			logger.pushLog("DBProxy server lost!", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 			msgQueue->pushMessage(Message{Constants::ServerMainMsg::dbProxyNeedReconnect, 0, nullptr});
 			break;
 		case SocketClientApplication::EventType::SendingResponse:
-			logger.pushLog("Sending to DBProxy responsed", Logger::AlertLevel::Verbose, LOGGER_TAG);
+			logger.pushLog("Sending to DBProxy responsed", ArmyAnt::Logger::AlertLevel::Verbose, LOGGER_TAG);
 			break;
 		case SocketClientApplication::EventType::ErrorReport:
-			logger.pushLog("Get DBProxy socket error-report, content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			logger.pushLog("Get DBProxy socket error-report, content: " + content, ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 			break;
 		case SocketClientApplication::EventType::Unknown:
-			logger.pushLog("Get an unknown socket event from DBProxy socket, content: " + content, Logger::AlertLevel::Import, LOGGER_TAG);
+			logger.pushLog("Get an unknown socket event from DBProxy socket, content: " + content, ArmyAnt::Logger::AlertLevel::Import, LOGGER_TAG);
 			break;
 		default:
-			logger.pushLog("Get an unknown nomber of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", content: " + content, Logger::AlertLevel::Warning, LOGGER_TAG);
+			logger.pushLog("Get an unknown nomber of socket event, eventType number: " + ArmyAnt::String(int64(int8(type))) + ", content: " + content, ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 	}
 }
 
 void ServerMain::onDBConnectorReceived(const MessageBaseHead & head, uint64 appid, int32 contentLength, int32 messageCode, int32 conversationCode, int32 conversationStepIndex, ArmyAntMessage::System::ConversationStepType conversationStepType, void * body){
-	logger.pushLog(ArmyAnt::String("Received from DBProxy, appid: ") + int64(appid), Logger::AlertLevel::Verbose, LOGGER_TAG);
+	logger.pushLog(ArmyAnt::String("Received from DBProxy, appid: ") + int64(appid), ArmyAnt::Logger::AlertLevel::Verbose, LOGGER_TAG);
 }
 
 

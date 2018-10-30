@@ -2,6 +2,7 @@
 #define USER_SESSION_H_20180607
 
 #include <AADefine.h>
+#include <AALog.h>
 #include <map>
 #include <functional>
 #include <thread>
@@ -11,7 +12,6 @@
 namespace ArmyAntServer{
 class UserSessionManager;
 class MessageQueue;
-class Logger;
 class SocketApplication;
 
 class UserSession{

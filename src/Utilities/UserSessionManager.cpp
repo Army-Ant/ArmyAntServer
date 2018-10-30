@@ -3,7 +3,7 @@
 
 namespace ArmyAntServer{
 
-UserSessionManager::UserSessionManager(MessageQueueManager&queueMgr, Logger& logger)
+UserSessionManager::UserSessionManager(MessageQueueManager&queueMgr, ArmyAnt::Logger& logger)
 	:queueMgr(queueMgr), logger(logger), eventMgr(nullptr){
 }
 
