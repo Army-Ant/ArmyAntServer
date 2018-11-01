@@ -2,6 +2,10 @@
 #define SOCKET_CLIENT_APPLICATION_H_20180825
 
 #include "SocketStructs.h"
+#include <functional>
+#include <DebugMutex.h>
+
+#include <AASocket.h>
 #include <ArmyAntMessage/System/SocketHead.pb.h>
 
 namespace ArmyAntServer{
@@ -37,7 +41,7 @@ private:
 	EventCallback eventCallback;
 	ReceiveCallback receiveCallback;
 
-	std::mutex rwMutex;
+	Mutex rwMutex;
 	uint32 bufferLength;
 
 	int32 counter;

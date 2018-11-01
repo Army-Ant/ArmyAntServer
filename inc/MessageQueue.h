@@ -2,6 +2,7 @@
 #define MESSAGE_QUEUE_H_20180607
 
 #include <queue>
+#include <DebugMutex.h>
 
 #include <AADefine.h>
 
@@ -34,6 +35,7 @@ private:
 	MessageQueueManager & mgr;
 	int32 userIndex;
 	std::queue<Message> msgQueue;
+	Mutex mutex;
 
 	MessageQueue(int32 userIndex, MessageQueueManager & mgr);
 	AA_FORBID_ASSGN_OPR(MessageQueue);

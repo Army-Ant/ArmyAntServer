@@ -150,11 +150,15 @@ void SocketApplication::onServerErrorReport(const ArmyAnt::SocketException& err,
 
 ClientInformation::ClientInformation(const int32 index, ClientStatus status)
 	:index(index), status(status),
-	counter(1), waitingResponseSended(), receivingBuffer(nullptr), receivingBufferEnd(0), rwMutex(){}
+	counter(1), waitingResponseSended(), receivingBuffer(nullptr), receivingBufferEnd(0), rwMutex(){
+	MutexHelper::setMutexLogTag(rwMutex, "sendingThreadMutex");
+}
 
 ClientInformation::ClientInformation(ClientInformation&&moved)
 	: index(moved.index), status(moved.status),
-	counter(moved.counter), waitingResponseSended(), receivingBuffer(nullptr), receivingBufferEnd(0), rwMutex(){}
+	counter(moved.counter), waitingResponseSended(), receivingBuffer(nullptr), receivingBufferEnd(0), rwMutex(){
+	MutexHelper::setMutexLogTag(rwMutex, "sendingThreadMutex");
+}
 
 ClientInformation::~ClientInformation(){
 	ArmyAnt::Fragment::AA_SAFE_DELALL(receivingBuffer);

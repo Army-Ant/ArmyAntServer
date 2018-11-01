@@ -72,7 +72,6 @@ bool EventManager::dispatchLocalEvent(int32 code, int32 userId, LocalEventData*d
 	} else{
 		auto finded = userses->localEventListenerList.find(code);
 		if(finded == userses->localEventListenerList.end()){
-			logger.pushLog("Cannot find the target listener when dispatching local event, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), ArmyAnt::Logger::AlertLevel::Import, LOGGER_TAG);
 			ret = false;
 		} else{
 			userses->dispatchLocalEvent(code, data);
@@ -83,6 +82,8 @@ bool EventManager::dispatchLocalEvent(int32 code, int32 userId, LocalEventData*d
 		for(auto i = finded->second.begin(); i != finded->second.end(); ++i){
 			i->second(userId, data);
 		}
+	}else if(!ret){
+		logger.pushLog("Cannot find the target listener when dispatching local event, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), ArmyAnt::Logger::AlertLevel::Import, LOGGER_TAG);
 	}
 	return ret;
 }
@@ -132,21 +133,32 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 	// Find user and listener-handler
 	auto userses = sessionMgr.getUserSession(userId);
 	bool ret = true;
+	bool noListener = false;
 	if(userses == nullptr){
 		logger.pushLog("Cannot find the target user when dispatching network message, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), ArmyAnt::Logger::AlertLevel::Import, LOGGER_TAG);
 		ret = false;
 	} else{
 		auto finded = userses->networkListenerList.find(code);
 		if(finded == userses->networkListenerList.end()){
-			logger.pushLog("Cannot find the target listener when dispatching network message, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 			ret = false;
+			noListener = true;
 		}
 		// Find the conversation record
 		userses->ioMutex.lock();
-		auto convRecord = userses->conversationWaitingList.find(conversationCode);
+		bool isEnd = false;
+		int32 cStepIndex = 0;
+		{
+			// 因为发生了死锁问题, 所以决定将数据取出来立即解锁, 以解决拖锁导致死锁的问题
+			// 虽然看起来没什么用, 毕竟这里仅仅是检验和处理数据, 没有执行其他操作, 关键导致死锁的原因应该在usersession
+			auto convRecord = userses->conversationWaitingList.find(conversationCode);
+			isEnd = convRecord == userses->conversationWaitingList.end();
+			if(!isEnd)
+				cStepIndex = convRecord->second;
+		}
+		userses->ioMutex.unlock();
 		switch(conversationStepType){
 			case ArmyAntMessage::System::ConversationStepType::NoticeOnly:
-				if(convRecord != userses->conversationWaitingList.end()){
+				if(!isEnd){
 					logger.pushLog("Notice should not has the same code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else if(conversationStepIndex != 0){
@@ -155,7 +167,7 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 				}
 				break;
 			case ArmyAntMessage::System::ConversationStepType::AskFor:
-				if(convRecord != userses->conversationWaitingList.end()){
+				if(!isEnd){
 					logger.pushLog("Ask-for should not has the same code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else if(conversationStepIndex != 0){
@@ -163,11 +175,13 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 					ret = false;
 				} else{
 					// Record the ask-for
+					userses->ioMutex.lock();
 					userses->conversationWaitingList.insert(std::make_pair(conversationCode, 0));
+					userses->ioMutex.unlock();
 				}
 				break;
 			case ArmyAntMessage::System::ConversationStepType::StartConversation:
-				if(convRecord != userses->conversationWaitingList.end()){
+				if(!isEnd){
 					logger.pushLog("Conversation-start should not has the same code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else if(conversationStepIndex != 0){
@@ -175,33 +189,40 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 					ret = false;
 				} else{
 					// Record the conversation
+					userses->ioMutex.lock();
 					userses->conversationWaitingList.insert(std::make_pair(conversationCode, 1));
+					userses->ioMutex.unlock();
 				}
 				break;
 			case ArmyAntMessage::System::ConversationStepType::ConversationStepOn:
-				if(convRecord == userses->conversationWaitingList.end()){
+				if(isEnd){
 					logger.pushLog("Conversation-step should has the past data code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
-				} else if(convRecord->second != conversationStepIndex){
+				} else if(cStepIndex != conversationStepIndex){
 					logger.pushLog("Wrong waiting step index for conversation-step, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else{
 					// Record the conversation step
+					userses->ioMutex.lock();
+					auto convRecord = userses->conversationWaitingList.find(conversationCode);
 					userses->conversationWaitingList.erase(convRecord);
 					userses->conversationWaitingList.insert(std::make_pair(conversationCode, conversationStepIndex + 1));
-					convRecord = userses->conversationWaitingList.find(conversationCode);
+					userses->ioMutex.unlock();
 				}
 				break;
 			case ArmyAntMessage::System::ConversationStepType::ResponseEnd:
-				if(convRecord == userses->conversationWaitingList.end()){
+				if(isEnd){
 					logger.pushLog("The end should has the past data code in waiting list, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation code: " + int64(conversationCode), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
-				} else if(convRecord->second != conversationStepIndex && convRecord->second != 0){
+				} else if(cStepIndex != conversationStepIndex && cStepIndex != 0){
 					logger.pushLog("Wrong waiting step index for end, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code) + " , conversation step: " + int64(conversationStepIndex), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					ret = false;
 				} else{
 					// Remove the waiting data
+					userses->ioMutex.lock();
+					auto convRecord = userses->conversationWaitingList.find(conversationCode);
 					userses->conversationWaitingList.erase(convRecord);
+					userses->ioMutex.unlock();
 				}
 				break;
 			default:
@@ -210,7 +231,6 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 		}
 
 		// Call response listener
-		userses->ioMutex.unlock();
 		userses->dispatchNetworkEvent(extendVerstion, conversationCode, code, message, messageLen);
 	}
 
@@ -219,6 +239,8 @@ bool EventManager::dispatchNetworkResponse(int32 extendVerstion, int32 code, int
 		for(auto i = finded->second.begin(); i != finded->second.end(); ++i){
 			i->second(extendVerstion, conversationCode, userId, message, messageLen);
 		}
+	} else if(noListener){
+		logger.pushLog("Cannot find the target listener when dispatching network message, user: " + ArmyAnt::String(userId) + " , message code: " + int64(code), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	}
 	return ret;
 }

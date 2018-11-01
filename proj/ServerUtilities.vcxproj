@@ -189,6 +189,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\inc\DebugMutex.h" />
     <ClInclude Include="..\inc\EventManager.h" />
     <ClInclude Include="..\inc\LocalEventCode.h" />
     <ClInclude Include="..\inc\MessageQueue.h" />
@@ -215,6 +216,7 @@
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SessionStart.pb.cc" />
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\System\SocketHead.pb.cc" />
     <ClCompile Include="..\src\Utilities\base.cpp" />
+    <ClCompile Include="..\src\Utilities\DebugMutex.cpp" />
     <ClCompile Include="..\src\Utilities\EventManager.cpp" />
     <ClCompile Include="..\src\Utilities\MessageQueue.cpp" />
     <ClCompile Include="..\src\Utilities\MessageQueueManager.cpp" />

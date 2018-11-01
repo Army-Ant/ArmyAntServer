@@ -1,11 +1,7 @@
 #ifndef SOCKET_STRUCTS_H_20180825
 #define SOCKET_STRUCTS_H_20180825
 
-#include <functional>
-#include <mutex>
-
-#include <AASocket.h>
-#include <ArmyAntMessage/System/SocketHead.pb.h>
+#include <AADefine.h>
 
 namespace ArmyAntServer{
 

@@ -86,7 +86,7 @@ void UserSession::onUpdate(){
 						cb->second(index, eventData);
 						delete eventData;
 					} else{
-						mgr.logger.pushLog("Cannot find the listener when dispatching local event, code: " + ArmyAnt::String(msg.data) + " , user index: " + int64(index), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
+						// mgr.logger.pushLog("Cannot find the listener when dispatching local event, code: " + ArmyAnt::String(msg.data) + " , user index: " + int64(index), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					}
 					break;
 				}
@@ -99,7 +99,7 @@ void UserSession::onUpdate(){
 						ArmyAnt::Fragment::AA_SAFE_DELALL(evt->data);
 						ArmyAnt::Fragment::AA_SAFE_DEL(evt);
 					} else{
-						mgr.logger.pushLog("Cannot find the listener when dispatching network event, code: " + ArmyAnt::String(msg.data) + " , user index: " + int64(index), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
+						//mgr.logger.pushLog("Cannot find the listener when dispatching network event, code: " + ArmyAnt::String(msg.data) + " , user index: " + int64(index), ArmyAnt::Logger::AlertLevel::Warning, LOGGER_TAG);
 					}
 					break;
 				}
@@ -109,28 +109,40 @@ void UserSession::onUpdate(){
 					int32 conversationStepIndex = 0;
 					bool ret = true;
 					ioMutex.lock();
-					auto lastConversation = conversationWaitingList.find(evt->conversationCode);
+					bool isEnd = false;
+					int32 first = 0;
+					int32 second = 0;
+					{
+						// 因为发生了死锁问题, 所以决定将数据取出来立即解锁, 以解决拖锁导致死锁的问题
+						auto lastConversation = conversationWaitingList.find(evt->conversationCode);
+						isEnd = lastConversation == conversationWaitingList.end();
+						if(!isEnd){
+							first = lastConversation->first;
+							second = lastConversation->second;
+						}
+					}
+					ioMutex.unlock();
 					switch(evt->conversationStepType){
 						case ArmyAntMessage::System::ConversationStepType::NoticeOnly:
 						case ArmyAntMessage::System::ConversationStepType::AskFor:
 						case ArmyAntMessage::System::ConversationStepType::StartConversation:
 							conversationStepIndex = 0;
-							if(lastConversation != conversationWaitingList.end()){
+							if(!isEnd){
 								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as conversation start with an existed code: ") + int64(evt->conversationCode), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 								ret = false;
 							}
 							break;
 						case ArmyAntMessage::System::ConversationStepType::ConversationStepOn:
-							if(lastConversation != conversationWaitingList.end() && lastConversation->second == 0){
+							if(!isEnd && second == 0){
 								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as asking reply with an existed normal conversation code: ") + int64(evt->conversationCode), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 								ret = false;
 							}
 						case ArmyAntMessage::System::ConversationStepType::ResponseEnd:
-							if(lastConversation == conversationWaitingList.end()){
+							if(isEnd){
 								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as conversation reply with an unexisted code: ") + int64(evt->conversationCode), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 								ret = false;
 							} else{
-								conversationStepIndex = lastConversation->second;
+								conversationStepIndex = second;
 								if(conversationStepIndex == 0)
 									conversationStepIndex = 1;
 							}
@@ -158,6 +170,7 @@ void UserSession::onUpdate(){
 								ret = false;
 						}
 
+						ioMutex.lock();
 						switch(evt->conversationStepType){
 							case ArmyAntMessage::System::ConversationStepType::AskFor:
 								conversationWaitingList.insert(std::make_pair(evt->conversationCode, 0));
@@ -167,20 +180,20 @@ void UserSession::onUpdate(){
 								break;
 							case ArmyAntMessage::System::ConversationStepType::ConversationStepOn:
 							{
-								auto inserting = std::make_pair(lastConversation->first, lastConversation->second + 1);
-								conversationWaitingList.erase(lastConversation);
+								auto inserting = std::make_pair(first, second + 1);
+								conversationWaitingList.erase(first);
 								conversationWaitingList.insert(inserting);
 								break;
 							}
 							case ArmyAntMessage::System::ConversationStepType::ResponseEnd:
-								conversationWaitingList.erase(lastConversation);
+								conversationWaitingList.erase(first);
 								break;
-                                                        default:
-                                                                // TODO: Warning
-                                                                break;
+                            default:
+                                // TODO: Warning
+                                break;
 						}
+						ioMutex.unlock();
 					}
-					ioMutex.unlock();
 					ArmyAnt::Fragment::AA_SAFE_DELALL(evt->data);
 					ArmyAnt::Fragment::AA_SAFE_DEL(evt);
 					break;

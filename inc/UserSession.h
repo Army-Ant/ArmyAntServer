@@ -6,7 +6,7 @@
 #include <map>
 #include <functional>
 #include <thread>
-#include <mutex>
+#include <DebugMutex.h>
 #include <EventManager.h>
 
 namespace ArmyAntServer{
@@ -46,7 +46,7 @@ private:
 
 	bool threadEnd;
 	std::thread updateThread;
-	std::mutex ioMutex;
+	Mutex ioMutex;
 
 	// Event data
 	std::map<int32, EventManager::LocalEventCallback> localEventListenerList;

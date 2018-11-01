@@ -49,6 +49,9 @@
     <Filter Include="socketApplication">
       <UniqueIdentifier>{151b0fcf-955d-437d-908f-3fc1d49a8ced}</UniqueIdentifier>
     </Filter>
+    <Filter Include="debugTools">
+      <UniqueIdentifier>{2f5f7ff5-c149-42e6-b246-a24cf6088d11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\SocketApplication.h">
@@ -102,6 +105,9 @@
     <ClInclude Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\Huolong.pb.h">
       <Filter>protobuf</Filter>
     </ClInclude>
+    <ClInclude Include="..\inc\DebugMutex.h">
+      <Filter>debugTools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Utilities\SocketApplication.cpp">
@@ -145,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="..\src\ProtobufSource\cpp\ArmyAntMessage\SubApps\Huolong.pb.cc">
       <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utilities\DebugMutex.cpp">
+      <Filter>debugTools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,11 @@
 #include <map>
 
 #include "SocketStructs.h"
+#include <functional>
+#include <DebugMutex.h>
+
+#include <AASocket.h>
+#include <ArmyAntMessage/System/SocketHead.pb.h>
 
 namespace ArmyAntServer{
 
@@ -21,7 +26,7 @@ private:
 	uint8*receivingBuffer;
 	uint32 receivingBufferEnd;
 
-	std::mutex rwMutex;
+	Mutex rwMutex;
 
 	void setMaxBufferLength(uint32 bufferLength);
 
@@ -64,7 +69,7 @@ private:
 	ReceiveCallback receiveCallback;
 	std::map<uint32, ClientInformation*> clients;
 
-	std::mutex connectMutex;
+	Mutex connectMutex;
 	uint32 bufferLength;
 
 	friend struct ClientInformation;
