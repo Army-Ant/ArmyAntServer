@@ -60,16 +60,30 @@ message ST_HuolongPlayerInfo {
 	string avatar_url = 3;
 }
 
+message C2SM_HuolongChangeUserInfoRequest{
+	option (msg_code) = 10101003;
+	string user_uid = 1;
+	string nick_name = 2;
+	string avatar_url = 3;
+}
+
+message SM2C_HuolongChangeUserInfoResponse{
+	option (msg_code) = 10102003;
+	int32 result = 1;	// 0: normal, others: error code
+	string message = 2;
+}
+
 ////////////////// Table Resolve //////////////////////////////////
 
 message ST_HuolongRoomInfo {
 	int32 room_number = 1;
 	string creator_uid = 2;
 	HuolongGameType type = 3;
-	ST_HuolongPlayerInfo next_player = 4;
-	ST_HuolongPlayerInfo friend_player = 5;
-	ST_HuolongPlayerInfo back_player = 6;
-	HuolongStatus status = 7;
+	ST_HuolongPlayerInfo self_player = 4;
+	ST_HuolongPlayerInfo next_player = 5;
+	ST_HuolongPlayerInfo friend_player = 6;
+	ST_HuolongPlayerInfo back_player = 7;
+	HuolongStatus status = 8;
 }
 
 message C2SM_HuolongCreateTableRequest{
@@ -80,7 +94,8 @@ message C2SM_HuolongCreateTableRequest{
 message SM2C_HuolongCreateTableResponse {
 	option (msg_code) = 10102011;
 	bool result = 1;
-	ST_HuolongRoomInfo room_info = 2;
+	string message = 2;
+	ST_HuolongRoomInfo room_info = 3;
 }
 
 message C2SM_HuolongEnterTableRequest {
@@ -91,7 +106,8 @@ message C2SM_HuolongEnterTableRequest {
 message SM2C_HuolongEnterTableResponse {
 	option (msg_code) = 10102012;
 	bool result = 1;
-	ST_HuolongRoomInfo room_info = 2;
+	string message = 2;
+	ST_HuolongRoomInfo room_info = 3;
 }
 
 message SM2C_HuolongNoticeRoomInfo {

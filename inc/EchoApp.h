@@ -4,6 +4,7 @@
 #include <map>
 #include <memory>
 #include <subApplication.h>
+#include <DebugMutex.h>
 
 namespace ArmyAntServer{
 
@@ -24,6 +25,7 @@ public:
 	void onUserDisconnected(int32 userId);
 
 private:
+	Mutex userListMutex;
 	std::map<std::string, int32> userList;
 
 private:

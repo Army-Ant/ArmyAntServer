@@ -25,11 +25,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\HuolongServer.h" />
+    <ClInclude Include="..\inc\HuolongTable.h" />
+    <ClInclude Include="..\inc\HuolongTableManager.h" />
     <ClInclude Include="..\inc\HuolongUser.h" />
     <ClInclude Include="..\inc\HuolongUserDataManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongServer.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongTable.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongTableManager.cpp" />
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongUser.cpp" />
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongUserDataManager.cpp" />
   </ItemGroup>

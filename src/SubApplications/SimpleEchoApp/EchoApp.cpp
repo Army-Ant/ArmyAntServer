@@ -14,12 +14,14 @@ namespace ArmyAntServer{
 static const char* const EVENT_TAG = "EchoApp";
 static const char* const LOGGER_TAG = "EchoApp";
 
-EchoApp::EchoApp(int64 appid, ServerMain & server) :SubApplication(appid, server), userList(){}
+EchoApp::EchoApp(int64 appid, ServerMain & server) :SubApplication(appid, server), userListMutex(), userList(){}
 
 EchoApp::~EchoApp(){}
 
 bool EchoApp::onStart(){
+	userListMutex.lock();
 	userList.clear();
+	userListMutex.unlock();
 	server.getEventManager().addGlobalListenerForNetworkResponse(EVENT_TAG, EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoLoginRequest>(), NETWORK_CALLBACK(EchoApp::onUserLogin));
 
 	server.getLogger().pushLog("Simple echo server started !", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
@@ -42,15 +44,18 @@ void EchoApp::onUserLogin(int32 extendVerstion, int32 conversationCode, int32 us
 		server.getLogger().pushLog("Cannot find the request user in system session list !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
+	userListMutex.lock();
 	auto oldUser = userList.find(msg.user_name());
 	ArmyAntMessage::SubApps::SM2C_EchoLoginResponse response;
 	if(oldUser != userList.end()){
 		response.set_result(3);
 		response.set_message(std::string("The user of this name has logged in"));
+		userListMutex.unlock();
 	} else{
 		response.set_result(0);
 		response.set_message(std::string("Login successful !"));
 		userList.insert(std::make_pair(msg.user_name(), userId));
+		userListMutex.unlock();
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoLogoutRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserLogout));
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoSendRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserSend));
 		server.getEventManager().addListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest>(), userId, NETWORK_CALLBACK(EchoApp::onUserBroadcast));
@@ -71,6 +76,7 @@ void EchoApp::onUserLogout(int32 extendVerstion, int32 conversationCode, int32 u
 		server.getLogger().pushLog("Cannot find the request user in system session list !", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		return;
 	}
+	userListMutex.lock();
 	auto oldUser = userList.find(msg.user_name());
 	ArmyAntMessage::SubApps::SM2C_EchoLogoutResponse response;
 	if(oldUser == userList.end()){
@@ -85,6 +91,7 @@ void EchoApp::onUserLogout(int32 extendVerstion, int32 conversationCode, int32 u
 		userList.erase(oldUser);
 		server.getLogger().pushLog(("User logout: " + msg.user_name()).c_str(), ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);
 	}
+	userListMutex.unlock();
 	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 }
 
@@ -100,6 +107,7 @@ void EchoApp::onUserSend(int32 extendVerstion, int32 conversationCode, int32 use
 		return;
 	}
 	const char* fromUser = nullptr;
+	userListMutex.lock();
 	for(auto i = userList.begin(); i != userList.end(); ++i){
 		if(i->second == userId){
 			fromUser = i->first.c_str();
@@ -122,6 +130,7 @@ void EchoApp::onUserSend(int32 extendVerstion, int32 conversationCode, int32 use
 		response.set_message(std::string("Send successful !"));
 		ok = true;
 	}
+	userListMutex.unlock();
 	userSes->sendNetwork(extendVerstion, appid, conversationCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 	if(ok){
 		ArmyAntMessage::SubApps::SM2C_EchoReceiveNotice notice;
@@ -144,12 +153,14 @@ void EchoApp::onUserBroadcast(int32 extendVerstion, int32 conversationCode, int3
 		return;
 	}
 	const char* fromUser = nullptr;
+	userListMutex.lock();
 	for(auto i = userList.begin(); i != userList.end(); ++i){
 		if(i->second == userId){
 			fromUser = i->first.c_str();
 			break;
 		}
 	}
+	userListMutex.unlock();
 	ArmyAntMessage::SubApps::SM2C_EchoBroadcastResponse response;
 	auto ret = new ArmyAntMessage::SubApps::C2SM_EchoBroadcastRequest(msg);
 	response.set_allocated_request(ret);
@@ -168,15 +179,18 @@ void EchoApp::onUserBroadcast(int32 extendVerstion, int32 conversationCode, int3
 		notice.set_is_broadcast(true);
 		notice.set_from(fromUser);
 		notice.set_message(msg.message());
+		userListMutex.lock();
 		for(auto i = userList.begin(); i != userList.end(); ++i){
 			server.getUserSessionManager().getUserSession(i->second)->sendNetwork(extendVerstion, appid, 0, ArmyAntMessage::System::ConversationStepType::NoticeOnly, &notice);
 		}
+		userListMutex.unlock();
 	}
 }
 
 void EchoApp::onUserDisconnected(int32 userId){
 	std::string fromUser = "";
 	bool founded = false;
+	userListMutex.lock();
 	for(auto i = userList.begin(); i != userList.end(); ++i){
 		if(i->second == userId){
 			founded = true;
@@ -185,6 +199,7 @@ void EchoApp::onUserDisconnected(int32 userId){
 			break;
 		}
 	}
+	userListMutex.unlock();
 	if(founded){
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoLogoutRequest>(), userId);
 		server.getEventManager().removeListenerForNetworkResponse(EventManager::getProtobufMessageCode<ArmyAntMessage::SubApps::C2SM_EchoSendRequest>(), userId);
