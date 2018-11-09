@@ -31,10 +31,17 @@ public:
 	bool setUserAvatar(std::string id, std::string avatarUrl);
 	std::string getUserAvatar(std::string id);
 
+	bool setUserEnterTable(std::string id, int32 number);
+	bool setUserLeaveTable(std::string id, int32 number);
+	int32 getUserTable(std::string id);
+
 private:
 	struct ThirdPartyAccountAuthData{
 		std::string id;
 		std::string auth;
+	};
+	struct UserStatus{
+		int32 tableNumber;
 	};
 	struct UserData{
 		std::string uid;
@@ -43,6 +50,8 @@ private:
 		std::string avatarUrl;
 		std::map<LoginType, ThirdPartyAccountAuthData> thirdData;
 		std::map<std::string, int64> autoLoginAuth;
+		// The below data is runtime user data
+		UserStatus status;
 	};
 
 private:

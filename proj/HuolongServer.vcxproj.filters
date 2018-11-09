@@ -6,6 +6,12 @@
     <ClInclude Include="..\inc\HuolongUserDataManager.h" />
     <ClInclude Include="..\inc\HuolongTableManager.h" />
     <ClInclude Include="..\inc\HuolongTable.h" />
+    <ClInclude Include="..\inc\HuolongConstants.h" />
+    <ClInclude Include="..\inc\IHuolongBattlePlayer.h" />
+    <ClInclude Include="..\inc\HuolongBattlePlayer_LocalHuman.h" />
+    <ClInclude Include="..\inc\HuolongBattlePlayer_ServerRobot.h" />
+    <ClInclude Include="..\inc\HuolongUtils.h" />
+    <ClInclude Include="..\inc\PokerCard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongServer.cpp" />
@@ -13,5 +19,10 @@
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongUserDataManager.cpp" />
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongTableManager.cpp" />
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongTable.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongUtils.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\PokerCard.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\IHuolongBattlePlayer.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongBattlePlayer_LocalHuman.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongBattlePlayer_ServerRobot.cpp" />
   </ItemGroup>
 </Project>

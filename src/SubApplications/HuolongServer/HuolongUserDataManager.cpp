@@ -158,6 +158,48 @@ std::string HuolongUserDataManager::getUserAvatar(std::string id){
 	return ret;
 }
 
+bool HuolongUserDataManager::setUserEnterTable(std::string id, int32 number){
+	mutex.lock();
+	auto user = userData.find(id);
+	if(user == userData.end()){
+		mutex.unlock();
+		return false;
+	}
+	if(user->second->status.tableNumber >= 0){
+		mutex.unlock();
+		return false;
+	}
+	user->second->status.tableNumber = number;
+	mutex.unlock();
+	return true;
+}
+
+bool HuolongUserDataManager::setUserLeaveTable(std::string id, int32 number){
+	mutex.lock();
+	auto user = userData.find(id);
+	if(user == userData.end()){
+		mutex.unlock();
+		return false;
+	}
+	if(user->second->status.tableNumber != number){
+		mutex.unlock();
+		return false;
+	}
+	user->second->status.tableNumber = -1;
+	mutex.unlock();
+	return true;
+}
+
+int32 HuolongUserDataManager::getUserTable(std::string id){
+	mutex.lock();
+	auto user = userData.find(id);
+	int32 ret = -2;
+	if(user != userData.end())
+		ret = user->second->status.tableNumber;
+	mutex.unlock();
+	return ret;
+}
+
 HuolongUserDataManager::HuolongUserDataManager(HuolongServer&hserver):hserver(hserver), mutex(), userData(){
 
 }

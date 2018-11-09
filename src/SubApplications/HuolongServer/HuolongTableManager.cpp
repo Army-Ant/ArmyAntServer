@@ -1,3 +1,4 @@
+#include <HuolongConstants.h>
 #include <HuolongTable.h>
 #include <HuolongTableManager.h>
 #include <HuolongServer.h>
@@ -32,7 +33,7 @@ int32 HuolongTableManager::enterTable(int32 tableId, std::string userId){
 	mutex.lock();
 	if(!isTableExist(tableId)){
 		mutex.unlock();
-		return -1;  //  牌桌不存在
+		return Huolong::Constants::TABLE_IS_NOT_EXIST;  //  牌桌不存在
 	}
 	HuolongTable* t = tables.find(tableId)->second;
 	mutex.unlock();
@@ -45,7 +46,7 @@ int32 HuolongTableManager::enterTable(int32 tableId, std::string userId){
 	else if(t->getBackPlayer() == "")
 		t->setBackPlayer(userId);
 	else
-		return -2;  //  桌内人数已满
+		return Huolong::Constants::TABLE_IS_FULL;  //  桌内人数已满
 	// 通知桌内其他人
 	ArmyAntMessage::SubApps::SM2C_HuolongNoticeRoomInfo msg;
 	msg.set_allocated_room_info(t->getTableInfoMsg());
@@ -73,7 +74,7 @@ int32 HuolongTableManager::enterTable(int32 tableId, std::string userId){
 			hserver.sendMsgToUser(t->getBackPlayer(), ArmyAntMessage::System::ConversationStepType::NoticeOnly, &msg);
 		}
 	}
-	return 0;
+	return Huolong::Constants::ENTER_TABLE_RESULT_SUCCESS;
 }
 
 bool HuolongTableManager::isTableExist(int32 id) const{

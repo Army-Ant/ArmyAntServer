@@ -24,18 +24,29 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\inc\HuolongBattlePlayer_LocalHuman.h" />
+    <ClInclude Include="..\inc\HuolongBattlePlayer_ServerRobot.h" />
+    <ClInclude Include="..\inc\HuolongConstants.h" />
     <ClInclude Include="..\inc\HuolongServer.h" />
     <ClInclude Include="..\inc\HuolongTable.h" />
     <ClInclude Include="..\inc\HuolongTableManager.h" />
     <ClInclude Include="..\inc\HuolongUser.h" />
     <ClInclude Include="..\inc\HuolongUserDataManager.h" />
+    <ClInclude Include="..\inc\HuolongUtils.h" />
+    <ClInclude Include="..\inc\IHuolongBattlePlayer.h" />
+    <ClInclude Include="..\inc\PokerCard.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongBattlePlayer_LocalHuman.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongBattlePlayer_ServerRobot.cpp" />
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongServer.cpp" />
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongTable.cpp" />
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongTableManager.cpp" />
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongUser.cpp" />
     <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongUserDataManager.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\HuolongUtils.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\IHuolongBattlePlayer.cpp" />
+    <ClCompile Include="..\src\SubApplications\HuolongServer\PokerCard.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

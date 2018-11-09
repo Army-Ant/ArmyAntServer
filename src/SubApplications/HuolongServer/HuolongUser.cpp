@@ -1,6 +1,7 @@
 #include <AALog.h>
 
 #include <EventManager.h>
+#include <HuolongConstants.h>
 #include <HuolongServer.h>
 #include <HuolongUser.h>
 #include <HuolongUserDataManager.h>
@@ -77,20 +78,24 @@ void HuolongUser::onCreateTable(int32, int32 convCode, int32, void * message, in
 	}
 	auto type = msg.type();
 	// response
-	// TODO: 需要给人物加上battle状态并检查, 在桌内时不能创建新房间
-	// TODO: 需要给每种返回值添加const常量, 严格按照常量返回, 以便客户端对比提示
 	ArmyAntMessage::SubApps::SM2C_HuolongCreateTableResponse response;
-	auto tableId = hserver.getTableManager().createTable(type, userId);
-	if(tableId <= 0){
-		response.set_result(tableId);
-		response.set_message("Create table failed");
+	if(dataMgr.getUserTable(userId) >= 0){
+		response.set_result(Huolong::Constants::USER_HAS_BEEN_IN_BATTLE);
+		response.set_message("The user has been in a table");
 	} else{
-		response.set_result(0);
-		response.set_message("Successful");
-		hserver.getTableManager().enterTable(tableId, userId);
-		auto& table = hserver.getTableManager().getTableById(tableId);
-		auto info = table.getTableInfoMsg();
-		response.set_allocated_room_info(info);
+		auto tableId = hserver.getTableManager().createTable(type, userId);
+		if(tableId < 0){
+			response.set_result(tableId);
+			response.set_message("Create table failed");
+		} else{
+			dataMgr.setUserEnterTable(userId, tableId);    // Warning : 慎重确认这一步可能返回false的情况
+			response.set_result(0);
+			response.set_message("Successful");
+			hserver.getTableManager().enterTable(tableId, userId);
+			auto& table = hserver.getTableManager().getTableById(tableId);
+			auto info = table.getTableInfoMsg();
+			response.set_allocated_room_info(info);
+		}
 	}
 	hserver.sendMsgToUser(userId, convCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 }
@@ -103,18 +108,22 @@ void HuolongUser::onEnterTable(int32, int32 convCode, int32, void * message, int
 	}
 	auto number = msg.room_number();
 	// response
-	// TODO: 需要给人物加上battle状态并检查, 在桌内时不能加入房间
-	// TODO: 需要给每种返回值添加const常量, 严格按照常量返回, 以便客户端对比提示
 	ArmyAntMessage::SubApps::SM2C_HuolongEnterTableResponse response;
-	auto ret = hserver.getTableManager().enterTable(number, userId);
-	if(ret != 0){
-		response.set_result(ret);
-		response.set_message("Enter table failed");
+	if(dataMgr.getUserTable(userId) >= 0){
+		response.set_result(Huolong::Constants::USER_HAS_BEEN_IN_BATTLE);
+		response.set_message("The user has been in a table");
 	} else{
-		response.set_result(0);
-		response.set_message("Successful");
-		auto info = hserver.getTableManager().getTableById(number).getTableInfoMsg();
-		response.set_allocated_room_info(info);
+		auto ret = hserver.getTableManager().enterTable(number, userId);
+		if(ret != Huolong::Constants::ENTER_TABLE_RESULT_SUCCESS){
+			response.set_result(ret);
+			response.set_message("Enter table failed");
+		} else{
+			dataMgr.setUserEnterTable(userId, number);    // Warning : 慎重确认这一步可能返回false的情况
+			response.set_result(0);
+			response.set_message("Successful");
+			auto info = hserver.getTableManager().getTableById(number).getTableInfoMsg();
+			response.set_allocated_room_info(info);
+		}
 	}
 	hserver.sendMsgToUser(userId, convCode, ArmyAntMessage::System::ConversationStepType::ResponseEnd, &response);
 }
