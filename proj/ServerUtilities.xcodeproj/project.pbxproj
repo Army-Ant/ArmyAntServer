@@ -12,8 +12,10 @@
 		966A086521354E4500EDAE08 /* MessageQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A085E21354E4500EDAE08 /* MessageQueue.cpp */; };
 		966A086621354E4500EDAE08 /* MessageQueueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A085F21354E4500EDAE08 /* MessageQueueManager.cpp */; };
 		966A086721354E4500EDAE08 /* SocketClientApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A086021354E4500EDAE08 /* SocketClientApplication.cpp */; };
-		966A086821354E4500EDAE08 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A086121354E4500EDAE08 /* Logger.cpp */; };
 		966A086921354E4500EDAE08 /* SocketApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A086221354E4500EDAE08 /* SocketApplication.cpp */; };
+		9697463E21953AEA006EDC3A /* UserSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9697463B21953AEA006EDC3A /* UserSessionManager.cpp */; };
+		9697463F21953AEA006EDC3A /* UserSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9697463C21953AEA006EDC3A /* UserSession.cpp */; };
+		9697464021953AEA006EDC3A /* DebugMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9697463D21953AEA006EDC3A /* DebugMutex.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +25,10 @@
 		966A085E21354E4500EDAE08 /* MessageQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageQueue.cpp; path = ../src/Utilities/MessageQueue.cpp; sourceTree = "<group>"; };
 		966A085F21354E4500EDAE08 /* MessageQueueManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageQueueManager.cpp; path = ../src/Utilities/MessageQueueManager.cpp; sourceTree = "<group>"; };
 		966A086021354E4500EDAE08 /* SocketClientApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SocketClientApplication.cpp; path = ../src/Utilities/SocketClientApplication.cpp; sourceTree = "<group>"; };
-		966A086121354E4500EDAE08 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger.cpp; path = ../src/Utilities/Logger.cpp; sourceTree = "<group>"; };
 		966A086221354E4500EDAE08 /* SocketApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SocketApplication.cpp; path = ../src/Utilities/SocketApplication.cpp; sourceTree = "<group>"; };
+		9697463B21953AEA006EDC3A /* UserSessionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UserSessionManager.cpp; path = ../src/Utilities/UserSessionManager.cpp; sourceTree = "<group>"; };
+		9697463C21953AEA006EDC3A /* UserSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UserSession.cpp; path = ../src/Utilities/UserSession.cpp; sourceTree = "<group>"; };
+		9697463D21953AEA006EDC3A /* DebugMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DebugMutex.cpp; path = ../src/Utilities/DebugMutex.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +61,11 @@
 		966A085421354DD100EDAE08 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				9697463D21953AEA006EDC3A /* DebugMutex.cpp */,
+				9697463C21953AEA006EDC3A /* UserSession.cpp */,
+				9697463B21953AEA006EDC3A /* UserSessionManager.cpp */,
 				966A085C21354E4500EDAE08 /* base.cpp */,
 				966A085D21354E4500EDAE08 /* EventManager.cpp */,
-				966A086121354E4500EDAE08 /* Logger.cpp */,
 				966A085E21354E4500EDAE08 /* MessageQueue.cpp */,
 				966A085F21354E4500EDAE08 /* MessageQueueManager.cpp */,
 				966A086221354E4500EDAE08 /* SocketApplication.cpp */,
@@ -136,11 +142,13 @@
 			files = (
 				966A086421354E4500EDAE08 /* EventManager.cpp in Sources */,
 				966A086921354E4500EDAE08 /* SocketApplication.cpp in Sources */,
-				966A086821354E4500EDAE08 /* Logger.cpp in Sources */,
 				966A086621354E4500EDAE08 /* MessageQueueManager.cpp in Sources */,
+				9697463F21953AEA006EDC3A /* UserSession.cpp in Sources */,
 				966A086521354E4500EDAE08 /* MessageQueue.cpp in Sources */,
 				966A086721354E4500EDAE08 /* SocketClientApplication.cpp in Sources */,
 				966A086321354E4500EDAE08 /* base.cpp in Sources */,
+				9697464021953AEA006EDC3A /* DebugMutex.cpp in Sources */,
+				9697463E21953AEA006EDC3A /* UserSessionManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
