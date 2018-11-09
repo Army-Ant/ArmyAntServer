@@ -3,16 +3,6 @@
    version = "1.0">
    <Group
       location = "group:"
-      name = "mac_server">
-      <FileRef
-         location = "group:ArmyAntServer.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:DBProxy.xcodeproj">
-      </FileRef>
-   </Group>
-   <Group
-      location = "group:"
       name = "libraries">
       <FileRef
          location = "group:DatabaseProxyCore.xcodeproj">
@@ -22,6 +12,26 @@
       </FileRef>
       <FileRef
          location = "group:ServerUtilities.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:"
+      name = "mac_server">
+      <FileRef
+         location = "group:ArmyAntServer.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:DBProxy.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "sub_applications">
+      <FileRef
+         location = "group:HuolongServer.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:EchoServer.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>
