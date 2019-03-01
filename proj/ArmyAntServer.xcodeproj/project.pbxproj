@@ -7,22 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7825F7BA222807660054E846 /* libServerCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7825F7B9222807660054E846 /* libServerCore.a */; };
+		7825F7C4222808720054E846 /* libEchoServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7825F7C3222808720054E846 /* libEchoServer.a */; };
+		7825F7C6222808720054E846 /* libHuolongServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7825F7C5222808720054E846 /* libHuolongServer.a */; };
+		7825F7C8222808720054E846 /* libServerUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7825F7C7222808720054E846 /* libServerUtilities.a */; };
+		785082DD22280A8C0009DB08 /* libprotobuf.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 785082DC22280A8C0009DB08 /* libprotobuf.dylib */; };
+		785082E122280B720009DB08 /* libArmyAntLib_mac_d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 785082E022280B720009DB08 /* libArmyAntLib_mac_d.dylib */; };
+		785082E322280B7F0009DB08 /* libboost_system.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 785082E222280B7F0009DB08 /* libboost_system.dylib */; };
+		785082EF22280F4D0009DB08 /* libArmyAntLib_mac_d.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 785082E022280B720009DB08 /* libArmyAntLib_mac_d.dylib */; };
+		7850831A22281AFB0009DB08 /* libboost_system.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 785082E222280B7F0009DB08 /* libboost_system.dylib */; };
+		7850831B22281AFB0009DB08 /* libprotobuf.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 785082DC22280A8C0009DB08 /* libprotobuf.dylib */; };
 		966A08372135452400EDAE08 /* ArmyAntServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A08362135452400EDAE08 /* ArmyAntServer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9614E14B21354035000C8969 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 12;
+			dstPath = "$(BUILD_DIR)";
 			dstSubfolderSpec = 0;
 			files = (
+				7850831A22281AFB0009DB08 /* libboost_system.dylib in CopyFiles */,
+				7850831B22281AFB0009DB08 /* libprotobuf.dylib in CopyFiles */,
+				785082EF22280F4D0009DB08 /* libArmyAntLib_mac_d.dylib in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7825F7B9222807660054E846 /* libServerCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libServerCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7825F7C3222808720054E846 /* libEchoServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libEchoServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7825F7C5222808720054E846 /* libHuolongServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libHuolongServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7825F7C7222808720054E846 /* libServerUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libServerUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		785082DC22280A8C0009DB08 /* libprotobuf.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.dylib; path = ../../../../../../../usr/local/lib/libprotobuf.dylib; sourceTree = "<group>"; };
+		785082E022280B720009DB08 /* libArmyAntLib_mac_d.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libArmyAntLib_mac_d.dylib; path = ../external/ArmyAntLib/bin/libArmyAntLib_mac_d.dylib; sourceTree = "<group>"; };
+		785082E222280B7F0009DB08 /* libboost_system.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_system.dylib; path = ../external/ArmyAntLib/bin/libboost_system.dylib; sourceTree = "<group>"; };
 		9614E14D21354035000C8969 /* ArmyAntServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ArmyAntServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		966A08362135452400EDAE08 /* ArmyAntServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArmyAntServer.cpp; path = ../src/ServerEntry/ArmyAntServer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,17 +52,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7825F7C4222808720054E846 /* libEchoServer.a in Frameworks */,
+				7825F7C6222808720054E846 /* libHuolongServer.a in Frameworks */,
+				785082E122280B720009DB08 /* libArmyAntLib_mac_d.dylib in Frameworks */,
+				7825F7C8222808720054E846 /* libServerUtilities.a in Frameworks */,
+				7825F7BA222807660054E846 /* libServerCore.a in Frameworks */,
+				785082E322280B7F0009DB08 /* libboost_system.dylib in Frameworks */,
+				785082DD22280A8C0009DB08 /* libprotobuf.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7825F7B8222807660054E846 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				785082E222280B7F0009DB08 /* libboost_system.dylib */,
+				785082E022280B720009DB08 /* libArmyAntLib_mac_d.dylib */,
+				785082DC22280A8C0009DB08 /* libprotobuf.dylib */,
+				7825F7C3222808720054E846 /* libEchoServer.a */,
+				7825F7C5222808720054E846 /* libHuolongServer.a */,
+				7825F7C7222808720054E846 /* libServerUtilities.a */,
+				7825F7B9222807660054E846 /* libServerCore.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9614E14421354035000C8969 = {
 			isa = PBXGroup;
 			children = (
 				966A082F2135448400EDAE08 /* src */,
 				9614E14E21354035000C8969 /* Products */,
+				7825F7B8222807660054E846 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +130,9 @@
 		9614E14521354035000C8969 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = ArmyAnt;
 				TargetAttributes = {
@@ -158,6 +203,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -167,8 +214,17 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					_cplusplus,
+					_x86,
+					_64BIT,
+					OS_UNIX,
+					OS_BSD,
+					OS_MACOS,
+					_LLVM,
+					_XCODE,
+					"DEBUG=1",
+					_DEBUG,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -176,10 +232,22 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(SRCROOT)/../inc",
+					"$(SRCROOT)/../external/ArmyAntLib/inc",
+					"$(SRCROOT)/../src/ProtobufSource/cpp",
+					"$(SRCROOT)/../external/Protobuf/src",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"$(SRCROOT)/../external/ArmyAntLib/bin",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SYMROOT = "$(SRCROOT)/../bin";
 			};
 			name = Debug;
 		};
@@ -216,21 +284,47 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					_cplusplus,
+					_x86,
+					_64BIT,
+					OS_UNIX,
+					OS_BSD,
+					OS_MACOS,
+					_LLVM,
+					_XCODE,
+					NDEBUG,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(SRCROOT)/../inc",
+					"$(SRCROOT)/../external/ArmyAntLib/inc",
+					"$(SRCROOT)/../src/ProtobufSource/cpp",
+					"$(SRCROOT)/../external/Protobuf/src",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"$(SRCROOT)/../external/ArmyAntLib/bin",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SYMROOT = "$(SRCROOT)/../bin";
 			};
 			name = Release;
 		};

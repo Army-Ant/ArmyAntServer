@@ -226,13 +226,18 @@ int32 DBProxyMain::modulesInitialization(){
 	// 连接目标数据库
 	auto connRes = mysqlBridge.connect(mysqlServerHost);
 	int32 retriedTimes = 0;
-	while(!connRes && retriedTimes < 19){
+	while(!connRes && retriedTimes < 10){
 		logger.pushLog("Connect to Mysql failed", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 		connRes = mysqlBridge.connect(mysqlServerHost);
 		++retriedTimes;
+        if(!connRes){
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            logger.pushLog("Connect to Mysql failed", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
+            connRes = mysqlBridge.connect(mysqlServerHost);
+        }
 	}
 	if(!connRes){
-		logger.pushLog("Connect to Mysql failed 20 times, server will exit !", ArmyAnt::Logger::AlertLevel::Fatal, LOGGER_TAG);
+		logger.pushLog("Connect to Mysql failed 20 times, the database proxy server start failed !", ArmyAnt::Logger::AlertLevel::Fatal, LOGGER_TAG);
 		return Constants::DBProxyMainReturnValues::moduleInitFailed;
 	}else{
 		logger.pushLog("Connect to Mysql successful", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);

@@ -20,7 +20,7 @@ public:
 
 public:
 	PokerCard(int32 id);
-	PokerCard(int8 value, Color color, int8 group = 1i8);
+	PokerCard(int8 value, Color color, int8 group = 1);
 	PokerCard(const PokerCard&value);
 	PokerCard&operator=(const PokerCard&value);
 	~PokerCard();

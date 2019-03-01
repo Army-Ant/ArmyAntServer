@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7825F7D0222809540054E846 /* base.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 7825F7CE222809540054E846 /* base.pb.h */; };
+		7825F7D1222809540054E846 /* base.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7CF222809540054E846 /* base.pb.cc */; };
+		7825F7D4222809640054E846 /* SqlRequest.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7D2222809630054E846 /* SqlRequest.pb.cc */; };
+		7825F7D5222809640054E846 /* SqlRequest.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 7825F7D3222809630054E846 /* SqlRequest.pb.h */; };
+		7825F7DA222809710054E846 /* SimpleEcho.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7D6222809700054E846 /* SimpleEcho.pb.cc */; };
+		7825F7DB222809710054E846 /* Huolong.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 7825F7D7222809700054E846 /* Huolong.pb.h */; };
+		7825F7DC222809710054E846 /* SimpleEcho.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 7825F7D8222809700054E846 /* SimpleEcho.pb.h */; };
+		7825F7DD222809710054E846 /* Huolong.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7D9222809700054E846 /* Huolong.pb.cc */; };
+		7825F7E22228097E0054E846 /* SessionStart.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7DE2228097E0054E846 /* SessionStart.pb.cc */; };
+		7825F7E32228097E0054E846 /* SessionStart.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 7825F7DF2228097E0054E846 /* SessionStart.pb.h */; };
+		7825F7E42228097E0054E846 /* SocketHead.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 7825F7E02228097E0054E846 /* SocketHead.pb.h */; };
+		7825F7E52228097E0054E846 /* SocketHead.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7E12228097E0054E846 /* SocketHead.pb.cc */; };
 		966A086321354E4500EDAE08 /* base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A085C21354E4500EDAE08 /* base.cpp */; };
 		966A086421354E4500EDAE08 /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A085D21354E4500EDAE08 /* EventManager.cpp */; };
 		966A086521354E4500EDAE08 /* MessageQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A085E21354E4500EDAE08 /* MessageQueue.cpp */; };
@@ -19,6 +31,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7825F7CE222809540054E846 /* base.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base.pb.h; path = ../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.h; sourceTree = "<group>"; };
+		7825F7CF222809540054E846 /* base.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = base.pb.cc; path = ../src/ProtobufSource/cpp/ArmyAntMessage/Common/base.pb.cc; sourceTree = "<group>"; };
+		7825F7D2222809630054E846 /* SqlRequest.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SqlRequest.pb.cc; path = ../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.cc; sourceTree = "<group>"; };
+		7825F7D3222809630054E846 /* SqlRequest.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SqlRequest.pb.h; path = ../src/ProtobufSource/cpp/ArmyAntMessage/DBProxy/SqlRequest.pb.h; sourceTree = "<group>"; };
+		7825F7D6222809700054E846 /* SimpleEcho.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimpleEcho.pb.cc; path = ../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.cc; sourceTree = "<group>"; };
+		7825F7D7222809700054E846 /* Huolong.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Huolong.pb.h; path = ../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.h; sourceTree = "<group>"; };
+		7825F7D8222809700054E846 /* SimpleEcho.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleEcho.pb.h; path = ../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/SimpleEcho.pb.h; sourceTree = "<group>"; };
+		7825F7D9222809700054E846 /* Huolong.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Huolong.pb.cc; path = ../src/ProtobufSource/cpp/ArmyAntMessage/SubApps/Huolong.pb.cc; sourceTree = "<group>"; };
+		7825F7DE2228097E0054E846 /* SessionStart.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SessionStart.pb.cc; path = ../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.cc; sourceTree = "<group>"; };
+		7825F7DF2228097E0054E846 /* SessionStart.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionStart.pb.h; path = ../src/ProtobufSource/cpp/ArmyAntMessage/System/SessionStart.pb.h; sourceTree = "<group>"; };
+		7825F7E02228097E0054E846 /* SocketHead.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketHead.pb.h; path = ../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.h; sourceTree = "<group>"; };
+		7825F7E12228097E0054E846 /* SocketHead.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SocketHead.pb.cc; path = ../src/ProtobufSource/cpp/ArmyAntMessage/System/SocketHead.pb.cc; sourceTree = "<group>"; };
 		962B5FFD21354199007CB8C4 /* libServerUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libServerUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		966A085C21354E4500EDAE08 /* base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = base.cpp; path = ../src/Utilities/base.cpp; sourceTree = "<group>"; };
 		966A085D21354E4500EDAE08 /* EventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventManager.cpp; path = ../src/Utilities/EventManager.cpp; sourceTree = "<group>"; };
@@ -42,9 +66,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7825F7C9222808B40054E846 /* res */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = res;
+			sourceTree = "<group>";
+		};
+		7825F7CA222808C50054E846 /* protobuf_source */ = {
+			isa = PBXGroup;
+			children = (
+				7825F7DE2228097E0054E846 /* SessionStart.pb.cc */,
+				7825F7DF2228097E0054E846 /* SessionStart.pb.h */,
+				7825F7E12228097E0054E846 /* SocketHead.pb.cc */,
+				7825F7E02228097E0054E846 /* SocketHead.pb.h */,
+				7825F7D9222809700054E846 /* Huolong.pb.cc */,
+				7825F7D7222809700054E846 /* Huolong.pb.h */,
+				7825F7D6222809700054E846 /* SimpleEcho.pb.cc */,
+				7825F7D8222809700054E846 /* SimpleEcho.pb.h */,
+				7825F7D2222809630054E846 /* SqlRequest.pb.cc */,
+				7825F7D3222809630054E846 /* SqlRequest.pb.h */,
+				7825F7CF222809540054E846 /* base.pb.cc */,
+				7825F7CE222809540054E846 /* base.pb.h */,
+			);
+			name = protobuf_source;
+			sourceTree = "<group>";
+		};
 		962B5FF421354199007CB8C4 = {
 			isa = PBXGroup;
 			children = (
+				7825F7CA222808C50054E846 /* protobuf_source */,
+				7825F7C9222808B40054E846 /* res */,
 				966A085421354DD100EDAE08 /* src */,
 				962B5FFE21354199007CB8C4 /* Products */,
 			);
@@ -81,6 +133,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7825F7DB222809710054E846 /* Huolong.pb.h in Headers */,
+				7825F7D5222809640054E846 /* SqlRequest.pb.h in Headers */,
+				7825F7E42228097E0054E846 /* SocketHead.pb.h in Headers */,
+				7825F7DC222809710054E846 /* SimpleEcho.pb.h in Headers */,
+				7825F7D0222809540054E846 /* base.pb.h in Headers */,
+				7825F7E32228097E0054E846 /* SessionStart.pb.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,13 +199,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				966A086421354E4500EDAE08 /* EventManager.cpp in Sources */,
+				7825F7DA222809710054E846 /* SimpleEcho.pb.cc in Sources */,
+				7825F7DD222809710054E846 /* Huolong.pb.cc in Sources */,
 				966A086921354E4500EDAE08 /* SocketApplication.cpp in Sources */,
 				966A086621354E4500EDAE08 /* MessageQueueManager.cpp in Sources */,
+				7825F7D1222809540054E846 /* base.pb.cc in Sources */,
+				7825F7E52228097E0054E846 /* SocketHead.pb.cc in Sources */,
 				9697463F21953AEA006EDC3A /* UserSession.cpp in Sources */,
 				966A086521354E4500EDAE08 /* MessageQueue.cpp in Sources */,
 				966A086721354E4500EDAE08 /* SocketClientApplication.cpp in Sources */,
 				966A086321354E4500EDAE08 /* base.cpp in Sources */,
+				7825F7E22228097E0054E846 /* SessionStart.pb.cc in Sources */,
 				9697464021953AEA006EDC3A /* DebugMutex.cpp in Sources */,
+				7825F7D4222809640054E846 /* SqlRequest.pb.cc in Sources */,
 				9697463E21953AEA006EDC3A /* UserSessionManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +252,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -197,8 +263,17 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					_cplusplus,
+					_x86,
+					_64BIT,
+					OS_UNIX,
+					OS_BSD,
+					OS_MACOS,
+					_LLVM,
+					_XCODE,
+					"DEBUG=1",
+					_DEBUG,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -206,10 +281,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../inc",
+					"$(SRCROOT)/../external/ArmyAntLib/inc",
+					"$(SRCROOT)/../src/ProtobufSource/cpp",
+					"$(SRCROOT)/../external/Protobuf/src",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SYMROOT = "$(SRCROOT)/../bin";
 			};
 			name = Debug;
 		};
@@ -246,21 +328,42 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					_cplusplus,
+					_x86,
+					_64BIT,
+					OS_UNIX,
+					OS_BSD,
+					OS_MACOS,
+					_LLVM,
+					_XCODE,
+					NDEBUG,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../inc",
+					"$(SRCROOT)/../external/ArmyAntLib/inc",
+					"$(SRCROOT)/../src/ProtobufSource/cpp",
+					"$(SRCROOT)/../external/Protobuf/src",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SYMROOT = "$(SRCROOT)/../bin";
 			};
 			name = Release;
 		};

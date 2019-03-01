@@ -11,7 +11,9 @@
 #include <HuolongTableManager.h>
 #include <EventManager.h>
 
-class ArmyAnt::Logger;
+namespace ArmyAnt{
+    class Logger;
+}
 
 namespace ArmyAntServer{
 

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7825F7B32228073B0054E846 /* HuolongBattlePlayer_LocalHuman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7AE2228073A0054E846 /* HuolongBattlePlayer_LocalHuman.cpp */; };
+		7825F7B42228073B0054E846 /* HuolongBattlePlayer_ServerRobot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7AF2228073A0054E846 /* HuolongBattlePlayer_ServerRobot.cpp */; };
+		7825F7B52228073B0054E846 /* HuolongUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7B02228073B0054E846 /* HuolongUtils.cpp */; };
+		7825F7B62228073B0054E846 /* IHuolongBattlePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7B12228073B0054E846 /* IHuolongBattlePlayer.cpp */; };
+		7825F7B72228073B0054E846 /* PokerCard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7825F7B22228073B0054E846 /* PokerCard.cpp */; };
 		9697467621953CAD006EDC3A /* HuolongTableManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9697467121953CAD006EDC3A /* HuolongTableManager.cpp */; };
 		9697467721953CAD006EDC3A /* HuolongServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9697467221953CAD006EDC3A /* HuolongServer.cpp */; };
 		9697467821953CAD006EDC3A /* HuolongUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9697467321953CAD006EDC3A /* HuolongUser.cpp */; };
@@ -15,6 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7825F7AE2228073A0054E846 /* HuolongBattlePlayer_LocalHuman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HuolongBattlePlayer_LocalHuman.cpp; path = ../src/SubApplications/HuolongServer/HuolongBattlePlayer_LocalHuman.cpp; sourceTree = "<group>"; };
+		7825F7AF2228073A0054E846 /* HuolongBattlePlayer_ServerRobot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HuolongBattlePlayer_ServerRobot.cpp; path = ../src/SubApplications/HuolongServer/HuolongBattlePlayer_ServerRobot.cpp; sourceTree = "<group>"; };
+		7825F7B02228073B0054E846 /* HuolongUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HuolongUtils.cpp; path = ../src/SubApplications/HuolongServer/HuolongUtils.cpp; sourceTree = "<group>"; };
+		7825F7B12228073B0054E846 /* IHuolongBattlePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IHuolongBattlePlayer.cpp; path = ../src/SubApplications/HuolongServer/IHuolongBattlePlayer.cpp; sourceTree = "<group>"; };
+		7825F7B22228073B0054E846 /* PokerCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PokerCard.cpp; path = ../src/SubApplications/HuolongServer/PokerCard.cpp; sourceTree = "<group>"; };
 		9697466321953C6B006EDC3A /* libHuolongServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHuolongServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9697467121953CAD006EDC3A /* HuolongTableManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HuolongTableManager.cpp; path = ../src/SubApplications/HuolongServer/HuolongTableManager.cpp; sourceTree = "<group>"; };
 		9697467221953CAD006EDC3A /* HuolongServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HuolongServer.cpp; path = ../src/SubApplications/HuolongServer/HuolongServer.cpp; sourceTree = "<group>"; };
@@ -34,14 +44,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9697465A21953C6B006EDC3A = {
+		7825F7AD222807160054E846 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				7825F7AE2228073A0054E846 /* HuolongBattlePlayer_LocalHuman.cpp */,
+				7825F7AF2228073A0054E846 /* HuolongBattlePlayer_ServerRobot.cpp */,
+				7825F7B02228073B0054E846 /* HuolongUtils.cpp */,
+				7825F7B12228073B0054E846 /* IHuolongBattlePlayer.cpp */,
+				7825F7B22228073B0054E846 /* PokerCard.cpp */,
 				9697467221953CAD006EDC3A /* HuolongServer.cpp */,
 				9697467521953CAD006EDC3A /* HuolongTable.cpp */,
 				9697467121953CAD006EDC3A /* HuolongTableManager.cpp */,
 				9697467321953CAD006EDC3A /* HuolongUser.cpp */,
 				9697467421953CAD006EDC3A /* HuolongUserDataManager.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		9697465A21953C6B006EDC3A = {
+			isa = PBXGroup;
+			children = (
+				7825F7AD222807160054E846 /* src */,
 				9697466421953C6B006EDC3A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,7 +146,12 @@
 				9697467621953CAD006EDC3A /* HuolongTableManager.cpp in Sources */,
 				9697467721953CAD006EDC3A /* HuolongServer.cpp in Sources */,
 				9697467821953CAD006EDC3A /* HuolongUser.cpp in Sources */,
+				7825F7B32228073B0054E846 /* HuolongBattlePlayer_LocalHuman.cpp in Sources */,
+				7825F7B62228073B0054E846 /* IHuolongBattlePlayer.cpp in Sources */,
 				9697467921953CAD006EDC3A /* HuolongUserDataManager.cpp in Sources */,
+				7825F7B42228073B0054E846 /* HuolongBattlePlayer_ServerRobot.cpp in Sources */,
+				7825F7B72228073B0054E846 /* PokerCard.cpp in Sources */,
+				7825F7B52228073B0054E846 /* HuolongUtils.cpp in Sources */,
 				9697467A21953CAD006EDC3A /* HuolongTable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +192,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -173,8 +203,17 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					_cplusplus,
+					_x86,
+					_64BIT,
+					OS_UNIX,
+					OS_BSD,
+					OS_MACOS,
+					_LLVM,
+					_XCODE,
+					"DEBUG=1",
+					_DEBUG,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -182,11 +221,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../inc",
+					"$(SRCROOT)/../external/ArmyAntLib/inc",
+					"$(SRCROOT)/../src/ProtobufSource/cpp",
+					"$(SRCROOT)/../external/Protobuf/src",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SYMROOT = "$(SRCROOT)/../bin";
 			};
 			name = Debug;
 		};
@@ -223,22 +269,43 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					_cplusplus,
+					_x86,
+					_64BIT,
+					OS_UNIX,
+					OS_BSD,
+					OS_MACOS,
+					_LLVM,
+					_XCODE,
+					NDEBUG,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../inc",
+					"$(SRCROOT)/../external/ArmyAntLib/inc",
+					"$(SRCROOT)/../src/ProtobufSource/cpp",
+					"$(SRCROOT)/../external/Protobuf/src",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				SYMROOT = "$(SRCROOT)/../bin";
 			};
 			name = Release;
 		};

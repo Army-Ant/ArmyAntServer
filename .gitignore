@@ -55,6 +55,10 @@ package-lock.json
 /proj/SimpleEchoApp/build/
 /proj/HuolongServer/build/
 
+# XCode userdata settings
+*.xcodeproj/xcuserdata
+*.xcworkspace/xcuserdata
+
 # Compiled protobuffer source files
 /src/ProtobufSource
 
