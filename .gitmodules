@@ -3,7 +3,7 @@
 	url = https://github.com/Army-Ant/ArmyAntLib.git
 [submodule "external/Protobuf"]
 	path = external/Protobuf
-	url = https://github.com/google/protobuf.git
+	url = https://github.com/protocolbuffers/protobuf.git
 	ignore = dirty
 [submodule "external/closure-library"]
 	path = external/closure-library
