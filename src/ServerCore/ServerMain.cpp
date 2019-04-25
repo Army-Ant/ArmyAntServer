@@ -16,7 +16,7 @@ namespace ArmyAntServer{
 
 
 ServerMain::ServerMain()
-	:debug(false), normalSocketPort(0), webSocketPort(0), msgQueue(nullptr), normalSocket(false), webSocket(true), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr, logger), eventMgr(sessionMgr, logger), appMgr(logger), dbConnector(false), dbAddr(nullptr), dbPort(0), dbLocalPort(0)
+	:debug(false), normalSocketPort(0), webSocketPort(0), msgQueue(nullptr), normalSocket(false), webSocket(true), logger(), msgQueueMgr(), sessionMgr(msgQueueMgr, logger), eventMgr(sessionMgr, logger), appMgr(logger), dbConnector(false), dbAddr(nullptr), dbPort(0)
 {
 	sessionMgr.setEventManager(eventMgr);
 }
@@ -250,14 +250,6 @@ int32 ServerMain::parseConfig(){
 		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
 	}
 	dbPort = uint16(jDBProxyPort->getLong());
-	auto jDBProxyLocalPort = dynamic_cast<ArmyAnt::JsonNumeric*>(jo.getChild("dbProxyLocalPort"));
-	if(jDBProxyPort == nullptr){
-		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
-		ArmyAnt::JsonUnit::release(json);
-		return Constants::ServerMainReturnValues::parseConfigJElementFailed;
-	}
-	dbLocalPort = uint16(jDBProxyLocalPort->getLong());
-
 
 	ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
 	ArmyAnt::JsonUnit::release(json);
@@ -281,10 +273,10 @@ int32 ServerMain::modulesInitialization(){
 void ServerMain::connectDBProxy(bool isReconnect){
 	dbConnector.setEventCallback(std::bind(&ServerMain::onDBConnectorEvent, this, std::placeholders::_1, std::placeholders::_2));
 	dbConnector.setReceiveCallback(std::bind(&ServerMain::onDBConnectorReceived, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6, std::placeholders::_7, std::placeholders::_8));
-	auto ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
+	auto ret = dbConnector.connect(*dbAddr, dbPort, false, 8192);
 	while(!ret){
 		logger.pushLog("DBproxy connected failed", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
-		ret = dbConnector.connect(*dbAddr, dbPort, dbLocalPort, false, 8192);
+		ret = dbConnector.connect(*dbAddr, dbPort, false, 8192);
 	}
 	if(isReconnect)
 		logger.pushLog("DBproxy reconnected", ArmyAnt::Logger::AlertLevel::Info, LOGGER_TAG);

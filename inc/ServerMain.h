@@ -83,7 +83,6 @@ private:
 	SocketClientApplication dbConnector;
 	ArmyAnt::IPAddr* dbAddr;
 	uint16 dbPort;
-	uint16 dbLocalPort;
 
 	AA_FORBID_COPY_CTOR(ServerMain);
 	AA_FORBID_ASSGN_OPR(ServerMain);

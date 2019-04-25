@@ -6,6 +6,5 @@
   "logFileLevel": "info",
   "logConsoleLevel": "verbose",
   "dbProxyAddr": "127.0.0.1",
-  "dbProxyPort": 11510,
-  "dbProxyLocalPort": 11129
+  "dbProxyPort": 11510
 }

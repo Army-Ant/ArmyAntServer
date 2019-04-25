@@ -2,7 +2,7 @@
 cd ..
 
 :GENERATE_SUBMODULE
-git submodule update --init --progress
+git submodule update --init --progress --recursive
 cd external
 
 :GENERATE_BOOST
@@ -10,19 +10,14 @@ cd ArmyAntLib
 git checkout master
 cd external
 call boost_generate_and_build.bat
-cd ../..
-
-:GENERATE_PROTOBUF
-cd Protobuf
-git submodule update --init --progress --recursive
-cd ..
+cd ../../..
 
 :BUILD_PROTOBUF
 call build_protobuf.bat
 
 :GENERATE_CLOSURE_LIBRARY
 cd closure-library
-git submodule update --init --progress --recursive
+git checkout master
 cd ..
 
 :GENERATE_ARMYANT_JS

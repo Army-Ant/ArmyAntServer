@@ -1,4 +1,7 @@
-cd Protobuf/cmake
+cd Protobuf
+git checkout master
+git submodule update --init --progress --recursive
+cd cmake
 mkdir build_win
 cd build_win
 mkdir debug

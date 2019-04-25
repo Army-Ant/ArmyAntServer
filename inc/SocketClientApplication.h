@@ -32,7 +32,7 @@ public:
 	bool setReceiveCallback(ReceiveCallback cb);
 	ArmyAnt::TCPClient*getSocket();
 
-	bool connect(ArmyAnt::IPAddr&ip, uint16 port, uint16 localPort, bool isAsync, uint32 maxBufferLength);
+	bool connect(ArmyAnt::IPAddr&ip, uint16 port, bool isAsync, uint32 maxBufferLength);
 	bool disconnect();
 	int32 send(int32 serials, MessageType type, int32 extendVersion, google::protobuf::Message&extend, void*content);
 
