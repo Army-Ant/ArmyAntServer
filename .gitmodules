@@ -16,3 +16,6 @@
 	path = external/ArmyAntGenerator
 	url = https://github.com/Army-Ant/ArmyAntGenerator.git
 	ignore = dirty
+[submodule "res"]
+	path = res
+	url = https://github.com/Army-Ant/ArmyAntServerResources.git
