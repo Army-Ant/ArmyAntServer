@@ -1,4 +1,6 @@
 #include <SocketApplication.h>
+#include "../../external/ArmyAntLib/inc/AAIStream.h"
+#include <boost/spirit/home/support/detail/endian/endian.hpp>
 
 namespace ArmyAntServer{
 
@@ -56,7 +58,14 @@ void SocketApplication::onServerReceived(uint32 index, const void*data, mac_uint
 			// 解析应用头
 			if(clientBuffer.receivingBufferEnd > sizeof(MessageBaseHead)){
 				MessageBaseHead tmpHead;
-				memcpy(&tmpHead, clientBuffer.receivingBuffer, sizeof(MessageBaseHead));
+                if(ArmyAnt::IStream::IsLittleEnding()){
+                    memcpy(&tmpHead, clientBuffer.receivingBuffer, sizeof(MessageBaseHead));
+                } else{
+                    tmpHead.serials = boost::spirit::detail::load_big_endian<int32, sizeof(int32)>(clientBuffer.receivingBuffer);
+                    tmpHead.type = boost::spirit::detail::load_big_endian<MessageType, sizeof(MessageType)>(clientBuffer.receivingBuffer + 4);
+                    tmpHead.extendVersion = boost::spirit::detail::load_big_endian<int32, sizeof(int32)>(clientBuffer.receivingBuffer + 8);
+                    tmpHead.extendLength = boost::spirit::detail::load_big_endian<int32, sizeof(int32)>(clientBuffer.receivingBuffer + 12);
+                }
 				// 解析扩展头
 				if(clientBuffer.receivingBufferEnd >= sizeof(MessageBaseHead) + tmpHead.extendLength){
 					int64 appId = 0;

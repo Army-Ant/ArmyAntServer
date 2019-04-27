@@ -16,8 +16,8 @@ struct ClientInformation{
 	uint32 index;
 	ClientStatus status;
 
-	ClientInformation(const int32 index, ClientStatus status);
-	ClientInformation(ClientInformation&&moved);
+	ClientInformation(const int32 index, ClientStatus status)noexcept;
+	ClientInformation(ClientInformation&&moved)noexcept;
 	~ClientInformation();
 
 private:
