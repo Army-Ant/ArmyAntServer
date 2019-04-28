@@ -137,14 +137,14 @@ void UserSession::onUpdate(){
 								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as asking reply with an existed normal conversation code: ") + int64(evt->conversationCode), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 								ret = false;
 							}
+                            break;
 						case ArmyAntMessage::System::ConversationStepType::ResponseEnd:
 							if(isEnd){
 								mgr.logger.pushLog(ArmyAnt::String("Sending a network message as conversation reply with an unexisted code: ") + int64(evt->conversationCode), ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
 								ret = false;
 							} else{
 								conversationStepIndex = second;
-								if(conversationStepIndex == 0)
-									conversationStepIndex = 1;
+                                conversationStepIndex += 1;
 							}
 							break;
 						default:

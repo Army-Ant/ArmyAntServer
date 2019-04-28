@@ -157,13 +157,13 @@ void SocketApplication::onServerErrorReport(const ArmyAnt::SocketException& err,
 
 /***********************************************************/
 
-ClientInformation::ClientInformation(const int32 index, ClientStatus status)
+ClientInformation::ClientInformation(const int32 index, ClientStatus status)noexcept
 	:index(index), status(status),
 	counter(1), waitingResponseSended(), receivingBuffer(nullptr), receivingBufferEnd(0), rwMutex(){
 	MutexHelper::setMutexLogTag(rwMutex, "sendingThreadMutex");
 }
 
-ClientInformation::ClientInformation(ClientInformation&&moved)
+ClientInformation::ClientInformation(ClientInformation&&moved)noexcept
 	: index(moved.index), status(moved.status),
 	counter(moved.counter), waitingResponseSended(), receivingBuffer(nullptr), receivingBufferEnd(0), rwMutex(){
 	MutexHelper::setMutexLogTag(rwMutex, "sendingThreadMutex");
