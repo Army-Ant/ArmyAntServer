@@ -69,7 +69,9 @@ private:
 
 private:
 	MySqlBridge mysqlBridge;
-	ArmyAnt::String mysqlServerHost;
+    ArmyAnt::String mysqlServerHost;
+    ArmyAnt::String mysqlServerPort;
+    ArmyAnt::String mysqlDefaultDataBase;
 	ArmyAnt::String mysqlUsername;
 	ArmyAnt::String mysqlPassword;
 

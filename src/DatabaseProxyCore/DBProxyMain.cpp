@@ -192,13 +192,27 @@ int32 DBProxyMain::parseConfig(){
 	}
 
 	// MySql 登录参数
-	auto jMysqlServerHost = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlServerHost"));
-	if(jMysqlServerHost == nullptr){
-		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
-		ArmyAnt::JsonUnit::release(json);
-		return Constants::DBProxyMainReturnValues::parseConfigJElementFailed;
-	}
-	mysqlServerHost = jMysqlServerHost->getString();
+    auto jMysqlServerHost = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlServerHost"));
+    if(jMysqlServerHost == nullptr){
+        ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+        ArmyAnt::JsonUnit::release(json);
+        return Constants::DBProxyMainReturnValues::parseConfigJElementFailed;
+    }
+    mysqlServerHost = jMysqlServerHost->getString();
+    auto jMysqlServerPort = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlServerPort"));
+    if(jMysqlServerPort == nullptr){
+        ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+        ArmyAnt::JsonUnit::release(json);
+        return Constants::DBProxyMainReturnValues::parseConfigJElementFailed;
+    }
+    mysqlServerPort = jMysqlServerPort->getString();
+    auto jMysqlDefaultDataBase = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlDataBase"));
+    if(jMysqlDefaultDataBase == nullptr){
+        ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
+        ArmyAnt::JsonUnit::release(json);
+        return Constants::DBProxyMainReturnValues::parseConfigJElementFailed;
+    }
+    mysqlDefaultDataBase = jMysqlDefaultDataBase->getString();
 	auto jMysqlUsername = dynamic_cast<ArmyAnt::JsonString*>(jo.getChild("mysqlUsername"));
 	if(jMysqlUsername == nullptr){
 		ArmyAnt::Fragment::AA_SAFE_DELALL(buf);
@@ -224,16 +238,17 @@ int32 DBProxyMain::parseConfig(){
 
 int32 DBProxyMain::modulesInitialization(){
 	// 连接目标数据库
-	auto connRes = mysqlBridge.connect(mysqlServerHost);
+    auto hostStr = mysqlServerHost + ":" + mysqlServerPort + "/" + mysqlDefaultDataBase;
+	auto connRes = mysqlBridge.connect(hostStr);
 	int32 retriedTimes = 0;
 	while(!connRes && retriedTimes < 10){
 		logger.pushLog("Connect to Mysql failed", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
-		connRes = mysqlBridge.connect(mysqlServerHost);
+		connRes = mysqlBridge.connect(hostStr);
 		++retriedTimes;
         if(!connRes){
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
             logger.pushLog("Connect to Mysql failed", ArmyAnt::Logger::AlertLevel::Error, LOGGER_TAG);
-            connRes = mysqlBridge.connect(mysqlServerHost);
+            connRes = mysqlBridge.connect(hostStr);
         }
 	}
 	if(!connRes){
