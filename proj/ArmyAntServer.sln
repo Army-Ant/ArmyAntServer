@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2043
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArmyAntServer", "ArmyAntServer.vcxproj", "{CEE485B9-9957-4B7F-A60C-C43D85AD4400}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -45,6 +45,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArmyAntLib", "..\external\ArmyAntLib\proj\ArmyAntLib.vcxproj", "{14FA4233-0D4C-46B8-82F1-44262938B95A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HuolongServer", "HuolongServer.vcxproj", "{51B4CC3D-1E7D-446E-A368-12F8F76E1E07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{14FA4233-0D4C-46B8-82F1-44262938B95A} = {14FA4233-0D4C-46B8-82F1-44262938B95A}
+		{4FC51BFA-39AF-4A3E-BFFD-C9562CD66F89} = {4FC51BFA-39AF-4A3E-BFFD-C9562CD66F89}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

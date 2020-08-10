@@ -26,7 +26,7 @@ struct NetworkSendStruct{
 	ArmyAntMessage::System::ConversationStepType conversationStepType;
 	int32 code;
 	void * data;
-	int32 length;
+	size_t length;
 };
 
 UserSession::UserSession(int32 index, MessageQueue&msgQueue, UserSessionManager&mgr, SocketApplication&socketSender, int32 senderIndex)
@@ -58,10 +58,10 @@ void UserSession::setUserData(void * data){
 	userdata = data;
 }
 void UserSession::sendNetwork(int32 extendVersion, int64 appid, int32 conversationCode, ArmyAntMessage::System::ConversationStepType conversationStepType, google::protobuf::Message * content){
-	char* cpMsg = new char[content->ByteSize()];
-	content->SerializePartialToArray(cpMsg, content->ByteSize());
+	char* cpMsg = new char[content->ByteSizeLong()];
+	content->SerializePartialToArray(cpMsg, content->ByteSizeLong());
 	auto code = EventManager::getProtobufMessageCode(content);
-	msgQueue.pushMessage(Message{UserSessionMsgCode::SendNetworkMessage, code, new NetworkSendStruct{ extendVersion, appid, conversationCode, conversationStepType, code, cpMsg, content->ByteSize() }});
+	msgQueue.pushMessage(Message{UserSessionMsgCode::SendNetworkMessage, code, new NetworkSendStruct{ extendVersion, appid, conversationCode, conversationStepType, code, cpMsg, content->ByteSizeLong() }});
 }
 void UserSession::dispatchLocalEvent(int32 code, LocalEventData * data){
 	msgQueue.pushMessage(Message{UserSessionMsgCode::LocalEventMessage, code, new LocalEventData(*data)});

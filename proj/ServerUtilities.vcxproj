@@ -127,6 +127,10 @@
       <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
       <Message>---------编译前脚本---------------------</Message>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>$(ProjectDir)..\scripts\build_end.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
+      <Message>---------生成后脚本---------------------</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -185,7 +189,7 @@
     </Lib>
     <PreBuildEvent>
       <Command>$(ProjectDir)..\scripts\build_start.bat $(Configuration) $(ProjectDir)..\ $(TargetName) $(PlatformTarget)</Command>
-      <Message>---------编译前脚本---------------------</Message>
+      <Message>---------编译后脚本---------------------</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -237,11 +241,6 @@
     <None Include="..\res\proto\proto_message_code_helper.js" />
     <None Include="..\res\sqlScripts\initializeNewEmptyDB_MariaDB.sql" />
     <None Include="..\res\sqlScripts\initializeNewEmptyDB_OracleMySql.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\external\ArmyAntLib\proj\ArmyAntLib.vcxproj">
-      <Project>{14fa4233-0d4c-46b8-82f1-44262938b95a}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

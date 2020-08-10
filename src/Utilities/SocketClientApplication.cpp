@@ -167,7 +167,7 @@ int32 SocketClientApplication::send(int32 serials, MessageType type, int32 exten
         case 1:
         {
             ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1* headExtend = static_cast<ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1*>(&extend);
-            extendLength = headExtend->ByteSize();
+            extendLength = headExtend->ByteSizeLong();
             contentLength = headExtend->content_length();
             break;
         }
@@ -184,7 +184,7 @@ int32 SocketClientApplication::send(int32 serials, MessageType type, int32 exten
     int64 totalLength = sizeof(head) + head.extendLength + contentLength;
     uint8* sendingBuffer = new uint8[totalLength];
     memcpy(sendingBuffer, &head, sizeof(head));
-    extend.SerializePartialToArray(sendingBuffer + sizeof(head), extend.ByteSize());
+    extend.SerializePartialToArray(sendingBuffer + sizeof(head), extend.ByteSizeLong());
     memcpy(sendingBuffer + sizeof(head) + extendLength, content, contentLength);
     if(counter == AA_INT64_MAX - 1)
         counter = 0;

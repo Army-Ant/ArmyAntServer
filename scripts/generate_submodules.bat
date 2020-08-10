@@ -26,4 +26,14 @@ git checkout master
 call babel-node_setup.bat
 cd ..
 
+:GENERATE_OTHERS
+cd ArmyAntGenerator
+git checkout master
+cd ..
+cd ../res
+git checkout master
+cd ..
+
 :END
+cd script
+

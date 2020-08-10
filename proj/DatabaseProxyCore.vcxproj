@@ -27,11 +27,6 @@
     <ClCompile Include="..\src\DatabaseProxyCore\DBProxyMain.cpp" />
     <ClCompile Include="..\src\DatabaseProxyCore\mysqlBridge.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="ServerUtilities.vcxproj">
-      <Project>{4fc51bfa-39af-4a3e-bffd-c9562cd66f89}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{81D40F02-A693-440B-9755-FFA230120407}</ProjectGuid>

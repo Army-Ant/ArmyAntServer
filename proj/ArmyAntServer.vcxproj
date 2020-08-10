@@ -198,8 +198,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\external\ArmyAntLib\proj\ArmyAntLib.vcxproj">
+      <Project>{14fa4233-0d4c-46b8-82f1-44262938b95a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="HuolongServer.vcxproj">
+      <Project>{51b4cc3d-1e7d-446e-a368-12f8f76e1e07}</Project>
+    </ProjectReference>
     <ProjectReference Include="ServerCore.vcxproj">
       <Project>{8d1a0fb3-c01b-4c63-98a4-dc24643e5871}</Project>
+    </ProjectReference>
+    <ProjectReference Include="ServerUtilities.vcxproj">
+      <Project>{4fc51bfa-39af-4a3e-bffd-c9562cd66f89}</Project>
+    </ProjectReference>
+    <ProjectReference Include="SimpleEchoApp.vcxproj">
+      <Project>{2bc19af5-031e-419d-bbd4-f49145f633b4}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -27,8 +27,14 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\external\ArmyAntLib\proj\ArmyAntLib.vcxproj">
+      <Project>{14fa4233-0d4c-46b8-82f1-44262938b95a}</Project>
+    </ProjectReference>
     <ProjectReference Include="DatabaseProxyCore.vcxproj">
       <Project>{81d40f02-a693-440b-9755-ffa230120407}</Project>
+    </ProjectReference>
+    <ProjectReference Include="ServerUtilities.vcxproj">
+      <Project>{4fc51bfa-39af-4a3e-bffd-c9562cd66f89}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">

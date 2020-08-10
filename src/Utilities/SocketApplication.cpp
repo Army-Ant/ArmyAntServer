@@ -1,6 +1,6 @@
 #include <SocketApplication.h>
 #include "../../external/ArmyAntLib/inc/AAIStream.h"
-#include <boost/spirit/home/support/detail/endian/endian.hpp>
+#include <boost/endian/detail/endian_load.hpp>
 
 namespace ArmyAntServer{
 
@@ -61,10 +61,10 @@ void SocketApplication::onServerReceived(uint32 index, const void*data, mac_uint
                 if(ArmyAnt::IStream::IsLittleEnding()){
                     memcpy(&tmpHead, clientBuffer.receivingBuffer, sizeof(MessageBaseHead));
                 } else{
-                    tmpHead.serials = boost::spirit::detail::load_big_endian<int32, sizeof(int32)>(clientBuffer.receivingBuffer);
-                    tmpHead.type = boost::spirit::detail::load_big_endian<MessageType, sizeof(MessageType)>(clientBuffer.receivingBuffer + 4);
-                    tmpHead.extendVersion = boost::spirit::detail::load_big_endian<int32, sizeof(int32)>(clientBuffer.receivingBuffer + 8);
-                    tmpHead.extendLength = boost::spirit::detail::load_big_endian<int32, sizeof(int32)>(clientBuffer.receivingBuffer + 12);
+                    tmpHead.serials = boost::endian::endian_load<int32, sizeof(int32), boost::endian::order::big>(clientBuffer.receivingBuffer);
+                    tmpHead.type = boost::endian::endian_load<MessageType, sizeof(MessageType), boost::endian::order::big>(clientBuffer.receivingBuffer + 4);
+                    tmpHead.extendVersion = boost::endian::endian_load<int32, sizeof(int32), boost::endian::order::big>(clientBuffer.receivingBuffer + 8);
+                    tmpHead.extendLength = boost::endian::endian_load<int32, sizeof(int32), boost::endian::order::big>(clientBuffer.receivingBuffer + 12);
                 }
 				// 解析扩展头
 				if(clientBuffer.receivingBufferEnd >= sizeof(MessageBaseHead) + tmpHead.extendLength){
@@ -247,7 +247,7 @@ int32 SocketApplication::send(uint32 clientId, int32 serials, MessageType type, 
 		case 1:
 		{
 			ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1*headExtend = static_cast<ArmyAntMessage::System::SocketExtendNormal_V0_0_0_1*>(&extend);
-			extendLength = headExtend->ByteSize();
+			extendLength = headExtend->ByteSizeLong();
 			contentLength = headExtend->content_length();
 			break;
 		}
@@ -264,7 +264,7 @@ int32 SocketApplication::send(uint32 clientId, int32 serials, MessageType type, 
 	int64 totalLength = sizeof(head) + head.extendLength + contentLength;
 	uint8* sendingBuffer = new uint8[totalLength];
 	memcpy(sendingBuffer, &head, sizeof(head));
-	extend.SerializePartialToArray(sendingBuffer + sizeof(head), extend.ByteSize());
+	extend.SerializePartialToArray(sendingBuffer + sizeof(head), extend.ByteSizeLong());
 	memcpy(sendingBuffer + sizeof(head) + extendLength, content, contentLength);
 	if(client->second->counter == AA_INT64_MAX - 1)
 		client->second->counter = 0;

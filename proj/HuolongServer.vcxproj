@@ -19,11 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ServerUtilities.vcxproj">
-      <Project>{4fc51bfa-39af-4a3e-bffd-c9562cd66f89}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\inc\HuolongBattlePlayer_LocalHuman.h" />
     <ClInclude Include="..\inc\HuolongBattlePlayer_ServerRobot.h" />
     <ClInclude Include="..\inc\HuolongConstants.h" />
