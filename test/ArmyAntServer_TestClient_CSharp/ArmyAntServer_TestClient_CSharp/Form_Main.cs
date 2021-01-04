@@ -25,17 +25,18 @@ namespace ArmyAntServer_TestClient_CSharp
         {
             InitializeComponent();
             net = new Network(onReceiveCallback);
-            ArmyAntMessage.SubApps.C2SM_EchoLoginRequest.Descriptor.CustomOptions.TryGetInt32(optionNumber, out loginRequestMessageCode);
-            ArmyAntMessage.SubApps.C2SM_EchoLogoutRequest.Descriptor.CustomOptions.TryGetInt32(optionNumber, out logoutRequestMessageCode);
-            ArmyAntMessage.SubApps.C2SM_EchoSendRequest.Descriptor.CustomOptions.TryGetInt32(optionNumber, out sendRequestMessageCode);
-            ArmyAntMessage.SubApps.C2SM_EchoBroadcastRequest.Descriptor.CustomOptions.TryGetInt32(optionNumber, out broadcastRequestMessageCode);
 
-            ArmyAntMessage.SubApps.SM2C_EchoLoginResponse.Descriptor.CustomOptions.TryGetInt32(optionNumber, out loginResponseMessageCode);
-            ArmyAntMessage.SubApps.SM2C_EchoLogoutResponse.Descriptor.CustomOptions.TryGetInt32(optionNumber, out logoutResponseMessageCode);
-            ArmyAntMessage.SubApps.SM2C_EchoError.Descriptor.CustomOptions.TryGetInt32(optionNumber, out errorResponseMessageCode);
-            ArmyAntMessage.SubApps.SM2C_EchoBroadcastResponse.Descriptor.CustomOptions.TryGetInt32(optionNumber, out broadcastResponseMessageCode);
-            ArmyAntMessage.SubApps.SM2C_EchoSendResponse.Descriptor.CustomOptions.TryGetInt32(optionNumber, out sendResponseMessageCode);
-            ArmyAntMessage.SubApps.SM2C_EchoReceiveNotice.Descriptor.CustomOptions.TryGetInt32(optionNumber, out receiveMessageCode);
+            loginRequestMessageCode = ArmyAntMessage.SubApps.C2SM_EchoLoginRequest.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
+            logoutRequestMessageCode = ArmyAntMessage.SubApps.C2SM_EchoLogoutRequest.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
+            sendRequestMessageCode = ArmyAntMessage.SubApps.C2SM_EchoSendRequest.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
+            broadcastRequestMessageCode = ArmyAntMessage.SubApps.C2SM_EchoBroadcastRequest.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
+
+            loginResponseMessageCode = ArmyAntMessage.SubApps.SM2C_EchoLoginResponse.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
+            logoutResponseMessageCode = ArmyAntMessage.SubApps.SM2C_EchoLogoutResponse.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
+            errorResponseMessageCode = ArmyAntMessage.SubApps.SM2C_EchoError.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
+            broadcastResponseMessageCode = ArmyAntMessage.SubApps.SM2C_EchoBroadcastResponse.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
+            sendResponseMessageCode = ArmyAntMessage.SubApps.SM2C_EchoSendResponse.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
+            receiveMessageCode = ArmyAntMessage.SubApps.SM2C_EchoReceiveNotice.Descriptor.GetOptions().GetExtension(BaseExtensions.MsgCode);
         }
 
         private bool onReceiveCallback(int serials, int type, long appid, int messageCode, int conversationCode, int conversationStepIndex, byte[] data)

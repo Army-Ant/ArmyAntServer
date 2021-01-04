@@ -60,7 +60,7 @@ namespace ArmyAntServer_TestClient_CSharp
                 readCanceller.Cancel(true);
                 if (web != null)
                 {
-                    await web.CloseAsync(WebSocketCloseStatus.EndpointUnavailable, "Client disconnecting", socketCanceller.Token);
+                    await web.CloseAsync(WebSocketCloseStatus.NormalClosure, "Client disconnect", socketCanceller.Token);
                 }
                 if (tcp != null)
                 {
